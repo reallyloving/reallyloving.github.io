@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1.删除hdp.repo和hdp-util.repocd /etc/yum.repos.d/rm -rf hdprm -rf HDPrm -rf ambari* 2.删除安装包用yum list installed | grep HDP来检查安装的ambari的包yum remove -y  sqoop.noarchyum remove -y  lzo-devel.x86_64yum remove">
+<meta name="description" content="ERROR: Exiting with exit code 1.REASON: Database check failed to complete. Please check /var/log/ambari-server/ambari-server.log and /var/log/ambari-server/ambari-server-check-database.log for more in">
 <meta property="og:type" content="article">
-<meta property="og:title" content="amabri卸载">
-<meta property="og:url" content="http://yoursite.com/2018/02/05/ambari卸载/index.html">
+<meta property="og:title" content="错误及解决方案">
+<meta property="og:url" content="http://yoursite.com/2018/02/05/ambari搭建错误/index.html">
 <meta property="og:site_name" content="��С����ջ">
-<meta property="og:description" content="1.删除hdp.repo和hdp-util.repocd /etc/yum.repos.d/rm -rf hdprm -rf HDPrm -rf ambari* 2.删除安装包用yum list installed | grep HDP来检查安装的ambari的包yum remove -y  sqoop.noarchyum remove -y  lzo-devel.x86_64yum remove">
+<meta property="og:description" content="ERROR: Exiting with exit code 1.REASON: Database check failed to complete. Please check /var/log/ambari-server/ambari-server.log and /var/log/ambari-server/ambari-server-check-database.log for more in">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-05T12:55:41.145Z">
+<meta property="og:updated_time" content="2018-02-05T13:08:05.473Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="amabri卸载">
-<meta name="twitter:description" content="1.删除hdp.repo和hdp-util.repocd /etc/yum.repos.d/rm -rf hdprm -rf HDPrm -rf ambari* 2.删除安装包用yum list installed | grep HDP来检查安装的ambari的包yum remove -y  sqoop.noarchyum remove -y  lzo-devel.x86_64yum remove">
+<meta name="twitter:title" content="错误及解决方案">
+<meta name="twitter:description" content="ERROR: Exiting with exit code 1.REASON: Database check failed to complete. Please check /var/log/ambari-server/ambari-server.log and /var/log/ambari-server/ambari-server-check-database.log for more in">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/05/ambari卸载/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/05/ambari搭建错误/"/>
 
 
 
 
 
-  <title>amabri卸载 | ��С����ջ</title>
+  <title>错误及解决方案 | ��С����ջ</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/05/ambari卸载/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/05/ambari搭建错误/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="С��">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">amabri卸载</h1>
+          <h1 class="post-title" itemprop="name headline">错误及解决方案</h1>
         
 
         <div class="post-meta">
@@ -261,7 +261,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T20:53:44+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T21:06:14+08:00">
                 2018-02-05
               </time>
             
@@ -299,13 +299,19 @@
       
 
       
-        <h2 id="1-删除hdp-repo和hdp-util-repo"><a href="#1-删除hdp-repo和hdp-util-repo" class="headerlink" title="1.删除hdp.repo和hdp-util.repo"></a>1.删除hdp.repo和hdp-util.repo</h2><p>cd /etc/yum.repos.d/<br>rm -rf hdp<em><br>rm -rf HDP</em><br>rm -rf ambari*</p>
-<h2 id="2-删除安装包"><a href="#2-删除安装包" class="headerlink" title="2.删除安装包"></a>2.删除安装包</h2><p>用yum list installed | grep HDP来检查安装的ambari的包<br>yum remove -y  sqoop.noarch<br>yum remove -y  lzo-devel.x86_64<br>yum remove -y  hadoop-libhdfs.x86_64<br>yum remove -y  rrdtool.x86_64<br>yum remove -y  hbase.noarch<br>yum remove -y  pig.noarch<br>yum remove -y  lzo.x86_64<br>yum remove -y  ambari-log4j.noarch<br>yum remove -y  oozie.noarch<br>yum remove -y  oozie-client.noarch<br>yum remove -y  gweb.noarch<br>yum remove -y  snappy-devel.x86_64<br>yum remove -y  hcatalog.noarch<br>yum remove -y  python-rrdtool.x86_64<br>yum remove -y  nagios.x86_64<br>yum remove -y  webhcat-tar-pig.noarch<br>yum remove -y  snappy.x86_64<br>yum remove -y  libconfuse.x86_64<br>yum remove -y  webhcat-tar-hive.noarch<br>yum remove -y  ganglia-gmetad.x86_64<br>yum remove -y  extjs.noarch<br>yum remove -y  hive.noarch<br>yum remove -y  hadoop-lzo.x86_64<br>yum remove -y  hadoop-lzo-native.x86_64<br>yum remove -y  hadoop-native.x86_64<br>yum remove -y  hadoop-pipes.x86_64<br>yum remove -y  nagios-plugins.x86_64<br>yum remove -y  hadoop.x86_64<br>yum remove -y  zookeeper.noarch<br>yum remove -y  hadoop-sbin.x86_64<br>yum remove -y  ganglia-gmond.x86_64<br>yum remove -y  libganglia.x86_64<br>yum remove -y  perl-rrdtool.x86_64<br>yum remove -y  epel-release.noarch<br>yum remove -y  compat-readline5*<br>yum remove -y  fping.x86_64<br>yum remove -y  perl-Crypt-DES.x86_64<br>yum remove -y  exim.x86_64<br>yum remove -y ganglia-web.noarch<br>yum remove -y perl-Digest-HMAC.noarch<br>yum remove -y perl-Digest-SHA1.x86_64<br>yum remove -y bigtop-jsvc.x86_64</p>
-<h2 id="3-删除快捷方式"><a href="#3-删除快捷方式" class="headerlink" title="3.删除快捷方式"></a>3.删除快捷方式</h2><p>cd /etc/alternatives<br>rm -rf hadoop-etc<br>rm -rf zookeeper-conf<br>rm -rf hbase-conf<br>rm -rf hadoop-log<br>rm -rf hadoop-lib<br>rm -rf hadoop-default<br>rm -rf oozie-conf<br>rm -rf hcatalog-conf<br>rm -rf hive-conf<br>rm -rf hadoop-man<br>rm -rf sqoop-conf<br>rm -rf hadoop-conf</p>
-<h2 id="4-删除用户"><a href="#4-删除用户" class="headerlink" title="4.删除用户"></a>4.删除用户</h2><p>userdel nagios<br>userdel hive<br>userdel ambari-qa<br>userdel hbase<br>userdel oozie<br>userdel hcat<br>userdel mapred<br>userdel hdfs<br>userdel rrdcached<br>userdel zookeeper </p>
-<p>#userdel mysql<br>userdel sqoop<br>userdel puppet<br>userdel yarn<br>userdel tez<br>userdel hadoop<br>userdel knox<br>userdel storm<br>userdel falcon<br>userdel flume<br>userdel nagios<br>userdel admin<br>userdel postgres<br>userdel  hdfs<br>userdel  zookeeper<br>userdel hbase</p>
-<h2 id="5-删除文件夹"><a href="#5-删除文件夹" class="headerlink" title="5.删除文件夹"></a>5.删除文件夹</h2><p>rm -rf /hadoop<br>rm -rf /etc/hadoop<br>rm -rf /etc/hbase<br>rm -rf /etc/hcatalog<br>rm -rf /etc/hive<br>rm -rf /etc/ganglia<br>rm -rf /etc/nagios<br>rm -rf /etc/oozie<br>rm -rf /etc/sqoop<br>rm -rf /etc/zookeeper<br>rm -rf /var/run/hadoop<br>rm -rf /var/run/hbase<br>rm -rf /var/run/hive<br>rm -rf /var/run/ganglia<br>rm -rf /var/run/nagios<br>rm -rf /var/run/oozie<br>rm -rf /var/run/zookeeper<br>rm -rf /var/log/hadoop<br>rm -rf /var/log/hbase<br>rm -rf /var/log/hive<br>rm -rf /var/log/nagios<br>rm -rf /var/log/oozie<br>rm -rf /var/log/zookeeper<br>rm -rf /usr/lib/hadoop<br>rm -rf /usr/lib/hbase<br>rm -rf /usr/lib/hcatalog<br>rm -rf /usr/lib/hive<br>rm -rf /usr/lib/oozie<br>rm -rf /usr/lib/sqoop<br>rm -rf /usr/lib/zookeeper<br>rm -rf /var/lib/hive<br>rm -rf /var/lib/ganglia<br>rm -rf /var/lib/oozie<br>rm -rf /var/lib/zookeeper<br>rm -rf /var/tmp/oozie<br>rm -rf /tmp/hive<br>rm -rf /tmp/nagios<br>rm -rf /tmp/ambari-qa<br>rm -rf /tmp/sqoop-ambari-qa<br>rm -rf /var/nagios<br>rm -rf /hadoop/oozie<br>rm -rf /hadoop/zookeeper<br>rm -rf /hadoop/mapred<br>rm -rf /hadoop/hdfs<br>rm -rf /tmp/hadoop-hive<br>rm -rf /tmp/hadoop-nagios<br>rm -rf /tmp/hadoop-hcat<br>rm -rf /tmp/hadoop-ambari-qa<br>rm -rf /tmp/hsperfdata_hbase<br>rm -rf /tmp/hsperfdata_hive<br>rm -rf /tmp/hsperfdata_nagios<br>rm -rf /tmp/hsperfdata_oozie<br>rm -rf /tmp/hsperfdata_zookeeper<br>rm -rf /tmp/hsperfdata_mapred<br>rm -rf /tmp/hsperfdata_hdfs<br>rm -rf /tmp/hsperfdata_hcat<br>rm -rf /tmp/hsperfdata_ambari-qa<br>rm -rf /etc/flume<br>rm -rf /etc/storm<br>rm -rf /etc/hive-hcatalog<br>rm -rf /etc/tez<br>rm -rf /etc/falcon<br>rm -rf /var/run/flume<br>rm -rf /var/run/storm<br>rm -rf /var/run/webhcat<br>rm -rf /var/run/hadoop-yarn<br>rm -rf /var/run/hadoop-mapreduce<br>rm -rf /var/log/flume<br>rm -rf /var/log/storm<br>rm -rf /var/log/hadoop-yarn<br>rm -rf /var/log/hadoop-mapreduce<br>rm -rf /usr/lib/nagios<br>rm -rf /var/lib/hdfs<br>rm -rf /var/lib/hadoop-hdfs<br>rm -rf /var/lib/hadoop-yarn<br>rm -rf /var/lib/hadoop-mapreduce<br>rm -rf /tmp/hadoop-hdfs</p>
-<h2 id="5-重置数据库，删除ambari包"><a href="#5-重置数据库，删除ambari包" class="headerlink" title="5.重置数据库，删除ambari包"></a>5.重置数据库，删除ambari包</h2><p>#采用这句命令来检查yum list installed | grep ambari<br>ambari-server stop<br>ambari-agent stop<br>ambari-server reset<br>yum remove -y ambari-<em><br>yum remove -y postgresql<br>rm -rf /etc/yum.repos.d/ambari</em><br>rm -rf /var/lib/ambari<em><br>rm -rf /var/log/ambari</em><br>rm -rf /etc/ambari*</p>
+        <p>ERROR: Exiting with exit code 1.<br>REASON: Database check failed to complete. Please check /var/log/ambari-server/ambari-server.log and /var/log/ambari-server/ambari-server-check-database.log for more information.<br>解决方法：查看日志，具体什么错.例如：数据库未开启、数据库配置问题</p>
+<p>撤销已经赋予给 MySQL 用户权限的权限。<br>revoke 跟 grant 的语法差不多，只需要把关键字 “to” 换成 “from” 即可：<br>revoke  all on <em>.</em> from ‘root’@’192.168.0.197’;</p>
+<p>[root@datanode01 ~]# yum makecache<br>Loaded plugins: fastestmirror<br>Determining fastest mirrors<br>ambari-2.4.1.0                                                   | 2.9 kB     00:00<br>ambari-2.4.1.0/filelists_db                                      | 139 kB     00:00<br>ambari-2.4.1.0/primary_db                                        | 8.3 kB     00:00<br>ambari-2.4.1.0/other_db                                          | 1.3 kB     00:00<br>file:///mnt/repodata/repomd.xml: [Errno 14] Could not open/read file:///mnt/repodata/repomd.xml<br>Trying other mirror.<br>Error: Cannot retrieve repository metadata (repomd.xml) for repository: c6-media. Please verify its path and try again</p>
+<p>如果有后面两个文件，处理方式mv CentOS-Media.repo CentOS-Media.repo.bak<br>没有的话，源问题，换源repos</p>
+<h3 id="tip"><a href="#tip" class="headerlink" title="tip:"></a>tip:</h3><p>1、当提示要做如下操作的时候<br>Be?sure?you?have?run:ambari-server?setup?–jdbc-db=mysql?–jdbc-driver=/path/to/mysql/<em>**</em><br>需要下载mysql-connector-java-5.1.39.tar驱动，解压得到mysql-connector-java-5.1.39-bin.jar文件<br>执行如下命令：ambari-server?setup?–jdbc-db=mysql?–jdbc-driver=/usr/lib/java/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-<br>bin.jar<br>同时，设置文件权限为644</p>
+<h3 id="2017-7-19"><a href="#2017-7-19" class="headerlink" title="2017.7.19"></a>2017.7.19</h3><p>1.ERROR namenode.NameNode (NameNode.java:main(1759)) - Failed to start namenode.<br>java.net.BindException: Port in use: datanode01:50070<br>  不能获取映射地址，需要修改hosts中的映射ip为真实ip（ifconfig）<br>2.错删自定义的service导致不能登录amnari UI（日志报出database问题） （百度方案无解，最后重装ambari-server(发现重装无法下手，百度后删除ambari相关组件以及数据库的完全卸载，完成)）<br>3.使用ambari-server启动HDFS时，DataNode无法启动（出现port in use：localhost 0）。解决方式，在hosts文件中localhost 172.0.0.1被#；去除#后解决</p>
+<h3 id="一般故障排除"><a href="#一般故障排除" class="headerlink" title="一般故障排除"></a>一般故障排除</h3><p>Ambari服务器：检查/var/log/ambari-server/ambari-server.[log|out]是否存在错误。<br>Ambari代理：检查/var/log/ambari-agent/ambari-agent.[log|out]是否存在错误。<br>请注意，如果Ambari Agent在/var/log/ambari-agent/ambari-agent.out中有任何输出，则表明存在重大问题。</p>
+<h3 id="服务无法启动"><a href="#服务无法启动" class="headerlink" title="服务无法启动"></a>服务无法启动</h3><p>HDFS：检查/ var / log / hadoop / hdfs下的日志文件<br>MapReduce：检查/ var / log / hadoop / mapred下的日志文件<br>HBase：检查/ var / log / hbase下的日志文件<br>Hive：检查/ var / log / hive下的日志文件<br>Oozie：检查/ var / log / oozie下的日志文件<br>ZooKeeper：检查/ var / log / zookeeper下的日志文件<br>WebHCat：检查/ var / log / webhcat下的日志文件<br>Nagios：检查/ var / log / nagios下的日志文件</p>
+<h3 id="2017-7-20"><a href="#2017-7-20" class="headerlink" title="2017.7.20"></a>2017.7.20</h3><p>Service ‘userhome’ check failed: java.io.FileNotFoundException: File does not exist: /user/admin<br>解决方案：sudo -u hdfs hdfs dfs  -mkdir /user/admin<br>sudo -u hdfs hdfs dfs  -chown admin:hadoop /user/admin</p>
+<h3 id="资源池问题"><a href="#资源池问题" class="headerlink" title="资源池问题"></a>资源池问题</h3><p>FATAL org.apache.hadoop.hdfs.server.datanode.DataNode: Initialization failed forblock pool Block pool BP-1480406410-192.168.1.181-1398701121586 (storage idDS-167510828-192.168.1.191-50010-1398750515421)<br>原因：每次namenode format会重新创建一个namenodeId,而data目录包含了上次format时的id,namenode format清空了namenode下的数据,但是没有清空datanode下的数据,导致启动时失败,所要做的就是每次fotmat前,清空data下的所有目录.<br>: d6 E2 t&amp; M” g7 a* q3 l, H<br>解决办法：停掉集群，删除问题节点的data目录下的所有内容。即hdfs-site.xml文件中配置的dfs.data.dir目录。重新格式化namenode。</p>
+<p>另一个更省事的办法：先停掉集群，然后将datanode节点目录/dfs/data/current/VERSION中的修改为与namenode一致即可。<br>其实我没解决，直接重装</p>
+<h3 id="block-missing问题"><a href="#block-missing问题" class="headerlink" title="block missing问题"></a>block missing问题</h3><p>会导致进入安全模式：处理方式，删除缺失包，在HDFS用户下退出安全模式</p>
+<p>添加节点时，需要查看该节点root磁盘下的剩余大小，如果磁盘空间不足，则扩大磁盘再添加节点。<br>不要问我为什么，说多了都是泪。集群就是这么崩盘的。</p>
 
       
     </div>
@@ -330,15 +336,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/02/05/ambari搭建/" rel="next" title="Ambari搭建">
+                <i class="fa fa-chevron-left"></i> Ambari搭建
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/05/ambari搭建/" rel="prev" title="Ambari搭建">
-                Ambari搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -452,7 +458,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-删除hdp-repo和hdp-util-repo"><span class="nav-number">1.</span> <span class="nav-text">1.删除hdp.repo和hdp-util.repo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-删除安装包"><span class="nav-number">2.</span> <span class="nav-text">2.删除安装包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-删除快捷方式"><span class="nav-number">3.</span> <span class="nav-text">3.删除快捷方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-删除用户"><span class="nav-number">4.</span> <span class="nav-text">4.删除用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-删除文件夹"><span class="nav-number">5.</span> <span class="nav-text">5.删除文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-重置数据库，删除ambari包"><span class="nav-number">6.</span> <span class="nav-text">5.重置数据库，删除ambari包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#tip"><span class="nav-number">1.</span> <span class="nav-text">tip:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-7-19"><span class="nav-number">2.</span> <span class="nav-text">2017.7.19</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一般故障排除"><span class="nav-number">3.</span> <span class="nav-text">一般故障排除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务无法启动"><span class="nav-number">4.</span> <span class="nav-text">服务无法启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-7-20"><span class="nav-number">5.</span> <span class="nav-text">2017.7.20</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源池问题"><span class="nav-number">6.</span> <span class="nav-text">资源池问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#block-missing问题"><span class="nav-number">7.</span> <span class="nav-text">block missing问题</span></a></li></ol></div>
             
 
           </div>
