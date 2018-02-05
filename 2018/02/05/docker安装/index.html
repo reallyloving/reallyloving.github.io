@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容 2. SELINUX=disabled#重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-rel">
+<meta name="description" content="1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容SELINUX=disabled #重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-releas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker安装">
 <meta property="og:url" content="http://yoursite.com/2018/02/05/docker安装/index.html">
 <meta property="og:site_name" content="��С����ջ">
-<meta property="og:description" content="1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容 2. SELINUX=disabled#重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-rel">
+<meta property="og:description" content="1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容SELINUX=disabled #重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-releas">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-05T13:11:54.184Z">
+<meta property="og:updated_time" content="2018-02-05T13:18:27.788Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker安装">
-<meta name="twitter:description" content="1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容 2. SELINUX=disabled#重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-rel">
+<meta name="twitter:description" content="1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容SELINUX=disabled #重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-releas">
 
 
 
@@ -300,8 +300,8 @@
 
       
         <h2 id="1：关闭selinux"><a href="#1：关闭selinux" class="headerlink" title="1：关闭selinux"></a>1：关闭selinux</h2><p>临时关闭：setenforce 0<br>永久关闭：</p>
-<h2 id="1-vi-etc-sysconfig-selinux"><a href="#1-vi-etc-sysconfig-selinux" class="headerlink" title="1. vi /etc/sysconfig/selinux"></a>1. vi /etc/sysconfig/selinux</h2><p>插入/编辑以下内容</p>
-<h2 id="2-SELINUX-disabled"><a href="#2-SELINUX-disabled" class="headerlink" title="2. SELINUX=disabled"></a>2. SELINUX=disabled</h2><p>#重启生效</p>
+<h2 id="1-vi-etc-sysconfig-selinux"><a href="#1-vi-etc-sysconfig-selinux" class="headerlink" title="1. vi /etc/sysconfig/selinux"></a>1. vi /etc/sysconfig/selinux</h2><p>插入/编辑以下内容<br>SELINUX=disabled</p>
+<p>#重启生效</p>
 <h2 id="2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel："><a href="#2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel：" class="headerlink" title="2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel："></a>2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：</h2><p>rpm -ivh <a href="http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm" target="_blank" rel="noopener">http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm</a><br>sed -i ‘s/^mirrorlist=https/mirrorlist=http/‘ /etc/yum.repos.d/epel.repo<br>（elpe.repo）<br>[epel]<br>name=epel<br>mirrorlist=<a href="http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearch" target="_blank" rel="noopener">http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearch</a><br>enabled=1<br>gpgcheck=0</p>
 <h2 id="3：安装docker"><a href="#3：安装docker" class="headerlink" title="3：安装docker"></a>3：安装docker</h2><p>yum install docker-io<br>安装完成后</p>
 <h2 id="4：启动docker"><a href="#4：启动docker" class="headerlink" title="4：启动docker"></a>4：启动docker</h2><p>service  docker  start</p>
@@ -464,7 +464,7 @@ blkio   = /cgroup/blkio;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1：关闭selinux"><span class="nav-number">1.</span> <span class="nav-text">1：关闭selinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-vi-etc-sysconfig-selinux"><span class="nav-number">2.</span> <span class="nav-text">1. vi /etc/sysconfig/selinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SELINUX-disabled"><span class="nav-number">3.</span> <span class="nav-text">2. SELINUX=disabled</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel："><span class="nav-number">4.</span> <span class="nav-text">2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3：安装docker"><span class="nav-number">5.</span> <span class="nav-text">3：安装docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4：启动docker"><span class="nav-number">6.</span> <span class="nav-text">4：启动docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5：查看docker版本"><span class="nav-number">7.</span> <span class="nav-text">5：查看docker版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6：查看docker日志"><span class="nav-number">8.</span> <span class="nav-text">6：查看docker日志</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一：卸载docker"><span class="nav-number"></span> <span class="nav-text">一：卸载docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二：升级docker版本为1-10-3"><span class="nav-number"></span> <span class="nav-text">二：升级docker版本为1.10.3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#报错："><span class="nav-number">1.</span> <span class="nav-text">报错：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改：-etc-cgconfig-conf文件"><span class="nav-number">2.</span> <span class="nav-text">修改：/etc/cgconfig.conf文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#memory-cgroup-memory"><span class="nav-number"></span> <span class="nav-text">memory  = /cgroup/memory;</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1：关闭selinux"><span class="nav-number">1.</span> <span class="nav-text">1：关闭selinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-vi-etc-sysconfig-selinux"><span class="nav-number">2.</span> <span class="nav-text">1. vi /etc/sysconfig/selinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel："><span class="nav-number">3.</span> <span class="nav-text">2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3：安装docker"><span class="nav-number">4.</span> <span class="nav-text">3：安装docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4：启动docker"><span class="nav-number">5.</span> <span class="nav-text">4：启动docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5：查看docker版本"><span class="nav-number">6.</span> <span class="nav-text">5：查看docker版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6：查看docker日志"><span class="nav-number">7.</span> <span class="nav-text">6：查看docker日志</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一：卸载docker"><span class="nav-number"></span> <span class="nav-text">一：卸载docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二：升级docker版本为1-10-3"><span class="nav-number"></span> <span class="nav-text">二：升级docker版本为1.10.3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#报错："><span class="nav-number">1.</span> <span class="nav-text">报错：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改：-etc-cgconfig-conf文件"><span class="nav-number">2.</span> <span class="nav-text">修改：/etc/cgconfig.conf文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#memory-cgroup-memory"><span class="nav-number"></span> <span class="nav-text">memory  = /cgroup/memory;</span></a></div>
             
 
           </div>
