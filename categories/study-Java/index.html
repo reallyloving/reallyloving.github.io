@@ -81,17 +81,16 @@
 
 
 
-<meta name="description" content="title: docker安装基本环境配置 1：关闭selinux   临时关闭：setenforce 0   永久关闭：  vi /etc/sysconfig/selinux插入/编辑以下内容 SELINUX=disabled#重启生效   2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：  rpm -ivh http://mirrors.sohu.com/f">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker">
-<meta property="og:url" content="http://www.wenchong.top/2018/02/05/docker-1/index.html">
+<meta name="description" content="AI、Big databases、Cloud computing">
+<meta property="og:type" content="website">
+<meta property="og:title" content="王小二客栈">
+<meta property="og:url" content="http://www.wenchong.top/categories/study-Java/index.html">
 <meta property="og:site_name" content="王小二客栈">
-<meta property="og:description" content="title: docker安装基本环境配置 1：关闭selinux   临时关闭：setenforce 0   永久关闭：  vi /etc/sysconfig/selinux插入/编辑以下内容 SELINUX=disabled#重启生效   2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：  rpm -ivh http://mirrors.sohu.com/f">
+<meta property="og:description" content="AI、Big databases、Cloud computing">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-17T14:13:59.402Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker">
-<meta name="twitter:description" content="title: docker安装基本环境配置 1：关闭selinux   临时关闭：setenforce 0   永久关闭：  vi /etc/sysconfig/selinux插入/编辑以下内容 SELINUX=disabled#重启生效   2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：  rpm -ivh http://mirrors.sohu.com/f">
+<meta name="twitter:title" content="王小二客栈">
+<meta name="twitter:description" content="AI、Big databases、Cloud computing">
 
 
 
@@ -121,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.wenchong.top/2018/02/05/docker-1/"/>
+  <link rel="canonical" href="http://www.wenchong.top/categories/study-Java/"/>
 
 
 
 
 
-  <title>docker | 王小二客栈</title>
+  <title>分类: study-Java | 王小二客栈</title>
   
 
 
@@ -146,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -284,182 +283,111 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block category">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>study-Java<small>分类</small>
+        </h1>
+      </div>
 
-  
-  
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/05/docker-1/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline">docker</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
+            <a class="post-title-link" href="/2018/02/17/java基础——String&StringBuffer/" itemprop="url">
               
-                <span class="post-meta-item-text">发表于</span>
+                <span itemprop="name">java基础——String&StringBuffer</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T15:25:29+08:00">
-                2018-02-05
-              </time>
-            
+            </a>
+        
+      </h2>
 
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
-	      
-	        
-	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <hr>
-<h2 id="title-docker安装"><a href="#title-docker安装" class="headerlink" title="title: docker安装"></a>title: <strong>docker安装</strong></h2><h1 id="基本环境配置"><a href="#基本环境配置" class="headerlink" title="基本环境配置"></a>基本环境配置</h1><ul>
-<li><p>1：关闭selinux<br>   临时关闭：setenforce 0<br>   永久关闭：</p>
-<ol>
-<li>vi /etc/sysconfig/selinux<br>插入/编辑以下内容</li>
-<li>SELINUX=disabled<br>#重启生效</li>
-</ol>
-</li>
-<li><p>2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：<br>  <code>rpm -ivh http://mirrors.sohu.com/fedora-    epel/6/x86_64/epel-release-6-8.noarch.rpm
-  sed -i &#39;s/^mirrorlist=https/mirrorlist=http/&#39;     /etc/yum.repos.d/epel.repo
-  （elpe.repo）
-  *[epel]*
-  name=epel
-  mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?    repo=epel-$releasever&amp;arch=$basearch</code><br>  enabled=1<br>  gpgcheck=0’</p>
-</li>
-<li>3：安装docker<br>  yum install docker-io<br>  安装完成后</li>
-<li>4：启动docker<br>  service  docker  start</li>
-<li>5：查看docker版本<br>  docker vesion</li>
-<li>6：查看docker日志<br>cat /var/log/docker</li>
-</ul>
-<p><strong>docker安装完成</strong></p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-      <div>
-        ﻿<div>
-    
-        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
-    
-</div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-02-17T22:20:06+08:00"
+              content="2018-02-17" >
+          02-17
+        </time>
       </div>
-    
-    
 
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/11/09/ambari搭建/" rel="next" title="Ambari搭建">
-                <i class="fa fa-chevron-left"></i> Ambari搭建
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/05/ambari卸载/" rel="prev" title="amabri卸载">
-                amabri卸载 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
+      
+        
 
-    <div class="post-spread">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2018/02/17/java基础——Number&Math/" itemprop="url">
+              
+                <span itemprop="name">王小二客栈——Java Number&Math</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-02-17T22:20:06+08:00"
+              content="2018-02-17" >
+          02-17
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2018/02/17/java读取Excel表格数据/" itemprop="url">
+              
+                <span itemprop="name">java读取Excel表格中的数据</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-02-17T22:20:06+08:00"
+              content="2018-02-17" >
+          02-17
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
       
     </div>
+
   </div>
+  
+  
+  
+
+  
+
 
 
           </div>
@@ -467,10 +395,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -491,17 +415,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -516,7 +431,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -527,7 +442,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -538,7 +453,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -568,22 +483,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-docker安装"><span class="nav-number">1.</span> <span class="nav-text">title: docker安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本环境配置"><span class="nav-number"></span> <span class="nav-text">基本环境配置</span></a></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -624,7 +523,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">����ȫվ��9.2k��</span>
+  <span class="post-count">����ȫվ��9.1k��</span>
 </div>
 
         
@@ -723,10 +622,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
