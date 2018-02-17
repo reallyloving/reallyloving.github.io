@@ -264,450 +264,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/05/docker安装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/05/docker安装/" itemprop="url">docker安装</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T21:09:56+08:00">
-                2018-02-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
-	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1：关闭selinux"><a href="#1：关闭selinux" class="headerlink" title="1：关闭selinux"></a>1：关闭selinux</h2><p>临时关闭：setenforce 0<br>永久关闭：</p>
-<h2 id="1-vi-etc-sysconfig-selinux"><a href="#1-vi-etc-sysconfig-selinux" class="headerlink" title="1. vi /etc/sysconfig/selinux"></a>1. vi /etc/sysconfig/selinux</h2><p>插入/编辑以下内容<br>SELINUX=disabled</p>
-<p>#重启生效</p>
-<h2 id="2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel："><a href="#2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel：" class="headerlink" title="2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel："></a>2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：</h2><p>rpm -ivh <a href="http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm" target="_blank" rel="noopener">http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm</a><br>sed -i ‘s/^mirrorlist=https/mirrorlist=http/‘ /etc/yum.repos.d/epel.repo<br>（elpe.repo）<br>[epel]<br>name=epel<br>mirrorlist=<a href="http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearch" target="_blank" rel="noopener">http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearch</a><br>enabled=1<br>gpgcheck=0</p>
-<h2 id="3：安装docker"><a href="#3：安装docker" class="headerlink" title="3：安装docker"></a>3：安装docker</h2><p>yum install docker-io<br>安装完成后</p>
-<h2 id="4：启动docker"><a href="#4：启动docker" class="headerlink" title="4：启动docker"></a>4：启动docker</h2><p>service  docker  start</p>
-<h2 id="5：查看docker版本"><a href="#5：查看docker版本" class="headerlink" title="5：查看docker版本"></a>5：查看docker版本</h2><p>docker vesion</p>
-<h2 id="6：查看docker日志"><a href="#6：查看docker日志" class="headerlink" title="6：查看docker日志"></a>6：查看docker日志</h2><p>cat /var/log/docker</p>
-<p>docker安装完成</p>
-<h1 id="一：卸载docker"><a href="#一：卸载docker" class="headerlink" title="一：卸载docker"></a>一：卸载docker</h1><p>列出你安装过的包<br>[root@localhost ~]# yum list installed | grep docker<br>docker-io.x86_64                     1.7.1-2.el6                        @epel<br>删除软件包<br>yum -y remove docker-io.x86_64<br>删除镜像/容器等<br>rm -rf /var/lib/docker</p>
-<h1 id="二：升级docker版本为1-10-3"><a href="#二：升级docker版本为1-10-3" class="headerlink" title="二：升级docker版本为1.10.3"></a>二：升级docker版本为1.10.3</h1><p>升级之前停止docker服务,并将原有的docker服务进行备份. mv /usr/bin/docker /usr/bin/docker.bak</p>
-<p>nohup wget -c <a href="https://get.docker.com/builds/Linux/x86_64/docker-1.10.3" target="_blank" rel="noopener">https://get.docker.com/builds/Linux/x86_64/docker-1.10.3</a> -O /usr/bin/docker<br>给执行权限：chmod 755 /usr/bin/docker 然后重启服务，并查看版本.</p>
-<h2 id="报错："><a href="#报错：" class="headerlink" title="报错："></a>报错：</h2><p>Starting cgconfig service: Error: cannot mount memory to /cgroup/memory: No such file or directory<br>/sbin/cgconfigparser; error loading /etc/cgconfig.conf: Cgroup mounting failed<br>Failed to parse /etc/cgconfig.conf                         [FAILED]<br>Starting docker:                                       [  OK  ]</p>
-<h2 id="修改：-etc-cgconfig-conf文件"><a href="#修改：-etc-cgconfig-conf文件" class="headerlink" title="修改：/etc/cgconfig.conf文件"></a>修改：/etc/cgconfig.conf文件</h2><p>mount {<br>    cpuset  = /cgroup/cpuset;<br>    cpu = /cgroup/cpu;<br>    cpuacct = /cgroup/cpuacct;</p>
-<h1 id="memory-cgroup-memory"><a href="#memory-cgroup-memory" class="headerlink" title="memory  = /cgroup/memory;"></a>memory  = /cgroup/memory;</h1><pre><code>devices = /cgroup/devices;
-freezer = /cgroup/freezer;
-net_cls = /cgroup/net_cls;
-blkio   = /cgroup/blkio;
-</code></pre><p>}<br>重新启动docker 正常</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/05/ambari搭建错误/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/05/ambari搭建错误/" itemprop="url">错误及解决方案</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T21:06:14+08:00">
-                2018-02-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
-	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>ERROR: Exiting with exit code 1.<br>REASON: Database check failed to complete. Please check /var/log/ambari-server/ambari-server.log and /var/log/ambari-server/ambari-server-check-database.log for more information.<br>解决方法：查看日志，具体什么错.例如：数据库未开启、数据库配置问题</p>
-<p>撤销已经赋予给 MySQL 用户权限的权限。<br>revoke 跟 grant 的语法差不多，只需要把关键字 “to” 换成 “from” 即可：<br>revoke  all on <em>.</em> from ‘root’@’192.168.0.197’;</p>
-<p>[root@datanode01 ~]# yum makecache<br>Loaded plugins: fastestmirror<br>Determining fastest mirrors<br>ambari-2.4.1.0                                                   | 2.9 kB     00:00<br>ambari-2.4.1.0/filelists_db                                      | 139 kB     00:00<br>ambari-2.4.1.0/primary_db                                        | 8.3 kB     00:00<br>ambari-2.4.1.0/other_db                                          | 1.3 kB     00:00<br>file:///mnt/repodata/repomd.xml: [Errno 14] Could not open/read file:///mnt/repodata/repomd.xml<br>Trying other mirror.<br>Error: Cannot retrieve repository metadata (repomd.xml) for repository: c6-media. Please verify its path and try again</p>
-<p>如果有后面两个文件，处理方式mv CentOS-Media.repo CentOS-Media.repo.bak<br>没有的话，源问题，换源repos</p>
-<h3 id="tip"><a href="#tip" class="headerlink" title="tip:"></a>tip:</h3><p>1、当提示要做如下操作的时候<br>Be?sure?you?have?run:ambari-server?setup?–jdbc-db=mysql?–jdbc-driver=/path/to/mysql/<em>**</em><br>需要下载mysql-connector-java-5.1.39.tar驱动，解压得到mysql-connector-java-5.1.39-bin.jar文件<br>执行如下命令：ambari-server?setup?–jdbc-db=mysql?–jdbc-driver=/usr/lib/java/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-<br>bin.jar<br>同时，设置文件权限为644</p>
-<h3 id="2017-7-19"><a href="#2017-7-19" class="headerlink" title="2017.7.19"></a>2017.7.19</h3><p>1.ERROR namenode.NameNode (NameNode.java:main(1759)) - Failed to start namenode.<br>java.net.BindException: Port in use: datanode01:50070<br>  不能获取映射地址，需要修改hosts中的映射ip为真实ip（ifconfig）<br>2.错删自定义的service导致不能登录amnari UI（日志报出database问题） （百度方案无解，最后重装ambari-server(发现重装无法下手，百度后删除ambari相关组件以及数据库的完全卸载，完成)）<br>3.使用ambari-server启动HDFS时，DataNode无法启动（出现port in use：localhost 0）。解决方式，在hosts文件中localhost 172.0.0.1被#；去除#后解决</p>
-<h3 id="一般故障排除"><a href="#一般故障排除" class="headerlink" title="一般故障排除"></a>一般故障排除</h3><p>Ambari服务器：检查/var/log/ambari-server/ambari-server.[log|out]是否存在错误。<br>Ambari代理：检查/var/log/ambari-agent/ambari-agent.[log|out]是否存在错误。<br>请注意，如果Ambari Agent在/var/log/ambari-agent/ambari-agent.out中有任何输出，则表明存在重大问题。</p>
-<h3 id="服务无法启动"><a href="#服务无法启动" class="headerlink" title="服务无法启动"></a>服务无法启动</h3><p>HDFS：检查/ var / log / hadoop / hdfs下的日志文件<br>MapReduce：检查/ var / log / hadoop / mapred下的日志文件<br>HBase：检查/ var / log / hbase下的日志文件<br>Hive：检查/ var / log / hive下的日志文件<br>Oozie：检查/ var / log / oozie下的日志文件<br>ZooKeeper：检查/ var / log / zookeeper下的日志文件<br>WebHCat：检查/ var / log / webhcat下的日志文件<br>Nagios：检查/ var / log / nagios下的日志文件</p>
-<h3 id="2017-7-20"><a href="#2017-7-20" class="headerlink" title="2017.7.20"></a>2017.7.20</h3><p>Service ‘userhome’ check failed: java.io.FileNotFoundException: File does not exist: /user/admin<br>解决方案：sudo -u hdfs hdfs dfs  -mkdir /user/admin<br>sudo -u hdfs hdfs dfs  -chown admin:hadoop /user/admin</p>
-<h3 id="资源池问题"><a href="#资源池问题" class="headerlink" title="资源池问题"></a>资源池问题</h3><p>FATAL org.apache.hadoop.hdfs.server.datanode.DataNode: Initialization failed forblock pool Block pool BP-1480406410-192.168.1.181-1398701121586 (storage idDS-167510828-192.168.1.191-50010-1398750515421)<br>原因：每次namenode format会重新创建一个namenodeId,而data目录包含了上次format时的id,namenode format清空了namenode下的数据,但是没有清空datanode下的数据,导致启动时失败,所要做的就是每次fotmat前,清空data下的所有目录.<br>: d6 E2 t&amp; M” g7 a* q3 l, H<br>解决办法：停掉集群，删除问题节点的data目录下的所有内容。即hdfs-site.xml文件中配置的dfs.data.dir目录。重新格式化namenode。</p>
-<p>另一个更省事的办法：先停掉集群，然后将datanode节点目录/dfs/data/current/VERSION中的修改为与namenode一致即可。<br>其实我没解决，直接重装</p>
-<h3 id="block-missing问题"><a href="#block-missing问题" class="headerlink" title="block missing问题"></a>block missing问题</h3><p>会导致进入安全模式：处理方式，删除缺失包，在HDFS用户下退出安全模式</p>
-<p>添加节点时，需要查看该节点root磁盘下的剩余大小，如果磁盘空间不足，则扩大磁盘再添加节点。<br>不要问我为什么，说多了都是泪。集群就是这么崩盘的。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/05/ambari搭建/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/05/ambari搭建/" itemprop="url">Ambari搭建</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T21:02:08+08:00">
-                2018-02-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
-	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-物理条件：三台centos"><a href="#1-物理条件：三台centos" class="headerlink" title="1.物理条件：三台centos"></a>1.物理条件：三台centos</h2><p>前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02<br>          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02<br>配置ssh<br>      在namenode上生成密钥对：ssh-keygen  –t  rsa<br>      在/root/.ssh中会有生成的密钥对<br>      将namenode  的 id_rsa.pub写入datanode01的/root/.ssh  authorized_keys文件中。再将datanode01的authorized_keys 写入namenode /root/.ssh<br>datanode02同理操作<br>scp .ssh/id_rsa.pub chenlb@192.168.1.181:/home/chenlb/id_rsa.pub<br>cat id_rsa.pub &gt;&gt; .ssh/authorized_keys<br>  将namenode中的三个机器的私钥 id_rsa提取到桌面，后续使用<br>安装ntp服务<br>yum install ntp<br>service ntpd start<br>chkconfig ntpd on</p>
-<h2 id="2-更换源："><a href="#2-更换源：" class="headerlink" title="2.更换源："></a>2.更换源：</h2><p>将/etc/yum.repos.d/下的原centos.repos备份，然后添加本地源（我这是之前师傅在其他服务器布            置好了的源，你们可在网上查找相关源）</p>
-<h2 id="3-验证本机名"><a href="#3-验证本机名" class="headerlink" title="3.验证本机名"></a>3.验证本机名</h2><pre><code>Hostname   -f
-</code></pre><p>  显示<br>      namenode   其他两台一样</p>
-<h2 id="4-关闭防火墙"><a href="#4-关闭防火墙" class="headerlink" title="4.关闭防火墙"></a>4.关闭防火墙</h2><pre><code>Service iptables stop
-</code></pre><p>禁用自启动<br>      Chkconfig   iptables  off</p>
-<h2 id="5-禁用ipv6"><a href="#5-禁用ipv6" class="headerlink" title="5.禁用ipv6"></a>5.禁用ipv6</h2><pre><code>使用lsmod查看系统启动的模块：ipv6相关的模块是net-pf-10  ipv6
-在vi  /etc/modprobe.d/dist.conf    中最后添加
-</code></pre><p> alias   net-pf-10   off<br>                                    alias  ipv6   off<br>      重启后，再使用lsmod查看ipv6的相应模块还在不在</p>
-<h2 id="6-禁用SELinux"><a href="#6-禁用SELinux" class="headerlink" title="6.禁用SELinux"></a>6.禁用SELinux</h2><p>配置selinux<br>vi  /etc/sysconfig/selinux<br>插入<br>SELINUX=disabled<br>暂时禁用      setenforce  0</p>
-<h2 id="7-配置禁用THP-每次重启机器后需要从新配置"><a href="#7-配置禁用THP-每次重启机器后需要从新配置" class="headerlink" title="7.配置禁用THP(每次重启机器后需要从新配置)"></a>7.配置禁用THP(每次重启机器后需要从新配置)</h2><p>  查看当前THP状态<br>  cat   /sys/kernel/mm/transparent_hugepage/enabled<br>  如果为always  madvise   [never]则为禁用<br>配置禁用<br>echo  never  &gt;  /sys/kernel/mm/redhat_transparent_hugepage/defrag<br>echo  never  &gt;  /sys/kernel/mm/redhat_transparent_hugepage/enabled<br>echo  never  &gt;  /sys/kernel/mm/ transparent_hugepage/defrag<br>echo  never  &gt;  /sys/kernel/mm/ transparent_hugepage/enabled</p>
-<h2 id="8-clean源-重新加载"><a href="#8-clean源-重新加载" class="headerlink" title="8.clean源 重新加载"></a>8.clean源 重新加载</h2><pre><code>yum clean all
-yum makecache
-</code></pre><h2 id="9-配置mysql作为数据库（只在ambari-server安装机器上做）"><a href="#9-配置mysql作为数据库（只在ambari-server安装机器上做）" class="headerlink" title="9.配置mysql作为数据库（只在ambari-server安装机器上做）"></a>9.配置mysql作为数据库（只在ambari-server安装机器上做）</h2><p>   查看当前安装数据库信息   rpm  -qa  |   grep   -i   mysql<br>    卸载方法 yum   -y   remove  +name<br>    安装MySQL  查看当前源中是否有提供的MySQL<br>    yum   list  |   grep   mysql<br>    安装mysql-server<br>安装<br>    安装后mysql 只有一个用户root 且第一次开启时需要设置密码，我们这通过命令提前设置                   mysqladmin  -u  root  password  ‘’</p>
-<pre><code>设置为自启动  chkconfig  mysqld  on
-登录到root用户
-mysql   -u  root   -p 
-create  user  ‘amabri’@’% ’    identified   by   ‘bigdata’;
-grant   all   privileges   on   *.*    to    ‘ambari’@’%’;
-create   user   ‘ambari’@’localhost’   identified   by    ‘bigdata’;
-grant    all    privileges   on   *.*   to    ‘ambari’@’localhost’;
-create   user   ‘ambari’@’namenode’   identified   by   ‘bigdata’;
-grant   all   privileges   on   *.*   to   ‘ambari’@’namenode’;
-登录ambari用户
-mysql    -u   ambari    -p
-bigdata
-create  database   ambari;
-use  ambari;
-</code></pre><h2 id="10-部署"><a href="#10-部署" class="headerlink" title="10.部署"></a>10.部署</h2><p> （1） yum安装<br> yum  -y  install  ambari-server (每台都要装)<br>后进入mysql -u ambari -p<br>bigdata<br>use ambari;<br>source /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql;<br> （2） jdk的安装<br>       下载jdk1.8.0_45安装包  放入/usr/lib/jvm/jdk1.8.0_45/ 解压<br>       配置环境变量  /etc/profile 文件最后加上</p>
-<p>#Java environment<br>       JAVA_HOME=/usr/java/jdk1.8.0_45<br>PATH=$JAVA_HOME/bin:$PATH<br>CLASSPATH=.:$JAVA_HOME/lib/<br>export JAVA_HOME<br>export PATH<br>export CLASSPATH<br>执行：sudo update-alternatives –install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_45/bin/java 300<br>sudo update-alternatives –install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_45/bin/javac 300<br>sudo update-alternatives –install /usr/bin/jar jar /usr/lib/jvm/jdk1.8.0_45/bin/jar 300<br>查看当前Java版本<br>java  -version<br> （3） 安装ambari-server    (安装在一台centos上即可，部署为ambari-server的机器)<br>ambari-server  setup   -j  /usr/lib/jvm/jdk1.8.0­_45/<br>安装显示：<br>Using python  /usr/bin/python<br> Setup ambari‐server<br>  Checking SELinux…<br> SELinux status is ‘enabled’<br> SELinux mode is ‘permissive’<br>  WARNING: SELinux is set to ‘permissive’ mode and temporarily disabled.<br> OK to continue [y/n] (y)?<br> Customize user account for ambari‐server daemon [y/n] (n)?<br> Adjusting ambari‐server permissions and ownership…<br>  Checking firewall status…<br>  Checking JDK…<br> WARNING: JAVA_HOME /usr/lib/jvm/jdk1.8.0_45 must be valid on ALL hosts  WARNING: JCE Policy files are required for configuring Kerberos security. If you plan to use Kerberos,please make sure JCE Unlimited<br>  Completing setup…<br>  Configuring database…<br>  Enter advanced database configuration [y/n] (n)? y<br>  Configuring database…  =============================================================================<br>  Choose one of the following options:<br>  [1] ‐ PostgreSQL (Embedded)<br>  [2] ‐ Oracle<br>  [3] ‐ MySQL / MariaDB<br>  [4] ‐ PostgreSQL<br>  [5] ‐ Microsoft SQL Server (Tech Preview)<br>  [6] ‐ SQL Anywhere<br>  [7] ‐ BDB  =============================================================================<br> Enter choice (3): 3<br>  Hostname (localhost):<br>  Port (3306):<br>  Database name (ambari):<br>  Username (ambari):<br>  Enter Database Password (bigdata):<br>  Configuring ambari database…<br>  Copying JDBC drivers to server resources…<br>  Configuring remote database connection properties…<br>WARNING: Before starting Ambari Server, you must run the following DDL against the databa     se to create the schema: /var/lib/ambari<br> Proceed with configuring remote database connection properties [y/n] (y)? y<br>  Extracting system views……………<br>  Adjusting ambari‐server permissions and ownership…<br>  Ambari Server ‘setup’ completed successfully.<br> （4）启动ambari-server<br>      ambari-server start<br>      启动成功后通过：http：//namenode:8080访问<br>      登录账号及密码：admin<br> （6） 进程操作<br>    1.查看ambari进程<br>      ps   -ef   |   grep   ambari<br>      2.停止ambari进程<br>       ambari-server  stop<br>      3.重启ambari进程<br>       ambari-server  restart<br> （7） 修改端口<br>      vi   /etc/ambari-server/conf/ambari.properties<br>      插入或编辑以下内容<br>      Client.api.port = <port_number></port_number></p>
-<h2 id="11-安装ambari-agent-每台机器都要装"><a href="#11-安装ambari-agent-每台机器都要装" class="headerlink" title="11 安装ambari-agent(每台机器都要装)"></a>11 安装ambari-agent(每台机器都要装)</h2><pre><code>1.安装ambari-agent
-</code></pre><p>yum   install  ambari-agent<br>    2.配置<br>       vi  /etc/ambari-agent/conf/ambari-agent.ini<br>       插入或更改以下内容<br>       hostname = namenode<br>最后<br>使用谷歌浏览器登录：<a href="http://namenode:8080" target="_blank" rel="noopener">http://namenode:8080</a>        账号：admin    密码：admin<br>注意：选择操作系统时，应该选择当前机器的版本。如果是本地源，<br>则需要修改HDP、HDP-UTILS的位置</p>
-<p>If you are lucky enough, that I wish you success.<br>Said too much, tears.</p>
-<p>如果出现ip绑定问题，修改/etc/hosts/中的ip为每台机器的真实ip<br>查看ip命令ifconfig<br>出现mysql  drive驱动问题   yum  install  mysql-connector-java</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/05/ambari卸载/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -975,6 +531,188 @@ use  ambari;
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2016/11/09/ambari搭建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小二">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王小二客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/09/ambari搭建/" itemprop="url">Ambari搭建</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-09T00:00:00+08:00">
+                2016-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/搭建博客/" itemprop="url" rel="index">
+                    <span itemprop="name">搭建博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+	<div>
+	      
+	</div>
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-物理条件：三台centos"><a href="#1-物理条件：三台centos" class="headerlink" title="1.物理条件：三台centos"></a>1.物理条件：三台centos</h2><p>前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02<br>          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02<br>配置ssh<br>      在namenode上生成密钥对：ssh-keygen  –t  rsa<br>      在/root/.ssh中会有生成的密钥对<br>      将namenode  的 id_rsa.pub写入datanode01的/root/.ssh  authorized_keys文件中。再将datanode01的authorized_keys 写入namenode /root/.ssh<br>datanode02同理操作<br>scp .ssh/id_rsa.pub chenlb@192.168.1.181:/home/chenlb/id_rsa.pub<br>cat id_rsa.pub &gt;&gt; .ssh/authorized_keys<br>  将namenode中的三个机器的私钥 id_rsa提取到桌面，后续使用<br>安装ntp服务<br>yum install ntp<br>service ntpd start<br>chkconfig ntpd on</p>
+<h2 id="2-更换源："><a href="#2-更换源：" class="headerlink" title="2.更换源："></a>2.更换源：</h2><p>将/etc/yum.repos.d/下的原centos.repos备份，然后添加本地源（我这是之前师傅在其他服务器布            置好了的源，你们可在网上查找相关源）</p>
+<h2 id="3-验证本机名"><a href="#3-验证本机名" class="headerlink" title="3.验证本机名"></a>3.验证本机名</h2><pre><code>Hostname   -f
+</code></pre><p>  显示<br>      namenode   其他两台一样</p>
+<h2 id="4-关闭防火墙"><a href="#4-关闭防火墙" class="headerlink" title="4.关闭防火墙"></a>4.关闭防火墙</h2><pre><code>Service iptables stop
+</code></pre><p>禁用自启动<br>      Chkconfig   iptables  off</p>
+<h2 id="5-禁用ipv6"><a href="#5-禁用ipv6" class="headerlink" title="5.禁用ipv6"></a>5.禁用ipv6</h2><pre><code>使用lsmod查看系统启动的模块：ipv6相关的模块是net-pf-10  ipv6
+在vi  /etc/modprobe.d/dist.conf    中最后添加
+</code></pre><p> alias   net-pf-10   off<br>                                    alias  ipv6   off<br>      重启后，再使用lsmod查看ipv6的相应模块还在不在</p>
+<h2 id="6-禁用SELinux"><a href="#6-禁用SELinux" class="headerlink" title="6.禁用SELinux"></a>6.禁用SELinux</h2><p>配置selinux<br>vi  /etc/sysconfig/selinux<br>插入<br>SELINUX=disabled<br>暂时禁用      setenforce  0</p>
+<h2 id="7-配置禁用THP-每次重启机器后需要从新配置"><a href="#7-配置禁用THP-每次重启机器后需要从新配置" class="headerlink" title="7.配置禁用THP(每次重启机器后需要从新配置)"></a>7.配置禁用THP(每次重启机器后需要从新配置)</h2><p>  查看当前THP状态<br>  cat   /sys/kernel/mm/transparent_hugepage/enabled<br>  如果为always  madvise   [never]则为禁用<br>配置禁用<br>echo  never  &gt;  /sys/kernel/mm/redhat_transparent_hugepage/defrag<br>echo  never  &gt;  /sys/kernel/mm/redhat_transparent_hugepage/enabled<br>echo  never  &gt;  /sys/kernel/mm/ transparent_hugepage/defrag<br>echo  never  &gt;  /sys/kernel/mm/ transparent_hugepage/enabled</p>
+<h2 id="8-clean源-重新加载"><a href="#8-clean源-重新加载" class="headerlink" title="8.clean源 重新加载"></a>8.clean源 重新加载</h2><pre><code>yum clean all
+yum makecache
+</code></pre><h2 id="9-配置mysql作为数据库（只在ambari-server安装机器上做）"><a href="#9-配置mysql作为数据库（只在ambari-server安装机器上做）" class="headerlink" title="9.配置mysql作为数据库（只在ambari-server安装机器上做）"></a>9.配置mysql作为数据库（只在ambari-server安装机器上做）</h2><p>   查看当前安装数据库信息   rpm  -qa  |   grep   -i   mysql<br>    卸载方法 yum   -y   remove  +name<br>    安装MySQL  查看当前源中是否有提供的MySQL<br>    yum   list  |   grep   mysql<br>    安装mysql-server<br>安装<br>    安装后mysql 只有一个用户root 且第一次开启时需要设置密码，我们这通过命令提前设置                   mysqladmin  -u  root  password  ‘’</p>
+<pre><code>设置为自启动  chkconfig  mysqld  on
+登录到root用户
+mysql   -u  root   -p 
+create  user  ‘amabri’@’% ’    identified   by   ‘bigdata’;
+grant   all   privileges   on   *.*    to    ‘ambari’@’%’;
+create   user   ‘ambari’@’localhost’   identified   by    ‘bigdata’;
+grant    all    privileges   on   *.*   to    ‘ambari’@’localhost’;
+create   user   ‘ambari’@’namenode’   identified   by   ‘bigdata’;
+grant   all   privileges   on   *.*   to   ‘ambari’@’namenode’;
+登录ambari用户
+mysql    -u   ambari    -p
+bigdata
+create  database   ambari;
+use  ambari;
+</code></pre><h2 id="10-部署"><a href="#10-部署" class="headerlink" title="10.部署"></a>10.部署</h2><p> （1） yum安装<br> yum  -y  install  ambari-server (每台都要装)<br>后进入mysql -u ambari -p<br>bigdata<br>use ambari;<br>source /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql;<br> （2） jdk的安装<br>       下载jdk1.8.0_45安装包  放入/usr/lib/jvm/jdk1.8.0_45/ 解压<br>       配置环境变量  /etc/profile 文件最后加上</p>
+<p>#Java environment<br>       JAVA_HOME=/usr/java/jdk1.8.0_45<br>PATH=$JAVA_HOME/bin:$PATH<br>CLASSPATH=.:$JAVA_HOME/lib/<br>export JAVA_HOME<br>export PATH<br>export CLASSPATH<br>执行：sudo update-alternatives –install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_45/bin/java 300<br>sudo update-alternatives –install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_45/bin/javac 300<br>sudo update-alternatives –install /usr/bin/jar jar /usr/lib/jvm/jdk1.8.0_45/bin/jar 300<br>查看当前Java版本<br>java  -version<br> （3） 安装ambari-server    (安装在一台centos上即可，部署为ambari-server的机器)<br>ambari-server  setup   -j  /usr/lib/jvm/jdk1.8.0­_45/<br>安装显示：<br>Using python  /usr/bin/python<br> Setup ambari‐server<br>  Checking SELinux…<br> SELinux status is ‘enabled’<br> SELinux mode is ‘permissive’<br>  WARNING: SELinux is set to ‘permissive’ mode and temporarily disabled.<br> OK to continue [y/n] (y)?<br> Customize user account for ambari‐server daemon [y/n] (n)?<br> Adjusting ambari‐server permissions and ownership…<br>  Checking firewall status…<br>  Checking JDK…<br> WARNING: JAVA_HOME /usr/lib/jvm/jdk1.8.0_45 must be valid on ALL hosts  WARNING: JCE Policy files are required for configuring Kerberos security. If you plan to use Kerberos,please make sure JCE Unlimited<br>  Completing setup…<br>  Configuring database…<br>  Enter advanced database configuration [y/n] (n)? y<br>  Configuring database…  =============================================================================<br>  Choose one of the following options:<br>  [1] ‐ PostgreSQL (Embedded)<br>  [2] ‐ Oracle<br>  [3] ‐ MySQL / MariaDB<br>  [4] ‐ PostgreSQL<br>  [5] ‐ Microsoft SQL Server (Tech Preview)<br>  [6] ‐ SQL Anywhere<br>  [7] ‐ BDB  =============================================================================<br> Enter choice (3): 3<br>  Hostname (localhost):<br>  Port (3306):<br>  Database name (ambari):<br>  Username (ambari):<br>  Enter Database Password (bigdata):<br>  Configuring ambari database…<br>  Copying JDBC drivers to server resources…<br>  Configuring remote database connection properties…<br>WARNING: Before starting Ambari Server, you must run the following DDL against the databa     se to create the schema: /var/lib/ambari<br> Proceed with configuring remote database connection properties [y/n] (y)? y<br>  Extracting system views……………<br>  Adjusting ambari‐server permissions and ownership…<br>  Ambari Server ‘setup’ completed successfully.<br> （4）启动ambari-server<br>      ambari-server start<br>      启动成功后通过：http：//namenode:8080访问<br>      登录账号及密码：admin<br> （6） 进程操作<br>    1.查看ambari进程<br>      ps   -ef   |   grep   ambari<br>      2.停止ambari进程<br>       ambari-server  stop<br>      3.重启ambari进程<br>       ambari-server  restart<br> （7） 修改端口<br>      vi   /etc/ambari-server/conf/ambari.properties<br>      插入或编辑以下内容<br>      Client.api.port = <port_number></port_number></p>
+<h2 id="11-安装ambari-agent-每台机器都要装"><a href="#11-安装ambari-agent-每台机器都要装" class="headerlink" title="11 安装ambari-agent(每台机器都要装)"></a>11 安装ambari-agent(每台机器都要装)</h2><pre><code>1.安装ambari-agent
+</code></pre><p>yum   install  ambari-agent<br>    2.配置<br>       vi  /etc/ambari-agent/conf/ambari-agent.ini<br>       插入或更改以下内容<br>       hostname = namenode<br>最后<br>使用谷歌浏览器登录：<a href="http://namenode:8080" target="_blank" rel="noopener">http://namenode:8080</a>        账号：admin    密码：admin<br>注意：选择操作系统时，应该选择当前机器的版本。如果是本地源，<br>则需要修改HDP、HDP-UTILS的位置</p>
+<p>If you are lucky enough, that I wish you success.<br>Said too much, tears.</p>
+<p>如果出现ip绑定问题，修改/etc/hosts/中的ip为每台机器的真实ip<br>查看ip命令ifconfig<br>出现mysql  drive驱动问题   yum  install  mysql-connector-java</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+   
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1025,7 +763,7 @@ use  ambari;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1036,7 +774,7 @@ use  ambari;
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -1046,10 +784,10 @@ use  ambari;
               
               
               <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">1</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
-                
+                </a>
               </div>
             
 
@@ -1117,7 +855,7 @@ use  ambari;
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">����ȫվ��11.8k��</span>
+  <span class="post-count">����ȫվ��9.2k��</span>
 </div>
 
         
