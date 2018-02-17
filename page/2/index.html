@@ -340,7 +340,7 @@
         
           
           1.删除hdp.repo和hdp-util.repocd /etc/yum.repos.d/rm -rf hdprm -rf HDPrm -rf ambari*
-2.删除安装包用yum list installed | grep HDP来检查安装的ambari的包yum remove -y  sqoop.noarchyum remove -y  lzo-devel.x86_64yum remove -y  hadoop-libhdfs.x86_64yum remove -y  rrdtool.x86_64yum remove -y  hbase.noarchyum remove -y  pig.noarchyum remove -y  lzo.x86_64yum remove -y  ambari-log4j.noarchyum remove -y  oozie.noarchyum remove -y  oozie-client.noarchyum remove -y  gweb.noarchyum remove -y  snappy-devel.x86_64yum remove -y  hcatalog.noarchyum
+2.删除安装包用yum list installed | grep HDP来检查安装的ambari的包yum remove -y  sqoop.noarchyum remove -y  lzo-devel.x86_64yum remove
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -481,14 +481,7 @@ vi /etc/sysconfig/selinux插入/编辑以下内容
 SELINUX=disabled#重启生效
 
 
-2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：  rpm -ivh http://mirrors.sohu.com/fedora-    epel/6/x86_64/epel-release-6-8.noarch.rpm
-  sed -i &#39;s/^mirrorlist=https/mirrorlist=http/&#39;     /etc/yum.repos.d/epel.repo
-  （elpe.repo）
-  *[epel]*
-  name=epel
-  mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?    repo=epel-$releasever&amp;arch=$basearch  enabled=1  gpgcheck=0’
-
-3：安装docker  yum i
+2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：  rpm -ivh http://mirrors.sohu.com/f
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -643,7 +636,7 @@ SELINUX=disabled#重启生效
       
         
           
-          1.物理条件：三台centos前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02配置ssh      在namenode上生成密钥对：ssh-keygen  –t  rsa      在/root/.ssh中会有生成的密钥对      将namenode  的 id_rsa.pub写入datanode01的/root/.ssh  authorized_keys文件中。再将datanode01的authorized_keys 写入namenode /root/.sshdatanode02同理操作scp .ssh/id_rsa.pub chenlb@192.168.1.181:/home/chenlb/id_rsa.pubcat id_rsa.pub &gt;&gt; .ssh/authorized_keys  将namenode中的三个机器的私钥 id_rsa提取到桌面，后续使用安装ntp服务yum install ntpservice ntpd startch
+          1.物理条件：三台centos前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02配置ssh      在namenode上生成密钥对：ssh-keygen  –t  rsa      在/root/.ssh中会有生成的密钥对    
           ...
           <!--noindex-->
           <div class="post-button text-center">

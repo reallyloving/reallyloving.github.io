@@ -474,13 +474,7 @@
           
           
 创建字符串创建字符串最简单的方式如下:String greeting = “王小二客栈”;注意:String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。如果需要对字符串做很多修改，那么应该选择使用 StringBuffer &amp; StringBuilder 类。
-字符串长度用于获取有关对象的信息的方法称为访问器方法。String 类的一个访问器方法是 length() 方法，它返回字符串对象包含的字符数。
-连接字符串String 类提供了连接两个字符串的方法：string1.concat(string2);更常用的是使用’+’操作符来连接字符串，如：“Hello,” + “ xiaoer” + “!”
-String 方法
-char charAt(int index)  返回指定索引处的char值。 
-int compareTo（Object o）  把这个字符串和另一个对象比较。  
-int compareTo(String anotherString)  按字典顺序比较两个字符串。  
-int compareToIgnoreCase(String str)  按字典顺序比较两个字符
+字符串长度用于获取有关对象的信息的方法称为访问器方法。String 类的一个访问器方法是 le
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -641,17 +635,7 @@ int compareToIgnoreCase(String str)  按字典顺序比较两个字符
 Math的方法都被定义为static形式，通过Math类可以在主函数中直接调用。
 
 下面列出Number &amp; Math类常用的一些方法：
-xxxValue()    将Number对象装换成xxx数据类型的值并返回。
-compareTo（）    将number对象与参数比较。
-equals()    判断number对象是否与参数相等。
-valueOf()    返回一个Number对象制定的内置数据类型。
-toString()    以字符串形式返回值。
-parseInt()    将字符串解析为int类型。
-abs()        返回参数的绝对值。
-ceil（）    返回大于等于（&gt;=）给定参数的最小整数。
-floor()    返回小雨等于（&lt;=）给定参数的最大整数。
-rint（）    返回与参数最接近的整数，返回类型为double。
-rou
+x
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -785,13 +769,7 @@ rou
         
           
           1.需求用java代码读取Excel.xls表格中的数据
-2.java代码package com.test;import java.io.File;import jxl.*;public class ReadExcel{    public static void main(String[] args){        ing i;        Sheet sheet;        Workbook book;        Cell cell1,cell2,cell3,cell4,cell5,cell6,cell7;        try{
-        //Excel.xls为要读取的excel文件
-        book = Workbook.getWorkbook(new File(&quot;文件物理地址&quot;)))；
-        //获取第一个工作表对象（excel中sheet的编号从0开始，0,1,2,3，.....）
-        sheet = book.getSheet(0);
-        //获取左上角的单元格
-        cell1 = sheet.getCell(0,0)
+2.java代码package com.test;import java.io.File;import jxl.*;public class ReadExcel{    public static void main(String[] args){        ing i;        Sheet sheet;        Workb
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -927,13 +905,7 @@ rou
           只记录那二年踏过的坑HBase写入数据方式（参考：《HBase The Definitive Guide》）
 1.直接使用HTable进行导入，代码如下：
 
-package hbase.curd;import java.io.IOException;import java.util.ArrayList;import java.util.List;impirt java.util.Random;import org.apache.hadoop.hbase.client.HTable;import org.apache.hadoop.hbase.client.Put;import org.apache.hadoop.hbase.util.Bytes;
-public class PutExample{
-private HTable table = HTableUtil.getHTable(&quot;testtable&quot;);
-public static void main(String args[]) throws IOException{
-
-    PutExample pe = new PutExample();
- 
+package hbase.curd;import java.io.IOException;import java.util.ArrayList;import java.util.List;impirt java.util.Random;im
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1069,13 +1041,7 @@ public static void main(String args[]) throws IOException{
           只记录那二年踏过的坑一、安装Jdk：首先需要卸载系统自带的openjava，查看系统的Java： rpm -qa|grep java。
 卸载： yum -y remove java javaxxxxx(系统自带的Java版本)
 
-安装jdk，将jdk.tar.gz文件复制到/usr/java中,终端进入/mnt/share ,cp jdk.tar.gz /usr/ava，进入/usr/java解压：tar xzvf jdk.targz
-配置环境变量：vi /etc/profile 输入i编辑在尾部添加：export JAVA_HOME=/usr/java/jdkxxxxexport PATH=$JAVA_HOME/bin:$PATHexport CLASSPATH=.:JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-保存并退出： wq使修改生效： source /etc/profile查看Java版本：java -version
-二、Hadoop伪分布式安装
-1、ssh无密码登陆
-
-终端：ssh-keygen -t rsa (获得rsa公钥私钥,id_rsa和id_rsa.pub)
+安装jdk，将jdk.tar.gz文件复制到/usr/java中,终端进入/mnt/share ,cp jdk.tar.gz /usr/ava，进入/usr/java解压
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1211,15 +1177,7 @@ public static void main(String args[]) throws IOException{
           1.查看centos的内核版本rname -r
 2.查看系统版本cat /etc/centos-release
 3.安装软件编译安装新内核，依赖于开发环境和开发库yum grouplist  //查看已经安装的和未安装的软件包组，来判断我们是否安装了相应的开发环境和开发库；
-yum groupinstall “Development Tools”  //一般是安装这两个软件包组，这样做会确定你拥有编译时所需的一切工具
-yum install ncurses-devel //你必须这样才能让 make *config 这个指令正确地执行
-yum install qt-devel //如果你没有 X 环境，这一条可以不用
-yum install hmaccalc zlib-devel binutils-devel elfutils-libelf-devel //创建 CentOS-6 内核时需要它们
-4.编译内核Linux内核版本有两种：稳定版和开发版 ，Linux内核版本号由3个数字组成： r.x.y
-
-r: 主版本号
-x: 次版本号，偶数表示稳定版本；奇数表示开发中版本。
-y: 修订版本号 ， 表示修改的次数官网上有stab
+yum groupinstall “Development Tools”  //一般是安装这两个软件包组，这样做会确定你拥有
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1354,13 +1312,7 @@ y: 修订版本号 ， 表示修改的次数官网上有stab
           
           设置固定IP地址及网关
 设置IPvi /etc/sysconfig/network-scripts/ifcfg-eth0
-修改内容如下DEVICE=eth0HWADDR=08:00:27:BD:9D:B5  #不用改TYPE=EthernetUUID=53e4e4b6-9724-43ab-9da7-68792e611031 #不用改ONBOOT=yes  #开机启动NM_CONTROLLED=yesBOOTPROTO=static  #静态IPIPADDR=192.168.30.50  #IP地址NETMASK=255.255.255.0 #子网掩码
-设置网关vi /etc/sysconfig/network
-添加内容NETWORKING=yesHOSTNAME=Hadoop.MasterGATEWAY=192.168.30.1 #网关
-设置DNSvi /etc/resolv.conf
-添加内容nameserver xxx.xxx.xxx.xxx #根据实际情况设置nameserver 114.114.114.114 #可以设置多个
-重启网卡service network restart
-设置主机名对应IP地址vi /etc
+修改内容如下DEVICE=eth0HWADDR=08:00:27:BD:9D:B5  #不用改TYPE=EthernetUUID=53e4e4b6-9724-43ab-9da7-68792e611031 #不用改ONBOOT=yes  #开机启动NM_CONTROLLED=ye
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1496,10 +1448,7 @@ y: 修订版本号 ， 表示修改的次数官网上有stab
           1：关闭selinux临时关闭：setenforce 0永久关闭：
 1. vi /etc/sysconfig/selinux插入/编辑以下内容SELINUX=disabled
 #重启生效
-2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpmsed -i ‘s/^mirrorlist=https/mirrorlist=http/‘ /etc/yum.repos.d/epel.repo（elpe.repo）[epel]name=epelmirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearchenabled=1gpgcheck=0
-3：安装dockeryum install docker-io安装完成后
-4：启动dockerservice  docker  start
-5：查看docker版本docker ve
+2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-releas
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1632,9 +1581,7 @@ y: 修订版本号 ， 表示修改的次数官网上有stab
       
         
           
-          ERROR: Exiting with exit code 1.REASON: Database check failed to complete. Please check /var/log/ambari-server/ambari-server.log and /var/log/ambari-server/ambari-server-check-database.log for more information.解决方法：查看日志，具体什么错.例如：数据库未开启、数据库配置问题
-撤销已经赋予给 MySQL 用户权限的权限。revoke 跟 grant 的语法差不多，只需要把关键字 “to” 换成 “from” 即可：revoke  all on . from ‘root’@’192.168.0.197’;
-[root@datanode01 ~]# yum makecacheLoaded plugins: fastestmirrorDetermining fastest mirrorsambari-2.4.1.0                                                   | 2.9
+          ERROR: Exiting with exit code 1.REASON: Database check failed to complete. Please check /var/log/ambari-server/ambari-server.log and /var/log/ambari-server/ambari-server-check-database.log for more in
           ...
           <!--noindex-->
           <div class="post-button text-center">
