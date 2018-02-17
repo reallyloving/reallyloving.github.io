@@ -1089,8 +1089,11 @@ pre .javascript .function {
 .back-to-top.back-to-top-on {
   bottom: 19px;
 }
-.header {
+#.header {
   background: transparent;
+}
+.header {
+  background: url("F:\hexo\myblog\source\image\photo.jpg");
 }
 .header-inner {
   position: relative;
@@ -1977,7 +1980,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #635e71;
+  background: #49ffff;
 }
 .links-of-blogroll {
   font-size: 13px;
