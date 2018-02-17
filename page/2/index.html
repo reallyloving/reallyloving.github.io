@@ -339,15 +339,16 @@
       
         
           
-            <h2 id="1-删除hdp-repo和hdp-util-repo"><a href="#1-删除hdp-repo和hdp-util-repo" class="headerlink" title="1.删除hdp.repo和hdp-util.repo"></a>1.删除hdp.repo和hdp-util.repo</h2><p>cd /etc/yum.repos.d/<br>rm -rf hdp<em><br>rm -rf HDP</em><br>rm -rf ambari*</p>
-<h2 id="2-删除安装包"><a href="#2-删除安装包" class="headerlink" title="2.删除安装包"></a>2.删除安装包</h2><p>用yum list installed | grep HDP来检查安装的ambari的包<br>yum remove -y  sqoop.noarch<br>yum remove -y  lzo-devel.x86_64<br>yum remove -y  hadoop-libhdfs.x86_64<br>yum remove -y  rrdtool.x86_64<br>yum remove -y  hbase.noarch<br>yum remove -y  pig.noarch<br>yum remove -y  lzo.x86_64<br>yum remove -y  ambari-log4j.noarch<br>yum remove -y  oozie.noarch<br>yum remove -y  oozie-client.noarch<br>yum remove -y  gweb.noarch<br>yum remove -y  snappy-devel.x86_64<br>yum remove -y  hcatalog.noarch<br>yum remove -y  python-rrdtool.x86_64<br>yum remove -y  nagios.x86_64<br>yum remove -y  webhcat-tar-pig.noarch<br>yum remove -y  snappy.x86_64<br>yum remove -y  libconfuse.x86_64<br>yum remove -y  webhcat-tar-hive.noarch<br>yum remove -y  ganglia-gmetad.x86_64<br>yum remove -y  extjs.noarch<br>yum remove -y  hive.noarch<br>yum remove -y  hadoop-lzo.x86_64<br>yum remove -y  hadoop-lzo-native.x86_64<br>yum remove -y  hadoop-native.x86_64<br>yum remove -y  hadoop-pipes.x86_64<br>yum remove -y  nagios-plugins.x86_64<br>yum remove -y  hadoop.x86_64<br>yum remove -y  zookeeper.noarch<br>yum remove -y  hadoop-sbin.x86_64<br>yum remove -y  ganglia-gmond.x86_64<br>yum remove -y  libganglia.x86_64<br>yum remove -y  perl-rrdtool.x86_64<br>yum remove -y  epel-release.noarch<br>yum remove -y  compat-readline5*<br>yum remove -y  fping.x86_64<br>yum remove -y  perl-Crypt-DES.x86_64<br>yum remove -y  exim.x86_64<br>yum remove -y ganglia-web.noarch<br>yum remove -y perl-Digest-HMAC.noarch<br>yum remove -y perl-Digest-SHA1.x86_64<br>yum remove -y bigtop-jsvc.x86_64</p>
-<h2 id="3-删除快捷方式"><a href="#3-删除快捷方式" class="headerlink" title="3.删除快捷方式"></a>3.删除快捷方式</h2><p>cd /etc/alternatives<br>rm -rf hadoop-etc<br>rm -rf zookeeper-conf<br>rm -rf hbase-conf<br>rm -rf hadoop-log<br>rm -rf hadoop-lib<br>rm -rf hadoop-default<br>rm -rf oozie-conf<br>rm -rf hcatalog-conf<br>rm -rf hive-conf<br>rm -rf hadoop-man<br>rm -rf sqoop-conf<br>rm -rf hadoop-conf</p>
-<h2 id="4-删除用户"><a href="#4-删除用户" class="headerlink" title="4.删除用户"></a>4.删除用户</h2><p>userdel nagios<br>userdel hive<br>userdel ambari-qa<br>userdel hbase<br>userdel oozie<br>userdel hcat<br>userdel mapred<br>userdel hdfs<br>userdel rrdcached<br>userdel zookeeper </p>
-<p>#userdel mysql<br>userdel sqoop<br>userdel puppet<br>userdel yarn<br>userdel tez<br>userdel hadoop<br>userdel knox<br>userdel storm<br>userdel falcon<br>userdel flume<br>userdel nagios<br>userdel admin<br>userdel postgres<br>userdel  hdfs<br>userdel  zookeeper<br>userdel hbase</p>
-<h2 id="5-删除文件夹"><a href="#5-删除文件夹" class="headerlink" title="5.删除文件夹"></a>5.删除文件夹</h2><p>rm -rf /hadoop<br>rm -rf /etc/hadoop<br>rm -rf /etc/hbase<br>rm -rf /etc/hcatalog<br>rm -rf /etc/hive<br>rm -rf /etc/ganglia<br>rm -rf /etc/nagios<br>rm -rf /etc/oozie<br>rm -rf /etc/sqoop<br>rm -rf /etc/zookeeper<br>rm -rf /var/run/hadoop<br>rm -rf /var/run/hbase<br>rm -rf /var/run/hive<br>rm -rf /var/run/ganglia<br>rm -rf /var/run/nagios<br>rm -rf /var/run/oozie<br>rm -rf /var/run/zookeeper<br>rm -rf /var/log/hadoop<br>rm -rf /var/log/hbase<br>rm -rf /var/log/hive<br>rm -rf /var/log/nagios<br>rm -rf /var/log/oozie<br>rm -rf /var/log/zookeeper<br>rm -rf /usr/lib/hadoop<br>rm -rf /usr/lib/hbase<br>rm -rf /usr/lib/hcatalog<br>rm -rf /usr/lib/hive<br>rm -rf /usr/lib/oozie<br>rm -rf /usr/lib/sqoop<br>rm -rf /usr/lib/zookeeper<br>rm -rf /var/lib/hive<br>rm -rf /var/lib/ganglia<br>rm -rf /var/lib/oozie<br>rm -rf /var/lib/zookeeper<br>rm -rf /var/tmp/oozie<br>rm -rf /tmp/hive<br>rm -rf /tmp/nagios<br>rm -rf /tmp/ambari-qa<br>rm -rf /tmp/sqoop-ambari-qa<br>rm -rf /var/nagios<br>rm -rf /hadoop/oozie<br>rm -rf /hadoop/zookeeper<br>rm -rf /hadoop/mapred<br>rm -rf /hadoop/hdfs<br>rm -rf /tmp/hadoop-hive<br>rm -rf /tmp/hadoop-nagios<br>rm -rf /tmp/hadoop-hcat<br>rm -rf /tmp/hadoop-ambari-qa<br>rm -rf /tmp/hsperfdata_hbase<br>rm -rf /tmp/hsperfdata_hive<br>rm -rf /tmp/hsperfdata_nagios<br>rm -rf /tmp/hsperfdata_oozie<br>rm -rf /tmp/hsperfdata_zookeeper<br>rm -rf /tmp/hsperfdata_mapred<br>rm -rf /tmp/hsperfdata_hdfs<br>rm -rf /tmp/hsperfdata_hcat<br>rm -rf /tmp/hsperfdata_ambari-qa<br>rm -rf /etc/flume<br>rm -rf /etc/storm<br>rm -rf /etc/hive-hcatalog<br>rm -rf /etc/tez<br>rm -rf /etc/falcon<br>rm -rf /var/run/flume<br>rm -rf /var/run/storm<br>rm -rf /var/run/webhcat<br>rm -rf /var/run/hadoop-yarn<br>rm -rf /var/run/hadoop-mapreduce<br>rm -rf /var/log/flume<br>rm -rf /var/log/storm<br>rm -rf /var/log/hadoop-yarn<br>rm -rf /var/log/hadoop-mapreduce<br>rm -rf /usr/lib/nagios<br>rm -rf /var/lib/hdfs<br>rm -rf /var/lib/hadoop-hdfs<br>rm -rf /var/lib/hadoop-yarn<br>rm -rf /var/lib/hadoop-mapreduce<br>rm -rf /tmp/hadoop-hdfs</p>
-<h2 id="5-重置数据库，删除ambari包"><a href="#5-重置数据库，删除ambari包" class="headerlink" title="5.重置数据库，删除ambari包"></a>5.重置数据库，删除ambari包</h2><p>#采用这句命令来检查yum list installed | grep ambari<br>ambari-server stop<br>ambari-agent stop<br>ambari-server reset<br>yum remove -y ambari-<em><br>yum remove -y postgresql<br>rm -rf /etc/yum.repos.d/ambari</em><br>rm -rf /var/lib/ambari<em><br>rm -rf /var/log/ambari</em><br>rm -rf /etc/ambari*</p>
-
-          
+          1.删除hdp.repo和hdp-util.repocd /etc/yum.repos.d/rm -rf hdprm -rf HDPrm -rf ambari*
+2.删除安装包用yum list installed | grep HDP来检查安装的ambari的包yum remove -y  sqoop.noarchyum remove -y  lzo-devel.x86_64yum remove -y  hadoop-libhdfs.x86_64yum remove -y  rrdtool.x86_64yum remove -y  hbase.noarchyum remove -y  pig.noarchyum remove -y  lzo.x86_64yum remove -y  ambari-log4j.noarchyum remove -y  oozie.noarchyum remove -y  oozie-client.noarchyum remove -y  gweb.noarchyum remove -y  snappy-devel.x86_64yum remove -y  hcatalog.noarchyum
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/05/ambari卸载/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -472,29 +473,30 @@
       
         
           
-            <hr>
-<h2 id="title-docker安装"><a href="#title-docker安装" class="headerlink" title="title: docker安装"></a>title: <strong>docker安装</strong></h2><h1 id="基本环境配置"><a href="#基本环境配置" class="headerlink" title="基本环境配置"></a>基本环境配置</h1><ul>
-<li><p>1：关闭selinux<br>   临时关闭：setenforce 0<br>   永久关闭：</p>
-<ol>
-<li>vi /etc/sysconfig/selinux<br>插入/编辑以下内容</li>
-<li>SELINUX=disabled<br>#重启生效</li>
-</ol>
-</li>
-<li><p>2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：<br>  <code>rpm -ivh http://mirrors.sohu.com/fedora-    epel/6/x86_64/epel-release-6-8.noarch.rpm
+          
+title: docker安装基本环境配置
+1：关闭selinux   临时关闭：setenforce 0   永久关闭：
+
+vi /etc/sysconfig/selinux插入/编辑以下内容
+SELINUX=disabled#重启生效
+
+
+2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：  rpm -ivh http://mirrors.sohu.com/fedora-    epel/6/x86_64/epel-release-6-8.noarch.rpm
   sed -i &#39;s/^mirrorlist=https/mirrorlist=http/&#39;     /etc/yum.repos.d/epel.repo
   （elpe.repo）
   *[epel]*
   name=epel
-  mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?    repo=epel-$releasever&amp;arch=$basearch</code><br>  enabled=1<br>  gpgcheck=0’</p>
-</li>
-<li>3：安装docker<br>  yum install docker-io<br>  安装完成后</li>
-<li>4：启动docker<br>  service  docker  start</li>
-<li>5：查看docker版本<br>  docker vesion</li>
-<li>6：查看docker日志<br>cat /var/log/docker</li>
-</ul>
-<p><strong>docker安装完成</strong></p>
+  mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?    repo=epel-$releasever&amp;arch=$basearch  enabled=1  gpgcheck=0’
 
-          
+3：安装docker  yum i
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/05/docker-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -641,42 +643,15 @@
       
         
           
-            <h2 id="1-物理条件：三台centos"><a href="#1-物理条件：三台centos" class="headerlink" title="1.物理条件：三台centos"></a>1.物理条件：三台centos</h2><p>前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02<br>          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02<br>配置ssh<br>      在namenode上生成密钥对：ssh-keygen  –t  rsa<br>      在/root/.ssh中会有生成的密钥对<br>      将namenode  的 id_rsa.pub写入datanode01的/root/.ssh  authorized_keys文件中。再将datanode01的authorized_keys 写入namenode /root/.ssh<br>datanode02同理操作<br>scp .ssh/id_rsa.pub chenlb@192.168.1.181:/home/chenlb/id_rsa.pub<br>cat id_rsa.pub &gt;&gt; .ssh/authorized_keys<br>  将namenode中的三个机器的私钥 id_rsa提取到桌面，后续使用<br>安装ntp服务<br>yum install ntp<br>service ntpd start<br>chkconfig ntpd on</p>
-<h2 id="2-更换源："><a href="#2-更换源：" class="headerlink" title="2.更换源："></a>2.更换源：</h2><p>将/etc/yum.repos.d/下的原centos.repos备份，然后添加本地源（我这是之前师傅在其他服务器布            置好了的源，你们可在网上查找相关源）</p>
-<h2 id="3-验证本机名"><a href="#3-验证本机名" class="headerlink" title="3.验证本机名"></a>3.验证本机名</h2><pre><code>Hostname   -f
-</code></pre><p>  显示<br>      namenode   其他两台一样</p>
-<h2 id="4-关闭防火墙"><a href="#4-关闭防火墙" class="headerlink" title="4.关闭防火墙"></a>4.关闭防火墙</h2><pre><code>Service iptables stop
-</code></pre><p>禁用自启动<br>      Chkconfig   iptables  off</p>
-<h2 id="5-禁用ipv6"><a href="#5-禁用ipv6" class="headerlink" title="5.禁用ipv6"></a>5.禁用ipv6</h2><pre><code>使用lsmod查看系统启动的模块：ipv6相关的模块是net-pf-10  ipv6
-在vi  /etc/modprobe.d/dist.conf    中最后添加
-</code></pre><p> alias   net-pf-10   off<br>                                    alias  ipv6   off<br>      重启后，再使用lsmod查看ipv6的相应模块还在不在</p>
-<h2 id="6-禁用SELinux"><a href="#6-禁用SELinux" class="headerlink" title="6.禁用SELinux"></a>6.禁用SELinux</h2><p>配置selinux<br>vi  /etc/sysconfig/selinux<br>插入<br>SELINUX=disabled<br>暂时禁用      setenforce  0</p>
-<h2 id="7-配置禁用THP-每次重启机器后需要从新配置"><a href="#7-配置禁用THP-每次重启机器后需要从新配置" class="headerlink" title="7.配置禁用THP(每次重启机器后需要从新配置)"></a>7.配置禁用THP(每次重启机器后需要从新配置)</h2><p>  查看当前THP状态<br>  cat   /sys/kernel/mm/transparent_hugepage/enabled<br>  如果为always  madvise   [never]则为禁用<br>配置禁用<br>echo  never  &gt;  /sys/kernel/mm/redhat_transparent_hugepage/defrag<br>echo  never  &gt;  /sys/kernel/mm/redhat_transparent_hugepage/enabled<br>echo  never  &gt;  /sys/kernel/mm/ transparent_hugepage/defrag<br>echo  never  &gt;  /sys/kernel/mm/ transparent_hugepage/enabled</p>
-<h2 id="8-clean源-重新加载"><a href="#8-clean源-重新加载" class="headerlink" title="8.clean源 重新加载"></a>8.clean源 重新加载</h2><pre><code>yum clean all
-yum makecache
-</code></pre><h2 id="9-配置mysql作为数据库（只在ambari-server安装机器上做）"><a href="#9-配置mysql作为数据库（只在ambari-server安装机器上做）" class="headerlink" title="9.配置mysql作为数据库（只在ambari-server安装机器上做）"></a>9.配置mysql作为数据库（只在ambari-server安装机器上做）</h2><p>   查看当前安装数据库信息   rpm  -qa  |   grep   -i   mysql<br>    卸载方法 yum   -y   remove  +name<br>    安装MySQL  查看当前源中是否有提供的MySQL<br>    yum   list  |   grep   mysql<br>    安装mysql-server<br>安装<br>    安装后mysql 只有一个用户root 且第一次开启时需要设置密码，我们这通过命令提前设置                   mysqladmin  -u  root  password  ‘’</p>
-<pre><code>设置为自启动  chkconfig  mysqld  on
-登录到root用户
-mysql   -u  root   -p 
-create  user  ‘amabri’@’% ’    identified   by   ‘bigdata’;
-grant   all   privileges   on   *.*    to    ‘ambari’@’%’;
-create   user   ‘ambari’@’localhost’   identified   by    ‘bigdata’;
-grant    all    privileges   on   *.*   to    ‘ambari’@’localhost’;
-create   user   ‘ambari’@’namenode’   identified   by   ‘bigdata’;
-grant   all   privileges   on   *.*   to   ‘ambari’@’namenode’;
-登录ambari用户
-mysql    -u   ambari    -p
-bigdata
-create  database   ambari;
-use  ambari;
-</code></pre><h2 id="10-部署"><a href="#10-部署" class="headerlink" title="10.部署"></a>10.部署</h2><p> （1） yum安装<br> yum  -y  install  ambari-server (每台都要装)<br>后进入mysql -u ambari -p<br>bigdata<br>use ambari;<br>source /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql;<br> （2） jdk的安装<br>       下载jdk1.8.0_45安装包  放入/usr/lib/jvm/jdk1.8.0_45/ 解压<br>       配置环境变量  /etc/profile 文件最后加上</p>
-<p>#Java environment<br>       JAVA_HOME=/usr/java/jdk1.8.0_45<br>PATH=$JAVA_HOME/bin:$PATH<br>CLASSPATH=.:$JAVA_HOME/lib/<br>export JAVA_HOME<br>export PATH<br>export CLASSPATH<br>执行：sudo update-alternatives –install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_45/bin/java 300<br>sudo update-alternatives –install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_45/bin/javac 300<br>sudo update-alternatives –install /usr/bin/jar jar /usr/lib/jvm/jdk1.8.0_45/bin/jar 300<br>查看当前Java版本<br>java  -version<br> （3） 安装ambari-server    (安装在一台centos上即可，部署为ambari-server的机器)<br>ambari-server  setup   -j  /usr/lib/jvm/jdk1.8.0­_45/<br>安装显示：<br>Using python  /usr/bin/python<br> Setup ambari‐server<br>  Checking SELinux…<br> SELinux status is ‘enabled’<br> SELinux mode is ‘permissive’<br>  WARNING: SELinux is set to ‘permissive’ mode and temporarily disabled.<br> OK to continue [y/n] (y)?<br> Customize user account for ambari‐server daemon [y/n] (n)?<br> Adjusting ambari‐server permissions and ownership…<br>  Checking firewall status…<br>  Checking JDK…<br> WARNING: JAVA_HOME /usr/lib/jvm/jdk1.8.0_45 must be valid on ALL hosts  WARNING: JCE Policy files are required for configuring Kerberos security. If you plan to use Kerberos,please make sure JCE Unlimited<br>  Completing setup…<br>  Configuring database…<br>  Enter advanced database configuration [y/n] (n)? y<br>  Configuring database…  =============================================================================<br>  Choose one of the following options:<br>  [1] ‐ PostgreSQL (Embedded)<br>  [2] ‐ Oracle<br>  [3] ‐ MySQL / MariaDB<br>  [4] ‐ PostgreSQL<br>  [5] ‐ Microsoft SQL Server (Tech Preview)<br>  [6] ‐ SQL Anywhere<br>  [7] ‐ BDB  =============================================================================<br> Enter choice (3): 3<br>  Hostname (localhost):<br>  Port (3306):<br>  Database name (ambari):<br>  Username (ambari):<br>  Enter Database Password (bigdata):<br>  Configuring ambari database…<br>  Copying JDBC drivers to server resources…<br>  Configuring remote database connection properties…<br>WARNING: Before starting Ambari Server, you must run the following DDL against the databa     se to create the schema: /var/lib/ambari<br> Proceed with configuring remote database connection properties [y/n] (y)? y<br>  Extracting system views……………<br>  Adjusting ambari‐server permissions and ownership…<br>  Ambari Server ‘setup’ completed successfully.<br> （4）启动ambari-server<br>      ambari-server start<br>      启动成功后通过：http：//namenode:8080访问<br>      登录账号及密码：admin<br> （6） 进程操作<br>    1.查看ambari进程<br>      ps   -ef   |   grep   ambari<br>      2.停止ambari进程<br>       ambari-server  stop<br>      3.重启ambari进程<br>       ambari-server  restart<br> （7） 修改端口<br>      vi   /etc/ambari-server/conf/ambari.properties<br>      插入或编辑以下内容<br>      Client.api.port = <port_number></port_number></p>
-<h2 id="11-安装ambari-agent-每台机器都要装"><a href="#11-安装ambari-agent-每台机器都要装" class="headerlink" title="11 安装ambari-agent(每台机器都要装)"></a>11 安装ambari-agent(每台机器都要装)</h2><pre><code>1.安装ambari-agent
-</code></pre><p>yum   install  ambari-agent<br>    2.配置<br>       vi  /etc/ambari-agent/conf/ambari-agent.ini<br>       插入或更改以下内容<br>       hostname = namenode<br>最后<br>使用谷歌浏览器登录：<a href="http://namenode:8080" target="_blank" rel="noopener">http://namenode:8080</a>        账号：admin    密码：admin<br>注意：选择操作系统时，应该选择当前机器的版本。如果是本地源，<br>则需要修改HDP、HDP-UTILS的位置</p>
-<p>If you are lucky enough, that I wish you success.<br>Said too much, tears.</p>
-<p>如果出现ip绑定问题，修改/etc/hosts/中的ip为每台机器的真实ip<br>查看ip命令ifconfig<br>出现mysql  drive驱动问题   yum  install  mysql-connector-java</p>
-
-          
+          1.物理条件：三台centos前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02配置ssh      在namenode上生成密钥对：ssh-keygen  –t  rsa      在/root/.ssh中会有生成的密钥对      将namenode  的 id_rsa.pub写入datanode01的/root/.ssh  authorized_keys文件中。再将datanode01的authorized_keys 写入namenode /root/.sshdatanode02同理操作scp .ssh/id_rsa.pub chenlb@192.168.1.181:/home/chenlb/id_rsa.pubcat id_rsa.pub &gt;&gt; .ssh/authorized_keys  将namenode中的三个机器的私钥 id_rsa提取到桌面，后续使用安装ntp服务yum install ntpservice ntpd startch
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/11/09/ambari搭建/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
