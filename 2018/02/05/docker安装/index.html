@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="王小二客栈" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容SELINUX=disabled #重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-releas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker安装">
+<meta property="og:url" content="http://www.wenchong.top/2018/02/05/docker安装/index.html">
+<meta property="og:site_name" content="王小二客栈">
+<meta property="og:description" content="1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容SELINUX=disabled #重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-releas">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-05T13:18:27.788Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker安装">
+<meta name="twitter:description" content="1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容SELINUX=disabled #重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-releas">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.wenchong.top/2018/02/05/docker安装/"/>
+
+
+
+
+
+  <title>docker安装 | 王小二客栈</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王小二客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/05/docker安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小二">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王小二客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">docker安装</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T21:09:56+08:00">
+                2018-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1：关闭selinux"><a href="#1：关闭selinux" class="headerlink" title="1：关闭selinux"></a>1：关闭selinux</h2><p>临时关闭：setenforce 0<br>永久关闭：</p>
+<h2 id="1-vi-etc-sysconfig-selinux"><a href="#1-vi-etc-sysconfig-selinux" class="headerlink" title="1. vi /etc/sysconfig/selinux"></a>1. vi /etc/sysconfig/selinux</h2><p>插入/编辑以下内容<br>SELINUX=disabled</p>
+<p>#重启生效</p>
+<h2 id="2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel："><a href="#2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel：" class="headerlink" title="2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel："></a>2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：</h2><p>rpm -ivh <a href="http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm" target="_blank" rel="noopener">http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm</a><br>sed -i ‘s/^mirrorlist=https/mirrorlist=http/‘ /etc/yum.repos.d/epel.repo<br>（elpe.repo）<br>[epel]<br>name=epel<br>mirrorlist=<a href="http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearch" target="_blank" rel="noopener">http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearch</a><br>enabled=1<br>gpgcheck=0</p>
+<h2 id="3：安装docker"><a href="#3：安装docker" class="headerlink" title="3：安装docker"></a>3：安装docker</h2><p>yum install docker-io<br>安装完成后</p>
+<h2 id="4：启动docker"><a href="#4：启动docker" class="headerlink" title="4：启动docker"></a>4：启动docker</h2><p>service  docker  start</p>
+<h2 id="5：查看docker版本"><a href="#5：查看docker版本" class="headerlink" title="5：查看docker版本"></a>5：查看docker版本</h2><p>docker vesion</p>
+<h2 id="6：查看docker日志"><a href="#6：查看docker日志" class="headerlink" title="6：查看docker日志"></a>6：查看docker日志</h2><p>cat /var/log/docker</p>
+<p>docker安装完成</p>
+<h1 id="一：卸载docker"><a href="#一：卸载docker" class="headerlink" title="一：卸载docker"></a>一：卸载docker</h1><p>列出你安装过的包<br>[root@localhost ~]# yum list installed | grep docker<br>docker-io.x86_64                     1.7.1-2.el6                        @epel<br>删除软件包<br>yum -y remove docker-io.x86_64<br>删除镜像/容器等<br>rm -rf /var/lib/docker</p>
+<h1 id="二：升级docker版本为1-10-3"><a href="#二：升级docker版本为1-10-3" class="headerlink" title="二：升级docker版本为1.10.3"></a>二：升级docker版本为1.10.3</h1><p>升级之前停止docker服务,并将原有的docker服务进行备份. mv /usr/bin/docker /usr/bin/docker.bak</p>
+<p>nohup wget -c <a href="https://get.docker.com/builds/Linux/x86_64/docker-1.10.3" target="_blank" rel="noopener">https://get.docker.com/builds/Linux/x86_64/docker-1.10.3</a> -O /usr/bin/docker<br>给执行权限：chmod 755 /usr/bin/docker 然后重启服务，并查看版本.</p>
+<h2 id="报错："><a href="#报错：" class="headerlink" title="报错："></a>报错：</h2><p>Starting cgconfig service: Error: cannot mount memory to /cgroup/memory: No such file or directory<br>/sbin/cgconfigparser; error loading /etc/cgconfig.conf: Cgroup mounting failed<br>Failed to parse /etc/cgconfig.conf                         [FAILED]<br>Starting docker:                                       [  OK  ]</p>
+<h2 id="修改：-etc-cgconfig-conf文件"><a href="#修改：-etc-cgconfig-conf文件" class="headerlink" title="修改：/etc/cgconfig.conf文件"></a>修改：/etc/cgconfig.conf文件</h2><p>mount {<br>    cpuset  = /cgroup/cpuset;<br>    cpu = /cgroup/cpu;<br>    cpuacct = /cgroup/cpuacct;</p>
+<h1 id="memory-cgroup-memory"><a href="#memory-cgroup-memory" class="headerlink" title="memory  = /cgroup/memory;"></a>memory  = /cgroup/memory;</h1><pre><code>devices = /cgroup/devices;
+freezer = /cgroup/freezer;
+net_cls = /cgroup/net_cls;
+blkio   = /cgroup/blkio;
+</code></pre><p>}<br>重新启动docker 正常</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+   
+      <div>
+        ﻿<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/05/ambari搭建错误/" rel="next" title="错误及解决方案">
+                <i class="fa fa-chevron-left"></i> 错误及解决方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/17/centos6.5+hadoop2.7(1)/" rel="prev" title="centos6.5下搭建hadoop2.7单机伪分布环境">
+                centos6.5下搭建hadoop2.7单机伪分布环境 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">小二</p>
+              <p class="site-description motion-element" itemprop="description">AI、Big databases、Cloud computing</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1：关闭selinux"><span class="nav-number">1.</span> <span class="nav-text">1：关闭selinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-vi-etc-sysconfig-selinux"><span class="nav-number">2.</span> <span class="nav-text">1. vi /etc/sysconfig/selinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel："><span class="nav-number">3.</span> <span class="nav-text">2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3：安装docker"><span class="nav-number">4.</span> <span class="nav-text">3：安装docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4：启动docker"><span class="nav-number">5.</span> <span class="nav-text">4：启动docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5：查看docker版本"><span class="nav-number">6.</span> <span class="nav-text">5：查看docker版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6：查看docker日志"><span class="nav-number">7.</span> <span class="nav-text">6：查看docker日志</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一：卸载docker"><span class="nav-number"></span> <span class="nav-text">一：卸载docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二：升级docker版本为1-10-3"><span class="nav-number"></span> <span class="nav-text">二：升级docker版本为1.10.3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#报错："><span class="nav-number">1.</span> <span class="nav-text">报错：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改：-etc-cgconfig-conf文件"><span class="nav-number">2.</span> <span class="nav-text">修改：/etc/cgconfig.conf文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#memory-cgroup-memory"><span class="nav-number"></span> <span class="nav-text">memory  = /cgroup/memory;</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小二</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+--!>
+
+  <span class="post-meta-divider">|</span>
+
+
+<!-- 
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+--!>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

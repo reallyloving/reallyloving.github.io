@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="王小二客栈" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="1.物理条件：三台centos前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02配置ssh      在namenode上生成密钥对：ssh-keygen  –t  rsa      在/root/.ssh中会有生成的密钥对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ambari搭建">
+<meta property="og:url" content="http://www.wenchong.top/2018/02/05/ambari搭建/index.html">
+<meta property="og:site_name" content="王小二客栈">
+<meta property="og:description" content="1.物理条件：三台centos前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02配置ssh      在namenode上生成密钥对：ssh-keygen  –t  rsa      在/root/.ssh中会有生成的密钥对">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-17T14:14:00.856Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ambari搭建">
+<meta name="twitter:description" content="1.物理条件：三台centos前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02配置ssh      在namenode上生成密钥对：ssh-keygen  –t  rsa      在/root/.ssh中会有生成的密钥对">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.wenchong.top/2018/02/05/ambari搭建/"/>
+
+
+
+
+
+  <title>Ambari搭建 | 王小二客栈</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王小二客栈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/05/ambari搭建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小二">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王小二客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ambari搭建</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T21:02:08+08:00">
+                2018-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-物理条件：三台centos"><a href="#1-物理条件：三台centos" class="headerlink" title="1.物理条件：三台centos"></a>1.物理条件：三台centos</h2><p>前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02<br>          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02<br>配置ssh<br>      在namenode上生成密钥对：ssh-keygen  –t  rsa<br>      在/root/.ssh中会有生成的密钥对<br>      将namenode  的 id_rsa.pub写入datanode01的/root/.ssh  authorized_keys文件中。再将datanode01的authorized_keys 写入namenode /root/.ssh<br>datanode02同理操作<br>scp .ssh/id_rsa.pub chenlb@192.168.1.181:/home/chenlb/id_rsa.pub<br>cat id_rsa.pub &gt;&gt; .ssh/authorized_keys<br>  将namenode中的三个机器的私钥 id_rsa提取到桌面，后续使用<br>安装ntp服务<br>yum install ntp<br>service ntpd start<br>chkconfig ntpd on</p>
+<h2 id="2-更换源："><a href="#2-更换源：" class="headerlink" title="2.更换源："></a>2.更换源：</h2><p>将/etc/yum.repos.d/下的原centos.repos备份，然后添加本地源（我这是之前师傅在其他服务器布            置好了的源，你们可在网上查找相关源）</p>
+<h2 id="3-验证本机名"><a href="#3-验证本机名" class="headerlink" title="3.验证本机名"></a>3.验证本机名</h2><pre><code>Hostname   -f
+</code></pre><p>  显示<br>      namenode   其他两台一样</p>
+<h2 id="4-关闭防火墙"><a href="#4-关闭防火墙" class="headerlink" title="4.关闭防火墙"></a>4.关闭防火墙</h2><pre><code>Service iptables stop
+</code></pre><p>禁用自启动<br>      Chkconfig   iptables  off</p>
+<h2 id="5-禁用ipv6"><a href="#5-禁用ipv6" class="headerlink" title="5.禁用ipv6"></a>5.禁用ipv6</h2><pre><code>使用lsmod查看系统启动的模块：ipv6相关的模块是net-pf-10  ipv6
+在vi  /etc/modprobe.d/dist.conf    中最后添加
+</code></pre><p> alias   net-pf-10   off<br>                                    alias  ipv6   off<br>      重启后，再使用lsmod查看ipv6的相应模块还在不在</p>
+<h2 id="6-禁用SELinux"><a href="#6-禁用SELinux" class="headerlink" title="6.禁用SELinux"></a>6.禁用SELinux</h2><p>配置selinux<br>vi  /etc/sysconfig/selinux<br>插入<br>SELINUX=disabled<br>暂时禁用      setenforce  0</p>
+<h2 id="7-配置禁用THP-每次重启机器后需要从新配置"><a href="#7-配置禁用THP-每次重启机器后需要从新配置" class="headerlink" title="7.配置禁用THP(每次重启机器后需要从新配置)"></a>7.配置禁用THP(每次重启机器后需要从新配置)</h2><p>  查看当前THP状态<br>  cat   /sys/kernel/mm/transparent_hugepage/enabled<br>  如果为always  madvise   [never]则为禁用<br>配置禁用<br>echo  never  &gt;  /sys/kernel/mm/redhat_transparent_hugepage/defrag<br>echo  never  &gt;  /sys/kernel/mm/redhat_transparent_hugepage/enabled<br>echo  never  &gt;  /sys/kernel/mm/ transparent_hugepage/defrag<br>echo  never  &gt;  /sys/kernel/mm/ transparent_hugepage/enabled</p>
+<h2 id="8-clean源-重新加载"><a href="#8-clean源-重新加载" class="headerlink" title="8.clean源 重新加载"></a>8.clean源 重新加载</h2><pre><code>yum clean all
+yum makecache
+</code></pre><h2 id="9-配置mysql作为数据库（只在ambari-server安装机器上做）"><a href="#9-配置mysql作为数据库（只在ambari-server安装机器上做）" class="headerlink" title="9.配置mysql作为数据库（只在ambari-server安装机器上做）"></a>9.配置mysql作为数据库（只在ambari-server安装机器上做）</h2><p>   查看当前安装数据库信息   rpm  -qa  |   grep   -i   mysql<br>    卸载方法 yum   -y   remove  +name<br>    安装MySQL  查看当前源中是否有提供的MySQL<br>    yum   list  |   grep   mysql<br>    安装mysql-server<br>安装<br>    安装后mysql 只有一个用户root 且第一次开启时需要设置密码，我们这通过命令提前设置                   mysqladmin  -u  root  password  ‘’</p>
+<pre><code>设置为自启动  chkconfig  mysqld  on
+登录到root用户
+mysql   -u  root   -p 
+create  user  ‘amabri’@’% ’    identified   by   ‘bigdata’;
+grant   all   privileges   on   *.*    to    ‘ambari’@’%’;
+create   user   ‘ambari’@’localhost’   identified   by    ‘bigdata’;
+grant    all    privileges   on   *.*   to    ‘ambari’@’localhost’;
+create   user   ‘ambari’@’namenode’   identified   by   ‘bigdata’;
+grant   all   privileges   on   *.*   to   ‘ambari’@’namenode’;
+登录ambari用户
+mysql    -u   ambari    -p
+bigdata
+create  database   ambari;
+use  ambari;
+</code></pre><h2 id="10-部署"><a href="#10-部署" class="headerlink" title="10.部署"></a>10.部署</h2><p> （1） yum安装<br> yum  -y  install  ambari-server (每台都要装)<br>后进入mysql -u ambari -p<br>bigdata<br>use ambari;<br>source /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql;<br> （2） jdk的安装<br>       下载jdk1.8.0_45安装包  放入/usr/lib/jvm/jdk1.8.0_45/ 解压<br>       配置环境变量  /etc/profile 文件最后加上</p>
+<p>#Java environment<br>       JAVA_HOME=/usr/java/jdk1.8.0_45<br>PATH=$JAVA_HOME/bin:$PATH<br>CLASSPATH=.:$JAVA_HOME/lib/<br>export JAVA_HOME<br>export PATH<br>export CLASSPATH<br>执行：sudo update-alternatives –install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_45/bin/java 300<br>sudo update-alternatives –install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_45/bin/javac 300<br>sudo update-alternatives –install /usr/bin/jar jar /usr/lib/jvm/jdk1.8.0_45/bin/jar 300<br>查看当前Java版本<br>java  -version<br> （3） 安装ambari-server    (安装在一台centos上即可，部署为ambari-server的机器)<br>ambari-server  setup   -j  /usr/lib/jvm/jdk1.8.0­_45/<br>安装显示：<br>Using python  /usr/bin/python<br> Setup ambari‐server<br>  Checking SELinux…<br> SELinux status is ‘enabled’<br> SELinux mode is ‘permissive’<br>  WARNING: SELinux is set to ‘permissive’ mode and temporarily disabled.<br> OK to continue [y/n] (y)?<br> Customize user account for ambari‐server daemon [y/n] (n)?<br> Adjusting ambari‐server permissions and ownership…<br>  Checking firewall status…<br>  Checking JDK…<br> WARNING: JAVA_HOME /usr/lib/jvm/jdk1.8.0_45 must be valid on ALL hosts  WARNING: JCE Policy files are required for configuring Kerberos security. If you plan to use Kerberos,please make sure JCE Unlimited<br>  Completing setup…<br>  Configuring database…<br>  Enter advanced database configuration [y/n] (n)? y<br>  Configuring database…  =============================================================================<br>  Choose one of the following options:<br>  [1] ‐ PostgreSQL (Embedded)<br>  [2] ‐ Oracle<br>  [3] ‐ MySQL / MariaDB<br>  [4] ‐ PostgreSQL<br>  [5] ‐ Microsoft SQL Server (Tech Preview)<br>  [6] ‐ SQL Anywhere<br>  [7] ‐ BDB  =============================================================================<br> Enter choice (3): 3<br>  Hostname (localhost):<br>  Port (3306):<br>  Database name (ambari):<br>  Username (ambari):<br>  Enter Database Password (bigdata):<br>  Configuring ambari database…<br>  Copying JDBC drivers to server resources…<br>  Configuring remote database connection properties…<br>WARNING: Before starting Ambari Server, you must run the following DDL against the databa     se to create the schema: /var/lib/ambari<br> Proceed with configuring remote database connection properties [y/n] (y)? y<br>  Extracting system views……………<br>  Adjusting ambari‐server permissions and ownership…<br>  Ambari Server ‘setup’ completed successfully.<br> （4）启动ambari-server<br>      ambari-server start<br>      启动成功后通过：http：//namenode:8080访问<br>      登录账号及密码：admin<br> （6） 进程操作<br>    1.查看ambari进程<br>      ps   -ef   |   grep   ambari<br>      2.停止ambari进程<br>       ambari-server  stop<br>      3.重启ambari进程<br>       ambari-server  restart<br> （7） 修改端口<br>      vi   /etc/ambari-server/conf/ambari.properties<br>      插入或编辑以下内容<br>      Client.api.port = <port_number></port_number></p>
+<h2 id="11-安装ambari-agent-每台机器都要装"><a href="#11-安装ambari-agent-每台机器都要装" class="headerlink" title="11 安装ambari-agent(每台机器都要装)"></a>11 安装ambari-agent(每台机器都要装)</h2><pre><code>1.安装ambari-agent
+</code></pre><p>yum   install  ambari-agent<br>    2.配置<br>       vi  /etc/ambari-agent/conf/ambari-agent.ini<br>       插入或更改以下内容<br>       hostname = namenode<br>最后<br>使用谷歌浏览器登录：<a href="http://namenode:8080" target="_blank" rel="noopener">http://namenode:8080</a>        账号：admin    密码：admin<br>注意：选择操作系统时，应该选择当前机器的版本。如果是本地源，<br>则需要修改HDP、HDP-UTILS的位置</p>
+<p>If you are lucky enough, that I wish you success.<br>Said too much, tears.</p>
+<p>如果出现ip绑定问题，修改/etc/hosts/中的ip为每台机器的真实ip<br>查看ip命令ifconfig<br>出现mysql  drive驱动问题   yum  install  mysql-connector-java</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+   
+      <div>
+        ﻿<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/05/ambari卸载/" rel="next" title="amabri卸载">
+                <i class="fa fa-chevron-left"></i> amabri卸载
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/05/ambari搭建错误/" rel="prev" title="错误及解决方案">
+                错误及解决方案 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">小二</p>
+              <p class="site-description motion-element" itemprop="description">AI、Big databases、Cloud computing</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-物理条件：三台centos"><span class="nav-number">1.</span> <span class="nav-text">1.物理条件：三台centos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-更换源："><span class="nav-number">2.</span> <span class="nav-text">2.更换源：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-验证本机名"><span class="nav-number">3.</span> <span class="nav-text">3.验证本机名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-关闭防火墙"><span class="nav-number">4.</span> <span class="nav-text">4.关闭防火墙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-禁用ipv6"><span class="nav-number">5.</span> <span class="nav-text">5.禁用ipv6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-禁用SELinux"><span class="nav-number">6.</span> <span class="nav-text">6.禁用SELinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-配置禁用THP-每次重启机器后需要从新配置"><span class="nav-number">7.</span> <span class="nav-text">7.配置禁用THP(每次重启机器后需要从新配置)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-clean源-重新加载"><span class="nav-number">8.</span> <span class="nav-text">8.clean源 重新加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-配置mysql作为数据库（只在ambari-server安装机器上做）"><span class="nav-number">9.</span> <span class="nav-text">9.配置mysql作为数据库（只在ambari-server安装机器上做）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-部署"><span class="nav-number">10.</span> <span class="nav-text">10.部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-安装ambari-agent-每台机器都要装"><span class="nav-number">11.</span> <span class="nav-text">11 安装ambari-agent(每台机器都要装)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小二</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+--!>
+
+  <span class="post-meta-divider">|</span>
+
+
+<!-- 
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+--!>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
