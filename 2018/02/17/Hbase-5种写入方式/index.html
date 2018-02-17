@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="ERROR: Exiting with exit code 1.REASON: Database check failed to complete. Please check /var/log/ambari-server/ambari-server.log and /var/log/ambari-server/ambari-server-check-database.log for more in">
+<meta name="description" content="只记录那二年踏过的坑HBase写入数据方式（参考：《HBase The Definitive Guide》） 1.直接使用HTable进行导入，代码如下：  package hbase.curd;import java.io.IOException;import java.util.ArrayList;import java.util.List;impirt java.util.Random;im">
 <meta property="og:type" content="article">
-<meta property="og:title" content="错误及解决方案">
-<meta property="og:url" content="http://www.wenchong.top/2018/02/05/ambari搭建错误/index.html">
+<meta property="og:title" content="Hbase-写入方式">
+<meta property="og:url" content="http://www.wenchong.top/2018/02/17/Hbase-5种写入方式/index.html">
 <meta property="og:site_name" content="王小二客栈">
-<meta property="og:description" content="ERROR: Exiting with exit code 1.REASON: Database check failed to complete. Please check /var/log/ambari-server/ambari-server.log and /var/log/ambari-server/ambari-server-check-database.log for more in">
+<meta property="og:description" content="只记录那二年踏过的坑HBase写入数据方式（参考：《HBase The Definitive Guide》） 1.直接使用HTable进行导入，代码如下：  package hbase.curd;import java.io.IOException;import java.util.ArrayList;import java.util.List;impirt java.util.Random;im">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-05T13:08:05.473Z">
+<meta property="og:updated_time" content="2018-02-17T14:13:58.564Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="错误及解决方案">
-<meta name="twitter:description" content="ERROR: Exiting with exit code 1.REASON: Database check failed to complete. Please check /var/log/ambari-server/ambari-server.log and /var/log/ambari-server/ambari-server-check-database.log for more in">
+<meta name="twitter:title" content="Hbase-写入方式">
+<meta name="twitter:description" content="只记录那二年踏过的坑HBase写入数据方式（参考：《HBase The Definitive Guide》） 1.直接使用HTable进行导入，代码如下：  package hbase.curd;import java.io.IOException;import java.util.ArrayList;import java.util.List;impirt java.util.Random;im">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://www.wenchong.top/2018/02/05/ambari搭建错误/"/>
+  <link rel="canonical" href="http://www.wenchong.top/2018/02/17/Hbase-5种写入方式/"/>
 
 
 
 
 
-  <title>错误及解决方案 | 王小二客栈</title>
+  <title>Hbase-写入方式 | 王小二客栈</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/05/ambari搭建错误/">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/17/Hbase-5种写入方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小二">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">错误及解决方案</h1>
+          <h1 class="post-title" itemprop="name headline">Hbase-写入方式</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T21:06:14+08:00">
-                2018-02-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-17T22:20:06+08:00">
+                2018-02-17
               </time>
             
 
@@ -299,19 +299,87 @@
       
 
       
-        <p>ERROR: Exiting with exit code 1.<br>REASON: Database check failed to complete. Please check /var/log/ambari-server/ambari-server.log and /var/log/ambari-server/ambari-server-check-database.log for more information.<br>解决方法：查看日志，具体什么错.例如：数据库未开启、数据库配置问题</p>
-<p>撤销已经赋予给 MySQL 用户权限的权限。<br>revoke 跟 grant 的语法差不多，只需要把关键字 “to” 换成 “from” 即可：<br>revoke  all on <em>.</em> from ‘root’@’192.168.0.197’;</p>
-<p>[root@datanode01 ~]# yum makecache<br>Loaded plugins: fastestmirror<br>Determining fastest mirrors<br>ambari-2.4.1.0                                                   | 2.9 kB     00:00<br>ambari-2.4.1.0/filelists_db                                      | 139 kB     00:00<br>ambari-2.4.1.0/primary_db                                        | 8.3 kB     00:00<br>ambari-2.4.1.0/other_db                                          | 1.3 kB     00:00<br>file:///mnt/repodata/repomd.xml: [Errno 14] Could not open/read file:///mnt/repodata/repomd.xml<br>Trying other mirror.<br>Error: Cannot retrieve repository metadata (repomd.xml) for repository: c6-media. Please verify its path and try again</p>
-<p>如果有后面两个文件，处理方式mv CentOS-Media.repo CentOS-Media.repo.bak<br>没有的话，源问题，换源repos</p>
-<h3 id="tip"><a href="#tip" class="headerlink" title="tip:"></a>tip:</h3><p>1、当提示要做如下操作的时候<br>Be?sure?you?have?run:ambari-server?setup?–jdbc-db=mysql?–jdbc-driver=/path/to/mysql/<em>**</em><br>需要下载mysql-connector-java-5.1.39.tar驱动，解压得到mysql-connector-java-5.1.39-bin.jar文件<br>执行如下命令：ambari-server?setup?–jdbc-db=mysql?–jdbc-driver=/usr/lib/java/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-<br>bin.jar<br>同时，设置文件权限为644</p>
-<h3 id="2017-7-19"><a href="#2017-7-19" class="headerlink" title="2017.7.19"></a>2017.7.19</h3><p>1.ERROR namenode.NameNode (NameNode.java:main(1759)) - Failed to start namenode.<br>java.net.BindException: Port in use: datanode01:50070<br>  不能获取映射地址，需要修改hosts中的映射ip为真实ip（ifconfig）<br>2.错删自定义的service导致不能登录amnari UI（日志报出database问题） （百度方案无解，最后重装ambari-server(发现重装无法下手，百度后删除ambari相关组件以及数据库的完全卸载，完成)）<br>3.使用ambari-server启动HDFS时，DataNode无法启动（出现port in use：localhost 0）。解决方式，在hosts文件中localhost 172.0.0.1被#；去除#后解决</p>
-<h3 id="一般故障排除"><a href="#一般故障排除" class="headerlink" title="一般故障排除"></a>一般故障排除</h3><p>Ambari服务器：检查/var/log/ambari-server/ambari-server.[log|out]是否存在错误。<br>Ambari代理：检查/var/log/ambari-agent/ambari-agent.[log|out]是否存在错误。<br>请注意，如果Ambari Agent在/var/log/ambari-agent/ambari-agent.out中有任何输出，则表明存在重大问题。</p>
-<h3 id="服务无法启动"><a href="#服务无法启动" class="headerlink" title="服务无法启动"></a>服务无法启动</h3><p>HDFS：检查/ var / log / hadoop / hdfs下的日志文件<br>MapReduce：检查/ var / log / hadoop / mapred下的日志文件<br>HBase：检查/ var / log / hbase下的日志文件<br>Hive：检查/ var / log / hive下的日志文件<br>Oozie：检查/ var / log / oozie下的日志文件<br>ZooKeeper：检查/ var / log / zookeeper下的日志文件<br>WebHCat：检查/ var / log / webhcat下的日志文件<br>Nagios：检查/ var / log / nagios下的日志文件</p>
-<h3 id="2017-7-20"><a href="#2017-7-20" class="headerlink" title="2017.7.20"></a>2017.7.20</h3><p>Service ‘userhome’ check failed: java.io.FileNotFoundException: File does not exist: /user/admin<br>解决方案：sudo -u hdfs hdfs dfs  -mkdir /user/admin<br>sudo -u hdfs hdfs dfs  -chown admin:hadoop /user/admin</p>
-<h3 id="资源池问题"><a href="#资源池问题" class="headerlink" title="资源池问题"></a>资源池问题</h3><p>FATAL org.apache.hadoop.hdfs.server.datanode.DataNode: Initialization failed forblock pool Block pool BP-1480406410-192.168.1.181-1398701121586 (storage idDS-167510828-192.168.1.191-50010-1398750515421)<br>原因：每次namenode format会重新创建一个namenodeId,而data目录包含了上次format时的id,namenode format清空了namenode下的数据,但是没有清空datanode下的数据,导致启动时失败,所要做的就是每次fotmat前,清空data下的所有目录.<br>: d6 E2 t&amp; M” g7 a* q3 l, H<br>解决办法：停掉集群，删除问题节点的data目录下的所有内容。即hdfs-site.xml文件中配置的dfs.data.dir目录。重新格式化namenode。</p>
-<p>另一个更省事的办法：先停掉集群，然后将datanode节点目录/dfs/data/current/VERSION中的修改为与namenode一致即可。<br>其实我没解决，直接重装</p>
-<h3 id="block-missing问题"><a href="#block-missing问题" class="headerlink" title="block missing问题"></a>block missing问题</h3><p>会导致进入安全模式：处理方式，删除缺失包，在HDFS用户下退出安全模式</p>
-<p>添加节点时，需要查看该节点root磁盘下的剩余大小，如果磁盘空间不足，则扩大磁盘再添加节点。<br>不要问我为什么，说多了都是泪。集群就是这么崩盘的。</p>
+        <h1 id="只记录那二年踏过的坑"><a href="#只记录那二年踏过的坑" class="headerlink" title="只记录那二年踏过的坑"></a>只记录那二年踏过的坑</h1><h3 id="HBase写入数据方式（参考：《HBase-The-Definitive-Guide》）"><a href="#HBase写入数据方式（参考：《HBase-The-Definitive-Guide》）" class="headerlink" title="HBase写入数据方式（参考：《HBase The Definitive Guide》）"></a>HBase写入数据方式（参考：《HBase The Definitive Guide》）</h3><ul>
+<li>1.直接使用HTable进行导入，代码如下：</li>
+</ul>
+<p>package hbase.curd;<br>import java.io.IOException;<br>import java.util.ArrayList;<br>import java.util.List;<br>impirt java.util.Random;<br>import org.apache.hadoop.hbase.client.HTable;<br>import org.apache.hadoop.hbase.client.Put;<br>import org.apache.hadoop.hbase.util.Bytes;</p>
+<p>public class PutExample{</p>
+<pre><code>private HTable table = HTableUtil.getHTable(&quot;testtable&quot;);
+public static void main(String args[]) throws IOException{
+
+    PutExample pe = new PutExample();
+    pe.putRows();
+}    
+
+public void putRows(){
+    List&lt;Put&gt; puts = new ArrayList&lt;Put&gt;;
+    for(int i=0; i&lt;10; i++){
+        Put put = new Put(Bytes.toBytes(&quot;row_&quot;+i));
+        Rowdom random = new Random();
+
+        if(random.nextBoolean()){
+            put.add(Bytes.toBytes(&quot;colfam1&quot;), Bytes.toBytes(&quot;qual1&quot;), Bytes.toBytes(&quot;colfam1_qual1_value_&quot;+i));
+        }
+        if(random.nextBoolean()){
+            put.add(Bytes.toBytes(&quot;colfam1&quot;), Bytes.toBytes(&quot;qual2&quot;), Bytes.toBytes(&quot;colfam1_qual1_value_&quot;+i));
+        }
+        if(random.nextBoolean()){
+            put.add(Bytes.toBytes(&quot;colfam1&quot;), Bytes.toBytes(&quot;qual3&quot;), Bytes.toBytes(&quot;colfam1_qual1_value_&quot;+i));
+        }
+        if(random.nextBoolean()){
+            put.add(Bytes.toBytes(&quot;colfam1&quot;), Bytes.toBytes(&quot;qual4&quot;), Bytes.toBytes(&quot;colfam1_qual1_value_&quot;+i));    
+        }
+        if(random.nextBoolean()){
+            put.add(Bytes.toBytes(&quot;colfam1&quot;), Bytes.toBytes(&quot;qual5&quot;), Bytes.toBytes(&quot;colfam1_qual1_value_&quot;+i));
+        }
+        puts.add(put);
+    }
+    try{
+        table.put(puts);
+        table.close();
+    }catch(Exception e){
+        e.printStackTrace();
+        return ;
+    }
+    System.out.println(&quot;done put rows&quot;);
+    }
+}
+</code></pre><p>}</p>
+<h3 id="其中HTableUtil如下："><a href="#其中HTableUtil如下：" class="headerlink" title="其中HTableUtil如下："></a>其中HTableUtil如下：</h3><p>package hbase.curd;</p>
+<p>import java.io.IOException;</p>
+<p>import org.apache.hadoop.conf.Configuration;<br>import org.apache.hadoop.hbase.HBaseConfiguration;<br>import org.apache.hadoop.hbase.client.HTable;<br>import org.apache.hadoop.hbase.util.Bytes;</p>
+<p>public class HTableUtil {<br>    private static HTable table;<br>    private static Configuration conf;</p>
+<pre><code>static{
+    conf =HBaseConfiguration.create();
+    conf.set(&quot;mapred.job.tracker&quot;, &quot;hbase:9001&quot;);
+    conf.set(&quot;fs.default.name&quot;, &quot;hbase:9000&quot;);
+    conf.set(&quot;hbase.zookeeper.quorum&quot;, &quot;hbase&quot;);
+    try {
+        table = new HTable(conf,&quot;testtable&quot;);
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}
+public static Configuration getConf(){
+    return conf;
+}
+public static HTable getHTable(String tablename){
+    if(table==null){
+        try {
+            table= new HTable(conf,tablename);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } 
+    }
+    return table;
+}
+
+public static  byte[] gB(String name){
+    return Bytes.toBytes(name);
+}
+</code></pre><p>}</p>
 
       
     </div>
@@ -347,8 +415,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/05/ambari搭建/" rel="next" title="Ambari搭建">
-                <i class="fa fa-chevron-left"></i> Ambari搭建
+              <a href="/2018/02/17/centos7+hadoop2.6+hbase1.0.x/" rel="next" title="Centos7伪分布式安装Hadoop2.6和Hbase0.94">
+                <i class="fa fa-chevron-left"></i> Centos7伪分布式安装Hadoop2.6和Hbase0.94
               </a>
             
           </div>
@@ -357,8 +425,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/05/docker安装/" rel="prev" title="docker安装">
-                docker安装 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/17/java读取Excel表格数据/" rel="prev" title="java读取Excel表格中的数据">
+                java读取Excel表格中的数据 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -491,7 +559,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#tip"><span class="nav-number">1.</span> <span class="nav-text">tip:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-7-19"><span class="nav-number">2.</span> <span class="nav-text">2017.7.19</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一般故障排除"><span class="nav-number">3.</span> <span class="nav-text">一般故障排除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务无法启动"><span class="nav-number">4.</span> <span class="nav-text">服务无法启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-7-20"><span class="nav-number">5.</span> <span class="nav-text">2017.7.20</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源池问题"><span class="nav-number">6.</span> <span class="nav-text">资源池问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#block-missing问题"><span class="nav-number">7.</span> <span class="nav-text">block missing问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#只记录那二年踏过的坑"><span class="nav-number">1.</span> <span class="nav-text">只记录那二年踏过的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase写入数据方式（参考：《HBase-The-Definitive-Guide》）"><span class="nav-number">1.0.1.</span> <span class="nav-text">HBase写入数据方式（参考：《HBase The Definitive Guide》）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其中HTableUtil如下："><span class="nav-number">1.0.2.</span> <span class="nav-text">其中HTableUtil如下：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

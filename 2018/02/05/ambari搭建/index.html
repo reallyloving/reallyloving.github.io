@@ -82,11 +82,11 @@
 <meta name="description" content="1.物理条件：三台centos前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02配置ssh      在namenode上生成密钥对：ssh-keygen  –t  rsa      在/root/.ssh中会有生成的密钥对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ambari搭建">
-<meta property="og:url" content="http://yoursite.com/2018/02/05/ambari搭建/index.html">
-<meta property="og:site_name" content="��С����ջ">
+<meta property="og:url" content="http://www.wenchong.top/2018/02/05/ambari搭建/index.html">
+<meta property="og:site_name" content="王小二客栈">
 <meta property="og:description" content="1.物理条件：三台centos前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02配置ssh      在namenode上生成密钥对：ssh-keygen  –t  rsa      在/root/.ssh中会有生成的密钥对">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-05T13:04:30.968Z">
+<meta property="og:updated_time" content="2018-02-17T14:14:00.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ambari搭建">
 <meta name="twitter:description" content="1.物理条件：三台centos前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02配置ssh      在namenode上生成密钥对：ssh-keygen  –t  rsa      在/root/.ssh中会有生成的密钥对">
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/05/ambari搭建/"/>
+  <link rel="canonical" href="http://www.wenchong.top/2018/02/05/ambari搭建/"/>
 
 
 
 
 
-  <title>Ambari搭建 | ��С����ջ</title>
+  <title>Ambari搭建 | 王小二客栈</title>
   
 
 
@@ -155,7 +155,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">��С����ջ</span>
+        <span class="site-title">王小二客栈</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -232,16 +232,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/05/ambari搭建/">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/05/ambari搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="С��">
+      <meta itemprop="name" content="小二">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="��С����ջ">
+      <meta itemprop="name" content="王小二客栈">
     </span>
 
     
@@ -346,6 +346,17 @@ use  ambari;
 
     
 
+   
+      <div>
+        ﻿<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
+    
+
     <footer class="post-footer">
       
 
@@ -435,8 +446,8 @@ use  ambari;
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">С��</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-author-name" itemprop="name">小二</p>
+              <p class="site-description motion-element" itemprop="description">AI、Big databases、Cloud computing</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -446,14 +457,32 @@ use  ambari;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>
@@ -507,22 +536,23 @@ use  ambari;
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">С��</span>
+  <span class="author" itemprop="copyrightHolder">小二</span>
 
   
 </div>
 
-
+<!-- 
   <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-
+--!>
 
   <span class="post-meta-divider">|</span>
 
 
-
+<!-- 
   <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
 
+--!>
 
 
 
