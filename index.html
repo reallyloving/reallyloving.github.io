@@ -298,798 +298,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/19/MapReduce参数优化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/19/MapReduce参数优化/" itemprop="url">MapReduce参数优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-19T00:20:47+08:00">
-                2018-02-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MapReduce/" itemprop="url" rel="index">
-                    <span itemprop="name">MapReduce</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
-	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          只记录那二年踏过的坑1 core-default.xml：
-hadoop.tmp.dir：
-
-默认值： /tmp说明： 尽量手动配置这个选项，否则的话都默认存在了里系统的默认临时文件/tmp里。并且手动配置的时候，如果服务器是多磁盘的，每个磁盘都设置一个临时文件目录，这样便于mapreduce或者hdfs等使用的时候提高磁盘IO效率。
-
-fs.trash.interval：
-
-默认值： 0说明： 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/19/MapReduce参数优化/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/19/kafka优化参数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/19/kafka优化参数/" itemprop="url">kafka参数优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-19T00:17:51+08:00">
-                2018-02-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/kafka/" itemprop="url" rel="index">
-                    <span itemprop="name">kafka</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
-	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          只记录那二年踏过的坑
-非负整数，用于唯一标识brokerbroker.id=0
-
-broker 服务监听端口port=9092
-
-broker 发布给生产者消费者的hostname，会存储在zookeeper。配置好这个host可以实现内网外网同时访问。advertised.host.name=host1
-
-broker 发布给生产者消费者的port，会存储在zookeeper。advertise
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/19/kafka优化参数/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/19/hive参数优化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/19/hive参数优化/" itemprop="url">hive参数优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-19T00:15:40+08:00">
-                2018-02-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hive/" itemprop="url" rel="index">
-                    <span itemprop="name">hive</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
-	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          只记录那二年踏过的坑
-1.设置合理solt数mapred.tasktracker.map.tasks.maximum每个tasktracker可同时运行的最大map task数，默认值2。mapred.tasktracker.reduce.tasks.maximum每个tasktracker可同时运行的最大reduce task数，默认值1
-2.配置磁盘块mapred.local.dirmap t
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/19/hive参数优化/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/18/HDFS手动优化 /">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/18/HDFS手动优化 /" itemprop="url">HDFS手动优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-18T14:01:54+08:00">
-                2018-02-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HDFS/" itemprop="url" rel="index">
-                    <span itemprop="name">HDFS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
-	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          只记录那二年踏过的坑一 Linux文件系统参数调整（1） noatime 和 nodiratime属性文件挂载时设置这两个属性可以明显提高性能。。默认情况下，Linux ext2/ext3 文件系统在文件被访问、创建、修改时会记录下文件的时间戳，比如：文件创建时间、最近一次修改时间和最近一次访问时间。如果系统运行时要访问大量文件，关闭这些操作，可提升文件系统的性能。Linux 提供了 noatim
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/18/HDFS手动优化 /#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/18/hbase手动优化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/18/hbase手动优化/" itemprop="url">Hbase手动优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-18T13:58:14+08:00">
-                2018-02-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hbase/" itemprop="url" rel="index">
-                    <span itemprop="name">Hbase</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
-	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          只记录那二年踏过的坑配置优化
-zookeeper.session.timeout默认值：3分钟（180000ms）说明：RegionServer与Zookeeper间的连接超时时间。当超时时间到后，ReigonServer会被Zookeeper从RS集群清单中移除，HMaster收到移除通知后，会对这台server负责的regions重新balance，让其他存活的* RegionServer接管
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/18/hbase手动优化/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/17/myblog-test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1223,7 +431,7 @@ zookeeper.session.timeout默认值：3分钟（180000ms）说明：RegionServer�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/17/java基础——String&StringBuffer/">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2017/12/01/centos7+hadoop2.6+hbase1.0.x/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小二">
@@ -1242,7 +450,7 @@ zookeeper.session.timeout默认值：3分钟（180000ms）说明：RegionServer�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/17/java基础——String&StringBuffer/" itemprop="url">java基础——String&StringBuffer</a></h1>
+                <a class="post-title-link" href="/2017/12/01/centos7+hadoop2.6+hbase1.0.x/" itemprop="url">Centos7伪分布式安装Hadoop2.6和Hbase0.94</a></h1>
         
 
         <div class="post-meta">
@@ -1254,8 +462,8 @@ zookeeper.session.timeout默认值：3分钟（180000ms）说明：RegionServer�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-17T22:20:06+08:00">
-                2018-02-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-01T00:00:00+08:00">
+                2017-12-01
               </time>
             
 
@@ -1277,8 +485,8 @@ zookeeper.session.timeout默认值：3分钟（180000ms）说明：RegionServer�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study-Java/" itemprop="url" rel="index">
-                    <span itemprop="name">study-Java</span>
+                  <a href="/categories/搭建/" itemprop="url" rel="index">
+                    <span itemprop="name">搭建</span>
                   </a>
                 </span>
 
@@ -1320,13 +528,14 @@ zookeeper.session.timeout默认值：3分钟（180000ms）说明：RegionServer�
       
         
           
-          
-创建字符串创建字符串最简单的方式如下:String greeting = “王小二客栈”;注意:String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。如果需要对字符串做很多修改，那么应该选择使用 StringBuffer &amp; StringBuilder 类。
-字符串长度用于获取有关对象的信息的方法称为访问器方法。String 类的一个访问器方法是 le
+          只记录那二年踏过的坑一、安装Jdk：首先需要卸载系统自带的openjava，查看系统的Java： rpm -qa|grep java。
+卸载： yum -y remove java javaxxxxx(系统自带的Java版本)
+
+安装jdk，将jdk.tar.gz文件复制到/usr/java中,终端进入/mnt/share ,cp jdk.tar.gz /usr/ava，进入/usr/java解压
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/17/java基础——String&StringBuffer/#more" rel="contents">
+            <a class="btn" href="/2017/12/01/centos7+hadoop2.6+hbase1.0.x/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1380,7 +589,7 @@ zookeeper.session.timeout默认值：3分钟（180000ms）说明：RegionServer�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/17/java基础——Number&Math/">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2017/11/15/centos6.5内核升级/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小二">
@@ -1399,7 +608,7 @@ zookeeper.session.timeout默认值：3分钟（180000ms）说明：RegionServer�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/17/java基础——Number&Math/" itemprop="url">王小二客栈——Java Number&Math</a></h1>
+                <a class="post-title-link" href="/2017/11/15/centos6.5内核升级/" itemprop="url">centos 6.5 内核升级</a></h1>
         
 
         <div class="post-meta">
@@ -1411,8 +620,8 @@ zookeeper.session.timeout默认值：3分钟（180000ms）说明：RegionServer�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-17T22:20:06+08:00">
-                2018-02-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-15T00:00:00+08:00">
+                2017-11-15
               </time>
             
 
@@ -1434,8 +643,8 @@ zookeeper.session.timeout默认值：3分钟（180000ms）说明：RegionServer�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study-Java/" itemprop="url" rel="index">
-                    <span itemprop="name">study-Java</span>
+                  <a href="/categories/operation/" itemprop="url" rel="index">
+                    <span itemprop="name">运维</span>
                   </a>
                 </span>
 
@@ -1477,17 +686,14 @@ zookeeper.session.timeout默认值：3分钟（180000ms）说明：RegionServer�
       
         
           
-          忆往昔峥嵘岁月，不堪入目
-1.所有的包装类（Integer、Long、Byte、Double、Float、Short）都是抽象类Number的子类。
-2.Java的Math包含了用于执行基本数学运算的属性和方法，如初等指数、对数、平方根和三角函数等。
-Math的方法都被定义为static形式，通过Math类可以在主函数中直接调用。
-
-下面列出Number &amp; Math类常用的一些方法：
-x
+          1.查看centos的内核版本rname -r
+2.查看系统版本cat /etc/centos-release
+3.安装软件编译安装新内核，依赖于开发环境和开发库yum grouplist  //查看已经安装的和未安装的软件包组，来判断我们是否安装了相应的开发环境和开发库；
+yum groupinstall “Development Tools”  //一般是安装这两个软件包组，这样做会确定你拥有
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/17/java基础——Number&Math/#more" rel="contents">
+            <a class="btn" href="/2017/11/15/centos6.5内核升级/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1541,7 +747,7 @@ x
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/17/java读取Excel表格数据/">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2017/10/08/docker安装/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小二">
@@ -1560,7 +766,7 @@ x
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/17/java读取Excel表格数据/" itemprop="url">java读取Excel表格中的数据</a></h1>
+                <a class="post-title-link" href="/2017/10/08/docker安装/" itemprop="url">docker安装</a></h1>
         
 
         <div class="post-meta">
@@ -1572,8 +778,8 @@ x
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-17T22:20:06+08:00">
-                2018-02-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T00:00:00+08:00">
+                2017-10-08
               </time>
             
 
@@ -1595,8 +801,8 @@ x
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study-Java/" itemprop="url" rel="index">
-                    <span itemprop="name">study-Java</span>
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
                   </a>
                 </span>
 
@@ -1638,12 +844,14 @@ x
       
         
           
-          1.需求用java代码读取Excel.xls表格中的数据
-2.java代码package com.test;import java.io.File;import jxl.*;public class ReadExcel{    public static void main(String[] args){        ing i;        Sheet sheet;        Workb
+          1：关闭selinux临时关闭：setenforce 0永久关闭：
+1. vi /etc/sysconfig/selinux插入/编辑以下内容SELINUX=disabled
+#重启生效
+2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-releas
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/17/java读取Excel表格数据/#more" rel="contents">
+            <a class="btn" href="/2017/10/08/docker安装/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1697,7 +905,7 @@ x
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/17/Hbase-5种写入方式/">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2017/10/01/centos6.5+hadoop2.7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小二">
@@ -1716,7 +924,7 @@ x
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/17/Hbase-5种写入方式/" itemprop="url">Hbase-写入方式</a></h1>
+                <a class="post-title-link" href="/2017/10/01/centos6.5+hadoop2.7/" itemprop="url">centos6.5下搭建hadoop2.7单机伪分布环境</a></h1>
         
 
         <div class="post-meta">
@@ -1728,8 +936,484 @@ x
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-17T22:20:06+08:00">
-                2018-02-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-01T00:00:00+08:00">
+                2017-10-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/搭建/" itemprop="url" rel="index">
+                    <span itemprop="name">搭建</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+	<div>
+	      
+	</div>
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          设置固定IP地址及网关
+设置IPvi /etc/sysconfig/network-scripts/ifcfg-eth0
+修改内容如下DEVICE=eth0HWADDR=08:00:27:BD:9D:B5  #不用改TYPE=EthernetUUID=53e4e4b6-9724-43ab-9da7-68792e611031 #不用改ONBOOT=yes  #开机启动NM_CONTROLLED=ye
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/01/centos6.5+hadoop2.7/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+   
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2017/08/29/hive参数优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小二">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王小二客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/29/hive参数优化/" itemprop="url">hive参数优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-29T00:00:00+08:00">
+                2017-08-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hive/" itemprop="url" rel="index">
+                    <span itemprop="name">hive</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+	<div>
+	      
+	</div>
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          只记录那二年踏过的坑
+1.设置合理solt数mapred.tasktracker.map.tasks.maximum每个tasktracker可同时运行的最大map task数，默认值2。mapred.tasktracker.reduce.tasks.maximum每个tasktracker可同时运行的最大reduce task数，默认值1
+2.配置磁盘块mapred.local.dirmap t
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/29/hive参数优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+   
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2017/08/25/kafka优化参数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小二">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王小二客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/25/kafka优化参数/" itemprop="url">kafka参数优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T00:00:00+08:00">
+                2017-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/kafka/" itemprop="url" rel="index">
+                    <span itemprop="name">kafka</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+	<div>
+	      
+	</div>
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          只记录那二年踏过的坑
+非负整数，用于唯一标识brokerbroker.id=0
+
+broker 服务监听端口port=9092
+
+broker 发布给生产者消费者的hostname，会存储在zookeeper。配置好这个host可以实现内网外网同时访问。advertised.host.name=host1
+
+broker 发布给生产者消费者的port，会存储在zookeeper。advertise
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/25/kafka优化参数/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+   
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2017/08/20/hbase手动优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小二">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王小二客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/20/hbase手动优化/" itemprop="url">Hbase手动优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T00:00:00+08:00">
+                2017-08-20
               </time>
             
 
@@ -1794,14 +1478,330 @@ x
       
         
           
-          只记录那二年踏过的坑HBase写入数据方式（参考：《HBase The Definitive Guide》）
-1.直接使用HTable进行导入，代码如下：
-
-package hbase.curd;import java.io.IOException;import java.util.ArrayList;import java.util.List;impirt java.util.Random;im
+          只记录那二年踏过的坑配置优化
+zookeeper.session.timeout默认值：3分钟（180000ms）说明：RegionServer与Zookeeper间的连接超时时间。当超时时间到后，ReigonServer会被Zookeeper从RS集群清单中移除，HMaster收到移除通知后，会对这台server负责的regions重新balance，让其他存活的* RegionServer接管
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/17/Hbase-5种写入方式/#more" rel="contents">
+            <a class="btn" href="/2017/08/20/hbase手动优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+   
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2017/08/19/MapReduce参数优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小二">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王小二客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/19/MapReduce参数优化/" itemprop="url">MapReduce参数优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-19T00:00:00+08:00">
+                2017-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MapReduce/" itemprop="url" rel="index">
+                    <span itemprop="name">MapReduce</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+	<div>
+	      
+	</div>
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          只记录那二年踏过的坑1 core-default.xml：
+hadoop.tmp.dir：
+
+默认值： /tmp说明： 尽量手动配置这个选项，否则的话都默认存在了里系统的默认临时文件/tmp里。并且手动配置的时候，如果服务器是多磁盘的，每个磁盘都设置一个临时文件目录，这样便于mapreduce或者hdfs等使用的时候提高磁盘IO效率。
+
+fs.trash.interval：
+
+默认值： 0说明： 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/19/MapReduce参数优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+   
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2017/08/10/ambari卸载/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小二">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王小二客栈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/10/ambari卸载/" itemprop="url">amabri卸载</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-10T00:00:00+08:00">
+                2017-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/搭建/" itemprop="url" rel="index">
+                    <span itemprop="name">搭建</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+	<div>
+	      
+	</div>
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          1.删除hdp.repo和hdp-util.repocd /etc/yum.repos.d/rm -rf hdprm -rf HDPrm -rf ambari*
+2.删除安装包用yum list installed | grep HDP来检查安装的ambari的包yum remove -y  sqoop.noarchyum remove -y  lzo-devel.x86_64yum remove
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/10/ambari卸载/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1907,7 +1907,7 @@ package hbase.curd;import java.io.IOException;import java.util.ArrayList;import 
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1918,7 +1918,7 @@ package hbase.curd;import java.io.IOException;import java.util.ArrayList;import 
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
