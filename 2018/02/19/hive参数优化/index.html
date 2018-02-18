@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="Hhive," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="创建字符串创建字符串最简单的方式如下:String greeting = “王小二客栈”;注意:String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。如果需要对字符串做很多修改，那么应该选择使用 StringBuffer &amp;amp; StringBuilder 类。 字符串长度用于获取有关对象的信息的方法称为访问器方法。String 类的一个访问器方法是 le">
-<meta name="keywords" content="Java">
+<meta name="description" content="只记录那二年踏过的坑 1.设置合理solt数mapred.tasktracker.map.tasks.maximum每个tasktracker可同时运行的最大map task数，默认值2。mapred.tasktracker.reduce.tasks.maximum每个tasktracker可同时运行的最大reduce task数，默认值1 2.配置磁盘块mapred.local.dirmap t">
+<meta name="keywords" content="Hhive">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java基础——String&amp;StringBuffer">
-<meta property="og:url" content="http://www.wenchong.top/2018/02/17/java基础——String&StringBuffer/index.html">
+<meta property="og:title" content="hive参数优化">
+<meta property="og:url" content="http://www.wenchong.top/2018/02/19/hive参数优化/index.html">
 <meta property="og:site_name" content="王小二客栈">
-<meta property="og:description" content="创建字符串创建字符串最简单的方式如下:String greeting = “王小二客栈”;注意:String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。如果需要对字符串做很多修改，那么应该选择使用 StringBuffer &amp;amp; StringBuilder 类。 字符串长度用于获取有关对象的信息的方法称为访问器方法。String 类的一个访问器方法是 le">
+<meta property="og:description" content="只记录那二年踏过的坑 1.设置合理solt数mapred.tasktracker.map.tasks.maximum每个tasktracker可同时运行的最大map task数，默认值2。mapred.tasktracker.reduce.tasks.maximum每个tasktracker可同时运行的最大reduce task数，默认值1 2.配置磁盘块mapred.local.dirmap t">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-17T15:52:45.244Z">
+<meta property="og:updated_time" content="2018-02-18T16:17:32.947Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java基础——String&amp;StringBuffer">
-<meta name="twitter:description" content="创建字符串创建字符串最简单的方式如下:String greeting = “王小二客栈”;注意:String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。如果需要对字符串做很多修改，那么应该选择使用 StringBuffer &amp;amp; StringBuilder 类。 字符串长度用于获取有关对象的信息的方法称为访问器方法。String 类的一个访问器方法是 le">
+<meta name="twitter:title" content="hive参数优化">
+<meta name="twitter:description" content="只记录那二年踏过的坑 1.设置合理solt数mapred.tasktracker.map.tasks.maximum每个tasktracker可同时运行的最大map task数，默认值2。mapred.tasktracker.reduce.tasks.maximum每个tasktracker可同时运行的最大reduce task数，默认值1 2.配置磁盘块mapred.local.dirmap t">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://www.wenchong.top/2018/02/17/java基础——String&StringBuffer/"/>
+  <link rel="canonical" href="http://www.wenchong.top/2018/02/19/hive参数优化/"/>
 
 
 
 
 
-  <title>java基础——String&StringBuffer | 王小二客栈</title>
+  <title>hive参数优化 | 王小二客栈</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/17/java基础——String&StringBuffer/">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/19/hive参数优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小二">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java基础——String&StringBuffer</h1>
+          <h1 class="post-title" itemprop="name headline">hive参数优化</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-17T22:20:06+08:00">
-                2018-02-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-19T00:15:40+08:00">
+                2018-02-19
               </time>
             
 
@@ -351,8 +351,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study-Java/" itemprop="url" rel="index">
-                    <span itemprop="name">study-Java</span>
+                  <a href="/categories/hive/" itemprop="url" rel="index">
+                    <span itemprop="name">hive</span>
                   </a>
                 </span>
 
@@ -394,57 +394,25 @@
       
 
       
-        <ul>
-<li>创建字符串<br>创建字符串最简单的方式如下:<br>String greeting = “王小二客栈”;<br>注意:String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。<br>如果需要对字符串做很多修改，那么应该选择使用 StringBuffer &amp; StringBuilder 类。</li>
-<li>字符串长度<br>用于获取有关对象的信息的方法称为访问器方法。<br>String 类的一个访问器方法是 length() 方法，它返回字符串对象包含的字符数。</li>
-<li><p>连接字符串<br>String 类提供了连接两个字符串的方法：<br>string1.concat(string2);<br>更常用的是使用’+’操作符来连接字符串，如：<br>“Hello,” + “ xiaoer” + “!”</p>
-<h3 id="String-方法"><a href="#String-方法" class="headerlink" title="String 方法"></a>String 方法</h3><ul>
-<li>char charAt(int index)  返回指定索引处的char值。 </li>
-<li>int compareTo（Object o）  把这个字符串和另一个对象比较。  </li>
-<li>int compareTo(String anotherString)  按字典顺序比较两个字符串。  </li>
-<li>int compareToIgnoreCase(String str)  按字典顺序比较两个字符串，不考虑大小写。  </li>
-<li>String concat(String str)  将指定字符串连接到此字符串的结尾。  </li>
-<li>boolean contentEquals(StringBuffer sb)  当且仅当字符串与指定的StringButter有相同顺序的字符时候返回真。  </li>
-<li>static String copyValueOf(char[] data)  返回指定数组中表示该字符序列的 String。  </li>
-<li>static String copyValueOf(char[] data, int offset, int count)  返回指定数组中表示该字符序列的 String。  </li>
-<li>boolean endsWith(String suffix)  测试此字符串是否以指定的后缀结束。  </li>
-<li>boolean equals(Object anObject)  将此字符串与指定的对象比较。    boolean equalsIgnoreCase(String anotherString)     将此 String 与另一个 String 比较，不考虑大小写。  </li>
-<li>byte[] getBytes()  使用平台的默认字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。  </li>
-<li>byte[] getBytes(String charsetName)  使用指定的字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。  </li>
-<li>void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)  将字符从此字符串复制到目标字符数组。  </li>
-<li>int hashCode()  返回此字符串的哈希码。  </li>
-<li>int indexOf(int ch)  返回指定字符在此字符串中第一次出现处的索引。  </li>
-<li>int indexOf(int ch, int fromIndex)  返回在此字符串中第一次出现指定字符处的索引，从指定的索引开始搜索。  </li>
-<li>int indexOf(String str)  返回指定子字符串在此字符串中第一次出现处的索引。  </li>
-<li>int indexOf(String str, int fromIndex)  返回指定子字符串在此字符串中第一次出现处的索引，从指定的索引开始。  </li>
-<li>String intern()  返回字符串对象的规范化表示形式。  </li>
-<li>int lastIndexOf(int ch)  返回指定字符在此字符串中最后一次出现处的索引。  </li>
-<li>int lastIndexOf(int ch, int fromIndex)  返回指定字符在此字符串中最后一次出现处的索引，从指定的索引处开始进行反向搜索。  </li>
-<li>int lastIndexOf(String str)  返回指定子字符串在此字符串中最右边出现处的索引。  </li>
-<li>int lastIndexOf(String str, int fromIndex)  返回指定子字符串在此字符串中最后一次出现处的索引，从指定的索引开始反向搜索。  </li>
-<li>int length()  返回此字符串的长度。  </li>
-<li>boolean matches(String regex)  告知此字符串是否匹配给定的正则表达式。  </li>
-<li>boolean regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len)  测试两个字符串区域是否相等。  </li>
-<li>boolean regionMatches(int toffset, String other, int ooffset, int len)  测试两个字符串区域是否相等。  </li>
-<li>String replace(char oldChar, char newChar)  返回一个新的字符串，它是通过用 newChar 替换此字符串中出现的所有 oldChar 得到的。  </li>
-<li>String replaceAll(String regex, String replacement)  使用给定的 replacement 替换此字符串所有匹配给定的正则表达式的子字符串。  </li>
-<li>String[] split(String regex)  根据给定正则表达式的匹配拆分此字符串。  </li>
-<li>String[] split(String regex, int limit)  根据匹配给定的正则表达式来拆分此字符串。  </li>
-<li>boolean startsWith(String prefix)  测试此字符串是否以指定的前缀开始。  </li>
-<li>boolean startsWith(String prefix, int toffset)  测试此字符串从指定索引开始的子字符串是否以指定前缀开始。  </li>
-<li>CharSequence subSequence(int beginIndex, int endIndex)  返回一个新的字符序列，它是此序列的一个子序列。  </li>
-<li>String substring(int beginIndex)  返回一个新的字符串，它是此字符串的一个子字符串。  </li>
-<li>String substring(int beginIndex, int endIndex)  返回一个新字符串，它是此字符串的一个子字符串。  </li>
-<li>char[] toCharArray()  将此字符串转换为一个新的字符数组。  </li>
-<li>String toLowerCase()  使用默认语言环境的规则将此 String 中的所有字符都转换为小写。  </li>
-<li>String toLowerCase(Locale locale)  使用给定 Locale 的规则将此 String 中的所有字符都转换为小写。  </li>
-<li>String toString()  返回此对象本身（它已经是一个字符串！）。  </li>
-<li>String toUpperCase()  使用默认语言环境的规则将此 String 中的所有字符都转换为大写。  </li>
-<li>String toUpperCase(Locale locale)  使用给定 Locale 的规则将此 String 中的所有字符都转换为大写。  </li>
-<li>String trim()  返回字符串的副本，忽略前导空白和尾部空白。  </li>
-<li>static String valueOf(primitive data type x)  返回给定data type类型x参数的字符串表示形式。  </li>
+        <h3 id="只记录那二年踏过的坑"><a href="#只记录那二年踏过的坑" class="headerlink" title="只记录那二年踏过的坑"></a>只记录那二年踏过的坑</h3><ul>
+<li>1.设置合理solt数<br>mapred.tasktracker.map.tasks.maximum<br>每个tasktracker可同时运行的最大map task数，默认值2。<br>mapred.tasktracker.reduce.tasks.maximum<br>每个tasktracker可同时运行的最大reduce task数，默认值1</li>
+<li>2.配置磁盘块<br>mapred.local.dir<br>map task中间结果写本地磁盘路径，默认值${hadoop.tmp.dir}/mapred/local。<br>可配置多块磁盘缓解写压力。当存在多个可以磁盘时，Hadoop将采用轮询方式将不同的map task中间结果写到磁盘上。</li>
+<li>3.配置RPC Handler数<br>mapred.job.tracker.handler.count<br>jobtracker可并发处理来自tasktracker的RPC请求数，默认值10。</li>
+<li>4.配置HTTP线程数<br>tasktracker.http.threads<br>HTTP服务器的工作线程数，用于获取map task的输出结果，默认值40。</li>
+<li>5.启用批调度</li>
+<li>6.选择合适的压缩算法<br>Job输出结果是否压缩<br>mapred.output.compress<br>是否压缩，默认值false。<br>mapred.output.compression.type<br>压缩类型，有NONE, RECORD和BLOCK，默认值RECORD。<br>mapred.output.compression.codec<br>压缩算法，默认值org.apache.hadoop.io.compress.DefaultCodec。<br>map task输出是否压缩<br>mapred.compress.map.output<br>是否压缩，默认值false<br>mapred.map.output.compression.codec<br>压缩算法，默认值org.apache.hadoop.io.compress.DefaultCodec。</li>
+<li>7.设置失败容忍度<br>mapred.max.map.failures.percent<br>例如：set mapred.max.map.failures.percent=30;<br>作业最多允许失败的map task比例，默认值0。<br>mapred.max.reduce.failures.percent<br>作业最多允许失败的reduce task比例，默认值0。<br>mapred.map.max.attempts<br>一个map task的最多重试次数，默认值4。<br>mapred.reduce.max.attempts<br>一个reduce task的最多重试次数，默认值4。</li>
+<li>8.设置跳过坏记录<br>mapred.skip.attempts.to.start.skipping<br>当任务失败次数达到该值时，启用跳过坏记录功能，默认值2。</li>
 </ul>
+<p>mapred.skip.out.dir<br>检测出的坏记录存放目录，默认值为输出目录的_logs/skip，设置为none表示不输出。<br>mapred.skip.map.max.skip.records<br>map task最多允许的跳过记录数，默认值0。<br>mapred.skip.reduce.max.skip.groups<br>reduce task最多允许的跳过记录数，默认值0。</p>
+<ul>
+<li>9.配置jvm重用<br>mapred.job.reuse.jvm.num.tasks<br>一个jvm可连续启动多个同类型任务，默认值1，若为-1表示不受限制。</li>
+<li>10.配置jvm参数<br>mapred.child.java.opts<br>任务启动的jvm参数，默认值-Xmx200m，建议值-XX:-UseGCOverheadLimit -Xms512m -Xmx2048m -verbose:gc -Xloggc:/tmp/@taskid@.gc</li>
+<li><ol>
+<li>map task调优<br>io.sort.mb<br>默认值100M<br>io.sort.record.percent<br>默认值0.05<br>io.sort.spill.percent<br>默认值0.80</li>
+</ol>
 </li>
+<li>12.reduce task调优<br>io.sort.factor<br>默认值10<br>mapred.reduce.parallel.copies<br>默认值5</li>
 </ul>
 
       
@@ -474,7 +442,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
+            <a href="/tags/Hhive/" rel="tag"># Hhive</a>
           
         </div>
       
@@ -487,8 +455,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/17/java基础——Number&Math/" rel="next" title="王小二客栈——Java Number&Math">
-                <i class="fa fa-chevron-left"></i> 王小二客栈——Java Number&Math
+              <a href="/2018/02/18/HDFS手动优化 /" rel="next" title="HDFS手动优化">
+                <i class="fa fa-chevron-left"></i> HDFS手动优化
               </a>
             
           </div>
@@ -497,8 +465,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/17/myblog-test/" rel="prev" title="王小二客栈">
-                王小二客栈 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/19/kafka优化参数/" rel="prev" title="kafka参数优化">
+                kafka参数优化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -642,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#String-方法"><span class="nav-number">1.</span> <span class="nav-text">String 方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#只记录那二年踏过的坑"><span class="nav-number">1.</span> <span class="nav-text">只记录那二年踏过的坑</span></a></li></ol></div>
             
 
           </div>

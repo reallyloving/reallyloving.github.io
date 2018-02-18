@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wenchong.top/"/>
-  <updated>2018-02-18T06:06:47.729Z</updated>
+  <updated>2018-02-18T16:24:06.439Z</updated>
   <id>http://www.wenchong.top/</id>
   
   <author>
@@ -15,6 +15,83 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MapReduce参数优化</title>
+    <link href="http://www.wenchong.top/2018/02/19/MapReduce%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96/"/>
+    <id>http://www.wenchong.top/2018/02/19/MapReduce参数优化/</id>
+    <published>2018-02-18T16:20:47.644Z</published>
+    <updated>2018-02-18T16:24:06.439Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="只记录那二年踏过的坑"><a href="#只记录那二年踏过的坑" class="headerlink" title="只记录那二年踏过的坑"></a>只记录那二年踏过的坑</h3><h2 id="1-core-default-xml："><a href="#1-core-default-xml：" class="headerlink" title="1 core-default.xml："></a>1 core-default.xml：</h2><ul><li>hadoop.tmp.dir：</li></ul><p>默认值： /tmp<br>说明： 尽量手动配置这个选项，否则的话都默认存在了里系统的默认临时文件/tmp里。并且手动配置的时候，如果服务器是多磁盘的，每个磁盘都设置一个临时文件目录，这样便于mapreduce或者hdfs等使用的时候提高磁盘IO效率。</p><ul><li>fs.trash.interval：</li></ul><p>默认值： 0<br>说明： 这个是开启hdfs文件删除自动转移到垃圾箱的选项，值为垃圾箱文件清除时间。一般开启这个会比较好，以防错误删除重要文件。单位是分钟。</p><ul><li>io.file.buffer.size：</li></ul><p>默认值：4096<br>说明：SequenceFiles在读写中可以使用的缓存大小，可减少 I/O 次数。在大型的 Hadoop cluster，建议可设定为 65536 到 131072。</p><h2 id="2-hdfs-default-xml："><a href="#2-hdfs-default-xml：" class="headerlink" title="2 hdfs-default.xml："></a>2 hdfs-default.xml：</h2><ul><li>dfs.blocksize：</li></ul><p>默认值：134217728<br>说明： 这个就是hdfs里一个文件块的大小了，CDH5中默认128M。太大的话会有较少map同时计算，太小的话也浪费可用map个数资源，而且文件太小namenode就浪费内存多。根据需要进行设置。</p><ul><li>dfs.namenode.handler.count：</li></ul><p>默认值：10<br>说明：设定 namenode server threads 的数量，这些 threads 會用 RPC 跟其他的 datanodes 沟通。当 datanodes 数量太多时会发現很容易出現 RPC timeout，解決方法是提升网络速度或提高这个值，但要注意的是 thread 数量多也表示 namenode 消耗的内存也随着增加</p><h2 id="3-mapred-default-xml："><a href="#3-mapred-default-xml：" class="headerlink" title="3 mapred-default.xml："></a>3 mapred-default.xml：</h2><ul><li>mapred.reduce.tasks（mapreduce.job.reduces）：</li></ul><p>默认值：1<br>说明：默认启动的reduce数。通过该参数可以手动修改reduce的个数。</p><ul><li>mapreduce.task.io.sort.factor：</li></ul><p>默认值：10<br>说明：Reduce Task中合并小文件时，一次合并的文件数据，每次合并的时候选择最小的前10进行合并。</p><ul><li>mapreduce.task.io.sort.mb：</li></ul><p>默认值：100<br>说明： Map Task缓冲区所占内存大小。</p><ul><li>mapred.child.java.opts：</li></ul><p>默认值：-Xmx200m<br>说明：jvm启动的子线程可以使用的最大内存。建议值-XX:-UseGCOverheadLimit -Xms512m -Xmx2048m -verbose:gc -Xloggc:/tmp/@taskid@.gc</p><ul><li>mapreduce.jobtracker.handler.count：</li></ul><p>默认值：10<br>说明：JobTracker可以启动的线程数，一般为tasktracker节点的4%。</p><ul><li>mapreduce.reduce.shuffle.parallelcopies：</li></ul><p>默认值：5<br>说明：reuduce shuffle阶段并行传输数据的数量。这里改为10。集群大可以增大。</p><ul><li>mapreduce.tasktracker.http.threads：</li></ul><p>默认值：40<br>说明：map和reduce是通过http进行数据传输的，这个是设置传输的并行线程数。</p><ul><li>mapreduce.map.output.compress：</li></ul><p>默认值：false<br>说明： map输出是否进行压缩，如果压缩就会多耗cpu，但是减少传输时间，如果不压缩，就需要较多的传输带宽。配合 mapreduce.map.output.compress.codec使用，默认是 org.apache.hadoop.io.compress.DefaultCodec，可以根据需要设定数据压缩方式。</p><ul><li>mapreduce.reduce.shuffle.merge.percent：</li></ul><p>默认值： 0.66<br>说明：reduce归并接收map的输出数据可占用的内存配置百分比。类似mapreduce.reduce.shuffle.input.buffer.percen属性。</p><ul><li>mapreduce.reduce.shuffle.memory.limit.percent：</li></ul><p>默认值： 0.25<br>说明：一个单一的shuffle的最大内存使用限制。</p><ul><li>mapreduce.jobtracker.handler.count：</li></ul><p>默认值： 10<br>说明：可并发处理来自tasktracker的RPC请求数，默认值10。</p><ul><li>mapred.job.reuse.jvm.num.tasks（mapreduce.job.jvm.numtasks）：</li></ul><p>默认值： 1<br>说明：一个jvm可连续启动多个同类型任务，默认值1，若为-1表示不受限制。</p><ul><li>mapreduce.tasktracker.tasks.reduce.maximum：</li></ul><p>默认值： 2<br>说明：一个tasktracker并发执行的reduce数，建议为cpu核数</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;只记录那二年踏过的坑&quot;&gt;&lt;a href=&quot;#只记录那二年踏过的坑&quot; class=&quot;headerlink&quot; title=&quot;只记录那二年踏过的坑&quot;&gt;&lt;/a&gt;只记录那二年踏过的坑&lt;/h3&gt;&lt;h2 id=&quot;1-core-default-xml：&quot;&gt;&lt;a href=&quot;#1-
+      
+    
+    </summary>
+    
+      <category term="MapReduce" scheme="http://www.wenchong.top/categories/MapReduce/"/>
+    
+    
+      <category term="MapReduce" scheme="http://www.wenchong.top/tags/MapReduce/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>kafka参数优化</title>
+    <link href="http://www.wenchong.top/2018/02/19/kafka%E4%BC%98%E5%8C%96%E5%8F%82%E6%95%B0/"/>
+    <id>http://www.wenchong.top/2018/02/19/kafka优化参数/</id>
+    <published>2018-02-18T16:17:51.288Z</published>
+    <updated>2018-02-18T16:20:31.322Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="只记录那二年踏过的坑"><a href="#只记录那二年踏过的坑" class="headerlink" title="只记录那二年踏过的坑"></a>只记录那二年踏过的坑</h3><ul><li><p>非负整数，用于唯一标识broker<br>broker.id=0</p></li><li><p>broker 服务监听端口<br>port=9092</p></li><li><p>broker 发布给生产者消费者的hostname，会存储在zookeeper。配置好这个host可以实现内网外网同时访问。<br>advertised.host.name=host1</p></li><li><p>broker 发布给生产者消费者的port，会存储在zookeeper。<br>advertised.port=9092</p></li><li><p>处理网络请求的线程数量，一般默认配置就好<br>num.network.threads=3</p></li><li><p>处理磁盘的线程数量，一般默认配置就好<br>num.io.threads=8</p></li><li><p>socket server 发送数据缓冲区大小<br>socket.send.buffer.bytes=102400</p></li><li><p>socket server 接受数据缓冲区大小<br>socket.receive.buffer.bytes=102400</p></li><li><p>soket server 可接受最大消息大小，防止oom<br>socket.request.max.bytes=104857600</p></li><li><p>kafka存放消息的目录<br>log.dirs=/home/data/kafka/kafka-logs</p></li><li><p>每个topic默认partition数量，根据消费者实际情况配置，配置过小会影响消费性能<br>num.partitions=50</p></li><li><p>kafka启动恢复日志,关闭前日志刷盘的线程数<br>num.recovery.threads.per.data.dir=1</p></li><li><p>日志保留时间<br>log.retention.minutes=30</p></li><li><p>日志保留大小<br>log.retention.bytes=53687091200</p></li><li><p>日志 segment file 大小. 超过这个大小创建新segment file<br>log.segment.bytes=67108864</p></li><li><p>日志 segment file 刷新时间. 超过这个时间创建新segment file<br>log.roll.hours=24</p></li><li><p>日志淘汰检查间隔时间<br>log.retention.check.interval.ms=10000</p></li><li><p>Zookeeper host和port<br>zookeeper.connect=localhost:2181</p></li><li><p>连接zookeeper超时时间<br>zookeeper.connection.timeout.ms=6000</p></li><li><p>清除fetch  purgatory 间隔消息条数<br>fetch.purgatory.purge.interval.requests=100</p></li><li><p>清除producer purgatory 间隔消息条数<br>producer .purgatory.purge.interval.requests=100</p></li><li><p>是否可以通过管理工具删除topic，默认是false<br>delete.topic.enable=true</p></li><li><p>日志传输时候的压缩格式，可选择lz4, snappy, gzip,不压缩。建议打开压缩，可以提高传输性能，压缩格式的选择可以参考文章结尾的参考资料。<br>compression.type=snappy</p></li><li><p>启用压缩的topic名称。若上面参数选择了一个压缩格式，那么压缩仅对本参数指定的topic有效，若本参数为空，则对所有topic有效。<br>compressed.topics=topic1</p></li><li><p>用来从主partion同步数据的线程数，默认为1，建议适当调大，数据量大的时候一个同步线程可能不够用<br>num.replica.fetchers=3</p></li><li><p>消息日志备份因子，默认是1<br>default.replication.factor=2</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;只记录那二年踏过的坑&quot;&gt;&lt;a href=&quot;#只记录那二年踏过的坑&quot; class=&quot;headerlink&quot; title=&quot;只记录那二年踏过的坑&quot;&gt;&lt;/a&gt;只记录那二年踏过的坑&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;非负整数，用于唯一标识broker&lt;br&gt;broker.i
+      
+    
+    </summary>
+    
+      <category term="kafka" scheme="http://www.wenchong.top/categories/kafka/"/>
+    
+    
+      <category term="kafka" scheme="http://www.wenchong.top/tags/kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hive参数优化</title>
+    <link href="http://www.wenchong.top/2018/02/19/hive%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96/"/>
+    <id>http://www.wenchong.top/2018/02/19/hive参数优化/</id>
+    <published>2018-02-18T16:15:40.532Z</published>
+    <updated>2018-02-18T16:17:32.947Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="只记录那二年踏过的坑"><a href="#只记录那二年踏过的坑" class="headerlink" title="只记录那二年踏过的坑"></a>只记录那二年踏过的坑</h3><ul><li>1.设置合理solt数<br>mapred.tasktracker.map.tasks.maximum<br>每个tasktracker可同时运行的最大map task数，默认值2。<br>mapred.tasktracker.reduce.tasks.maximum<br>每个tasktracker可同时运行的最大reduce task数，默认值1</li><li>2.配置磁盘块<br>mapred.local.dir<br>map task中间结果写本地磁盘路径，默认值${hadoop.tmp.dir}/mapred/local。<br>可配置多块磁盘缓解写压力。当存在多个可以磁盘时，Hadoop将采用轮询方式将不同的map task中间结果写到磁盘上。</li><li>3.配置RPC Handler数<br>mapred.job.tracker.handler.count<br>jobtracker可并发处理来自tasktracker的RPC请求数，默认值10。</li><li>4.配置HTTP线程数<br>tasktracker.http.threads<br>HTTP服务器的工作线程数，用于获取map task的输出结果，默认值40。</li><li>5.启用批调度</li><li>6.选择合适的压缩算法<br>Job输出结果是否压缩<br>mapred.output.compress<br>是否压缩，默认值false。<br>mapred.output.compression.type<br>压缩类型，有NONE, RECORD和BLOCK，默认值RECORD。<br>mapred.output.compression.codec<br>压缩算法，默认值org.apache.hadoop.io.compress.DefaultCodec。<br>map task输出是否压缩<br>mapred.compress.map.output<br>是否压缩，默认值false<br>mapred.map.output.compression.codec<br>压缩算法，默认值org.apache.hadoop.io.compress.DefaultCodec。</li><li>7.设置失败容忍度<br>mapred.max.map.failures.percent<br>例如：set mapred.max.map.failures.percent=30;<br>作业最多允许失败的map task比例，默认值0。<br>mapred.max.reduce.failures.percent<br>作业最多允许失败的reduce task比例，默认值0。<br>mapred.map.max.attempts<br>一个map task的最多重试次数，默认值4。<br>mapred.reduce.max.attempts<br>一个reduce task的最多重试次数，默认值4。</li><li>8.设置跳过坏记录<br>mapred.skip.attempts.to.start.skipping<br>当任务失败次数达到该值时，启用跳过坏记录功能，默认值2。</li></ul><p>mapred.skip.out.dir<br>检测出的坏记录存放目录，默认值为输出目录的_logs/skip，设置为none表示不输出。<br>mapred.skip.map.max.skip.records<br>map task最多允许的跳过记录数，默认值0。<br>mapred.skip.reduce.max.skip.groups<br>reduce task最多允许的跳过记录数，默认值0。</p><ul><li>9.配置jvm重用<br>mapred.job.reuse.jvm.num.tasks<br>一个jvm可连续启动多个同类型任务，默认值1，若为-1表示不受限制。</li><li>10.配置jvm参数<br>mapred.child.java.opts<br>任务启动的jvm参数，默认值-Xmx200m，建议值-XX:-UseGCOverheadLimit -Xms512m -Xmx2048m -verbose:gc -Xloggc:/tmp/@taskid@.gc</li><li><ol><li>map task调优<br>io.sort.mb<br>默认值100M<br>io.sort.record.percent<br>默认值0.05<br>io.sort.spill.percent<br>默认值0.80</li></ol></li><li>12.reduce task调优<br>io.sort.factor<br>默认值10<br>mapred.reduce.parallel.copies<br>默认值5</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;只记录那二年踏过的坑&quot;&gt;&lt;a href=&quot;#只记录那二年踏过的坑&quot; class=&quot;headerlink&quot; title=&quot;只记录那二年踏过的坑&quot;&gt;&lt;/a&gt;只记录那二年踏过的坑&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;1.设置合理solt数&lt;br&gt;mapred.tasktracke
+      
+    
+    </summary>
+    
+      <category term="hive" scheme="http://www.wenchong.top/categories/hive/"/>
+    
+    
+      <category term="Hhive" scheme="http://www.wenchong.top/tags/Hhive/"/>
+    
+  </entry>
   
   <entry>
     <title>HDFS手动优化</title>

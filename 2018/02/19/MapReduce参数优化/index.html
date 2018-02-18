@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="MapReduce," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="创建字符串创建字符串最简单的方式如下:String greeting = “王小二客栈”;注意:String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。如果需要对字符串做很多修改，那么应该选择使用 StringBuffer &amp;amp; StringBuilder 类。 字符串长度用于获取有关对象的信息的方法称为访问器方法。String 类的一个访问器方法是 le">
-<meta name="keywords" content="Java">
+<meta name="description" content="只记录那二年踏过的坑1 core-default.xml： hadoop.tmp.dir：  默认值： /tmp说明： 尽量手动配置这个选项，否则的话都默认存在了里系统的默认临时文件/tmp里。并且手动配置的时候，如果服务器是多磁盘的，每个磁盘都设置一个临时文件目录，这样便于mapreduce或者hdfs等使用的时候提高磁盘IO效率。  fs.trash.interval：  默认值： 0说明：">
+<meta name="keywords" content="MapReduce">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java基础——String&amp;StringBuffer">
-<meta property="og:url" content="http://www.wenchong.top/2018/02/17/java基础——String&StringBuffer/index.html">
+<meta property="og:title" content="MapReduce参数优化">
+<meta property="og:url" content="http://www.wenchong.top/2018/02/19/MapReduce参数优化/index.html">
 <meta property="og:site_name" content="王小二客栈">
-<meta property="og:description" content="创建字符串创建字符串最简单的方式如下:String greeting = “王小二客栈”;注意:String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。如果需要对字符串做很多修改，那么应该选择使用 StringBuffer &amp;amp; StringBuilder 类。 字符串长度用于获取有关对象的信息的方法称为访问器方法。String 类的一个访问器方法是 le">
+<meta property="og:description" content="只记录那二年踏过的坑1 core-default.xml： hadoop.tmp.dir：  默认值： /tmp说明： 尽量手动配置这个选项，否则的话都默认存在了里系统的默认临时文件/tmp里。并且手动配置的时候，如果服务器是多磁盘的，每个磁盘都设置一个临时文件目录，这样便于mapreduce或者hdfs等使用的时候提高磁盘IO效率。  fs.trash.interval：  默认值： 0说明：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-17T15:52:45.244Z">
+<meta property="og:updated_time" content="2018-02-18T16:24:06.439Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java基础——String&amp;StringBuffer">
-<meta name="twitter:description" content="创建字符串创建字符串最简单的方式如下:String greeting = “王小二客栈”;注意:String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。如果需要对字符串做很多修改，那么应该选择使用 StringBuffer &amp;amp; StringBuilder 类。 字符串长度用于获取有关对象的信息的方法称为访问器方法。String 类的一个访问器方法是 le">
+<meta name="twitter:title" content="MapReduce参数优化">
+<meta name="twitter:description" content="只记录那二年踏过的坑1 core-default.xml： hadoop.tmp.dir：  默认值： /tmp说明： 尽量手动配置这个选项，否则的话都默认存在了里系统的默认临时文件/tmp里。并且手动配置的时候，如果服务器是多磁盘的，每个磁盘都设置一个临时文件目录，这样便于mapreduce或者hdfs等使用的时候提高磁盘IO效率。  fs.trash.interval：  默认值： 0说明：">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://www.wenchong.top/2018/02/17/java基础——String&StringBuffer/"/>
+  <link rel="canonical" href="http://www.wenchong.top/2018/02/19/MapReduce参数优化/"/>
 
 
 
 
 
-  <title>java基础——String&StringBuffer | 王小二客栈</title>
+  <title>MapReduce参数优化 | 王小二客栈</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/17/java基础——String&StringBuffer/">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/19/MapReduce参数优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小二">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java基础——String&StringBuffer</h1>
+          <h1 class="post-title" itemprop="name headline">MapReduce参数优化</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-17T22:20:06+08:00">
-                2018-02-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-19T00:20:47+08:00">
+                2018-02-19
               </time>
             
 
@@ -351,8 +351,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/study-Java/" itemprop="url" rel="index">
-                    <span itemprop="name">study-Java</span>
+                  <a href="/categories/MapReduce/" itemprop="url" rel="index">
+                    <span itemprop="name">MapReduce</span>
                   </a>
                 </span>
 
@@ -394,58 +394,78 @@
       
 
       
-        <ul>
-<li>创建字符串<br>创建字符串最简单的方式如下:<br>String greeting = “王小二客栈”;<br>注意:String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。<br>如果需要对字符串做很多修改，那么应该选择使用 StringBuffer &amp; StringBuilder 类。</li>
-<li>字符串长度<br>用于获取有关对象的信息的方法称为访问器方法。<br>String 类的一个访问器方法是 length() 方法，它返回字符串对象包含的字符数。</li>
-<li><p>连接字符串<br>String 类提供了连接两个字符串的方法：<br>string1.concat(string2);<br>更常用的是使用’+’操作符来连接字符串，如：<br>“Hello,” + “ xiaoer” + “!”</p>
-<h3 id="String-方法"><a href="#String-方法" class="headerlink" title="String 方法"></a>String 方法</h3><ul>
-<li>char charAt(int index)  返回指定索引处的char值。 </li>
-<li>int compareTo（Object o）  把这个字符串和另一个对象比较。  </li>
-<li>int compareTo(String anotherString)  按字典顺序比较两个字符串。  </li>
-<li>int compareToIgnoreCase(String str)  按字典顺序比较两个字符串，不考虑大小写。  </li>
-<li>String concat(String str)  将指定字符串连接到此字符串的结尾。  </li>
-<li>boolean contentEquals(StringBuffer sb)  当且仅当字符串与指定的StringButter有相同顺序的字符时候返回真。  </li>
-<li>static String copyValueOf(char[] data)  返回指定数组中表示该字符序列的 String。  </li>
-<li>static String copyValueOf(char[] data, int offset, int count)  返回指定数组中表示该字符序列的 String。  </li>
-<li>boolean endsWith(String suffix)  测试此字符串是否以指定的后缀结束。  </li>
-<li>boolean equals(Object anObject)  将此字符串与指定的对象比较。    boolean equalsIgnoreCase(String anotherString)     将此 String 与另一个 String 比较，不考虑大小写。  </li>
-<li>byte[] getBytes()  使用平台的默认字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。  </li>
-<li>byte[] getBytes(String charsetName)  使用指定的字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。  </li>
-<li>void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)  将字符从此字符串复制到目标字符数组。  </li>
-<li>int hashCode()  返回此字符串的哈希码。  </li>
-<li>int indexOf(int ch)  返回指定字符在此字符串中第一次出现处的索引。  </li>
-<li>int indexOf(int ch, int fromIndex)  返回在此字符串中第一次出现指定字符处的索引，从指定的索引开始搜索。  </li>
-<li>int indexOf(String str)  返回指定子字符串在此字符串中第一次出现处的索引。  </li>
-<li>int indexOf(String str, int fromIndex)  返回指定子字符串在此字符串中第一次出现处的索引，从指定的索引开始。  </li>
-<li>String intern()  返回字符串对象的规范化表示形式。  </li>
-<li>int lastIndexOf(int ch)  返回指定字符在此字符串中最后一次出现处的索引。  </li>
-<li>int lastIndexOf(int ch, int fromIndex)  返回指定字符在此字符串中最后一次出现处的索引，从指定的索引处开始进行反向搜索。  </li>
-<li>int lastIndexOf(String str)  返回指定子字符串在此字符串中最右边出现处的索引。  </li>
-<li>int lastIndexOf(String str, int fromIndex)  返回指定子字符串在此字符串中最后一次出现处的索引，从指定的索引开始反向搜索。  </li>
-<li>int length()  返回此字符串的长度。  </li>
-<li>boolean matches(String regex)  告知此字符串是否匹配给定的正则表达式。  </li>
-<li>boolean regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len)  测试两个字符串区域是否相等。  </li>
-<li>boolean regionMatches(int toffset, String other, int ooffset, int len)  测试两个字符串区域是否相等。  </li>
-<li>String replace(char oldChar, char newChar)  返回一个新的字符串，它是通过用 newChar 替换此字符串中出现的所有 oldChar 得到的。  </li>
-<li>String replaceAll(String regex, String replacement)  使用给定的 replacement 替换此字符串所有匹配给定的正则表达式的子字符串。  </li>
-<li>String[] split(String regex)  根据给定正则表达式的匹配拆分此字符串。  </li>
-<li>String[] split(String regex, int limit)  根据匹配给定的正则表达式来拆分此字符串。  </li>
-<li>boolean startsWith(String prefix)  测试此字符串是否以指定的前缀开始。  </li>
-<li>boolean startsWith(String prefix, int toffset)  测试此字符串从指定索引开始的子字符串是否以指定前缀开始。  </li>
-<li>CharSequence subSequence(int beginIndex, int endIndex)  返回一个新的字符序列，它是此序列的一个子序列。  </li>
-<li>String substring(int beginIndex)  返回一个新的字符串，它是此字符串的一个子字符串。  </li>
-<li>String substring(int beginIndex, int endIndex)  返回一个新字符串，它是此字符串的一个子字符串。  </li>
-<li>char[] toCharArray()  将此字符串转换为一个新的字符数组。  </li>
-<li>String toLowerCase()  使用默认语言环境的规则将此 String 中的所有字符都转换为小写。  </li>
-<li>String toLowerCase(Locale locale)  使用给定 Locale 的规则将此 String 中的所有字符都转换为小写。  </li>
-<li>String toString()  返回此对象本身（它已经是一个字符串！）。  </li>
-<li>String toUpperCase()  使用默认语言环境的规则将此 String 中的所有字符都转换为大写。  </li>
-<li>String toUpperCase(Locale locale)  使用给定 Locale 的规则将此 String 中的所有字符都转换为大写。  </li>
-<li>String trim()  返回字符串的副本，忽略前导空白和尾部空白。  </li>
-<li>static String valueOf(primitive data type x)  返回给定data type类型x参数的字符串表示形式。  </li>
+        <h3 id="只记录那二年踏过的坑"><a href="#只记录那二年踏过的坑" class="headerlink" title="只记录那二年踏过的坑"></a>只记录那二年踏过的坑</h3><h2 id="1-core-default-xml："><a href="#1-core-default-xml：" class="headerlink" title="1 core-default.xml："></a>1 core-default.xml：</h2><ul>
+<li>hadoop.tmp.dir：</li>
 </ul>
-</li>
+<p>默认值： /tmp<br>说明： 尽量手动配置这个选项，否则的话都默认存在了里系统的默认临时文件/tmp里。并且手动配置的时候，如果服务器是多磁盘的，每个磁盘都设置一个临时文件目录，这样便于mapreduce或者hdfs等使用的时候提高磁盘IO效率。</p>
+<ul>
+<li>fs.trash.interval：</li>
 </ul>
+<p>默认值： 0<br>说明： 这个是开启hdfs文件删除自动转移到垃圾箱的选项，值为垃圾箱文件清除时间。一般开启这个会比较好，以防错误删除重要文件。单位是分钟。</p>
+<ul>
+<li>io.file.buffer.size：</li>
+</ul>
+<p>默认值：4096<br>说明：SequenceFiles在读写中可以使用的缓存大小，可减少 I/O 次数。在大型的 Hadoop cluster，建议可设定为 65536 到 131072。</p>
+<h2 id="2-hdfs-default-xml："><a href="#2-hdfs-default-xml：" class="headerlink" title="2 hdfs-default.xml："></a>2 hdfs-default.xml：</h2><ul>
+<li>dfs.blocksize：</li>
+</ul>
+<p>默认值：134217728<br>说明： 这个就是hdfs里一个文件块的大小了，CDH5中默认128M。太大的话会有较少map同时计算，太小的话也浪费可用map个数资源，而且文件太小namenode就浪费内存多。根据需要进行设置。</p>
+<ul>
+<li>dfs.namenode.handler.count：</li>
+</ul>
+<p>默认值：10<br>说明：设定 namenode server threads 的数量，这些 threads 會用 RPC 跟其他的 datanodes 沟通。当 datanodes 数量太多时会发現很容易出現 RPC timeout，解決方法是提升网络速度或提高这个值，但要注意的是 thread 数量多也表示 namenode 消耗的内存也随着增加</p>
+<h2 id="3-mapred-default-xml："><a href="#3-mapred-default-xml：" class="headerlink" title="3 mapred-default.xml："></a>3 mapred-default.xml：</h2><ul>
+<li>mapred.reduce.tasks（mapreduce.job.reduces）：</li>
+</ul>
+<p>默认值：1<br>说明：默认启动的reduce数。通过该参数可以手动修改reduce的个数。</p>
+<ul>
+<li>mapreduce.task.io.sort.factor：</li>
+</ul>
+<p>默认值：10<br>说明：Reduce Task中合并小文件时，一次合并的文件数据，每次合并的时候选择最小的前10进行合并。</p>
+<ul>
+<li>mapreduce.task.io.sort.mb：</li>
+</ul>
+<p>默认值：100<br>说明： Map Task缓冲区所占内存大小。</p>
+<ul>
+<li>mapred.child.java.opts：</li>
+</ul>
+<p>默认值：-Xmx200m<br>说明：jvm启动的子线程可以使用的最大内存。建议值-XX:-UseGCOverheadLimit -Xms512m -Xmx2048m -verbose:gc -Xloggc:/tmp/@taskid@.gc</p>
+<ul>
+<li>mapreduce.jobtracker.handler.count：</li>
+</ul>
+<p>默认值：10<br>说明：JobTracker可以启动的线程数，一般为tasktracker节点的4%。</p>
+<ul>
+<li>mapreduce.reduce.shuffle.parallelcopies：</li>
+</ul>
+<p>默认值：5<br>说明：reuduce shuffle阶段并行传输数据的数量。这里改为10。集群大可以增大。</p>
+<ul>
+<li>mapreduce.tasktracker.http.threads：</li>
+</ul>
+<p>默认值：40<br>说明：map和reduce是通过http进行数据传输的，这个是设置传输的并行线程数。</p>
+<ul>
+<li>mapreduce.map.output.compress：</li>
+</ul>
+<p>默认值：false<br>说明： map输出是否进行压缩，如果压缩就会多耗cpu，但是减少传输时间，如果不压缩，就需要较多的传输带宽。配合 mapreduce.map.output.compress.codec使用，默认是 org.apache.hadoop.io.compress.DefaultCodec，可以根据需要设定数据压缩方式。</p>
+<ul>
+<li>mapreduce.reduce.shuffle.merge.percent：</li>
+</ul>
+<p>默认值： 0.66<br>说明：reduce归并接收map的输出数据可占用的内存配置百分比。类似mapreduce.reduce.shuffle.input.buffer.percen属性。</p>
+<ul>
+<li>mapreduce.reduce.shuffle.memory.limit.percent：</li>
+</ul>
+<p>默认值： 0.25<br>说明：一个单一的shuffle的最大内存使用限制。</p>
+<ul>
+<li>mapreduce.jobtracker.handler.count：</li>
+</ul>
+<p>默认值： 10<br>说明：可并发处理来自tasktracker的RPC请求数，默认值10。</p>
+<ul>
+<li>mapred.job.reuse.jvm.num.tasks（mapreduce.job.jvm.numtasks）：</li>
+</ul>
+<p>默认值： 1<br>说明：一个jvm可连续启动多个同类型任务，默认值1，若为-1表示不受限制。</p>
+<ul>
+<li>mapreduce.tasktracker.tasks.reduce.maximum：</li>
+</ul>
+<p>默认值： 2<br>说明：一个tasktracker并发执行的reduce数，建议为cpu核数</p>
 
       
     </div>
@@ -474,7 +494,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
+            <a href="/tags/MapReduce/" rel="tag"># MapReduce</a>
           
         </div>
       
@@ -487,8 +507,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/17/java基础——Number&Math/" rel="next" title="王小二客栈——Java Number&Math">
-                <i class="fa fa-chevron-left"></i> 王小二客栈——Java Number&Math
+              <a href="/2018/02/19/kafka优化参数/" rel="next" title="kafka参数优化">
+                <i class="fa fa-chevron-left"></i> kafka参数优化
               </a>
             
           </div>
@@ -496,10 +516,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/17/myblog-test/" rel="prev" title="王小二客栈">
-                王小二客栈 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -642,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#String-方法"><span class="nav-number">1.</span> <span class="nav-text">String 方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#只记录那二年踏过的坑"><span class="nav-number">1.</span> <span class="nav-text">只记录那二年踏过的坑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-core-default-xml："><span class="nav-number"></span> <span class="nav-text">1 core-default.xml：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-hdfs-default-xml："><span class="nav-number"></span> <span class="nav-text">2 hdfs-default.xml：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-mapred-default-xml："><span class="nav-number"></span> <span class="nav-text">3 mapred-default.xml：</span></a></div>
             
 
           </div>
