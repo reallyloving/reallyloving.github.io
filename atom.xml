@@ -38,6 +38,32 @@
   </entry>
   
   <entry>
+    <title>docker安装</title>
+    <link href="http://www.wenchong.top/2018/02/05/docker%E5%AE%89%E8%A3%85/"/>
+    <id>http://www.wenchong.top/2018/02/05/docker安装/</id>
+    <published>2018-02-05T13:09:56.999Z</published>
+    <updated>2018-02-18T17:27:27.415Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1：关闭selinux"><a href="#1：关闭selinux" class="headerlink" title="1：关闭selinux"></a>1：关闭selinux</h2><p>临时关闭：setenforce 0<br>永久关闭：</p><h2 id="1-vi-etc-sysconfig-selinux"><a href="#1-vi-etc-sysconfig-selinux" class="headerlink" title="1. vi /etc/sysconfig/selinux"></a>1. vi /etc/sysconfig/selinux</h2><p>插入/编辑以下内容<br>SELINUX=disabled</p><p>#重启生效</p><h2 id="2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel："><a href="#2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel：" class="headerlink" title="2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel："></a>2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：</h2><p>rpm -ivh <a href="http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm" target="_blank" rel="noopener">http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm</a><br>sed -i ‘s/^mirrorlist=https/mirrorlist=http/‘ /etc/yum.repos.d/epel.repo<br>（elpe.repo）<br>[epel]<br>name=epel<br>mirrorlist=<a href="http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearch" target="_blank" rel="noopener">http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearch</a><br>enabled=1<br>gpgcheck=0</p><h2 id="3：安装docker"><a href="#3：安装docker" class="headerlink" title="3：安装docker"></a>3：安装docker</h2><p>yum install docker-io<br>安装完成后</p><h2 id="4：启动docker"><a href="#4：启动docker" class="headerlink" title="4：启动docker"></a>4：启动docker</h2><p>service  docker  start</p><h2 id="5：查看docker版本"><a href="#5：查看docker版本" class="headerlink" title="5：查看docker版本"></a>5：查看docker版本</h2><p>docker vesion</p><h2 id="6：查看docker日志"><a href="#6：查看docker日志" class="headerlink" title="6：查看docker日志"></a>6：查看docker日志</h2><p>cat /var/log/docker</p><p>docker安装完成</p><h1 id="一：卸载docker"><a href="#一：卸载docker" class="headerlink" title="一：卸载docker"></a>一：卸载docker</h1><p>列出你安装过的包<br>[root@localhost ~]# yum list installed | grep docker<br>docker-io.x86_64                     1.7.1-2.el6                        @epel<br>删除软件包<br>yum -y remove docker-io.x86_64<br>删除镜像/容器等<br>rm -rf /var/lib/docker</p><h1 id="二：升级docker版本为1-10-3"><a href="#二：升级docker版本为1-10-3" class="headerlink" title="二：升级docker版本为1.10.3"></a>二：升级docker版本为1.10.3</h1><p>升级之前停止docker服务,并将原有的docker服务进行备份. mv /usr/bin/docker /usr/bin/docker.bak</p><p>nohup wget -c <a href="https://get.docker.com/builds/Linux/x86_64/docker-1.10.3" target="_blank" rel="noopener">https://get.docker.com/builds/Linux/x86_64/docker-1.10.3</a> -O /usr/bin/docker<br>给执行权限：chmod 755 /usr/bin/docker 然后重启服务，并查看版本.</p><h2 id="报错："><a href="#报错：" class="headerlink" title="报错："></a>报错：</h2><p>Starting cgconfig service: Error: cannot mount memory to /cgroup/memory: No such file or directory<br>/sbin/cgconfigparser; error loading /etc/cgconfig.conf: Cgroup mounting failed<br>Failed to parse /etc/cgconfig.conf                         [FAILED]<br>Starting docker:                                       [  OK  ]</p><h2 id="修改：-etc-cgconfig-conf文件"><a href="#修改：-etc-cgconfig-conf文件" class="headerlink" title="修改：/etc/cgconfig.conf文件"></a>修改：/etc/cgconfig.conf文件</h2><p>mount {<br>    cpuset  = /cgroup/cpuset;<br>    cpu = /cgroup/cpu;<br>    cpuacct = /cgroup/cpuacct;</p><h1 id="memory-cgroup-memory"><a href="#memory-cgroup-memory" class="headerlink" title="memory  = /cgroup/memory;"></a>memory  = /cgroup/memory;</h1><pre><code>devices = /cgroup/devices;freezer = /cgroup/freezer;net_cls = /cgroup/net_cls;blkio   = /cgroup/blkio;</code></pre><p>}<br>重新启动docker 正常</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1：关闭selinux&quot;&gt;&lt;a href=&quot;#1：关闭selinux&quot; class=&quot;headerlink&quot; title=&quot;1：关闭selinux&quot;&gt;&lt;/a&gt;1：关闭selinux&lt;/h2&gt;&lt;p&gt;临时关闭：setenforce 0&lt;br&gt;永久关闭：&lt;/p&gt;
+&lt;h2
+      
+    
+    </summary>
+    
+      <category term="docker" scheme="http://www.wenchong.top/categories/docker/"/>
+    
+    
+      <category term="docker" scheme="http://www.wenchong.top/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Centos7伪分布式安装Hadoop2.6和Hbase0.94</title>
     <link href="http://www.wenchong.top/2017/12/01/centos7+hadoop2.6+hbase1.0.x/"/>
     <id>http://www.wenchong.top/2017/12/01/centos7+hadoop2.6+hbase1.0.x/</id>
@@ -85,32 +111,6 @@
     
     
       <category term="operation" scheme="http://www.wenchong.top/tags/operation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>docker安装</title>
-    <link href="http://www.wenchong.top/2017/10/08/docker%E5%AE%89%E8%A3%85/"/>
-    <id>http://www.wenchong.top/2017/10/08/docker安装/</id>
-    <published>2017-10-07T16:00:00.000Z</published>
-    <updated>2018-02-18T17:02:18.769Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1：关闭selinux"><a href="#1：关闭selinux" class="headerlink" title="1：关闭selinux"></a>1：关闭selinux</h2><p>临时关闭：setenforce 0<br>永久关闭：</p><h2 id="1-vi-etc-sysconfig-selinux"><a href="#1-vi-etc-sysconfig-selinux" class="headerlink" title="1. vi /etc/sysconfig/selinux"></a>1. vi /etc/sysconfig/selinux</h2><p>插入/编辑以下内容<br>SELINUX=disabled</p><p>#重启生效</p><h2 id="2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel："><a href="#2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel：" class="headerlink" title="2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel："></a>2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：</h2><p>rpm -ivh <a href="http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm" target="_blank" rel="noopener">http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm</a><br>sed -i ‘s/^mirrorlist=https/mirrorlist=http/‘ /etc/yum.repos.d/epel.repo<br>（elpe.repo）<br>[epel]<br>name=epel<br>mirrorlist=<a href="http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearch" target="_blank" rel="noopener">http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearch</a><br>enabled=1<br>gpgcheck=0</p><h2 id="3：安装docker"><a href="#3：安装docker" class="headerlink" title="3：安装docker"></a>3：安装docker</h2><p>yum install docker-io<br>安装完成后</p><h2 id="4：启动docker"><a href="#4：启动docker" class="headerlink" title="4：启动docker"></a>4：启动docker</h2><p>service  docker  start</p><h2 id="5：查看docker版本"><a href="#5：查看docker版本" class="headerlink" title="5：查看docker版本"></a>5：查看docker版本</h2><p>docker vesion</p><h2 id="6：查看docker日志"><a href="#6：查看docker日志" class="headerlink" title="6：查看docker日志"></a>6：查看docker日志</h2><p>cat /var/log/docker</p><p>docker安装完成</p><h1 id="一：卸载docker"><a href="#一：卸载docker" class="headerlink" title="一：卸载docker"></a>一：卸载docker</h1><p>列出你安装过的包<br>[root@localhost ~]# yum list installed | grep docker<br>docker-io.x86_64                     1.7.1-2.el6                        @epel<br>删除软件包<br>yum -y remove docker-io.x86_64<br>删除镜像/容器等<br>rm -rf /var/lib/docker</p><h1 id="二：升级docker版本为1-10-3"><a href="#二：升级docker版本为1-10-3" class="headerlink" title="二：升级docker版本为1.10.3"></a>二：升级docker版本为1.10.3</h1><p>升级之前停止docker服务,并将原有的docker服务进行备份. mv /usr/bin/docker /usr/bin/docker.bak</p><p>nohup wget -c <a href="https://get.docker.com/builds/Linux/x86_64/docker-1.10.3" target="_blank" rel="noopener">https://get.docker.com/builds/Linux/x86_64/docker-1.10.3</a> -O /usr/bin/docker<br>给执行权限：chmod 755 /usr/bin/docker 然后重启服务，并查看版本.</p><h2 id="报错："><a href="#报错：" class="headerlink" title="报错："></a>报错：</h2><p>Starting cgconfig service: Error: cannot mount memory to /cgroup/memory: No such file or directory<br>/sbin/cgconfigparser; error loading /etc/cgconfig.conf: Cgroup mounting failed<br>Failed to parse /etc/cgconfig.conf                         [FAILED]<br>Starting docker:                                       [  OK  ]</p><h2 id="修改：-etc-cgconfig-conf文件"><a href="#修改：-etc-cgconfig-conf文件" class="headerlink" title="修改：/etc/cgconfig.conf文件"></a>修改：/etc/cgconfig.conf文件</h2><p>mount {<br>    cpuset  = /cgroup/cpuset;<br>    cpu = /cgroup/cpu;<br>    cpuacct = /cgroup/cpuacct;</p><h1 id="memory-cgroup-memory"><a href="#memory-cgroup-memory" class="headerlink" title="memory  = /cgroup/memory;"></a>memory  = /cgroup/memory;</h1><pre><code>devices = /cgroup/devices;freezer = /cgroup/freezer;net_cls = /cgroup/net_cls;blkio   = /cgroup/blkio;</code></pre><p>}<br>重新启动docker 正常</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;1：关闭selinux&quot;&gt;&lt;a href=&quot;#1：关闭selinux&quot; class=&quot;headerlink&quot; title=&quot;1：关闭selinux&quot;&gt;&lt;/a&gt;1：关闭selinux&lt;/h2&gt;&lt;p&gt;临时关闭：setenforce 0&lt;br&gt;永久关闭：&lt;/p&gt;
-&lt;h2
-      
-    
-    </summary>
-    
-      <category term="docker" scheme="http://www.wenchong.top/categories/docker/"/>
-    
-    
-      <category term="docker" scheme="http://www.wenchong.top/tags/docker/"/>
     
   </entry>
   

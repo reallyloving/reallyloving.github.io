@@ -6,6 +6,17 @@
     <content type="text"><![CDATA[只记录那二年踏过的坑]]></content>
   </entry>
   <entry>
+    <title><![CDATA[docker安装]]></title>
+    <url>%2F2018%2F02%2F05%2Fdocker%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容SELINUX=disabled #重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpmsed -i ‘s/^mirrorlist=https/mirrorlist=http/‘ /etc/yum.repos.d/epel.repo（elpe.repo）[epel]name=epelmirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearchenabled=1gpgcheck=0 3：安装dockeryum install docker-io安装完成后 4：启动dockerservice docker start 5：查看docker版本docker vesion 6：查看docker日志cat /var/log/docker docker安装完成 一：卸载docker列出你安装过的包[root@localhost ~]# yum list installed | grep dockerdocker-io.x86_64 1.7.1-2.el6 @epel删除软件包yum -y remove docker-io.x86_64删除镜像/容器等rm -rf /var/lib/docker 二：升级docker版本为1.10.3升级之前停止docker服务,并将原有的docker服务进行备份. mv /usr/bin/docker /usr/bin/docker.bak nohup wget -c https://get.docker.com/builds/Linux/x86_64/docker-1.10.3 -O /usr/bin/docker给执行权限：chmod 755 /usr/bin/docker 然后重启服务，并查看版本. 报错：Starting cgconfig service: Error: cannot mount memory to /cgroup/memory: No such file or directory/sbin/cgconfigparser; error loading /etc/cgconfig.conf: Cgroup mounting failedFailed to parse /etc/cgconfig.conf [FAILED]Starting docker: [ OK ] 修改：/etc/cgconfig.conf文件mount { cpuset = /cgroup/cpuset; cpu = /cgroup/cpu; cpuacct = /cgroup/cpuacct; memory = /cgroup/memory;devices = /cgroup/devices; freezer = /cgroup/freezer; net_cls = /cgroup/net_cls; blkio = /cgroup/blkio; }重新启动docker 正常]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Centos7伪分布式安装Hadoop2.6和Hbase0.94]]></title>
     <url>%2F2017%2F12%2F01%2Fcentos7%2Bhadoop2.6%2Bhbase1.0.x%2F</url>
     <content type="text"><![CDATA[只记录那二年踏过的坑一、安装Jdk：首先需要卸载系统自带的openjava，查看系统的Java： rpm -qa|grep java。 卸载： yum -y remove java javaxxxxx(系统自带的Java版本) 安装jdk，将jdk.tar.gz文件复制到/usr/java中,终端进入/mnt/share ,cp jdk.tar.gz /usr/ava，进入/usr/java解压：tar xzvf jdk.targz 配置环境变量：vi /etc/profile 输入i编辑在尾部添加：export JAVA_HOME=/usr/java/jdkxxxxexport PATH=$JAVA_HOME/bin:$PATHexport CLASSPATH=.:JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar 保存并退出： wq使修改生效： source /etc/profile查看Java版本：java -version 二、Hadoop伪分布式安装 1、ssh无密码登陆 终端：ssh-keygen -t rsa (获得rsa公钥私钥,id_rsa和id_rsa.pub)cd .sshcp id_rsa.pub authorized_keys (将公钥复制给authorized_keys) &lt;分布式则要将所有节点id_rsa.pub相互复制&gt; 2、 /mnt/share cp hadoop2.x /usr.hadoop 解压tar xzvf hadoop 2.x 3、修改core-site.xml、hadoop-env.sh、hdfs-site.xml、mapred-site.xml 、yarn-site.xml(hadoop2.x版本的配置文件在/hadoop2.x/etc/hadoop下) ①core-site.xml： fs.default.name hdfs://localhost:9000 ② hadoop-env.sh：export JAVA_HOME=/usr/java/jdkxxx (jdk路径) ③ hdfs-site.xml： 先创建好数据节点和名称节点的存放路径 dfs.datanode.data.dir /user/hadoop/hadoop-2.5.1/data dfs.namenode.name.dir /user/hadoop/hadoop-2.5.1/name dfs.replication 1 ④mapred-site.xml: (注意：这个文件是将/hadoop2.x/etc/hadoop下的mapred-site.xml.template复制并重命名 ) mapreduce.framework.name yarn ⑤yarn-site.xml： yarn.nodemanager.aux-services mapreduce_shuffle 4、namenode格式化（一定要完成） 终端：cd /usr/hadoop/hadoop-2.5.1/bin ./hdfs namenode -format (输入./hadoop namenode -format也行) 5、运行hadoop 终端： cd /usr/hadoop/hadoop-2.5.1/sbin (2.x版本后启动/停止在sbin目录下)./start-hdfs.sh./start-yarn.sh(也可以只输入./start-all.sh) 输入jps查看启动项，当启动了NameNode、DataNode、SecondaryNameNode、ResourceManager、NodeManager即ok。 可进入Firefox中，输入端口号： localhost:50070 进入hadoop可视化页面。 三、Hbase0.94安装 1、/mnt/share cp hbase1.0.1 /usr.hbase 解压tar xzvf hbase1.0.1 2、修改hbase配置文件hbase-env.sh、hbase-site.xml hbase-env.sh: export JAVA_HOME=/usr/java/jdkxxxx (java路径)export HBASE_MANAGES_ZK=true (都得去掉前面#) hbase-site.xml： hbase.rootdir hdfs://localhost:9000/hbase hbase.cluster.distributed true hbase.zookeeper.quorum localhost hbase.tmp.dir file:/usr/hbase/tmp hbase.zookeeper.property.dataDir file:/usr/hbase/zookeeperdata 3、运行hbase 运行前需先启动hadoop，再进入hbase的bin目录下输入指令 ./start-hbase.sh输入jps查看启动项，如有HMaster、HRegionServer、HQuormPeer,则说明hbase启动成功。输入./hbase Shell (进入shell指令，可通过shell指令建表)]]></content>
@@ -25,17 +36,6 @@
       </categories>
       <tags>
         <tag>operation</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[docker安装]]></title>
-    <url>%2F2017%2F10%2F08%2Fdocker%E5%AE%89%E8%A3%85%2F</url>
-    <content type="text"><![CDATA[1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容SELINUX=disabled #重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpmsed -i ‘s/^mirrorlist=https/mirrorlist=http/‘ /etc/yum.repos.d/epel.repo（elpe.repo）[epel]name=epelmirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearchenabled=1gpgcheck=0 3：安装dockeryum install docker-io安装完成后 4：启动dockerservice docker start 5：查看docker版本docker vesion 6：查看docker日志cat /var/log/docker docker安装完成 一：卸载docker列出你安装过的包[root@localhost ~]# yum list installed | grep dockerdocker-io.x86_64 1.7.1-2.el6 @epel删除软件包yum -y remove docker-io.x86_64删除镜像/容器等rm -rf /var/lib/docker 二：升级docker版本为1.10.3升级之前停止docker服务,并将原有的docker服务进行备份. mv /usr/bin/docker /usr/bin/docker.bak nohup wget -c https://get.docker.com/builds/Linux/x86_64/docker-1.10.3 -O /usr/bin/docker给执行权限：chmod 755 /usr/bin/docker 然后重启服务，并查看版本. 报错：Starting cgconfig service: Error: cannot mount memory to /cgroup/memory: No such file or directory/sbin/cgconfigparser; error loading /etc/cgconfig.conf: Cgroup mounting failedFailed to parse /etc/cgconfig.conf [FAILED]Starting docker: [ OK ] 修改：/etc/cgconfig.conf文件mount { cpuset = /cgroup/cpuset; cpu = /cgroup/cpu; cpuacct = /cgroup/cpuacct; memory = /cgroup/memory;devices = /cgroup/devices; freezer = /cgroup/freezer; net_cls = /cgroup/net_cls; blkio = /cgroup/blkio; }重新启动docker 正常]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
