@@ -417,6 +417,31 @@
   </entry>
   
   <entry>
+    <title>centos和Ubuntu本地源制作</title>
+    <link href="http://www.wenchong.top/2016/11/15/centos%E5%92%8CUbuntu%E5%88%B6%E4%BD%9C%E6%9C%AC%E5%9C%B0%E6%BA%90/"/>
+    <id>http://www.wenchong.top/2016/11/15/centos和Ubuntu制作本地源/</id>
+    <published>2016-11-15T11:08:50.000Z</published>
+    <updated>2018-02-18T16:42:21.385Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="只记录那二年踏过的坑"><a href="#只记录那二年踏过的坑" class="headerlink" title="只记录那二年踏过的坑"></a>只记录那二年踏过的坑</h3><h2 id="CentOS系统"><a href="#CentOS系统" class="headerlink" title="CentOS系统"></a>CentOS系统</h2><ul><li>使用yum安装软件时，下载的* .rpm包缓存在/var/cache/yum/x86_64/7/；</li><li>创建目录</li><li>用于存放特定软件所需的软件包；</li></ul><p>mkdir -p /opt/packages</p><ul><li>下载软件包<br>yum install -y –downloadonly –downloaddir=/opt/packages python-openstackclient</li><li>生成repo文件<br>yum install -y createrepo</li></ul><p>createrepo /opt/packages</p><ul><li>生成压缩包</li></ul><p>tar -zcf packages.tgz packages/</p><ul><li>配置本地源</li></ul><p>tar -zxf packages.tgz -C /opt<br>vim /etc/yum.repos.d/local.repo</p><p>[Local]<br>name=Local Yum<br>baseurl=file:////opt/packages/<br>gpgcheck=0<br>enabled=1</p><ul><li>客户端安装软件：<br>yum install python-openstackclient<h2 id="Ubuntu系统"><a href="#Ubuntu系统" class="headerlink" title="Ubuntu系统"></a>Ubuntu系统</h2></li><li>使用apt命令安装软件时，下载的* .deb包缓存在/var/cache/apt/archives/；</li><li>创建目录</li><li>用于存放特定软件所需的软件包；</li></ul><p>mkdir -p /opt/packages</p><ul><li>下载软件包</li><li>清除旧的缓存：</li></ul><p>rm -f /var/cache/apt/archives/* .deb</p><ul><li>下载软件包：</li></ul><p>apt install -d -y –force-yes PACKAGE-NAME</p><ul><li>拷贝软件包</li></ul><p>cp /var/cache/apt/archives/* .deb /opt/packages/</p><ul><li>生成Packages.gz包<br>Packages.gz中包含软件包信息以及其依赖关系信息；</li><li>安装dpkg-dev以便使用dpkg-scanpackages命令生成Packages.gz文件；</li></ul><p>apt install -y dpkg-dev</p><ul><li>单机版本地源</li><li>此处忽略一切的警告(warning)；</li></ul><p>cd /opt/<br>dpkg-scanpackages packages/ /dev/null | gzip &gt; /opt/packages/Packages.gz -r</p><ul><li>制作成压缩包，便于网络传输；</li></ul><p>cd /opt/<br>tar -zcf packages.tgz packages/</p><ul><li><p>将压缩包拷贝到目标主机；</p></li><li><p>解压压缩包并配置软件源(目标主机)：</p></li></ul><p>tar -zxf packages.tgz -C /opt<br>echo ‘deb file:///opt/ packages/‘ &gt; /etc/apt/sources.list</p><ul><li><p>临时的Web共享本地源</p></li><li><p>此处忽略一切的警告(warning)；</p></li></ul><p>cd /opt/packages/<br>dpkg-scanpackages . /dev/null | gzip &gt; /opt/packages/Packages.gz -r</p><ul><li>使用Python自带的SimpleHTTPServer会在当前目录启动一个简易的Web服务器；</li></ul><p>cd /opt/packages/<br>python -m SimpleHTTPServer PORT</p><ul><li>配置软件源(目标主机):<br>echo ‘deb <a href="http://IP:PORT/" target="_blank" rel="noopener">http://IP:PORT/</a> /‘ &gt; /etc/apt/sources.list</li><li><p>搭建Web服务共享本地源</p></li><li><p>搭建主流的Web服务：Apache服务或Nginx服务；</p></li><li>配置Web服务，根目录指向/opt/packages/；</li><li>配置软件源(目标主机):<br>echo ‘deb <a href="http://IP:PORT/" target="_blank" rel="noopener">http://IP:PORT/</a> /‘ &gt; /etc/apt/sources.list</li><li>安装软件(目标主机)<br>apt update<br>apt install -y –force-yes PACKAGE-NAME</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;只记录那二年踏过的坑&quot;&gt;&lt;a href=&quot;#只记录那二年踏过的坑&quot; class=&quot;headerlink&quot; title=&quot;只记录那二年踏过的坑&quot;&gt;&lt;/a&gt;只记录那二年踏过的坑&lt;/h3&gt;&lt;h2 id=&quot;CentOS系统&quot;&gt;&lt;a href=&quot;#CentOS系统&quot; cla
+      
+    
+    </summary>
+    
+      <category term="本地源" scheme="http://www.wenchong.top/categories/%E6%9C%AC%E5%9C%B0%E6%BA%90/"/>
+    
+    
+      <category term="本地源" scheme="http://www.wenchong.top/tags/%E6%9C%AC%E5%9C%B0%E6%BA%90/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Ambari搭建</title>
     <link href="http://www.wenchong.top/2016/11/09/ambari%E6%90%AD%E5%BB%BA/"/>
     <id>http://www.wenchong.top/2016/11/09/ambari搭建/</id>

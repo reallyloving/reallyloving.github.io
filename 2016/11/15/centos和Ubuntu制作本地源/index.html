@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="本地源," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="AI、Big databases、Cloud computing">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王小二客栈">
-<meta property="og:url" content="http://www.wenchong.top/page/2/index.html">
+<meta name="description" content="只记录那二年踏过的坑CentOS系统 使用yum安装软件时，下载的* .rpm包缓存在/var/cache/yum/x86_64/7/； 创建目录 用于存放特定软件所需的软件包；  mkdir -p /opt/packages  下载软件包yum install -y –downloadonly –downloaddir=/opt/packages python-openstackclient 生">
+<meta name="keywords" content="本地源">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos和Ubuntu本地源制作">
+<meta property="og:url" content="http://www.wenchong.top/2016/11/15/centos和Ubuntu制作本地源/index.html">
 <meta property="og:site_name" content="王小二客栈">
-<meta property="og:description" content="AI、Big databases、Cloud computing">
+<meta property="og:description" content="只记录那二年踏过的坑CentOS系统 使用yum安装软件时，下载的* .rpm包缓存在/var/cache/yum/x86_64/7/； 创建目录 用于存放特定软件所需的软件包；  mkdir -p /opt/packages  下载软件包yum install -y –downloadonly –downloaddir=/opt/packages python-openstackclient 生">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-18T16:42:21.385Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="王小二客栈">
-<meta name="twitter:description" content="AI、Big databases、Cloud computing">
+<meta name="twitter:title" content="centos和Ubuntu本地源制作">
+<meta name="twitter:description" content="只记录那二年踏过的坑CentOS系统 使用yum安装软件时，下载的* .rpm包缓存在/var/cache/yum/x86_64/7/； 创建目录 用于存放特定软件所需的软件包；  mkdir -p /opt/packages  下载软件包yum install -y –downloadonly –downloaddir=/opt/packages python-openstackclient 生">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://www.wenchong.top/page/2/"/>
+  <link rel="canonical" href="http://www.wenchong.top/2016/11/15/centos和Ubuntu制作本地源/"/>
 
 
 
 
 
-  <title>王小二客栈</title>
+  <title>centos和Ubuntu本地源制作 | 王小二客栈</title>
   
 
 
@@ -145,8 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -283,929 +284,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/17/centos7+hadoop2.6+hbase1.0.x/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/17/centos7+hadoop2.6+hbase1.0.x/" itemprop="url">Centos7伪分布式安装Hadoop2.6和Hbase0.94</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-17T22:20:06+08:00">
-                2018-02-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/搭建/" itemprop="url" rel="index">
-                    <span itemprop="name">搭建</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
-	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          只记录那二年踏过的坑一、安装Jdk：首先需要卸载系统自带的openjava，查看系统的Java： rpm -qa|grep java。
-卸载： yum -y remove java javaxxxxx(系统自带的Java版本)
-
-安装jdk，将jdk.tar.gz文件复制到/usr/java中,终端进入/mnt/share ,cp jdk.tar.gz /usr/ava，进入/usr/java解压
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/17/centos7+hadoop2.6+hbase1.0.x/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/17/centos6.5内核升级/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/17/centos6.5内核升级/" itemprop="url">centos 6.5 内核升级</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-17T22:20:06+08:00">
-                2018-02-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/operation/" itemprop="url" rel="index">
-                    <span itemprop="name">运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
-	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          1.查看centos的内核版本rname -r
-2.查看系统版本cat /etc/centos-release
-3.安装软件编译安装新内核，依赖于开发环境和开发库yum grouplist  //查看已经安装的和未安装的软件包组，来判断我们是否安装了相应的开发环境和开发库；
-yum groupinstall “Development Tools”  //一般是安装这两个软件包组，这样做会确定你拥有
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/17/centos6.5内核升级/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/17/centos6.5+hadoop2.7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/17/centos6.5+hadoop2.7/" itemprop="url">centos6.5下搭建hadoop2.7单机伪分布环境</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-17T22:20:06+08:00">
-                2018-02-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/搭建/" itemprop="url" rel="index">
-                    <span itemprop="name">搭建</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
-	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          设置固定IP地址及网关
-设置IPvi /etc/sysconfig/network-scripts/ifcfg-eth0
-修改内容如下DEVICE=eth0HWADDR=08:00:27:BD:9D:B5  #不用改TYPE=EthernetUUID=53e4e4b6-9724-43ab-9da7-68792e611031 #不用改ONBOOT=yes  #开机启动NM_CONTROLLED=ye
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/17/centos6.5+hadoop2.7/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/05/docker安装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/05/docker安装/" itemprop="url">docker安装</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T21:09:56+08:00">
-                2018-02-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
-	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          1：关闭selinux临时关闭：setenforce 0永久关闭：
-1. vi /etc/sysconfig/selinux插入/编辑以下内容SELINUX=disabled
-#重启生效
-2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-releas
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/05/docker安装/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/05/ambari搭建错误/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/05/ambari搭建错误/" itemprop="url">错误及解决方案</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T21:06:14+08:00">
-                2018-02-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/搭建/" itemprop="url" rel="index">
-                    <span itemprop="name">搭建</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
-	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          ERROR: Exiting with exit code 1.REASON: Database check failed to complete. Please check /var/log/ambari-server/ambari-server.log and /var/log/ambari-server/ambari-server-check-database.log for more in
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/05/ambari搭建错误/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/05/ambari卸载/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/05/ambari卸载/" itemprop="url">amabri卸载</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T20:53:44+08:00">
-                2018-02-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/搭建/" itemprop="url" rel="index">
-                    <span itemprop="name">搭建</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
-	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          1.删除hdp.repo和hdp-util.repocd /etc/yum.repos.d/rm -rf hdprm -rf HDPrm -rf ambari*
-2.删除安装包用yum list installed | grep HDP来检查安装的ambari的包yum remove -y  sqoop.noarchyum remove -y  lzo-devel.x86_64yum remove
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/05/ambari卸载/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
 
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -1235,9 +316,7 @@ yum groupinstall “Development Tools”  //一般是安装这两个软件包组
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/15/centos和Ubuntu制作本地源/" itemprop="url">centos和Ubuntu本地源制作</a></h1>
+          <h1 class="post-title" itemprop="name headline">centos和Ubuntu本地源制作</h1>
         
 
         <div class="post-meta">
@@ -1292,168 +371,7 @@ yum groupinstall “Development Tools”  //一般是安装这两个软件包组
 
 	<div>
 	      
-	</div>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          只记录那二年踏过的坑CentOS系统
-使用yum安装软件时，下载的* .rpm包缓存在/var/cache/yum/x86_64/7/；
-创建目录
-用于存放特定软件所需的软件包；
-
-mkdir -p /opt/packages
-
-下载软件包yum install -y –downloadonly –downloaddir=/opt/packages python-openstackclient
-生
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/11/15/centos和Ubuntu制作本地源/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-   
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2016/11/09/ambari搭建/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/photo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王小二客栈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/09/ambari搭建/" itemprop="url">Ambari搭建</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-09T00:00:00+08:00">
-                2016-11-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/搭建/" itemprop="url" rel="index">
-                    <span itemprop="name">搭建</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-	<div>
+	        
 	      
 	</div>
 
@@ -1476,18 +394,89 @@ mkdir -p /opt/packages
       
 
       
-        
-          
-          1.物理条件：三台centos前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02配置ssh      在namenode上生成密钥对：ssh-keygen  –t  rsa      在/root/.ssh中会有生成的密钥对    
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/11/09/ambari搭建/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <h3 id="只记录那二年踏过的坑"><a href="#只记录那二年踏过的坑" class="headerlink" title="只记录那二年踏过的坑"></a>只记录那二年踏过的坑</h3><h2 id="CentOS系统"><a href="#CentOS系统" class="headerlink" title="CentOS系统"></a>CentOS系统</h2><ul>
+<li>使用yum安装软件时，下载的* .rpm包缓存在/var/cache/yum/x86_64/7/；</li>
+<li>创建目录</li>
+<li>用于存放特定软件所需的软件包；</li>
+</ul>
+<p>mkdir -p /opt/packages</p>
+<ul>
+<li>下载软件包<br>yum install -y –downloadonly –downloaddir=/opt/packages python-openstackclient</li>
+<li>生成repo文件<br>yum install -y createrepo</li>
+</ul>
+<p>createrepo /opt/packages</p>
+<ul>
+<li>生成压缩包</li>
+</ul>
+<p>tar -zcf packages.tgz packages/</p>
+<ul>
+<li>配置本地源</li>
+</ul>
+<p>tar -zxf packages.tgz -C /opt<br>vim /etc/yum.repos.d/local.repo</p>
+<p>[Local]<br>name=Local Yum<br>baseurl=file:////opt/packages/<br>gpgcheck=0<br>enabled=1</p>
+<ul>
+<li>客户端安装软件：<br>yum install python-openstackclient<h2 id="Ubuntu系统"><a href="#Ubuntu系统" class="headerlink" title="Ubuntu系统"></a>Ubuntu系统</h2></li>
+<li>使用apt命令安装软件时，下载的* .deb包缓存在/var/cache/apt/archives/；</li>
+<li>创建目录</li>
+<li>用于存放特定软件所需的软件包；</li>
+</ul>
+<p>mkdir -p /opt/packages</p>
+<ul>
+<li>下载软件包</li>
+<li>清除旧的缓存：</li>
+</ul>
+<p>rm -f /var/cache/apt/archives/* .deb</p>
+<ul>
+<li>下载软件包：</li>
+</ul>
+<p>apt install -d -y –force-yes PACKAGE-NAME</p>
+<ul>
+<li>拷贝软件包</li>
+</ul>
+<p>cp /var/cache/apt/archives/* .deb /opt/packages/</p>
+<ul>
+<li>生成Packages.gz包<br>Packages.gz中包含软件包信息以及其依赖关系信息；</li>
+<li>安装dpkg-dev以便使用dpkg-scanpackages命令生成Packages.gz文件；</li>
+</ul>
+<p>apt install -y dpkg-dev</p>
+<ul>
+<li>单机版本地源</li>
+<li>此处忽略一切的警告(warning)；</li>
+</ul>
+<p>cd /opt/<br>dpkg-scanpackages packages/ /dev/null | gzip &gt; /opt/packages/Packages.gz -r</p>
+<ul>
+<li>制作成压缩包，便于网络传输；</li>
+</ul>
+<p>cd /opt/<br>tar -zcf packages.tgz packages/</p>
+<ul>
+<li><p>将压缩包拷贝到目标主机；</p>
+</li>
+<li><p>解压压缩包并配置软件源(目标主机)：</p>
+</li>
+</ul>
+<p>tar -zxf packages.tgz -C /opt<br>echo ‘deb file:///opt/ packages/‘ &gt; /etc/apt/sources.list</p>
+<ul>
+<li><p>临时的Web共享本地源</p>
+</li>
+<li><p>此处忽略一切的警告(warning)；</p>
+</li>
+</ul>
+<p>cd /opt/packages/<br>dpkg-scanpackages . /dev/null | gzip &gt; /opt/packages/Packages.gz -r</p>
+<ul>
+<li>使用Python自带的SimpleHTTPServer会在当前目录启动一个简易的Web服务器；</li>
+</ul>
+<p>cd /opt/packages/<br>python -m SimpleHTTPServer PORT</p>
+<ul>
+<li>配置软件源(目标主机):<br>echo ‘deb <a href="http://IP:PORT/" target="_blank" rel="noopener">http://IP:PORT/</a> /‘ &gt; /etc/apt/sources.list</li>
+<li><p>搭建Web服务共享本地源</p>
+</li>
+<li><p>搭建主流的Web服务：Apache服务或Nginx服务；</p>
+</li>
+<li>配置Web服务，根目录指向/opt/packages/；</li>
+<li>配置软件源(目标主机):<br>echo ‘deb <a href="http://IP:PORT/" target="_blank" rel="noopener">http://IP:PORT/</a> /‘ &gt; /etc/apt/sources.list</li>
+<li>安装软件(目标主机)<br>apt update<br>apt install -y –force-yes PACKAGE-NAME</li>
+</ul>
+
       
     </div>
     
@@ -1501,18 +490,52 @@ mkdir -p /opt/packages
     
 
    
+      <div>
+        ﻿<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
     
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/本地源/" rel="tag"># 本地源</a>
+          
+        </div>
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/09/ambari搭建/" rel="next" title="Ambari搭建">
+                <i class="fa fa-chevron-left"></i> Ambari搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/05/ambari卸载/" rel="prev" title="amabri卸载">
+                amabri卸载 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </div>
@@ -1522,14 +545,11 @@ mkdir -p /opt/packages
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -1537,6 +557,10 @@ mkdir -p /opt/packages
 
 
           
+
+  
+
+
 
         </div>
         
@@ -1557,8 +581,17 @@ mkdir -p /opt/packages
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1629,6 +662,22 @@ mkdir -p /opt/packages
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#只记录那二年踏过的坑"><span class="nav-number">1.</span> <span class="nav-text">只记录那二年踏过的坑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS系统"><span class="nav-number"></span> <span class="nav-text">CentOS系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu系统"><span class="nav-number"></span> <span class="nav-text">Ubuntu系统</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1775,6 +824,10 @@ mkdir -p /opt/packages
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4avatar"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4avatar"></script>
+
+
 
   
 
