@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wenchong.top/"/>
-  <updated>2018-02-17T14:13:57.246Z</updated>
+  <updated>2018-05-11T07:56:04.484Z</updated>
   <id>http://www.wenchong.top/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nginx安装</title>
+    <link href="http://www.wenchong.top/2018/05/11/nginx%E5%AE%89%E8%A3%85/"/>
+    <id>http://www.wenchong.top/2018/05/11/nginx安装/</id>
+    <published>2018-05-10T16:00:00.000Z</published>
+    <updated>2018-05-11T07:56:04.484Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Nginx-“engine-x”-是一款是由俄罗斯的程序设计师Igor-Sysoev所开发高性能的-Web和-反向代理-服务器，也是一个-IMAP-POP3-SMTP-代理服务器。"><a href="#Nginx-“engine-x”-是一款是由俄罗斯的程序设计师Igor-Sysoev所开发高性能的-Web和-反向代理-服务器，也是一个-IMAP-POP3-SMTP-代理服务器。" class="headerlink" title="Nginx(“engine x”)是一款是由俄罗斯的程序设计师Igor Sysoev所开发高性能的 Web和 反向代理 服务器，也是一个 IMAP/POP3/SMTP 代理服务器。"></a>Nginx(“engine x”)是一款是由俄罗斯的程序设计师Igor Sysoev所开发高性能的 Web和 反向代理 服务器，也是一个 IMAP/POP3/SMTP 代理服务器。</h2><h2 id="在高连接并发的情况下，Nginx是Apache服务器不错的替代品。"><a href="#在高连接并发的情况下，Nginx是Apache服务器不错的替代品。" class="headerlink" title="在高连接并发的情况下，Nginx是Apache服务器不错的替代品。"></a>在高连接并发的情况下，Nginx是Apache服务器不错的替代品。</h2><h3 id="Nginx-安装"><a href="#Nginx-安装" class="headerlink" title="Nginx 安装"></a>Nginx 安装</h3><p>系统平台：CentOS release 6.6 (Final) 64位。</p><h3 id="一、安装编译工具及库文件"><a href="#一、安装编译工具及库文件" class="headerlink" title="一、安装编译工具及库文件"></a>一、安装编译工具及库文件</h3><p>yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel</p><h3 id="二、首先要安装-PCRE"><a href="#二、首先要安装-PCRE" class="headerlink" title="二、首先要安装 PCRE"></a>二、首先要安装 PCRE</h3><p>PCRE 作用是让 Nginx 支持 Rewrite 功能。</p><p>1、下载 PCRE 安装包，下载地址： <a href="http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre-8.35.tar.gz" target="_blank" rel="noopener">http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre-8.35.tar.gz</a></p><p>[root@bogon src]# wget <a href="http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre-8.35.tar.gz" target="_blank" rel="noopener">http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre-8.35.tar.gz</a></p><p>2、解压安装包:</p><p>[root@bogon src]# tar zxvf pcre-8.35.tar.gz<br>3、进入安装包目录</p><p>[root@bogon src]# cd pcre-8.35<br>4、编译安装 </p><p>[root@bogon pcre-8.35]# ./configure<br>[root@bogon pcre-8.35]# make &amp;&amp; make install<br>5、查看pcre版本</p><p>[root@bogon pcre-8.35]# pcre-config –version</p><h3 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h3><p>1、下载 Nginx，下载地址：<a href="http://nginx.org/download/nginx-1.6.2.tar.gz" target="_blank" rel="noopener">http://nginx.org/download/nginx-1.6.2.tar.gz</a></p><p>[root@bogon src]# wget <a href="http://nginx.org/download/nginx-1.6.2.tar.gz" target="_blank" rel="noopener">http://nginx.org/download/nginx-1.6.2.tar.gz</a><br>2、解压安装包</p><p>[root@bogon src]# tar zxvf nginx-1.6.2.tar.gz<br>3、进入安装包目录</p><p>[root@bogon src]# cd nginx-1.6.2<br>4、编译安装</p><p>[root@bogon nginx-1.6.2]# ./configure –prefix=/usr/local/webserver/nginx –with-http_stub_status_module –with-http_ssl_module –with-pcre=/usr/local/src/pcre-8.35<br>[root@bogon nginx-1.6.2]# make<br>[root@bogon nginx-1.6.2]# make install<br>5、查看nginx版本</p><p>[root@bogon nginx-1.6.2]# /usr/local/webserver/nginx/sbin/nginx -v</p><p>** 到此，nginx安装完成。</p><h3 id="Nginx-配置"><a href="#Nginx-配置" class="headerlink" title="Nginx 配置"></a>Nginx 配置</h3><p>创建 Nginx 运行使用的用户 www：</p><p>[root@bogon conf]# /usr/sbin/groupadd www<br>[root@bogon conf]# /usr/sbin/useradd -g www www<br>配置nginx.conf ，将/usr/local/webserver/nginx/conf/nginx.conf替换为以下内容</p><p>[root@bogon conf]#  cat /usr/local/webserver/nginx/conf/nginx.conf</p><p>user www www;<br>worker_processes 2; #设置值和CPU核心数一致<br>error_log /usr/local/webserver/nginx/logs/nginx_error.log crit; #日志位置和日志级别<br>pid /usr/local/webserver/nginx/nginx.pid;</p><p>#Specifies the value for maximum file descriptors that can be opened by this process.<br>worker_rlimit_nofile 65535;<br>events<br>{<br>  use epoll;<br>  worker_connections 65535;<br>}<br>http<br>{<br>  include mime.types;<br>  default_type application/octet-stream;<br>  log_format main  ‘$remote_addr - $remote_user [$time_local] “$request” ‘<br>               ‘$status $body_bytes_sent “$http_referer” ‘<br>               ‘“$http_user_agent” $http_x_forwarded_for’;</p><p>#charset gb2312;</p><p>  server_names_hash_bucket_size 128;<br>  client_header_buffer_size 32k;<br>  large_client_header_buffers 4 32k;<br>  client_max_body_size 8m;</p><p>  sendfile on;<br>  tcp_nopush on;<br>  keepalive_timeout 60;<br>  tcp_nodelay on;<br>  fastcgi_connect_timeout 300;<br>  fastcgi_send_timeout 300;<br>  fastcgi_read_timeout 300;<br>  fastcgi_buffer_size 64k;<br>  fastcgi_buffers 4 64k;<br>  fastcgi_busy_buffers_size 128k;<br>  fastcgi_temp_file_write_size 128k;<br>  gzip on;<br>  gzip_min_length 1k;<br>  gzip_buffers 4 16k;<br>  gzip_http_version 1.0;<br>  gzip_comp_level 2;<br>  gzip_types text/plain application/x-javascript text/css application/xml;<br>  gzip_vary on;</p><p>  #limit_zone crawler $binary_remote_addr 10m;</p><p> #下面是server虚拟主机的配置<br> server<br>  {<br>    listen 80;#监听端口<br>    server_name localhost;#域名<br>    index index.html index.htm index.php;<br>    root /usr/local/webserver/nginx/html;#站点目录<br>      location ~ .*.(php|php5)?$<br>    {</p><pre><code>  #fastcgi_pass unix:/tmp/php-cgi.sock;  fastcgi_pass 127.0.0.1:9000;  fastcgi_index index.php;  include fastcgi.conf;}location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|ico)${  expires 30d;</code></pre><h1 id="access-log-off"><a href="#access-log-off" class="headerlink" title="access_log off;"></a>access_log off;</h1><pre><code>}location ~ .*\.(js|css)?${  expires 15d;</code></pre><h1 id="access-log-off-1"><a href="#access-log-off-1" class="headerlink" title="access_log off;"></a>access_log off;</h1><pre><code>}access_log off;</code></pre><p>  }</p><p>}<br>检查配置文件ngnix.conf的正确性命令：</p><p>[root@bogon conf]# /usr/local/webserver/nginx/sbin/nginx -t</p><h3 id="启动-Nginx"><a href="#启动-Nginx" class="headerlink" title="启动 Nginx"></a>启动 Nginx</h3><p>Nginx 启动命令如下：</p><p>[root@bogon conf]# /usr/local/webserver/nginx/sbin/nginx</p><h3 id="访问站点"><a href="#访问站点" class="headerlink" title="访问站点"></a>访问站点</h3><p>从浏览器访问我们配置的站点ip：</p><p>** Nginx 其他命令<br>以下包含了 Nginx 常用的几个命令：</p><p>/usr/local/webserver/nginx/sbin/nginx -s reload            # 重新载入配置文件<br>/usr/local/webserver/nginx/sbin/nginx -s reopen            # 重启 Nginx<br>/usr/local/webserver/nginx/sbin/nginx -s stop              # 停止 Nginx</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Nginx-“engine-x”-是一款是由俄罗斯的程序设计师Igor-Sysoev所开发高性能的-Web和-反向代理-服务器，也是一个-IMAP-POP3-SMTP-代理服务器。&quot;&gt;&lt;a href=&quot;#Nginx-“engine-x”-是一款是由俄罗斯的程序设计
+      
+    
+    </summary>
+    
+      <category term="运维" scheme="http://www.wenchong.top/categories/operation/"/>
+    
+    
+      <category term="nginx" scheme="http://www.wenchong.top/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hadoop架构——2.8.3</title>
+    <link href="http://www.wenchong.top/2018/05/04/Hadoop%E6%9E%B6%E6%9E%84/"/>
+    <id>http://www.wenchong.top/2018/05/04/Hadoop架构/</id>
+    <published>2018-05-04T01:13:27.168Z</published>
+    <updated>2018-05-04T01:46:46.446Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="只记录那二年踏过的坑"><a href="#只记录那二年踏过的坑" class="headerlink" title="只记录那二年踏过的坑"></a>只记录那二年踏过的坑</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;只记录那二年踏过的坑&quot;&gt;&lt;a href=&quot;#只记录那二年踏过的坑&quot; class=&quot;headerlink&quot; title=&quot;只记录那二年踏过的坑&quot;&gt;&lt;/a&gt;只记录那二年踏过的坑&lt;/h1&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>王小二客栈</title>
@@ -467,58 +513,6 @@
     
     
       <category term="Hbase" scheme="http://www.wenchong.top/tags/Hbase/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java基础——String&amp;StringBuffer</title>
-    <link href="http://www.wenchong.top/2017/03/14/java%E5%9F%BA%E7%A1%80%E2%80%94%E2%80%94String&amp;StringBuffer/"/>
-    <id>http://www.wenchong.top/2017/03/14/java基础——String&amp;StringBuffer/</id>
-    <published>2017-03-13T16:00:00.000Z</published>
-    <updated>2018-02-18T17:04:37.608Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>创建字符串<br>创建字符串最简单的方式如下:<br>String greeting = “王小二客栈”;<br>注意:String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。<br>如果需要对字符串做很多修改，那么应该选择使用 StringBuffer &amp; StringBuilder 类。</li><li>字符串长度<br>用于获取有关对象的信息的方法称为访问器方法。<br>String 类的一个访问器方法是 length() 方法，它返回字符串对象包含的字符数。</li><li><p>连接字符串<br>String 类提供了连接两个字符串的方法：<br>string1.concat(string2);<br>更常用的是使用’+’操作符来连接字符串，如：<br>“Hello,” + “ xiaoer” + “!”</p><h3 id="String-方法"><a href="#String-方法" class="headerlink" title="String 方法"></a>String 方法</h3><ul><li>char charAt(int index)  返回指定索引处的char值。 </li><li>int compareTo（Object o）  把这个字符串和另一个对象比较。  </li><li>int compareTo(String anotherString)  按字典顺序比较两个字符串。  </li><li>int compareToIgnoreCase(String str)  按字典顺序比较两个字符串，不考虑大小写。  </li><li>String concat(String str)  将指定字符串连接到此字符串的结尾。  </li><li>boolean contentEquals(StringBuffer sb)  当且仅当字符串与指定的StringButter有相同顺序的字符时候返回真。  </li><li>static String copyValueOf(char[] data)  返回指定数组中表示该字符序列的 String。  </li><li>static String copyValueOf(char[] data, int offset, int count)  返回指定数组中表示该字符序列的 String。  </li><li>boolean endsWith(String suffix)  测试此字符串是否以指定的后缀结束。  </li><li>boolean equals(Object anObject)  将此字符串与指定的对象比较。    boolean equalsIgnoreCase(String anotherString)     将此 String 与另一个 String 比较，不考虑大小写。  </li><li>byte[] getBytes()  使用平台的默认字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。  </li><li>byte[] getBytes(String charsetName)  使用指定的字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。  </li><li>void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)  将字符从此字符串复制到目标字符数组。  </li><li>int hashCode()  返回此字符串的哈希码。  </li><li>int indexOf(int ch)  返回指定字符在此字符串中第一次出现处的索引。  </li><li>int indexOf(int ch, int fromIndex)  返回在此字符串中第一次出现指定字符处的索引，从指定的索引开始搜索。  </li><li>int indexOf(String str)  返回指定子字符串在此字符串中第一次出现处的索引。  </li><li>int indexOf(String str, int fromIndex)  返回指定子字符串在此字符串中第一次出现处的索引，从指定的索引开始。  </li><li>String intern()  返回字符串对象的规范化表示形式。  </li><li>int lastIndexOf(int ch)  返回指定字符在此字符串中最后一次出现处的索引。  </li><li>int lastIndexOf(int ch, int fromIndex)  返回指定字符在此字符串中最后一次出现处的索引，从指定的索引处开始进行反向搜索。  </li><li>int lastIndexOf(String str)  返回指定子字符串在此字符串中最右边出现处的索引。  </li><li>int lastIndexOf(String str, int fromIndex)  返回指定子字符串在此字符串中最后一次出现处的索引，从指定的索引开始反向搜索。  </li><li>int length()  返回此字符串的长度。  </li><li>boolean matches(String regex)  告知此字符串是否匹配给定的正则表达式。  </li><li>boolean regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len)  测试两个字符串区域是否相等。  </li><li>boolean regionMatches(int toffset, String other, int ooffset, int len)  测试两个字符串区域是否相等。  </li><li>String replace(char oldChar, char newChar)  返回一个新的字符串，它是通过用 newChar 替换此字符串中出现的所有 oldChar 得到的。  </li><li>String replaceAll(String regex, String replacement)  使用给定的 replacement 替换此字符串所有匹配给定的正则表达式的子字符串。  </li><li>String[] split(String regex)  根据给定正则表达式的匹配拆分此字符串。  </li><li>String[] split(String regex, int limit)  根据匹配给定的正则表达式来拆分此字符串。  </li><li>boolean startsWith(String prefix)  测试此字符串是否以指定的前缀开始。  </li><li>boolean startsWith(String prefix, int toffset)  测试此字符串从指定索引开始的子字符串是否以指定前缀开始。  </li><li>CharSequence subSequence(int beginIndex, int endIndex)  返回一个新的字符序列，它是此序列的一个子序列。  </li><li>String substring(int beginIndex)  返回一个新的字符串，它是此字符串的一个子字符串。  </li><li>String substring(int beginIndex, int endIndex)  返回一个新字符串，它是此字符串的一个子字符串。  </li><li>char[] toCharArray()  将此字符串转换为一个新的字符数组。  </li><li>String toLowerCase()  使用默认语言环境的规则将此 String 中的所有字符都转换为小写。  </li><li>String toLowerCase(Locale locale)  使用给定 Locale 的规则将此 String 中的所有字符都转换为小写。  </li><li>String toString()  返回此对象本身（它已经是一个字符串！）。  </li><li>String toUpperCase()  使用默认语言环境的规则将此 String 中的所有字符都转换为大写。  </li><li>String toUpperCase(Locale locale)  使用给定 Locale 的规则将此 String 中的所有字符都转换为大写。  </li><li>String trim()  返回字符串的副本，忽略前导空白和尾部空白。  </li><li>static String valueOf(primitive data type x)  返回给定data type类型x参数的字符串表示形式。  </li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;创建字符串&lt;br&gt;创建字符串最简单的方式如下:&lt;br&gt;String greeting = “王小二客栈”;&lt;br&gt;注意:String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。&lt;br&gt;如果需要对字符串做很多修改，那么应该选择使用
-      
-    
-    </summary>
-    
-      <category term="study-Java" scheme="http://www.wenchong.top/categories/study-Java/"/>
-    
-    
-      <category term="Java" scheme="http://www.wenchong.top/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>王小二客栈——Java Number&amp;Math</title>
-    <link href="http://www.wenchong.top/2017/03/13/java%E5%9F%BA%E7%A1%80%E2%80%94%E2%80%94Number&amp;Math/"/>
-    <id>http://www.wenchong.top/2017/03/13/java基础——Number&amp;Math/</id>
-    <published>2017-03-12T16:00:00.000Z</published>
-    <updated>2018-02-18T17:04:22.900Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="忆往昔峥嵘岁月，不堪入目"><a href="#忆往昔峥嵘岁月，不堪入目" class="headerlink" title="忆往昔峥嵘岁月，不堪入目"></a>忆往昔峥嵘岁月，不堪入目</h2><ul><li>1.所有的包装类（Integer、Long、Byte、Double、Float、Short）都是抽象类Number的子类。</li><li>2.Java的Math包含了用于执行基本数学运算的属性和方法，如初等指数、对数、平方根和三角函数等。</li><li>Math的方法都被定义为static形式，通过Math类可以在主函数中直接调用。</li></ul><h3 id="下面列出Number-amp-Math类常用的一些方法："><a href="#下面列出Number-amp-Math类常用的一些方法：" class="headerlink" title="下面列出Number &amp; Math类常用的一些方法："></a>下面列出Number &amp; Math类常用的一些方法：</h3><ul><li>xxxValue()    将Number对象装换成xxx数据类型的值并返回。</li><li>compareTo（）    将number对象与参数比较。</li><li>equals()    判断number对象是否与参数相等。</li><li>valueOf()    返回一个Number对象制定的内置数据类型。</li><li>toString()    以字符串形式返回值。</li><li>parseInt()    将字符串解析为int类型。</li><li>abs()        返回参数的绝对值。</li><li>ceil（）    返回大于等于（&gt;=）给定参数的最小整数。</li><li>floor()    返回小雨等于（&lt;=）给定参数的最大整数。</li><li>rint（）    返回与参数最接近的整数，返回类型为double。</li><li>round()    他表示四舍五入。</li><li>min()        返回两个参数之间的最小值。</li><li>max()        返回两个参数之间的最大值。</li><li>exp（）    返回自然数底数e的参数次方。</li><li>log()        返回参数的自然数底数的对数值。</li><li><strong>random（)</strong>    返回一个随机数。</li></ul><h2 id="Java-Character-类"><a href="#Java-Character-类" class="headerlink" title="Java Character 类"></a>Java Character 类</h2><ul><li>Character 类用于对单个字符进行操作。</li><li>Character 类在对象中包装一个基本类型 char 的值。<h3 id="转义序列"><a href="#转义序列" class="headerlink" title="转义序列"></a>转义序列</h3>转义序列    描述<br>\t    在文中该处插入一个tab键<br>\b    在文中该处插入一个后退键<br>\n    在文中该处换行<br>\r    在文中该处插入回车<br>\f    在文中该处插入换页符<br>\’    在文中该处插入单引号<br>\”    在文中该处插入双引号<br>\    在文中该处插入反斜杠</li></ul><h3 id="Character-方法"><a href="#Character-方法" class="headerlink" title="Character 方法"></a>Character 方法</h3><p>isLetter()    是否是一个字母<br>isDigit()    是否是一个数字字符<br>isWhitespace()    是否为一个空格<br>isUpperCase()    是否是大写字母<br>isLowCase()    是否是小写字母<br>toUpperCase()    制定之母的大写形式<br>toLowCase()    制定之母的小写形式<br>toString()    返回字符的字符串形式，字符串的长短仅为1。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;忆往昔峥嵘岁月，不堪入目&quot;&gt;&lt;a href=&quot;#忆往昔峥嵘岁月，不堪入目&quot; class=&quot;headerlink&quot; title=&quot;忆往昔峥嵘岁月，不堪入目&quot;&gt;&lt;/a&gt;忆往昔峥嵘岁月，不堪入目&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;1.所有的包装类（Integer、Long、By
-      
-    
-    </summary>
-    
-      <category term="study-Java" scheme="http://www.wenchong.top/categories/study-Java/"/>
-    
-    
-      <category term="Java" scheme="http://www.wenchong.top/tags/Java/"/>
     
   </entry>
   
