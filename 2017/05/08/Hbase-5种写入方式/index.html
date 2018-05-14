@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="只记录那二年踏过的坑HBase写入数据方式（参考：《HBase The Definitive Guide》） 1.直接使用HTable进行导入，代码如下：  package hbase.curd;import java.io.IOException;import java.util.ArrayList;import java.util.List;impirt java.util.Random;im">
+<meta name="description" content="只记录那二年踏过的坑HBase写入数据方式（参考：《HBase The Definitive Guide》） 1.直接使用HTable进行导入，代码如下：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253package hbase.curd;import">
 <meta name="keywords" content="Hbase">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hbase-写入方式">
 <meta property="og:url" content="http://www.wenchong.top/2017/05/08/Hbase-5种写入方式/index.html">
 <meta property="og:site_name" content="王小二客栈">
-<meta property="og:description" content="只记录那二年踏过的坑HBase写入数据方式（参考：《HBase The Definitive Guide》） 1.直接使用HTable进行导入，代码如下：  package hbase.curd;import java.io.IOException;import java.util.ArrayList;import java.util.List;impirt java.util.Random;im">
+<meta property="og:description" content="只记录那二年踏过的坑HBase写入数据方式（参考：《HBase The Definitive Guide》） 1.直接使用HTable进行导入，代码如下：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253package hbase.curd;import">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-18T17:02:47.521Z">
+<meta property="og:updated_time" content="2018-05-14T03:12:36.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hbase-写入方式">
-<meta name="twitter:description" content="只记录那二年踏过的坑HBase写入数据方式（参考：《HBase The Definitive Guide》） 1.直接使用HTable进行导入，代码如下：  package hbase.curd;import java.io.IOException;import java.util.ArrayList;import java.util.List;impirt java.util.Random;im">
+<meta name="twitter:description" content="只记录那二年踏过的坑HBase写入数据方式（参考：《HBase The Definitive Guide》） 1.直接使用HTable进行导入，代码如下：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253package hbase.curd;import">
 
 
 
@@ -395,86 +395,10 @@
 
       
         <h1 id="只记录那二年踏过的坑"><a href="#只记录那二年踏过的坑" class="headerlink" title="只记录那二年踏过的坑"></a>只记录那二年踏过的坑</h1><h3 id="HBase写入数据方式（参考：《HBase-The-Definitive-Guide》）"><a href="#HBase写入数据方式（参考：《HBase-The-Definitive-Guide》）" class="headerlink" title="HBase写入数据方式（参考：《HBase The Definitive Guide》）"></a>HBase写入数据方式（参考：《HBase The Definitive Guide》）</h3><ul>
-<li>1.直接使用HTable进行导入，代码如下：</li>
+<li>1.直接使用HTable进行导入，代码如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">package hbase.curd;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line">impirt java.util.Random;</span><br><span class="line">import org.apache.hadoop.hbase.client.HTable;</span><br><span class="line">import org.apache.hadoop.hbase.client.Put;</span><br><span class="line">import org.apache.hadoop.hbase.util.Bytes;</span><br><span class="line"></span><br><span class="line">public class PutExample&#123;</span><br><span class="line"></span><br><span class="line">	private HTable table = HTableUtil.getHTable(&quot;testtable&quot;);</span><br><span class="line">	public static void main(String args[]) throws IOException&#123;</span><br><span class="line">	</span><br><span class="line">		PutExample pe = new PutExample();</span><br><span class="line">		pe.putRows();</span><br><span class="line">	&#125;	</span><br><span class="line"></span><br><span class="line">	public void putRows()&#123;</span><br><span class="line">		List&lt;Put&gt; puts = new ArrayList&lt;Put&gt;;</span><br><span class="line">		for(int i=0; i&lt;10; i++)&#123;</span><br><span class="line">			Put put = new Put(Bytes.toBytes(&quot;row_&quot;+i));</span><br><span class="line">			Rowdom random = new Random();</span><br><span class="line">			</span><br><span class="line">			if(random.nextBoolean())&#123;</span><br><span class="line">				put.add(Bytes.toBytes(&quot;colfam1&quot;), Bytes.toBytes(&quot;qual1&quot;), Bytes.toBytes(&quot;colfam1_qual1_value_&quot;+i));</span><br><span class="line">			&#125;</span><br><span class="line">			if(random.nextBoolean())&#123;</span><br><span class="line">				put.add(Bytes.toBytes(&quot;colfam1&quot;), Bytes.toBytes(&quot;qual2&quot;), Bytes.toBytes(&quot;colfam1_qual1_value_&quot;+i));</span><br><span class="line">			&#125;</span><br><span class="line">			if(random.nextBoolean())&#123;</span><br><span class="line">				put.add(Bytes.toBytes(&quot;colfam1&quot;), Bytes.toBytes(&quot;qual3&quot;), Bytes.toBytes(&quot;colfam1_qual1_value_&quot;+i));</span><br><span class="line">			&#125;</span><br><span class="line">			if(random.nextBoolean())&#123;</span><br><span class="line">				put.add(Bytes.toBytes(&quot;colfam1&quot;), Bytes.toBytes(&quot;qual4&quot;), Bytes.toBytes(&quot;colfam1_qual1_value_&quot;+i));	</span><br><span class="line">			&#125;</span><br><span class="line">			if(random.nextBoolean())&#123;</span><br><span class="line">				put.add(Bytes.toBytes(&quot;colfam1&quot;), Bytes.toBytes(&quot;qual5&quot;), Bytes.toBytes(&quot;colfam1_qual1_value_&quot;+i));</span><br><span class="line">			&#125;</span><br><span class="line">			puts.add(put);</span><br><span class="line">		&#125;</span><br><span class="line">		try&#123;</span><br><span class="line">			table.put(puts);</span><br><span class="line">			table.close();</span><br><span class="line">		&#125;catch(Exception e)&#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			return ;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(&quot;done put rows&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>package hbase.curd;<br>import java.io.IOException;<br>import java.util.ArrayList;<br>import java.util.List;<br>impirt java.util.Random;<br>import org.apache.hadoop.hbase.client.HTable;<br>import org.apache.hadoop.hbase.client.Put;<br>import org.apache.hadoop.hbase.util.Bytes;</p>
-<p>public class PutExample{</p>
-<pre><code>private HTable table = HTableUtil.getHTable(&quot;testtable&quot;);
-public static void main(String args[]) throws IOException{
-
-    PutExample pe = new PutExample();
-    pe.putRows();
-}    
-
-public void putRows(){
-    List&lt;Put&gt; puts = new ArrayList&lt;Put&gt;;
-    for(int i=0; i&lt;10; i++){
-        Put put = new Put(Bytes.toBytes(&quot;row_&quot;+i));
-        Rowdom random = new Random();
-
-        if(random.nextBoolean()){
-            put.add(Bytes.toBytes(&quot;colfam1&quot;), Bytes.toBytes(&quot;qual1&quot;), Bytes.toBytes(&quot;colfam1_qual1_value_&quot;+i));
-        }
-        if(random.nextBoolean()){
-            put.add(Bytes.toBytes(&quot;colfam1&quot;), Bytes.toBytes(&quot;qual2&quot;), Bytes.toBytes(&quot;colfam1_qual1_value_&quot;+i));
-        }
-        if(random.nextBoolean()){
-            put.add(Bytes.toBytes(&quot;colfam1&quot;), Bytes.toBytes(&quot;qual3&quot;), Bytes.toBytes(&quot;colfam1_qual1_value_&quot;+i));
-        }
-        if(random.nextBoolean()){
-            put.add(Bytes.toBytes(&quot;colfam1&quot;), Bytes.toBytes(&quot;qual4&quot;), Bytes.toBytes(&quot;colfam1_qual1_value_&quot;+i));    
-        }
-        if(random.nextBoolean()){
-            put.add(Bytes.toBytes(&quot;colfam1&quot;), Bytes.toBytes(&quot;qual5&quot;), Bytes.toBytes(&quot;colfam1_qual1_value_&quot;+i));
-        }
-        puts.add(put);
-    }
-    try{
-        table.put(puts);
-        table.close();
-    }catch(Exception e){
-        e.printStackTrace();
-        return ;
-    }
-    System.out.println(&quot;done put rows&quot;);
-    }
-}
-</code></pre><p>}</p>
-<h3 id="其中HTableUtil如下："><a href="#其中HTableUtil如下：" class="headerlink" title="其中HTableUtil如下："></a>其中HTableUtil如下：</h3><p>package hbase.curd;</p>
-<p>import java.io.IOException;</p>
-<p>import org.apache.hadoop.conf.Configuration;<br>import org.apache.hadoop.hbase.HBaseConfiguration;<br>import org.apache.hadoop.hbase.client.HTable;<br>import org.apache.hadoop.hbase.util.Bytes;</p>
-<p>public class HTableUtil {<br>    private static HTable table;<br>    private static Configuration conf;</p>
-<pre><code>static{
-    conf =HBaseConfiguration.create();
-    conf.set(&quot;mapred.job.tracker&quot;, &quot;hbase:9001&quot;);
-    conf.set(&quot;fs.default.name&quot;, &quot;hbase:9000&quot;);
-    conf.set(&quot;hbase.zookeeper.quorum&quot;, &quot;hbase&quot;);
-    try {
-        table = new HTable(conf,&quot;testtable&quot;);
-    } catch (IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
-}
-public static Configuration getConf(){
-    return conf;
-}
-public static HTable getHTable(String tablename){
-    if(table==null){
-        try {
-            table= new HTable(conf,tablename);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } 
-    }
-    return table;
-}
-
-public static  byte[] gB(String name){
-    return Bytes.toBytes(name);
-}
-</code></pre><p>}</p>
+<h3 id="其中HTableUtil如下："><a href="#其中HTableUtil如下：" class="headerlink" title="其中HTableUtil如下："></a>其中HTableUtil如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">package hbase.curd;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line"></span><br><span class="line">import org.apache.hadoop.conf.Configuration;</span><br><span class="line">import org.apache.hadoop.hbase.HBaseConfiguration;</span><br><span class="line">import org.apache.hadoop.hbase.client.HTable;</span><br><span class="line">import org.apache.hadoop.hbase.util.Bytes;</span><br><span class="line"></span><br><span class="line">public class HTableUtil &#123;</span><br><span class="line">	private static HTable table;</span><br><span class="line">	private static Configuration conf;</span><br><span class="line">	</span><br><span class="line">	static&#123;</span><br><span class="line">		conf =HBaseConfiguration.create();</span><br><span class="line">		conf.set(&quot;mapred.job.tracker&quot;, &quot;hbase:9001&quot;);</span><br><span class="line">		conf.set(&quot;fs.default.name&quot;, &quot;hbase:9000&quot;);</span><br><span class="line">		conf.set(&quot;hbase.zookeeper.quorum&quot;, &quot;hbase&quot;);</span><br><span class="line">		try &#123;</span><br><span class="line">			table = new HTable(conf,&quot;testtable&quot;);</span><br><span class="line">		&#125; catch (IOException e) &#123;</span><br><span class="line">			// TODO Auto-generated catch block</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	public static Configuration getConf()&#123;</span><br><span class="line">		return conf;</span><br><span class="line">	&#125;</span><br><span class="line">	public static HTable getHTable(String tablename)&#123;</span><br><span class="line">		if(table==null)&#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				table= new HTable(conf,tablename);</span><br><span class="line">			&#125; catch (IOException e) &#123;</span><br><span class="line">				// TODO Auto-generated catch block</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125; </span><br><span class="line">		&#125;</span><br><span class="line">		return table;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static  byte[] gB(String name)&#123;</span><br><span class="line">		return Bytes.toBytes(name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -609,7 +533,7 @@ public static  byte[] gB(String name){
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -717,7 +641,7 @@ public static  byte[] gB(String name){
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">����ȫվ��18.3k��</span>
+  <span class="post-count">����ȫվ��18.4k��</span>
 </div>
 
         
