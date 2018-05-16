@@ -33,17 +33,6 @@
     <content type="text"><![CDATA[只记录那二年踏过的坑]]></content>
   </entry>
   <entry>
-    <title><![CDATA[centos下sqoop环境搭建]]></title>
-    <url>%2F2018%2F02%2F15%2Fcentos%E4%B8%8Bsqoop%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%2F</url>
-    <content type="text"><![CDATA[Sqoop是一个用来将Hadoop（Hive、HBase）和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（例如：MySQL ,Oracle ,Postgres等）中的数据导入到Hadoop的HDFS中，也可以将HDFS的数据导入到关系型数据库中。 Sqoop安装 1.下载Sqoop安装包在Sqoop官网下载安装包，本次使用的是sqoop-1.4.6.binhadoop-2.0.4-alpha.tar.gz安装在/usr/local目录下，下载地址为http://apache.fayea.com/sqoop/1.4.6/sqoop-1.4.6.binhadoop-2.0.4-alpha.tar.gz 2.解压Sqoop安装包#进入sqoop安装目录[hadoop@BigData ~]$ cd /usr/local#解压sqoop安装包[hadoop@BigData ~]$ tar -zxvf sqoop-1.4.6.binhadoop-2.0.4-alpha.tar.gz#删除sqoop安装包[hadoop@BigData ~]$ rm -rf sqoop-1.4.6.binhadoop-2.0.4-alpha.tar.gz#重命名sqoop目录名[hadoop@BigData ~]$ mv sqoop-1.4.6.bin__hadoop-2.0.4-alpha sqoop 3.配置Sqoop环境变量#配置Sqoop环境变量[root@BigData ~]# vi /etc/profileexport SQOOP_HOME=/usr/local/sqoopexport PATH=$PATH:$SQOOP_HOME/bin#保存之后记得source，使之前的配置生效source /etc/profile 4.将关系型数据库驱动包放到sqoop/lib目录下MySql：mysql-connector-java-5.1.30.jarOracle：ojdbc14.jar 5.修改Sqoop配置文件[hadoop@BigData ~]$ mv sqoop-env-template.sh sqoop-env.sh[hadoop@BigData ~]$ vi sqoop-env.sh#Set path to where bin/hadoop is availableexport HADOOP_COMMON_HOME=/usr/local/hadoop#Set path to where hadoop-*-core.jar is availableexport HADOOP_MAPRED_HOME=/usr/local/hadoop#set the path to where bin/hbase is availableexport HBASE_HOME=/usr/local/hbase#Set the path to where bin/hive is availableexport HIVE_HOME=/usr/local/hive#Set the path for where zookeper config dir isexport ZOOCFGDIR=/usr/local/zookeeper到此，sqoop环境就已搭建成功！]]></content>
-      <categories>
-        <category>Sqoop</category>
-      </categories>
-      <tags>
-        <tag>sqoop</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[zookeeper搭建]]></title>
     <url>%2F2018%2F02%2F15%2Fzookeeper%E5%AE%89%E8%A3%85%2F</url>
     <content type="text"><![CDATA[本文选用：centos6.5、zookeeper-3.4.6集群部署【软件】准备好jdk环境，此次我们的环境是open_jdk1.8.0_101 zookeeper-3.4.6.tar.gz【步骤】 准备条件如果有内部dns或者外网有域名，则直接使用域名如果没有需要修改/etc/hosts文件，或者直接使用IP 集群规划 主机类型 IP地址 域名zookeeper1 192.168.1.1zookeeper1.chinasoft.comzookeeper2 192.168.1.2zookeeper2.chinasoft.comzookeeper3 192.168.1.3zookeeper3.chinasoft.com 注意：zookeeper因为有主节点和从节点的关系，所以部署的集群台数最好为奇数个，否则可能出现脑裂导致服务异常 安装下载地址：http://archive.apache.org/dist/zookeeper/zookeeper-3.4.6/解压 tar -zxf zookeeper-3.4.6.tar.gzcd zookeeper-3.4.6 拷贝配置文件，修改完成后分发给其他节点cd /data/zookeeper-3.4.6/cp zoo_sample.cfg zoo.cfg cat zoo.cfg tickTime=2000initLimit=10syncLimit=5dataDir=/data/zookeeper-3.4.6/datadataLogDir=/data/zookeeper-3.4.6/logsclientPort=2181server.1=u04rtv01.yaya.corp:2888:3888server.2=u04rtv02.yaya.corp:2888:3888server.3=u04rtv03.yaya.corp:2888:3888 3.创建data和Log文件夹mkdir /data/zookeeper-3.4.6/datamkdir /data/zookeeper-3.4.6/logs 4、在zoo.cfg中的dataDir指定的目录下，新建myid文件。例如：$ZK_INSTALL/data下，新建myid。在myid文件中输入1。表示为server.1。如果为snapshot/d_2，则myid文件中的内容为 2，依此类推。 启动：在集群中的每台主机上执行如下命令bin/zkServer.sh start 查看状态，可以看到其中一台为主节点，其他两台为从节点：bin/zkServer.sh status 主节点：./zkServer.sh statusJMX enabled by defaultUsing config: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfgMode: leader 从属节点：./zkServer.sh statusJMX enabled by defaultUsing config: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfgMode: follower 停止：bin/zkServer.sh stop 连接：bin/zkCli.sh -server zookeeper1:2181bin/zkCli.sh -server zookeeper2:2181bin/zkCli.sh -server zookeeper3:2181 报错：原因就是没有在dataDir目录下创建myid文件并且赋值(如1、2、3分别代表集群中的server1,server2,server3) 2016-08-22 17:55:16,145 [myid:] - INFO [main:QuorumPeerConfig@103] - Reading configuration from: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg2016-08-22 17:55:16,150 [myid:] - INFO [main:QuorumPeerConfig@340] - Defaulting to majority quorums2016-08-22 17:55:16,150 [myid:] - ERROR [main:QuorumPeerMain@85] - Invalid config, exiting abnormallyorg.apache.zookeeper.server.quorum.QuorumPeerConfig$ConfigException: Error processing /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:123) at org.apache.zookeeper.server.quorum.QuorumPeerMain.initializeAndRun(QuorumPeerMain.java:101) at org.apache.zookeeper.server.quorum.QuorumPeerMain.main(QuorumPeerMain.java:78)Caused by: java.lang.IllegalArgumentException: /data/yunva/zookeeper-3.4.6/data/myid file is missing at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parseProperties(QuorumPeerConfig.java:350) at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:119) … 2 moreInvalid config, exiting abnormally 单机部署——适用于开发测试tar -zxvf zookeeper-3.4.6.tar.gzcd zookeeper-3.4.6/confcp zoo_sample.cfg zoo.cfg 创建日志目录mkdir /data/yunva/zookeeper-3.4.6/datamkdir /data/yunva/zookeeper-3.4.6/logs 配置：conf/zoo.cfg tickTime=2000initLimit=10syncLimit=5dataDir=/data/yunva/zookeeper-3.4.6/logsdataLogDir=/data/yunva/zookeeper-3.4.6/logsclientPort=2181 #自动清除日志文件autopurge.snapRetainCount=20autopurge.purgeInterval=48 启动： bin/zkServer.sh start 连接到Zookeeper： bin/zkCli.sh -server 127.0.0.1:2181 适用于Java开发 查看状态：bin/zkServer.sh statusJMX enabled by defaultUsing config: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfgMode: standalone]]></content>
@@ -52,6 +41,17 @@
       </categories>
       <tags>
         <tag>zookeepere</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[centos下sqoop环境搭建]]></title>
+    <url>%2F2018%2F02%2F15%2Fcentos%E4%B8%8Bsqoop%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[Sqoop是一个用来将Hadoop（Hive、HBase）和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（例如：MySQL ,Oracle ,Postgres等）中的数据导入到Hadoop的HDFS中，也可以将HDFS的数据导入到关系型数据库中。 Sqoop安装 1.下载Sqoop安装包在Sqoop官网下载安装包，本次使用的是sqoop-1.4.6.binhadoop-2.0.4-alpha.tar.gz安装在/usr/local目录下，下载地址为http://apache.fayea.com/sqoop/1.4.6/sqoop-1.4.6.binhadoop-2.0.4-alpha.tar.gz 2.解压Sqoop安装包#进入sqoop安装目录[hadoop@BigData ~]$ cd /usr/local#解压sqoop安装包[hadoop@BigData ~]$ tar -zxvf sqoop-1.4.6.binhadoop-2.0.4-alpha.tar.gz#删除sqoop安装包[hadoop@BigData ~]$ rm -rf sqoop-1.4.6.binhadoop-2.0.4-alpha.tar.gz#重命名sqoop目录名[hadoop@BigData ~]$ mv sqoop-1.4.6.bin__hadoop-2.0.4-alpha sqoop 3.配置Sqoop环境变量#配置Sqoop环境变量[root@BigData ~]# vi /etc/profileexport SQOOP_HOME=/usr/local/sqoopexport PATH=$PATH:$SQOOP_HOME/bin#保存之后记得source，使之前的配置生效source /etc/profile 4.将关系型数据库驱动包放到sqoop/lib目录下MySql：mysql-connector-java-5.1.30.jarOracle：ojdbc14.jar 5.修改Sqoop配置文件[hadoop@BigData ~]$ mv sqoop-env-template.sh sqoop-env.sh[hadoop@BigData ~]$ vi sqoop-env.sh#Set path to where bin/hadoop is availableexport HADOOP_COMMON_HOME=/usr/local/hadoop#Set path to where hadoop-*-core.jar is availableexport HADOOP_MAPRED_HOME=/usr/local/hadoop#set the path to where bin/hbase is availableexport HBASE_HOME=/usr/local/hbase#Set the path to where bin/hive is availableexport HIVE_HOME=/usr/local/hive#Set the path for where zookeper config dir isexport ZOOCFGDIR=/usr/local/zookeeper到此，sqoop环境就已搭建成功！]]></content>
+      <categories>
+        <category>Sqoop</category>
+      </categories>
+      <tags>
+        <tag>sqoop</tag>
       </tags>
   </entry>
   <entry>

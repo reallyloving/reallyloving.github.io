@@ -114,32 +114,6 @@
   </entry>
   
   <entry>
-    <title>centos下sqoop环境搭建</title>
-    <link href="http://www.wenchong.top/2018/02/15/centos%E4%B8%8Bsqoop%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
-    <id>http://www.wenchong.top/2018/02/15/centos下sqoop环境搭建/</id>
-    <published>2018-02-14T16:00:00.000Z</published>
-    <updated>2018-03-05T13:14:36.442Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>Sqoop是一个用来将Hadoop（Hive、HBase）和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（例如：MySQL ,Oracle ,Postgres等）中的数据导入到Hadoop的HDFS中，也可以将HDFS的数据导入到关系型数据库中。</li></ul><h3 id="Sqoop安装"><a href="#Sqoop安装" class="headerlink" title="Sqoop安装"></a>Sqoop安装</h3><ul><li>1.下载Sqoop安装包<br>在Sqoop官网下载安装包，本次使用的是sqoop-1.4.6.bin<strong>hadoop-2.0.4-alpha.tar.gz安装在/usr/local目录下，下载地址为<a href="http://apache.fayea.com/sqoop/1.4.6/sqoop-1.4.6.bin" target="_blank" rel="noopener">http://apache.fayea.com/sqoop/1.4.6/sqoop-1.4.6.bin</a></strong>hadoop-2.0.4-alpha.tar.gz</li><li>2.解压Sqoop安装包<br>#进入sqoop安装目录<br>[hadoop@BigData ~]$ cd /usr/local<br>#解压sqoop安装包<br>[hadoop@BigData ~]$ tar -zxvf sqoop-1.4.6.bin<strong>hadoop-2.0.4-alpha.tar.gz<br>#删除sqoop安装包<br>[hadoop@BigData ~]$ rm -rf sqoop-1.4.6.bin</strong>hadoop-2.0.4-alpha.tar.gz<br>#重命名sqoop目录名<br>[hadoop@BigData ~]$ mv sqoop-1.4.6.bin__hadoop-2.0.4-alpha sqoop</li><li>3.配置Sqoop环境变量<br>#配置Sqoop环境变量<br>[root@BigData ~]# vi /etc/profile<br>export SQOOP_HOME=/usr/local/sqoop<br>export PATH=$PATH:$SQOOP_HOME/bin<br>#保存之后记得source，使之前的配置生效<br>source /etc/profile</li><li>4.将关系型数据库驱动包放到sqoop/lib目录下<br>MySql：mysql-connector-java-5.1.30.jar<br>Oracle：ojdbc14.jar</li><li>5.修改Sqoop配置文件<br>[hadoop@BigData ~]$ mv sqoop-env-template.sh sqoop-env.sh<br>[hadoop@BigData ~]$ vi sqoop-env.sh<br>#Set path to where bin/hadoop is available<br>export HADOOP_COMMON_HOME=/usr/local/hadoop<br>#Set path to where hadoop-*-core.jar is available<br>export HADOOP_MAPRED_HOME=/usr/local/hadoop<br>#set the path to where bin/hbase is available<br>export HBASE_HOME=/usr/local/hbase<br>#Set the path to where bin/hive is available<br>export HIVE_HOME=/usr/local/hive<br>#Set the path for where zookeper config dir is<br>export ZOOCFGDIR=/usr/local/zookeeper<br>到此，sqoop环境就已搭建成功！</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;Sqoop是一个用来将Hadoop（Hive、HBase）和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（例如：MySQL ,Oracle ,Postgres等）中的数据导入到Hadoop的HDFS中，也可以将HDFS的数据导入到关系型数据库中。&lt;
-      
-    
-    </summary>
-    
-      <category term="Sqoop" scheme="http://www.wenchong.top/categories/Sqoop/"/>
-    
-    
-      <category term="sqoop" scheme="http://www.wenchong.top/tags/sqoop/"/>
-    
-  </entry>
-  
-  <entry>
     <title>zookeeper搭建</title>
     <link href="http://www.wenchong.top/2018/02/15/zookeeper%E5%AE%89%E8%A3%85/"/>
     <id>http://www.wenchong.top/2018/02/15/zookeeper安装/</id>
@@ -162,6 +136,32 @@
     
     
       <category term="zookeepere" scheme="http://www.wenchong.top/tags/zookeepere/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>centos下sqoop环境搭建</title>
+    <link href="http://www.wenchong.top/2018/02/15/centos%E4%B8%8Bsqoop%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>http://www.wenchong.top/2018/02/15/centos下sqoop环境搭建/</id>
+    <published>2018-02-14T16:00:00.000Z</published>
+    <updated>2018-03-05T13:14:36.442Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>Sqoop是一个用来将Hadoop（Hive、HBase）和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（例如：MySQL ,Oracle ,Postgres等）中的数据导入到Hadoop的HDFS中，也可以将HDFS的数据导入到关系型数据库中。</li></ul><h3 id="Sqoop安装"><a href="#Sqoop安装" class="headerlink" title="Sqoop安装"></a>Sqoop安装</h3><ul><li>1.下载Sqoop安装包<br>在Sqoop官网下载安装包，本次使用的是sqoop-1.4.6.bin<strong>hadoop-2.0.4-alpha.tar.gz安装在/usr/local目录下，下载地址为<a href="http://apache.fayea.com/sqoop/1.4.6/sqoop-1.4.6.bin" target="_blank" rel="noopener">http://apache.fayea.com/sqoop/1.4.6/sqoop-1.4.6.bin</a></strong>hadoop-2.0.4-alpha.tar.gz</li><li>2.解压Sqoop安装包<br>#进入sqoop安装目录<br>[hadoop@BigData ~]$ cd /usr/local<br>#解压sqoop安装包<br>[hadoop@BigData ~]$ tar -zxvf sqoop-1.4.6.bin<strong>hadoop-2.0.4-alpha.tar.gz<br>#删除sqoop安装包<br>[hadoop@BigData ~]$ rm -rf sqoop-1.4.6.bin</strong>hadoop-2.0.4-alpha.tar.gz<br>#重命名sqoop目录名<br>[hadoop@BigData ~]$ mv sqoop-1.4.6.bin__hadoop-2.0.4-alpha sqoop</li><li>3.配置Sqoop环境变量<br>#配置Sqoop环境变量<br>[root@BigData ~]# vi /etc/profile<br>export SQOOP_HOME=/usr/local/sqoop<br>export PATH=$PATH:$SQOOP_HOME/bin<br>#保存之后记得source，使之前的配置生效<br>source /etc/profile</li><li>4.将关系型数据库驱动包放到sqoop/lib目录下<br>MySql：mysql-connector-java-5.1.30.jar<br>Oracle：ojdbc14.jar</li><li>5.修改Sqoop配置文件<br>[hadoop@BigData ~]$ mv sqoop-env-template.sh sqoop-env.sh<br>[hadoop@BigData ~]$ vi sqoop-env.sh<br>#Set path to where bin/hadoop is available<br>export HADOOP_COMMON_HOME=/usr/local/hadoop<br>#Set path to where hadoop-*-core.jar is available<br>export HADOOP_MAPRED_HOME=/usr/local/hadoop<br>#set the path to where bin/hbase is available<br>export HBASE_HOME=/usr/local/hbase<br>#Set the path to where bin/hive is available<br>export HIVE_HOME=/usr/local/hive<br>#Set the path for where zookeper config dir is<br>export ZOOCFGDIR=/usr/local/zookeeper<br>到此，sqoop环境就已搭建成功！</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;Sqoop是一个用来将Hadoop（Hive、HBase）和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（例如：MySQL ,Oracle ,Postgres等）中的数据导入到Hadoop的HDFS中，也可以将HDFS的数据导入到关系型数据库中。&lt;
+      
+    
+    </summary>
+    
+      <category term="Sqoop" scheme="http://www.wenchong.top/categories/Sqoop/"/>
+    
+    
+      <category term="sqoop" scheme="http://www.wenchong.top/tags/sqoop/"/>
     
   </entry>
   
