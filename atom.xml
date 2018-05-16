@@ -114,32 +114,6 @@
   </entry>
   
   <entry>
-    <title>zookeeper搭建</title>
-    <link href="http://www.wenchong.top/2018/02/15/zookeeper%E5%AE%89%E8%A3%85/"/>
-    <id>http://www.wenchong.top/2018/02/15/zookeeper安装/</id>
-    <published>2018-02-14T16:00:00.000Z</published>
-    <updated>2018-03-05T13:15:04.288Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>本文选用：centos6.5、zookeeper-3.4.6<h3 id="集群部署"><a href="#集群部署" class="headerlink" title="集群部署"></a>集群部署</h3>【软件】准备好jdk环境，此次我们的环境是open_jdk1.8.0_101<br>　　　　zookeeper-3.4.6.tar.gz<br>【步骤】</li><li><ol><li>准备条件<br>如果有内部dns或者外网有域名，则直接使用域名<br>如果没有需要修改/etc/hosts文件，或者直接使用IP</li></ol></li></ul><p>集群规划</p><p>主机类型 IP地址  域名<br>zookeeper1 192.168.1.1zookeeper1.chinasoft.com<br>zookeeper2 192.168.1.2zookeeper2.chinasoft.com<br>zookeeper3 192.168.1.3zookeeper3.chinasoft.com</p><p>注意：zookeeper因为有主节点和从节点的关系，所以部署的集群台数最好为奇数个，否则可能出现脑裂导致服务异常</p><ul><li><ol><li>安装<br>下载地址：<a href="http://archive.apache.org/dist/zookeeper/zookeeper-3.4.6/" target="_blank" rel="noopener">http://archive.apache.org/dist/zookeeper/zookeeper-3.4.6/</a><br>解压</li></ol></li></ul><p>tar -zxf zookeeper-3.4.6.tar.gz<br>cd zookeeper-3.4.6</p><p>拷贝配置文件，修改完成后分发给其他节点<br>cd /data/zookeeper-3.4.6/<br>cp zoo_sample.cfg zoo.cfg</p><p>cat zoo.cfg</p><p>tickTime=2000<br>initLimit=10<br>syncLimit=5<br>dataDir=/data/zookeeper-3.4.6/data<br>dataLogDir=/data/zookeeper-3.4.6/logs<br>clientPort=2181<br>server.1=u04rtv01.yaya.corp:2888:3888<br>server.2=u04rtv02.yaya.corp:2888:3888<br>server.3=u04rtv03.yaya.corp:2888:3888</p><ul><li>3.创建data和Log文件夹<br>mkdir /data/zookeeper-3.4.6/data<br>mkdir /data/zookeeper-3.4.6/logs</li></ul><p>　　　　　　　</p><ul><li><p>4、在zoo.cfg中的dataDir指定的目录下，新建myid文件。<br>例如：$ZK_INSTALL/data下，新建myid。在myid文件中输入1。表示为server.1。<br>如果为snapshot/d_2，则myid文件中的内容为 2，依此类推。 </p></li><li><p>启动：在集群中的每台主机上执行如下命令<br>bin/zkServer.sh start </p></li><li><p>查看状态，可以看到其中一台为主节点，其他两台为从节点：<br>bin/zkServer.sh status</p></li><li><p>主节点：<br>./zkServer.sh status<br>JMX enabled by default<br>Using config: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg<br>Mode: leader</p></li><li>从属节点：<br>./zkServer.sh status<br>JMX enabled by default<br>Using config: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg<br>Mode: follower</li></ul><ul><li>停止：<br>bin/zkServer.sh stop</li></ul><p>连接：<br>bin/zkCli.sh -server zookeeper1:2181<br>bin/zkCli.sh -server zookeeper2:2181<br>bin/zkCli.sh -server zookeeper3:2181 </p><ul><li>报错：<br>原因就是没有在dataDir目录下创建myid文件并且赋值(如1、2、3分别代表集群中的server1,server2,server3)</li></ul><p>2016-08-22 17:55:16,145 [myid:] - INFO  [main:QuorumPeerConfig@103] - Reading configuration from: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg<br>2016-08-22 17:55:16,150 [myid:] - INFO  [main:QuorumPeerConfig@340] - Defaulting to majority quorums<br>2016-08-22 17:55:16,150 [myid:] - ERROR [main:QuorumPeerMain@85] - Invalid config, exiting abnormally<br>org.apache.zookeeper.server.quorum.QuorumPeerConfig$ConfigException: Error processing /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg<br>        at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:123)<br>        at org.apache.zookeeper.server.quorum.QuorumPeerMain.initializeAndRun(QuorumPeerMain.java:101)<br>        at org.apache.zookeeper.server.quorum.QuorumPeerMain.main(QuorumPeerMain.java:78)<br>Caused by: java.lang.IllegalArgumentException: /data/yunva/zookeeper-3.4.6/data/myid file is missing<br>        at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parseProperties(QuorumPeerConfig.java:350)<br>        at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:119)<br>        … 2 more<br>Invalid config, exiting abnormally</p><h3 id="单机部署——适用于开发测试"><a href="#单机部署——适用于开发测试" class="headerlink" title="单机部署——适用于开发测试"></a>单机部署——适用于开发测试</h3><p>tar -zxvf zookeeper-3.4.6.tar.gz<br>cd zookeeper-3.4.6/conf<br>cp zoo_sample.cfg zoo.cfg</p><ul><li><p>创建日志目录<br>mkdir /data/yunva/zookeeper-3.4.6/data<br>mkdir /data/yunva/zookeeper-3.4.6/logs</p></li><li><p>配置：conf/zoo.cfg</p></li></ul><p>tickTime=2000<br>initLimit=10<br>syncLimit=5<br>dataDir=/data/yunva/zookeeper-3.4.6/logs<br>dataLogDir=/data/yunva/zookeeper-3.4.6/logs<br>clientPort=2181</p><p>#自动清除日志文件<br>autopurge.snapRetainCount=20<br>autopurge.purgeInterval=48</p><ul><li>启动：</li></ul><p>bin/zkServer.sh start </p><ul><li>连接到Zookeeper：</li></ul><p>bin/zkCli.sh -server 127.0.0.1:2181  适用于Java开发</p><ul><li>查看状态：<br>bin/zkServer.sh status<br>JMX enabled by default<br>Using config: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg<br>Mode: standalone</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;本文选用：centos6.5、zookeeper-3.4.6&lt;h3 id=&quot;集群部署&quot;&gt;&lt;a href=&quot;#集群部署&quot; class=&quot;headerlink&quot; title=&quot;集群部署&quot;&gt;&lt;/a&gt;集群部署&lt;/h3&gt;【软件】准备好jdk环境，此次我们的环境是open_
-      
-    
-    </summary>
-    
-      <category term="zookeeper" scheme="http://www.wenchong.top/categories/zookeeper/"/>
-    
-    
-      <category term="zookeepere" scheme="http://www.wenchong.top/tags/zookeepere/"/>
-    
-  </entry>
-  
-  <entry>
     <title>centos下sqoop环境搭建</title>
     <link href="http://www.wenchong.top/2018/02/15/centos%E4%B8%8Bsqoop%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     <id>http://www.wenchong.top/2018/02/15/centos下sqoop环境搭建/</id>
@@ -162,6 +136,32 @@
     
     
       <category term="sqoop" scheme="http://www.wenchong.top/tags/sqoop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zookeeper搭建</title>
+    <link href="http://www.wenchong.top/2018/02/15/zookeeper%E5%AE%89%E8%A3%85/"/>
+    <id>http://www.wenchong.top/2018/02/15/zookeeper安装/</id>
+    <published>2018-02-14T16:00:00.000Z</published>
+    <updated>2018-03-05T13:15:04.288Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>本文选用：centos6.5、zookeeper-3.4.6<h3 id="集群部署"><a href="#集群部署" class="headerlink" title="集群部署"></a>集群部署</h3>【软件】准备好jdk环境，此次我们的环境是open_jdk1.8.0_101<br>　　　　zookeeper-3.4.6.tar.gz<br>【步骤】</li><li><ol><li>准备条件<br>如果有内部dns或者外网有域名，则直接使用域名<br>如果没有需要修改/etc/hosts文件，或者直接使用IP</li></ol></li></ul><p>集群规划</p><p>主机类型 IP地址  域名<br>zookeeper1 192.168.1.1zookeeper1.chinasoft.com<br>zookeeper2 192.168.1.2zookeeper2.chinasoft.com<br>zookeeper3 192.168.1.3zookeeper3.chinasoft.com</p><p>注意：zookeeper因为有主节点和从节点的关系，所以部署的集群台数最好为奇数个，否则可能出现脑裂导致服务异常</p><ul><li><ol><li>安装<br>下载地址：<a href="http://archive.apache.org/dist/zookeeper/zookeeper-3.4.6/" target="_blank" rel="noopener">http://archive.apache.org/dist/zookeeper/zookeeper-3.4.6/</a><br>解压</li></ol></li></ul><p>tar -zxf zookeeper-3.4.6.tar.gz<br>cd zookeeper-3.4.6</p><p>拷贝配置文件，修改完成后分发给其他节点<br>cd /data/zookeeper-3.4.6/<br>cp zoo_sample.cfg zoo.cfg</p><p>cat zoo.cfg</p><p>tickTime=2000<br>initLimit=10<br>syncLimit=5<br>dataDir=/data/zookeeper-3.4.6/data<br>dataLogDir=/data/zookeeper-3.4.6/logs<br>clientPort=2181<br>server.1=u04rtv01.yaya.corp:2888:3888<br>server.2=u04rtv02.yaya.corp:2888:3888<br>server.3=u04rtv03.yaya.corp:2888:3888</p><ul><li>3.创建data和Log文件夹<br>mkdir /data/zookeeper-3.4.6/data<br>mkdir /data/zookeeper-3.4.6/logs</li></ul><p>　　　　　　　</p><ul><li><p>4、在zoo.cfg中的dataDir指定的目录下，新建myid文件。<br>例如：$ZK_INSTALL/data下，新建myid。在myid文件中输入1。表示为server.1。<br>如果为snapshot/d_2，则myid文件中的内容为 2，依此类推。 </p></li><li><p>启动：在集群中的每台主机上执行如下命令<br>bin/zkServer.sh start </p></li><li><p>查看状态，可以看到其中一台为主节点，其他两台为从节点：<br>bin/zkServer.sh status</p></li><li><p>主节点：<br>./zkServer.sh status<br>JMX enabled by default<br>Using config: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg<br>Mode: leader</p></li><li>从属节点：<br>./zkServer.sh status<br>JMX enabled by default<br>Using config: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg<br>Mode: follower</li></ul><ul><li>停止：<br>bin/zkServer.sh stop</li></ul><p>连接：<br>bin/zkCli.sh -server zookeeper1:2181<br>bin/zkCli.sh -server zookeeper2:2181<br>bin/zkCli.sh -server zookeeper3:2181 </p><ul><li>报错：<br>原因就是没有在dataDir目录下创建myid文件并且赋值(如1、2、3分别代表集群中的server1,server2,server3)</li></ul><p>2016-08-22 17:55:16,145 [myid:] - INFO  [main:QuorumPeerConfig@103] - Reading configuration from: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg<br>2016-08-22 17:55:16,150 [myid:] - INFO  [main:QuorumPeerConfig@340] - Defaulting to majority quorums<br>2016-08-22 17:55:16,150 [myid:] - ERROR [main:QuorumPeerMain@85] - Invalid config, exiting abnormally<br>org.apache.zookeeper.server.quorum.QuorumPeerConfig$ConfigException: Error processing /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg<br>        at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:123)<br>        at org.apache.zookeeper.server.quorum.QuorumPeerMain.initializeAndRun(QuorumPeerMain.java:101)<br>        at org.apache.zookeeper.server.quorum.QuorumPeerMain.main(QuorumPeerMain.java:78)<br>Caused by: java.lang.IllegalArgumentException: /data/yunva/zookeeper-3.4.6/data/myid file is missing<br>        at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parseProperties(QuorumPeerConfig.java:350)<br>        at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:119)<br>        … 2 more<br>Invalid config, exiting abnormally</p><h3 id="单机部署——适用于开发测试"><a href="#单机部署——适用于开发测试" class="headerlink" title="单机部署——适用于开发测试"></a>单机部署——适用于开发测试</h3><p>tar -zxvf zookeeper-3.4.6.tar.gz<br>cd zookeeper-3.4.6/conf<br>cp zoo_sample.cfg zoo.cfg</p><ul><li><p>创建日志目录<br>mkdir /data/yunva/zookeeper-3.4.6/data<br>mkdir /data/yunva/zookeeper-3.4.6/logs</p></li><li><p>配置：conf/zoo.cfg</p></li></ul><p>tickTime=2000<br>initLimit=10<br>syncLimit=5<br>dataDir=/data/yunva/zookeeper-3.4.6/logs<br>dataLogDir=/data/yunva/zookeeper-3.4.6/logs<br>clientPort=2181</p><p>#自动清除日志文件<br>autopurge.snapRetainCount=20<br>autopurge.purgeInterval=48</p><ul><li>启动：</li></ul><p>bin/zkServer.sh start </p><ul><li>连接到Zookeeper：</li></ul><p>bin/zkCli.sh -server 127.0.0.1:2181  适用于Java开发</p><ul><li>查看状态：<br>bin/zkServer.sh status<br>JMX enabled by default<br>Using config: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg<br>Mode: standalone</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;本文选用：centos6.5、zookeeper-3.4.6&lt;h3 id=&quot;集群部署&quot;&gt;&lt;a href=&quot;#集群部署&quot; class=&quot;headerlink&quot; title=&quot;集群部署&quot;&gt;&lt;/a&gt;集群部署&lt;/h3&gt;【软件】准备好jdk环境，此次我们的环境是open_
+      
+    
+    </summary>
+    
+      <category term="zookeeper" scheme="http://www.wenchong.top/categories/zookeeper/"/>
+    
+    
+      <category term="zookeepere" scheme="http://www.wenchong.top/tags/zookeepere/"/>
     
   </entry>
   
@@ -372,31 +372,6 @@
   </entry>
   
   <entry>
-    <title>错误及解决方案</title>
-    <link href="http://www.wenchong.top/2017/08/10/ambari%E6%90%AD%E5%BB%BA%E9%94%99%E8%AF%AF/"/>
-    <id>http://www.wenchong.top/2017/08/10/ambari搭建错误/</id>
-    <published>2017-08-09T16:00:00.000Z</published>
-    <updated>2018-05-14T06:07:44.326Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR: Exiting with exit code 1. </span><br><span class="line">REASON: Database check failed to complete. Please check /var/log/ambari-server/ambari-server.log and /var/log/ambari-server/ambari-server-check-database.log for more information.</span><br></pre></td></tr></table></figure><p>解决方法：查看日志，具体什么错.例如：数据库未开启、数据库配置问题</p><p>撤销已经赋予给 MySQL 用户权限的权限。<br>revoke 跟 grant 的语法差不多，只需要把关键字 “to” 换成 “from” 即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">revoke  all on *.* from &apos;root&apos;@&apos;192.168.0.197&apos;;</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@datanode01 ~]# yum makecache</span><br><span class="line">Loaded plugins: fastestmirror</span><br><span class="line">Determining fastest mirrors</span><br><span class="line">ambari-2.4.1.0                                                   | 2.9 kB     00:00     </span><br><span class="line">ambari-2.4.1.0/filelists_db                                      | 139 kB     00:00     </span><br><span class="line">ambari-2.4.1.0/primary_db                                        | 8.3 kB     00:00     </span><br><span class="line">ambari-2.4.1.0/other_db                                          | 1.3 kB     00:00     </span><br><span class="line">file:///mnt/repodata/repomd.xml: [Errno 14] Could not open/read file:///mnt/repodata/repomd.xml</span><br><span class="line">Trying other mirror.</span><br><span class="line">Error: Cannot retrieve repository metadata (repomd.xml) for repository: c6-media. Please verify its path and try again</span><br></pre></td></tr></table></figure><p>如果有后面两个文件，处理方式mv CentOS-Media.repo CentOS-Media.repo.bak<br>没有的话，源问题，换源repos</p><h3 id="tip"><a href="#tip" class="headerlink" title="tip:"></a>tip:</h3><p>1、当提示要做如下操作的时候<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Be?sure?you?have?run:ambari-server?setup?--jdbc-db=mysql?--jdbc-driver=/path/to/mysql/****</span><br></pre></td></tr></table></figure></p><p>需要下载mysql-connector-java-5.1.39.tar驱动，解压得到mysql-connector-java-5.1.39-bin.jar文件<br>执行如下命令：ambari-server?setup?–jdbc-db=mysql?–jdbc-driver=/usr/lib/java/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-<br>bin.jar<br>同时，设置文件权限为644</p><h3 id="2017-7-19"><a href="#2017-7-19" class="headerlink" title="2017.7.19"></a>2017.7.19</h3><p>1.ERROR namenode.NameNode (NameNode.java:main(1759)) - Failed to start namenode.<br>java.net.BindException: Port in use: datanode01:50070<br>  不能获取映射地址，需要修改hosts中的映射ip为真实ip（ifconfig）<br>2.错删自定义的service导致不能登录amnari UI（日志报出database问题） （百度方案无解，最后重装ambari-server(发现重装无法下手，百度后删除ambari相关组件以及数据库的完全卸载，完成)）<br>3.使用ambari-server启动HDFS时，DataNode无法启动（出现port in use：localhost 0）。解决方式，在hosts文件中localhost 172.0.0.1被#；去除#后解决</p><h3 id="一般故障排除"><a href="#一般故障排除" class="headerlink" title="一般故障排除"></a>一般故障排除</h3><p>Ambari服务器：检查/var/log/ambari-server/ambari-server.[log|out]是否存在错误。<br>Ambari代理：检查/var/log/ambari-agent/ambari-agent.[log|out]是否存在错误。<br>请注意，如果Ambari Agent在/var/log/ambari-agent/ambari-agent.out中有任何输出，则表明存在重大问题。</p><h3 id="服务无法启动"><a href="#服务无法启动" class="headerlink" title="服务无法启动"></a>服务无法启动</h3><p>HDFS：检查/ var / log / hadoop / hdfs下的日志文件<br>MapReduce：检查/ var / log / hadoop / mapred下的日志文件<br>HBase：检查/ var / log / hbase下的日志文件<br>Hive：检查/ var / log / hive下的日志文件<br>Oozie：检查/ var / log / oozie下的日志文件<br>ZooKeeper：检查/ var / log / zookeeper下的日志文件<br>WebHCat：检查/ var / log / webhcat下的日志文件<br>Nagios：检查/ var / log / nagios下的日志文件</p><h3 id="2017-7-20"><a href="#2017-7-20" class="headerlink" title="2017.7.20"></a>2017.7.20</h3><p>Service ‘userhome’ check failed: java.io.FileNotFoundException: File does not exist: /user/admin<br>解决方案：sudo -u hdfs hdfs dfs  -mkdir /user/admin<br>sudo -u hdfs hdfs dfs  -chown admin:hadoop /user/admin</p><h3 id="资源池问题"><a href="#资源池问题" class="headerlink" title="资源池问题"></a>资源池问题</h3><p>FATAL org.apache.hadoop.hdfs.server.datanode.DataNode: Initialization failed forblock pool Block pool BP-1480406410-192.168.1.181-1398701121586 (storage idDS-167510828-192.168.1.191-50010-1398750515421)<br>原因：每次namenode format会重新创建一个namenodeId,而data目录包含了上次format时的id,namenode format清空了namenode下的数据,但是没有清空datanode下的数据,导致启动时失败,所要做的就是每次fotmat前,清空data下的所有目录.<br>: d6 E2 t&amp; M” g7 a* q3 l, H<br>解决办法：停掉集群，删除问题节点的data目录下的所有内容。即hdfs-site.xml文件中配置的dfs.data.dir目录。重新格式化namenode。</p><p>另一个更省事的办法：先停掉集群，然后将datanode节点目录/dfs/data/current/VERSION中的修改为与namenode一致即可。<br>其实我没解决，直接重装</p><h3 id="block-missing问题"><a href="#block-missing问题" class="headerlink" title="block missing问题"></a>block missing问题</h3><p>会导致进入安全模式：处理方式，删除缺失包，在HDFS用户下退出安全模式</p><p>添加节点时，需要查看该节点root磁盘下的剩余大小，如果磁盘空间不足，则扩大磁盘再添加节点。<br>不要问我为什么，说多了都是泪。集群就是这么崩盘的。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;
-      
-    
-    </summary>
-    
-      <category term="搭建" scheme="http://www.wenchong.top/categories/%E6%90%AD%E5%BB%BA/"/>
-    
-    
-      <category term="ambari" scheme="http://www.wenchong.top/tags/ambari/"/>
-    
-  </entry>
-  
-  <entry>
     <title>amabri卸载</title>
     <link href="http://www.wenchong.top/2017/08/10/ambari%E5%8D%B8%E8%BD%BD/"/>
     <id>http://www.wenchong.top/2017/08/10/ambari卸载/</id>
@@ -410,6 +385,31 @@
       
       
         &lt;h2 id=&quot;1-删除hdp-repo和hdp-util-repo&quot;&gt;&lt;a href=&quot;#1-删除hdp-repo和hdp-util-repo&quot; class=&quot;headerlink&quot; title=&quot;1.删除hdp.repo和hdp-util.repo&quot;&gt;&lt;/a&gt;1.删除hdp.
+      
+    
+    </summary>
+    
+      <category term="搭建" scheme="http://www.wenchong.top/categories/%E6%90%AD%E5%BB%BA/"/>
+    
+    
+      <category term="ambari" scheme="http://www.wenchong.top/tags/ambari/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>错误及解决方案</title>
+    <link href="http://www.wenchong.top/2017/08/10/ambari%E6%90%AD%E5%BB%BA%E9%94%99%E8%AF%AF/"/>
+    <id>http://www.wenchong.top/2017/08/10/ambari搭建错误/</id>
+    <published>2017-08-09T16:00:00.000Z</published>
+    <updated>2018-05-14T06:07:44.326Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR: Exiting with exit code 1. </span><br><span class="line">REASON: Database check failed to complete. Please check /var/log/ambari-server/ambari-server.log and /var/log/ambari-server/ambari-server-check-database.log for more information.</span><br></pre></td></tr></table></figure><p>解决方法：查看日志，具体什么错.例如：数据库未开启、数据库配置问题</p><p>撤销已经赋予给 MySQL 用户权限的权限。<br>revoke 跟 grant 的语法差不多，只需要把关键字 “to” 换成 “from” 即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">revoke  all on *.* from &apos;root&apos;@&apos;192.168.0.197&apos;;</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@datanode01 ~]# yum makecache</span><br><span class="line">Loaded plugins: fastestmirror</span><br><span class="line">Determining fastest mirrors</span><br><span class="line">ambari-2.4.1.0                                                   | 2.9 kB     00:00     </span><br><span class="line">ambari-2.4.1.0/filelists_db                                      | 139 kB     00:00     </span><br><span class="line">ambari-2.4.1.0/primary_db                                        | 8.3 kB     00:00     </span><br><span class="line">ambari-2.4.1.0/other_db                                          | 1.3 kB     00:00     </span><br><span class="line">file:///mnt/repodata/repomd.xml: [Errno 14] Could not open/read file:///mnt/repodata/repomd.xml</span><br><span class="line">Trying other mirror.</span><br><span class="line">Error: Cannot retrieve repository metadata (repomd.xml) for repository: c6-media. Please verify its path and try again</span><br></pre></td></tr></table></figure><p>如果有后面两个文件，处理方式mv CentOS-Media.repo CentOS-Media.repo.bak<br>没有的话，源问题，换源repos</p><h3 id="tip"><a href="#tip" class="headerlink" title="tip:"></a>tip:</h3><p>1、当提示要做如下操作的时候<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Be?sure?you?have?run:ambari-server?setup?--jdbc-db=mysql?--jdbc-driver=/path/to/mysql/****</span><br></pre></td></tr></table></figure></p><p>需要下载mysql-connector-java-5.1.39.tar驱动，解压得到mysql-connector-java-5.1.39-bin.jar文件<br>执行如下命令：ambari-server?setup?–jdbc-db=mysql?–jdbc-driver=/usr/lib/java/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-<br>bin.jar<br>同时，设置文件权限为644</p><h3 id="2017-7-19"><a href="#2017-7-19" class="headerlink" title="2017.7.19"></a>2017.7.19</h3><p>1.ERROR namenode.NameNode (NameNode.java:main(1759)) - Failed to start namenode.<br>java.net.BindException: Port in use: datanode01:50070<br>  不能获取映射地址，需要修改hosts中的映射ip为真实ip（ifconfig）<br>2.错删自定义的service导致不能登录amnari UI（日志报出database问题） （百度方案无解，最后重装ambari-server(发现重装无法下手，百度后删除ambari相关组件以及数据库的完全卸载，完成)）<br>3.使用ambari-server启动HDFS时，DataNode无法启动（出现port in use：localhost 0）。解决方式，在hosts文件中localhost 172.0.0.1被#；去除#后解决</p><h3 id="一般故障排除"><a href="#一般故障排除" class="headerlink" title="一般故障排除"></a>一般故障排除</h3><p>Ambari服务器：检查/var/log/ambari-server/ambari-server.[log|out]是否存在错误。<br>Ambari代理：检查/var/log/ambari-agent/ambari-agent.[log|out]是否存在错误。<br>请注意，如果Ambari Agent在/var/log/ambari-agent/ambari-agent.out中有任何输出，则表明存在重大问题。</p><h3 id="服务无法启动"><a href="#服务无法启动" class="headerlink" title="服务无法启动"></a>服务无法启动</h3><p>HDFS：检查/ var / log / hadoop / hdfs下的日志文件<br>MapReduce：检查/ var / log / hadoop / mapred下的日志文件<br>HBase：检查/ var / log / hbase下的日志文件<br>Hive：检查/ var / log / hive下的日志文件<br>Oozie：检查/ var / log / oozie下的日志文件<br>ZooKeeper：检查/ var / log / zookeeper下的日志文件<br>WebHCat：检查/ var / log / webhcat下的日志文件<br>Nagios：检查/ var / log / nagios下的日志文件</p><h3 id="2017-7-20"><a href="#2017-7-20" class="headerlink" title="2017.7.20"></a>2017.7.20</h3><p>Service ‘userhome’ check failed: java.io.FileNotFoundException: File does not exist: /user/admin<br>解决方案：sudo -u hdfs hdfs dfs  -mkdir /user/admin<br>sudo -u hdfs hdfs dfs  -chown admin:hadoop /user/admin</p><h3 id="资源池问题"><a href="#资源池问题" class="headerlink" title="资源池问题"></a>资源池问题</h3><p>FATAL org.apache.hadoop.hdfs.server.datanode.DataNode: Initialization failed forblock pool Block pool BP-1480406410-192.168.1.181-1398701121586 (storage idDS-167510828-192.168.1.191-50010-1398750515421)<br>原因：每次namenode format会重新创建一个namenodeId,而data目录包含了上次format时的id,namenode format清空了namenode下的数据,但是没有清空datanode下的数据,导致启动时失败,所要做的就是每次fotmat前,清空data下的所有目录.<br>: d6 E2 t&amp; M” g7 a* q3 l, H<br>解决办法：停掉集群，删除问题节点的data目录下的所有内容。即hdfs-site.xml文件中配置的dfs.data.dir目录。重新格式化namenode。</p><p>另一个更省事的办法：先停掉集群，然后将datanode节点目录/dfs/data/current/VERSION中的修改为与namenode一致即可。<br>其实我没解决，直接重装</p><h3 id="block-missing问题"><a href="#block-missing问题" class="headerlink" title="block missing问题"></a>block missing问题</h3><p>会导致进入安全模式：处理方式，删除缺失包，在HDFS用户下退出安全模式</p><p>添加节点时，需要查看该节点root磁盘下的剩余大小，如果磁盘空间不足，则扩大磁盘再添加节点。<br>不要问我为什么，说多了都是泪。集群就是这么崩盘的。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;
       
     
     </summary>
