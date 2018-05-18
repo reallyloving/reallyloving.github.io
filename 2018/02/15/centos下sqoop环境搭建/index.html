@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="王小二客栈">
 <meta property="og:description" content="Sqoop是一个用来将Hadoop（Hive、HBase）和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（例如：MySQL ,Oracle ,Postgres等）中的数据导入到Hadoop的HDFS中，也可以将HDFS的数据导入到关系型数据库中。  Sqoop安装 1.下载Sqoop安装包在Sqoop官网下载安装包，本次使用的是sqoop-1.4.6.binhadoop-2.0.4">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-05T13:14:36.442Z">
+<meta property="og:updated_time" content="2018-05-18T14:19:23.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos下sqoop环境搭建">
 <meta name="twitter:description" content="Sqoop是一个用来将Hadoop（Hive、HBase）和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（例如：MySQL ,Oracle ,Postgres等）中的数据导入到Hadoop的HDFS中，也可以将HDFS的数据导入到关系型数据库中。  Sqoop安装 1.下载Sqoop安装包在Sqoop官网下载安装包，本次使用的是sqoop-1.4.6.binhadoop-2.0.4">
@@ -319,7 +319,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小二">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/photo.jpg">
+      <meta itemprop="image" content="/images/myphoto.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  402
+                  411
                 </span>
               
 
@@ -453,8 +453,10 @@
 <li>2.解压Sqoop安装包<br>#进入sqoop安装目录<br>[hadoop@BigData ~]$ cd /usr/local<br>#解压sqoop安装包<br>[hadoop@BigData ~]$ tar -zxvf sqoop-1.4.6.bin<strong>hadoop-2.0.4-alpha.tar.gz<br>#删除sqoop安装包<br>[hadoop@BigData ~]$ rm -rf sqoop-1.4.6.bin</strong>hadoop-2.0.4-alpha.tar.gz<br>#重命名sqoop目录名<br>[hadoop@BigData ~]$ mv sqoop-1.4.6.bin__hadoop-2.0.4-alpha sqoop</li>
 <li>3.配置Sqoop环境变量<br>#配置Sqoop环境变量<br>[root@BigData ~]# vi /etc/profile<br>export SQOOP_HOME=/usr/local/sqoop<br>export PATH=$PATH:$SQOOP_HOME/bin<br>#保存之后记得source，使之前的配置生效<br>source /etc/profile</li>
 <li>4.将关系型数据库驱动包放到sqoop/lib目录下<br>MySql：mysql-connector-java-5.1.30.jar<br>Oracle：ojdbc14.jar</li>
-<li>5.修改Sqoop配置文件<br>[hadoop@BigData ~]$ mv sqoop-env-template.sh sqoop-env.sh<br>[hadoop@BigData ~]$ vi sqoop-env.sh<br>#Set path to where bin/hadoop is available<br>export HADOOP_COMMON_HOME=/usr/local/hadoop<br>#Set path to where hadoop-*-core.jar is available<br>export HADOOP_MAPRED_HOME=/usr/local/hadoop<br>#set the path to where bin/hbase is available<br>export HBASE_HOME=/usr/local/hbase<br>#Set the path to where bin/hive is available<br>export HIVE_HOME=/usr/local/hive<br>#Set the path for where zookeper config dir is<br>export ZOOCFGDIR=/usr/local/zookeeper<br>到此，sqoop环境就已搭建成功！</li>
+<li>5.修改Sqoop配置文件<br>[hadoop@BigData ~]$ mv sqoop-env-template.sh sqoop-env.sh<br>[hadoop@BigData ~]$ vi sqoop-env.sh<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#Set path to where bin/hadoop is available</span><br><span class="line">export HADOOP_COMMON_HOME=/usr/local/hadoop</span><br><span class="line">#Set path to where hadoop-*-core.jar is available</span><br><span class="line">export HADOOP_MAPRED_HOME=/usr/local/hadoop</span><br><span class="line">#set the path to where bin/hbase is available</span><br><span class="line">export HBASE_HOME=/usr/local/hbase</span><br><span class="line">#Set the path to where bin/hive is available</span><br><span class="line">export HIVE_HOME=/usr/local/hive</span><br><span class="line">#Set the path for where zookeper config dir is</span><br><span class="line">export ZOOCFGDIR=/usr/local/zookeeper</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<p>到此，sqoop环境就已搭建成功！</p>
 
       
     </div>
@@ -628,7 +630,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/photo.jpg"
+                src="/images/myphoto.jpg"
                 alt="小二" />
             
               <p class="site-author-name" itemprop="name">小二</p>
@@ -750,7 +752,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.1k</span>
+    <span title="Site words total count">27.6k</span>
   
 </div>
 
@@ -771,7 +773,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共27.1k字</span>
+  <span class="post-count">博客全站共27.6k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

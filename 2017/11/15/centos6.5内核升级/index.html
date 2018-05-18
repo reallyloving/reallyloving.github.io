@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="1.查看centos的内核版本rname -r 2.查看系统版本cat /etc/centos-release 3.安装软件编译安装新内核，依赖于开发环境和开发库yum grouplist  //查看已经安装的和未安装的软件包组，来判断我们是否安装了相应的开发环境和开发库； yum groupinstall “Development Tools”  //一般是安装这两个软件包组，这样做会确定你拥有">
+<meta name="description" content="1.查看centos的内核版本rname -r 2.查看系统版本cat /etc/centos-release 3.安装软件编译安装新内核，依赖于开发环境和开发库123456789yum grouplist  //查看已经安装的和未安装的软件包组，来判断我们是否安装了相应的开发环境和开发库；yum groupinstall &amp;quot;Development Tools&amp;quot;  //一般是安">
 <meta name="keywords" content="operation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos 6.5 内核升级">
 <meta property="og:url" content="http://www.wenchong.top/2017/11/15/centos6.5内核升级/index.html">
 <meta property="og:site_name" content="王小二客栈">
-<meta property="og:description" content="1.查看centos的内核版本rname -r 2.查看系统版本cat /etc/centos-release 3.安装软件编译安装新内核，依赖于开发环境和开发库yum grouplist  //查看已经安装的和未安装的软件包组，来判断我们是否安装了相应的开发环境和开发库； yum groupinstall “Development Tools”  //一般是安装这两个软件包组，这样做会确定你拥有">
+<meta property="og:description" content="1.查看centos的内核版本rname -r 2.查看系统版本cat /etc/centos-release 3.安装软件编译安装新内核，依赖于开发环境和开发库123456789yum grouplist  //查看已经安装的和未安装的软件包组，来判断我们是否安装了相应的开发环境和开发库；yum groupinstall &amp;quot;Development Tools&amp;quot;  //一般是安">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-18T17:00:56.959Z">
+<meta property="og:updated_time" content="2018-05-18T14:16:20.683Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos 6.5 内核升级">
-<meta name="twitter:description" content="1.查看centos的内核版本rname -r 2.查看系统版本cat /etc/centos-release 3.安装软件编译安装新内核，依赖于开发环境和开发库yum grouplist  //查看已经安装的和未安装的软件包组，来判断我们是否安装了相应的开发环境和开发库； yum groupinstall “Development Tools”  //一般是安装这两个软件包组，这样做会确定你拥有">
+<meta name="twitter:description" content="1.查看centos的内核版本rname -r 2.查看系统版本cat /etc/centos-release 3.安装软件编译安装新内核，依赖于开发环境和开发库123456789yum grouplist  //查看已经安装的和未安装的软件包组，来判断我们是否安装了相应的开发环境和开发库；yum groupinstall &amp;quot;Development Tools&amp;quot;  //一般是安">
 
 
 
@@ -319,7 +319,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小二">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/photo.jpg">
+      <meta itemprop="image" content="/images/myphoto.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  920
+                  985
                 </span>
               
 
@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  5
                 </span>
               
             </div>
@@ -447,46 +447,16 @@
       
         <h2 id="1-查看centos的内核版本"><a href="#1-查看centos的内核版本" class="headerlink" title="1.查看centos的内核版本"></a>1.查看centos的内核版本</h2><p>rname -r</p>
 <h2 id="2-查看系统版本"><a href="#2-查看系统版本" class="headerlink" title="2.查看系统版本"></a>2.查看系统版本</h2><p>cat /etc/centos-release</p>
-<h2 id="3-安装软件"><a href="#3-安装软件" class="headerlink" title="3.安装软件"></a>3.安装软件</h2><p>编译安装新内核，依赖于开发环境和开发库<br>yum grouplist  //查看已经安装的和未安装的软件包组，来判断我们是否安装了相应的开发环境和开发库；</p>
-<p>yum groupinstall “Development Tools”  //一般是安装这两个软件包组，这样做会确定你拥有编译时所需的一切工具</p>
-<p>yum install ncurses-devel //你必须这样才能让 make *config 这个指令正确地执行</p>
-<p>yum install qt-devel //如果你没有 X 环境，这一条可以不用</p>
-<p>yum install hmaccalc zlib-devel binutils-devel elfutils-libelf-devel //创建 CentOS-6 内核时需要它们</p>
+<h2 id="3-安装软件"><a href="#3-安装软件" class="headerlink" title="3.安装软件"></a>3.安装软件</h2><p>编译安装新内核，依赖于开发环境和开发库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum grouplist  //查看已经安装的和未安装的软件包组，来判断我们是否安装了相应的开发环境和开发库；</span><br><span class="line"></span><br><span class="line">yum groupinstall &quot;Development Tools&quot;  //一般是安装这两个软件包组，这样做会确定你拥有编译时所需的一切工具</span><br><span class="line"></span><br><span class="line">yum install ncurses-devel //你必须这样才能让 make *config 这个指令正确地执行</span><br><span class="line"></span><br><span class="line">yum install qt-devel //如果你没有 X 环境，这一条可以不用</span><br><span class="line"></span><br><span class="line">yum install hmaccalc zlib-devel binutils-devel elfutils-libelf-devel //创建 CentOS-6 内核时需要它们</span><br></pre></td></tr></table></figure></p>
 <h2 id="4-编译内核"><a href="#4-编译内核" class="headerlink" title="4.编译内核"></a>4.编译内核</h2><p>Linux内核版本有两种：稳定版和开发版 ，Linux内核版本号由3个数字组成： r.x.y</p>
 <ul>
 <li>r: 主版本号</li>
 <li>x: 次版本号，偶数表示稳定版本；奇数表示开发中版本。</li>
-<li>y: 修订版本号 ， 表示修改的次数<br>官网上有stable, longterm等版本，longterm是比stable更稳定的版本。<br><code>[root@sean ~]#curl -O -L  https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.28.tar.xz
-[root@sean ~]# tar -xf linux-3.10.58.tar.xz -C /usr/src/
-[root@sean ~]# cd /usr/src/linux-3.10.58/
-[root@sean linux-3.10.58]# cp /boot/config-2.6.32-220.el6.x86_64 .config</code></li>
+<li>y: 修订版本号 ， 表示修改的次数<br>官网上有stable, longterm等版本，longterm是比stable更稳定的版本。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">`[root@sean ~]#curl -O -L  https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.28.tar.xz</span><br><span class="line">[root@sean ~]# tar -xf linux-3.10.58.tar.xz -C /usr/src/</span><br><span class="line">[root@sean ~]# cd /usr/src/linux-3.10.58/</span><br><span class="line">[root@sean linux-3.10.58]# cp /boot/config-2.6.32-220.el6.x86_64 .config`</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>我们在系统原有的内核配置文件的基础上建立新的编译选项，所以复制一份到当前目录下，命名为.config。接下来继续配置：<br>`[root@sean linux-3.10.58]# sh -c ‘yes “” | make oldconfig’</p>
-<p>HOSTCC  scripts/basic/fixdep</p>
-<p>HOSTCC  scripts/kconfig/conf.o</p>
-<p>SHIPPED scripts/kconfig/zconf.tab.c</p>
-<p>SHIPPED scripts/kconfig/zconf.lex.c</p>
-<p>SHIPPED scripts/kconfig/zconf.hash.c</p>
-<p>HOSTCC  scripts/kconfig/zconf.tab.o</p>
-<p>HOSTLD  scripts/kconfig/conf</p>
-<p>scripts/kconfig/conf –oldconfig Kconfig</p>
-<p>.config:555:warning: symbol value ‘m’ invalid for PCCARD_NONSTATIC<br>.config:2567:warning: symbol value ‘m’ invalid for MFD_WM8400<br>.config:2568:warning: symbol value ‘m’ invalid for MFD_WM831X<br>.config:2569:warning: symbol value ‘m’ invalid for MFD_WM8350<br>.config:2582:warning: symbol value ‘m’ invalid for MFD_WM8350_I2C<br>.config:2584:warning: symbol value ‘m’ invalid for AB3100_CORE<br>.config:3502:warning: symbol value ‘m’ invalid for MMC_RICOH_MMC</p>
-<p>*</p>
-<ul>
-<li>Restart config…</li>
-</ul>
-<p>*</p>
-<p>*</p>
-<ul>
-<li>General setup</li>
-</ul>
-<p>*</p>
-<p>…<br>…</p>
-<p>XZ decompressor tester (XZ_DEC_TEST) [N/m/y/?] (NEW)</p>
-<p>Averaging functions (AVERAGE) [Y/?] (NEW)<br>y<br>CORDIC algorithm (CORDIC) [N/m/y/?] (NEW) </p>
-<p>JEDEC DDR data (DDR) [N/y/?] (NEW) </p>
-<p>#</p>
-<p>configuration written to .config`<br>make oldconfig会读取当前目录下的.config文件，在.config文件里没有找到的选项则提示用户填写，然后备份.config文件为.config.old，并生成新的.config文件</p>
+<p>我们在系统原有的内核配置文件的基础上建立新的编译选项，所以复制一份到当前目录下，命名为.config。接下来继续配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">[root@sean linux-3.10.58]# sh -c &apos;yes &quot;&quot; | make oldconfig&apos;</span><br><span class="line">  </span><br><span class="line">HOSTCC  scripts/basic/fixdep</span><br><span class="line">  </span><br><span class="line">HOSTCC  scripts/kconfig/conf.o</span><br><span class="line">  </span><br><span class="line">SHIPPED scripts/kconfig/zconf.tab.c</span><br><span class="line">  </span><br><span class="line">SHIPPED scripts/kconfig/zconf.lex.c</span><br><span class="line">  </span><br><span class="line">SHIPPED scripts/kconfig/zconf.hash.c</span><br><span class="line">  </span><br><span class="line">HOSTCC  scripts/kconfig/zconf.tab.o</span><br><span class="line">  </span><br><span class="line">HOSTLD  scripts/kconfig/conf</span><br><span class="line"></span><br><span class="line">scripts/kconfig/conf --oldconfig Kconfig</span><br><span class="line"></span><br><span class="line">.config:555:warning: symbol value &apos;m&apos; invalid for PCCARD_NONSTATIC</span><br><span class="line">.config:2567:warning: symbol value &apos;m&apos; invalid for MFD_WM8400</span><br><span class="line">.config:2568:warning: symbol value &apos;m&apos; invalid for MFD_WM831X</span><br><span class="line">.config:2569:warning: symbol value &apos;m&apos; invalid for MFD_WM8350</span><br><span class="line">.config:2582:warning: symbol value &apos;m&apos; invalid for MFD_WM8350_I2C</span><br><span class="line">.config:2584:warning: symbol value &apos;m&apos; invalid for AB3100_CORE</span><br><span class="line">.config:3502:warning: symbol value &apos;m&apos; invalid for MMC_RICOH_MMC</span><br><span class="line"></span><br><span class="line">*</span><br><span class="line"></span><br><span class="line">* Restart config...</span><br><span class="line"></span><br><span class="line">*</span><br><span class="line"></span><br><span class="line">*</span><br><span class="line"></span><br><span class="line">* General setup</span><br><span class="line"></span><br><span class="line">*</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">XZ decompressor tester (XZ_DEC_TEST) [N/m/y/?] (NEW)</span><br><span class="line"></span><br><span class="line">Averaging functions (AVERAGE) [Y/?] (NEW) </span><br><span class="line">y</span><br><span class="line">CORDIC algorithm (CORDIC) [N/m/y/?] (NEW) </span><br><span class="line"></span><br><span class="line">JEDEC DDR data (DDR) [N/y/?] (NEW) </span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">configuration written to .config</span><br></pre></td></tr></table></figure></p>
+<p>make oldconfig会读取当前目录下的.config文件，在.config文件里没有找到的选项则提示用户填写，然后备份.config文件为.config.old，并生成新的.config文件</p>
 <h2 id="5-开始编译"><a href="#5-开始编译" class="headerlink" title="5.开始编译"></a>5.开始编译</h2><p>[root@sean linux-3.10.58]# make -j4 bzImage  //生成内核文件<br>[root@sean linux-3.10.58]# make -j4 modules  //编译模块<br>[root@sean linux-3.10.58]# make -j4 modules_install  //编译安装模块</p>
 <p>-j后面的数字是线程数，用于加快编译速度，一般的经验是，逻辑CPU，就填写那个数字，例如有8核，则为-j8。（modules部分耗时30多分钟）</p>
 <h2 id="6-安装"><a href="#6-安装" class="headerlink" title="6.安装"></a>6.安装</h2><p>[root@sean linux-3.10.58]# make install<br>实际运行到这一步时，出现ERROR: modinfo: could not find module vmware_balloon，但是不影响内核安装，是由于vsphere需要的模块没有编译，要避免这个问题，需要在make之前时修改.config文件，加入<br>HYPERVISOR_GUEST=yCONFIG_VMWARE_BALLOON=m<br>（这一部分比较容易出问题，参考下文异常部分）</p>
@@ -668,7 +638,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/photo.jpg"
+                src="/images/myphoto.jpg"
                 alt="小二" />
             
               <p class="site-author-name" itemprop="name">小二</p>
@@ -790,7 +760,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.1k</span>
+    <span title="Site words total count">27.6k</span>
   
 </div>
 
@@ -811,7 +781,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共27.1k字</span>
+  <span class="post-count">博客全站共27.6k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

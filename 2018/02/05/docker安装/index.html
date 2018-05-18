@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容SELINUX=disabled #重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-releas">
+<meta name="description" content="1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容1SELINUX=disabled #重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：12345678rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/ep">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker安装">
 <meta property="og:url" content="http://www.wenchong.top/2018/02/05/docker安装/index.html">
 <meta property="og:site_name" content="王小二客栈">
-<meta property="og:description" content="1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容SELINUX=disabled #重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-releas">
+<meta property="og:description" content="1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容1SELINUX=disabled #重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：12345678rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/ep">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-18T17:27:27.415Z">
+<meta property="og:updated_time" content="2018-05-18T14:20:59.192Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker安装">
-<meta name="twitter:description" content="1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容SELINUX=disabled #重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-releas">
+<meta name="twitter:description" content="1：关闭selinux临时关闭：setenforce 0永久关闭： 1. vi /etc/sysconfig/selinux插入/编辑以下内容1SELINUX=disabled #重启生效 2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：12345678rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/ep">
 
 
 
@@ -319,7 +319,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小二">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/photo.jpg">
+      <meta itemprop="image" content="/images/myphoto.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  347
+                  380
                 </span>
               
 
@@ -446,24 +446,24 @@
 
       
         <h2 id="1：关闭selinux"><a href="#1：关闭selinux" class="headerlink" title="1：关闭selinux"></a>1：关闭selinux</h2><p>临时关闭：setenforce 0<br>永久关闭：</p>
-<h2 id="1-vi-etc-sysconfig-selinux"><a href="#1-vi-etc-sysconfig-selinux" class="headerlink" title="1. vi /etc/sysconfig/selinux"></a>1. vi /etc/sysconfig/selinux</h2><p>插入/编辑以下内容<br>SELINUX=disabled</p>
+<h2 id="1-vi-etc-sysconfig-selinux"><a href="#1-vi-etc-sysconfig-selinux" class="headerlink" title="1. vi /etc/sysconfig/selinux"></a>1. vi /etc/sysconfig/selinux</h2><p>插入/编辑以下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELINUX=disabled</span><br></pre></td></tr></table></figure></p>
 <p>#重启生效</p>
-<h2 id="2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel："><a href="#2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel：" class="headerlink" title="2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel："></a>2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：</h2><p>rpm -ivh <a href="http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm" target="_blank" rel="noopener">http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm</a><br>sed -i ‘s/^mirrorlist=https/mirrorlist=http/‘ /etc/yum.repos.d/epel.repo<br>（elpe.repo）<br>[epel]<br>name=epel<br>mirrorlist=<a href="http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearch" target="_blank" rel="noopener">http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearch</a><br>enabled=1<br>gpgcheck=0</p>
-<h2 id="3：安装docker"><a href="#3：安装docker" class="headerlink" title="3：安装docker"></a>3：安装docker</h2><p>yum install docker-io<br>安装完成后</p>
-<h2 id="4：启动docker"><a href="#4：启动docker" class="headerlink" title="4：启动docker"></a>4：启动docker</h2><p>service  docker  start</p>
-<h2 id="5：查看docker版本"><a href="#5：查看docker版本" class="headerlink" title="5：查看docker版本"></a>5：查看docker版本</h2><p>docker vesion</p>
-<h2 id="6：查看docker日志"><a href="#6：查看docker日志" class="headerlink" title="6：查看docker日志"></a>6：查看docker日志</h2><p>cat /var/log/docker</p>
+<h2 id="2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel："><a href="#2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel：" class="headerlink" title="2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel："></a>2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm</span><br><span class="line">sed -i &apos;s/^mirrorlist=https/mirrorlist=http/&apos; /etc/yum.repos.d/epel.repo</span><br><span class="line">（elpe.repo）</span><br><span class="line">[epel]</span><br><span class="line">name=epel</span><br><span class="line">mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=epel-$releasever&amp;arch=$basearch</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br></pre></td></tr></table></figure>
+<h2 id="3：安装docker"><a href="#3：安装docker" class="headerlink" title="3：安装docker"></a>3：安装docker</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install docker-io</span><br></pre></td></tr></table></figure>
+<p>安装完成后</p>
+<h2 id="4：启动docker"><a href="#4：启动docker" class="headerlink" title="4：启动docker"></a>4：启动docker</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service  docker  start</span><br></pre></td></tr></table></figure>
+<h2 id="5：查看docker版本"><a href="#5：查看docker版本" class="headerlink" title="5：查看docker版本"></a>5：查看docker版本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker vesion</span><br></pre></td></tr></table></figure>
+<h2 id="6：查看docker日志"><a href="#6：查看docker日志" class="headerlink" title="6：查看docker日志"></a>6：查看docker日志</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/docker</span><br></pre></td></tr></table></figure>
 <p>docker安装完成</p>
-<h1 id="一：卸载docker"><a href="#一：卸载docker" class="headerlink" title="一：卸载docker"></a>一：卸载docker</h1><p>列出你安装过的包<br>[root@localhost ~]# yum list installed | grep docker<br>docker-io.x86_64                     1.7.1-2.el6                        @epel<br>删除软件包<br>yum -y remove docker-io.x86_64<br>删除镜像/容器等<br>rm -rf /var/lib/docker</p>
-<h1 id="二：升级docker版本为1-10-3"><a href="#二：升级docker版本为1-10-3" class="headerlink" title="二：升级docker版本为1.10.3"></a>二：升级docker版本为1.10.3</h1><p>升级之前停止docker服务,并将原有的docker服务进行备份. mv /usr/bin/docker /usr/bin/docker.bak</p>
-<p>nohup wget -c <a href="https://get.docker.com/builds/Linux/x86_64/docker-1.10.3" target="_blank" rel="noopener">https://get.docker.com/builds/Linux/x86_64/docker-1.10.3</a> -O /usr/bin/docker<br>给执行权限：chmod 755 /usr/bin/docker 然后重启服务，并查看版本.</p>
-<h2 id="报错："><a href="#报错：" class="headerlink" title="报错："></a>报错：</h2><p>Starting cgconfig service: Error: cannot mount memory to /cgroup/memory: No such file or directory<br>/sbin/cgconfigparser; error loading /etc/cgconfig.conf: Cgroup mounting failed<br>Failed to parse /etc/cgconfig.conf                         [FAILED]<br>Starting docker:                                       [  OK  ]</p>
-<h2 id="修改：-etc-cgconfig-conf文件"><a href="#修改：-etc-cgconfig-conf文件" class="headerlink" title="修改：/etc/cgconfig.conf文件"></a>修改：/etc/cgconfig.conf文件</h2><p>mount {<br>    cpuset  = /cgroup/cpuset;<br>    cpu = /cgroup/cpu;<br>    cpuacct = /cgroup/cpuacct;</p>
-<h1 id="memory-cgroup-memory"><a href="#memory-cgroup-memory" class="headerlink" title="memory  = /cgroup/memory;"></a>memory  = /cgroup/memory;</h1><pre><code>devices = /cgroup/devices;
-freezer = /cgroup/freezer;
-net_cls = /cgroup/net_cls;
-blkio   = /cgroup/blkio;
-</code></pre><p>}<br>重新启动docker 正常</p>
+<h1 id="一：卸载docker"><a href="#一：卸载docker" class="headerlink" title="一：卸载docker"></a>一：卸载docker</h1><p>列出你安装过的包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum list installed | grep docker</span><br><span class="line">docker-io.x86_64   1.7.1-2.el6                        @epel</span><br></pre></td></tr></table></figure></p>
+<p>删除软件包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y remove docker-io.x86_64</span><br></pre></td></tr></table></figure></p>
+<p>删除镜像/容器等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/lib/docker</span><br></pre></td></tr></table></figure></p>
+<h1 id="二：升级docker版本为1-10-3"><a href="#二：升级docker版本为1-10-3" class="headerlink" title="二：升级docker版本为1.10.3"></a>二：升级docker版本为1.10.3</h1><p>升级之前停止docker服务,并将原有的docker服务进行备份.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /usr/bin/docker /usr/bin/docker.bak</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup wget -c https://get.docker.com/builds/Linux/x86_64/docker-1.10.3 -O /usr/bin/docker</span><br></pre></td></tr></table></figure>
+<p>给执行权限：chmod 755 /usr/bin/docker 然后重启服务，并查看版本.</p>
+<h2 id="报错："><a href="#报错：" class="headerlink" title="报错："></a>报错：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Starting cgconfig service: Error: cannot mount memory to /cgroup/memory: No such file or directory</span><br><span class="line">/sbin/cgconfigparser; error loading /etc/cgconfig.conf: Cgroup mounting failed</span><br><span class="line">Failed to parse /etc/cgconfig.conf                         [FAILED]</span><br><span class="line">Starting docker:                                       [  OK  ]</span><br></pre></td></tr></table></figure>
+<h2 id="修改：-etc-cgconfig-conf文件"><a href="#修改：-etc-cgconfig-conf文件" class="headerlink" title="修改：/etc/cgconfig.conf文件"></a>修改：/etc/cgconfig.conf文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mount &#123;</span><br><span class="line">    cpuset  = /cgroup/cpuset;</span><br><span class="line">    cpu = /cgroup/cpu;</span><br><span class="line">    cpuacct = /cgroup/cpuacct;</span><br><span class="line">#   memory  = /cgroup/memory;</span><br><span class="line">    devices = /cgroup/devices;</span><br><span class="line">    freezer = /cgroup/freezer;</span><br><span class="line">    net_cls = /cgroup/net_cls;</span><br><span class="line">    blkio   = /cgroup/blkio;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重新启动docker 正常</p>
 
       
     </div>
@@ -637,7 +637,7 @@ blkio   = /cgroup/blkio;
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/photo.jpg"
+                src="/images/myphoto.jpg"
                 alt="小二" />
             
               <p class="site-author-name" itemprop="name">小二</p>
@@ -723,7 +723,7 @@ blkio   = /cgroup/blkio;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1：关闭selinux"><span class="nav-number">1.</span> <span class="nav-text">1：关闭selinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-vi-etc-sysconfig-selinux"><span class="nav-number">2.</span> <span class="nav-text">1. vi /etc/sysconfig/selinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel："><span class="nav-number">3.</span> <span class="nav-text">2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3：安装docker"><span class="nav-number">4.</span> <span class="nav-text">3：安装docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4：启动docker"><span class="nav-number">5.</span> <span class="nav-text">4：启动docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5：查看docker版本"><span class="nav-number">6.</span> <span class="nav-text">5：查看docker版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6：查看docker日志"><span class="nav-number">7.</span> <span class="nav-text">6：查看docker日志</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一：卸载docker"><span class="nav-number"></span> <span class="nav-text">一：卸载docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二：升级docker版本为1-10-3"><span class="nav-number"></span> <span class="nav-text">二：升级docker版本为1.10.3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#报错："><span class="nav-number">1.</span> <span class="nav-text">报错：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改：-etc-cgconfig-conf文件"><span class="nav-number">2.</span> <span class="nav-text">修改：/etc/cgconfig.conf文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#memory-cgroup-memory"><span class="nav-number"></span> <span class="nav-text">memory  = /cgroup/memory;</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1：关闭selinux"><span class="nav-number">1.</span> <span class="nav-text">1：关闭selinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-vi-etc-sysconfig-selinux"><span class="nav-number">2.</span> <span class="nav-text">1. vi /etc/sysconfig/selinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2：在Fedora-EPEL源中已经提供了docker-io包，下载安装epel："><span class="nav-number">3.</span> <span class="nav-text">2：在Fedora EPEL源中已经提供了docker-io包，下载安装epel：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3：安装docker"><span class="nav-number">4.</span> <span class="nav-text">3：安装docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4：启动docker"><span class="nav-number">5.</span> <span class="nav-text">4：启动docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5：查看docker版本"><span class="nav-number">6.</span> <span class="nav-text">5：查看docker版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6：查看docker日志"><span class="nav-number">7.</span> <span class="nav-text">6：查看docker日志</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一：卸载docker"><span class="nav-number"></span> <span class="nav-text">一：卸载docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二：升级docker版本为1-10-3"><span class="nav-number"></span> <span class="nav-text">二：升级docker版本为1.10.3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#报错："><span class="nav-number">1.</span> <span class="nav-text">报错：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改：-etc-cgconfig-conf文件"><span class="nav-number">2.</span> <span class="nav-text">修改：/etc/cgconfig.conf文件</span></a></li></ol></div>
             
 
           </div>
@@ -759,7 +759,7 @@ blkio   = /cgroup/blkio;
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.1k</span>
+    <span title="Site words total count">27.6k</span>
   
 </div>
 
@@ -780,7 +780,7 @@ blkio   = /cgroup/blkio;
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共27.1k字</span>
+  <span class="post-count">博客全站共27.6k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

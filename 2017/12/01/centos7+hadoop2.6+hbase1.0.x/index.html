@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="王小二客栈">
 <meta property="og:description" content="只记录那二年踏过的坑一、安装Jdk：首先需要卸载系统自带的openjava，查看系统的Java： rpm -qa|grep java。 卸载： yum -y remove java javaxxxxx(系统自带的Java版本)  安装jdk，将jdk.tar.gz文件复制到/usr/java中,终端进入/mnt/share ,cp jdk.tar.gz /usr/ava，进入/usr/java解压">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-18T17:01:12.088Z">
+<meta property="og:updated_time" content="2018-05-18T14:17:28.053Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos7伪分布式安装Hadoop2.6和Hbase0.94">
 <meta name="twitter:description" content="只记录那二年踏过的坑一、安装Jdk：首先需要卸载系统自带的openjava，查看系统的Java： rpm -qa|grep java。 卸载： yum -y remove java javaxxxxx(系统自带的Java版本)  安装jdk，将jdk.tar.gz文件复制到/usr/java中,终端进入/mnt/share ,cp jdk.tar.gz /usr/ava，进入/usr/java解压">
@@ -319,7 +319,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小二">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/photo.jpg">
+      <meta itemprop="image" content="/images/myphoto.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  622
+                  681
                 </span>
               
 
@@ -460,30 +460,14 @@
 </ul>
 <p>解压tar xzvf hadoop 2.x</p>
 <ul>
-<li>3、修改core-site.xml、hadoop-env.sh、hdfs-site.xml、mapred-site.xml 、yarn-site.xml(hadoop2.x版本的配置文件在/hadoop2.x/etc/hadoop下)</li>
+<li>3、修改core-site.xml、hadoop-env.sh、hdfs-site.xml、mapred-site.xml 、yarn-site.xml(hadoop2.x版本的配置文件在/hadoop2.x/etc/hadoop下)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">①core-site.xml：</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">		fs.default.name</span><br><span class="line">		hdfs://localhost:9000</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>①core-site.xml：</p>
-<pre><code>fs.default.name
-hdfs://localhost:9000
-</code></pre><p>② hadoop-env.sh：<br>export JAVA_HOME=/usr/java/jdkxxx (jdk路径)</p>
-<p>③ hdfs-site.xml： 先创建好数据节点和名称节点的存放路径</p>
-<pre><code>dfs.datanode.data.dir
-/user/hadoop/hadoop-2.5.1/data
-
-
-dfs.namenode.name.dir
-/user/hadoop/hadoop-2.5.1/name
-
-
-dfs.replication
-1
-</code></pre><p>④mapred-site.xml: (注意：这个文件是将/hadoop2.x/etc/hadoop下的mapred-site.xml.template复制并重命名 )</p>
-<pre><code>mapreduce.framework.name
-yarn
-</code></pre><p>⑤yarn-site.xml：</p>
-<pre><code>yarn.nodemanager.aux-services
-mapreduce_shuffle
-</code></pre><ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">② hadoop-env.sh：</span><br><span class="line">export JAVA_HOME=/usr/java/jdkxxx (jdk路径)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">③ hdfs-site.xml： 先创建好数据节点和名称节点的存放路径</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">		dfs.datanode.data.dir</span><br><span class="line">		/user/hadoop/hadoop-2.5.1/data</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">		dfs.namenode.name.dir</span><br><span class="line">		/user/hadoop/hadoop-2.5.1/name</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">		dfs.replication</span><br><span class="line">		1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">④mapred-site.xml: (注意：这个文件是将/hadoop2.x/etc/hadoop下的mapred-site.xml.template复制并重命名 )</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">		mapreduce.framework.name</span><br><span class="line">		yarn</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">⑤yarn-site.xml：</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">		yarn.nodemanager.aux-services</span><br><span class="line">		mapreduce_shuffle</span><br></pre></td></tr></table></figure>
+<ul>
 <li>4、namenode格式化（一定要完成）</li>
 </ul>
 <p>终端：cd /usr/hadoop/hadoop-2.5.1/bin</p>
@@ -499,30 +483,11 @@ mapreduce_shuffle
 </ul>
 <p>解压tar xzvf hbase1.0.1</p>
 <ul>
-<li>2、修改hbase配置文件hbase-env.sh、hbase-site.xml</li>
+<li>2、修改hbase配置文件hbase-env.sh、hbase-site.xml<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hbase-env.sh:</span><br><span class="line"></span><br><span class="line">export JAVA_HOME=/usr/java/jdkxxxx (java路径)</span><br><span class="line">export HBASE_MANAGES_ZK=true (都得去掉前面#)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>hbase-env.sh:</p>
-<p>export JAVA_HOME=/usr/java/jdkxxxx (java路径)<br>export HBASE_MANAGES_ZK=true (都得去掉前面#)</p>
-<p>hbase-site.xml：</p>
-<pre><code>hbase.rootdir
-hdfs://localhost:9000/hbase
-
-
-hbase.cluster.distributed
-true
-
-
-hbase.zookeeper.quorum
-localhost
-
-
-hbase.tmp.dir
-file:/usr/hbase/tmp
-
-
-hbase.zookeeper.property.dataDir
-file:/usr/hbase/zookeeperdata
-</code></pre><ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">hbase-site.xml：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">		hbase.rootdir</span><br><span class="line">		hdfs://localhost:9000/hbase</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">		hbase.cluster.distributed</span><br><span class="line">		true</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">		hbase.zookeeper.quorum</span><br><span class="line">		localhost</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">		hbase.tmp.dir</span><br><span class="line">		file:/usr/hbase/tmp</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">		hbase.zookeeper.property.dataDir</span><br><span class="line">		file:/usr/hbase/zookeeperdata</span><br></pre></td></tr></table></figure>
+<ul>
 <li>3、运行hbase</li>
 </ul>
 <p>运行前需先启动hadoop，再进入hbase的bin目录下输入指令 ./start-hbase.sh<br>输入jps查看启动项，如有HMaster、HRegionServer、HQuormPeer,则说明hbase启动成功。<br>输入./hbase Shell (进入shell指令，可通过shell指令建表)</p>
@@ -699,7 +664,7 @@ file:/usr/hbase/zookeeperdata
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/photo.jpg"
+                src="/images/myphoto.jpg"
                 alt="小二" />
             
               <p class="site-author-name" itemprop="name">小二</p>
@@ -821,7 +786,7 @@ file:/usr/hbase/zookeeperdata
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.1k</span>
+    <span title="Site words total count">27.6k</span>
   
 </div>
 
@@ -842,7 +807,7 @@ file:/usr/hbase/zookeeperdata
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共27.1k字</span>
+  <span class="post-count">博客全站共27.6k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

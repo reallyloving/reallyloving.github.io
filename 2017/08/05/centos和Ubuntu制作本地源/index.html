@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="只记录那二年踏过的坑CentOS系统 使用yum安装软件时，下载的* .rpm包缓存在/var/cache/yum/x86_64/7/； 创建目录 用于存放特定软件所需的软件包；  mkdir -p /opt/packages  下载软件包yum install -y –downloadonly –downloaddir=/opt/packages python-openstackclient 生">
+<meta name="description" content="只记录那二年踏过的坑CentOS系统 使用yum安装软件时，下载的* .rpm包缓存在/var/cache/yum/x86_64/7/； 创建目录 用于存放特定软件所需的软件包； 1mkdir -p /opt/packages  下载软件包 1yum install -y --downloadonly --downloaddir=/opt/packages python-openstackclie">
 <meta name="keywords" content="本地源">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos和Ubuntu本地源制作">
 <meta property="og:url" content="http://www.wenchong.top/2017/08/05/centos和Ubuntu制作本地源/index.html">
 <meta property="og:site_name" content="王小二客栈">
-<meta property="og:description" content="只记录那二年踏过的坑CentOS系统 使用yum安装软件时，下载的* .rpm包缓存在/var/cache/yum/x86_64/7/； 创建目录 用于存放特定软件所需的软件包；  mkdir -p /opt/packages  下载软件包yum install -y –downloadonly –downloaddir=/opt/packages python-openstackclient 生">
+<meta property="og:description" content="只记录那二年踏过的坑CentOS系统 使用yum安装软件时，下载的* .rpm包缓存在/var/cache/yum/x86_64/7/； 创建目录 用于存放特定软件所需的软件包； 1mkdir -p /opt/packages  下载软件包 1yum install -y --downloadonly --downloaddir=/opt/packages python-openstackclie">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-18T17:01:39.140Z">
+<meta property="og:updated_time" content="2018-05-18T14:18:58.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos和Ubuntu本地源制作">
-<meta name="twitter:description" content="只记录那二年踏过的坑CentOS系统 使用yum安装软件时，下载的* .rpm包缓存在/var/cache/yum/x86_64/7/； 创建目录 用于存放特定软件所需的软件包；  mkdir -p /opt/packages  下载软件包yum install -y –downloadonly –downloaddir=/opt/packages python-openstackclient 生">
+<meta name="twitter:description" content="只记录那二年踏过的坑CentOS系统 使用yum安装软件时，下载的* .rpm包缓存在/var/cache/yum/x86_64/7/； 创建目录 用于存放特定软件所需的软件包； 1mkdir -p /opt/packages  下载软件包 1yum install -y --downloadonly --downloaddir=/opt/packages python-openstackclie">
 
 
 
@@ -319,7 +319,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小二">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/photo.jpg">
+      <meta itemprop="image" content="/images/myphoto.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  507
+                  538
                 </span>
               
 
@@ -448,45 +448,44 @@
         <h3 id="只记录那二年踏过的坑"><a href="#只记录那二年踏过的坑" class="headerlink" title="只记录那二年踏过的坑"></a>只记录那二年踏过的坑</h3><h2 id="CentOS系统"><a href="#CentOS系统" class="headerlink" title="CentOS系统"></a>CentOS系统</h2><ul>
 <li>使用yum安装软件时，下载的* .rpm包缓存在/var/cache/yum/x86_64/7/；</li>
 <li>创建目录</li>
-<li>用于存放特定软件所需的软件包；</li>
+<li><p>用于存放特定软件所需的软件包；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /opt/packages</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载软件包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y --downloadonly --downloaddir=/opt/packages python-openstackclient</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成repo文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install -y createrepo</span><br><span class="line"></span><br><span class="line">createrepo /opt/packages</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成压缩包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zcf packages.tgz packages/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置本地源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">tar -zxf packages.tgz -C /opt</span><br><span class="line">vim /etc/yum.repos.d/local.repo</span><br><span class="line"></span><br><span class="line">[Local]</span><br><span class="line">name=Local Yum</span><br><span class="line">baseurl=file:////opt/packages/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>客户端安装软件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install python-openstackclient</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>mkdir -p /opt/packages</p>
-<ul>
-<li>下载软件包<br>yum install -y –downloadonly –downloaddir=/opt/packages python-openstackclient</li>
-<li>生成repo文件<br>yum install -y createrepo</li>
-</ul>
-<p>createrepo /opt/packages</p>
-<ul>
-<li>生成压缩包</li>
-</ul>
-<p>tar -zcf packages.tgz packages/</p>
-<ul>
-<li>配置本地源</li>
-</ul>
-<p>tar -zxf packages.tgz -C /opt<br>vim /etc/yum.repos.d/local.repo</p>
-<p>[Local]<br>name=Local Yum<br>baseurl=file:////opt/packages/<br>gpgcheck=0<br>enabled=1</p>
-<ul>
-<li>客户端安装软件：<br>yum install python-openstackclient<h2 id="Ubuntu系统"><a href="#Ubuntu系统" class="headerlink" title="Ubuntu系统"></a>Ubuntu系统</h2></li>
+<h2 id="Ubuntu系统"><a href="#Ubuntu系统" class="headerlink" title="Ubuntu系统"></a>Ubuntu系统</h2><ul>
 <li>使用apt命令安装软件时，下载的* .deb包缓存在/var/cache/apt/archives/；</li>
 <li>创建目录</li>
-<li>用于存放特定软件所需的软件包；</li>
-</ul>
-<p>mkdir -p /opt/packages</p>
-<ul>
-<li>下载软件包</li>
-<li>清除旧的缓存：</li>
-</ul>
-<p>rm -f /var/cache/apt/archives/* .deb</p>
-<ul>
-<li>下载软件包：</li>
-</ul>
-<p>apt install -d -y –force-yes PACKAGE-NAME</p>
-<ul>
-<li>拷贝软件包</li>
-</ul>
-<p>cp /var/cache/apt/archives/* .deb /opt/packages/</p>
-<ul>
-<li>生成Packages.gz包<br>Packages.gz中包含软件包信息以及其依赖关系信息；</li>
+<li><p>用于存放特定软件所需的软件包；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /opt/packages</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载软件包</p>
+</li>
+<li><p>清除旧的缓存：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -f /var/cache/apt/archives/* .deb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载软件包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install -d -y --force-yes PACKAGE-NAME</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拷贝软件包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /var/cache/apt/archives/* .deb /opt/packages/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成Packages.gz包<br>Packages.gz中包含软件包信息以及其依赖关系信息；</p>
+</li>
 <li>安装dpkg-dev以便使用dpkg-scanpackages命令生成Packages.gz文件；</li>
 </ul>
 <p>apt install -y dpkg-dev</p>
@@ -503,29 +502,29 @@
 <li><p>将压缩包拷贝到目标主机；</p>
 </li>
 <li><p>解压压缩包并配置软件源(目标主机)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -zxf packages.tgz -C /opt</span><br><span class="line">echo &apos;deb file:///opt/ packages/&apos; &gt; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>tar -zxf packages.tgz -C /opt<br>echo ‘deb file:///opt/ packages/‘ &gt; /etc/apt/sources.list</p>
-<ul>
 <li><p>临时的Web共享本地源</p>
 </li>
 <li><p>此处忽略一切的警告(warning)；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/packages/</span><br><span class="line">dpkg-scanpackages . /dev/null | gzip &gt; /opt/packages/Packages.gz -r</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>cd /opt/packages/<br>dpkg-scanpackages . /dev/null | gzip &gt; /opt/packages/Packages.gz -r</p>
-<ul>
-<li>使用Python自带的SimpleHTTPServer会在当前目录启动一个简易的Web服务器；</li>
-</ul>
-<p>cd /opt/packages/<br>python -m SimpleHTTPServer PORT</p>
-<ul>
-<li>配置软件源(目标主机):<br>echo ‘deb <a href="http://IP:PORT/" target="_blank" rel="noopener">http://IP:PORT/</a> /‘ &gt; /etc/apt/sources.list</li>
+<li><p>使用Python自带的SimpleHTTPServer会在当前目录启动一个简易的Web服务器；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/packages/</span><br><span class="line">python -m SimpleHTTPServer PORT</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置软件源(目标主机):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;deb http://IP:PORT/ /&apos; &gt; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>搭建Web服务共享本地源</p>
 </li>
 <li><p>搭建主流的Web服务：Apache服务或Nginx服务；</p>
 </li>
 <li>配置Web服务，根目录指向/opt/packages/；</li>
-<li>配置软件源(目标主机):<br>echo ‘deb <a href="http://IP:PORT/" target="_blank" rel="noopener">http://IP:PORT/</a> /‘ &gt; /etc/apt/sources.list</li>
-<li>安装软件(目标主机)<br>apt update<br>apt install -y –force-yes PACKAGE-NAME</li>
+<li><p>配置软件源(目标主机):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;deb http://IP:PORT/ /&apos; &gt; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装软件(目标主机)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install -y --force-yes PACKAGE-NAME</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -700,7 +699,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/photo.jpg"
+                src="/images/myphoto.jpg"
                 alt="小二" />
             
               <p class="site-author-name" itemprop="name">小二</p>
@@ -822,7 +821,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.1k</span>
+    <span title="Site words total count">27.6k</span>
   
 </div>
 
@@ -843,7 +842,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共27.1k字</span>
+  <span class="post-count">博客全站共27.6k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

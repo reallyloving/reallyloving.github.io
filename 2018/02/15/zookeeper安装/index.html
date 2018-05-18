@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="王小二客栈">
 <meta property="og:description" content="本文选用：centos6.5、zookeeper-3.4.6集群部署【软件】准备好jdk环境，此次我们的环境是open_jdk1.8.0_101　　　　zookeeper-3.4.6.tar.gz【步骤】  准备条件如果有内部dns或者外网有域名，则直接使用域名如果没有需要修改/etc/hosts文件，或者直接使用IP    集群规划 主机类型 IP地址  域名zookeeper1 192.16">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-05T13:15:04.288Z">
+<meta property="og:updated_time" content="2018-05-18T14:23:32.913Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zookeeper搭建">
 <meta name="twitter:description" content="本文选用：centos6.5、zookeeper-3.4.6集群部署【软件】准备好jdk环境，此次我们的环境是open_jdk1.8.0_101　　　　zookeeper-3.4.6.tar.gz【步骤】  准备条件如果有内部dns或者外网有域名，则直接使用域名如果没有需要修改/etc/hosts文件，或者直接使用IP    集群规划 主机类型 IP地址  域名zookeeper1 192.16">
@@ -319,7 +319,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小二">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/photo.jpg">
+      <meta itemprop="image" content="/images/myphoto.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  808
+                  843
                 </span>
               
 
@@ -463,8 +463,7 @@
 </ul>
 <p>tar -zxf zookeeper-3.4.6.tar.gz<br>cd zookeeper-3.4.6</p>
 <p>拷贝配置文件，修改完成后分发给其他节点<br>cd /data/zookeeper-3.4.6/<br>cp zoo_sample.cfg zoo.cfg</p>
-<p>cat zoo.cfg</p>
-<p>tickTime=2000<br>initLimit=10<br>syncLimit=5<br>dataDir=/data/zookeeper-3.4.6/data<br>dataLogDir=/data/zookeeper-3.4.6/logs<br>clientPort=2181<br>server.1=u04rtv01.yaya.corp:2888:3888<br>server.2=u04rtv02.yaya.corp:2888:3888<br>server.3=u04rtv03.yaya.corp:2888:3888</p>
+<p>cat zoo.cfg<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tickTime=2000</span><br><span class="line">initLimit=10</span><br><span class="line">syncLimit=5</span><br><span class="line">dataDir=/data/zookeeper-3.4.6/data</span><br><span class="line">dataLogDir=/data/zookeeper-3.4.6/logs</span><br><span class="line">clientPort=2181</span><br><span class="line">server.1=u04rtv01.yaya.corp:2888:3888</span><br><span class="line">server.2=u04rtv02.yaya.corp:2888:3888</span><br><span class="line">server.3=u04rtv03.yaya.corp:2888:3888</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>3.创建data和Log文件夹<br>mkdir /data/zookeeper-3.4.6/data<br>mkdir /data/zookeeper-3.4.6/logs</li>
 </ul>
@@ -476,37 +475,41 @@
 </li>
 <li><p>查看状态，可以看到其中一台为主节点，其他两台为从节点：<br>bin/zkServer.sh status</p>
 </li>
-<li><p>主节点：<br>./zkServer.sh status<br>JMX enabled by default<br>Using config: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg<br>Mode: leader</p>
+<li><p>主节点：<br>./zkServer.sh status</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">JMX enabled by default</span><br><span class="line">Using config: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg</span><br><span class="line">Mode: leader</span><br></pre></td></tr></table></figure>
 </li>
-<li>从属节点：<br>./zkServer.sh status<br>JMX enabled by default<br>Using config: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg<br>Mode: follower</li>
+<li><p>从属节点：<br>./zkServer.sh status</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">JMX enabled by default</span><br><span class="line">Using config: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg</span><br><span class="line">Mode: follower</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>停止：<br>bin/zkServer.sh stop</p>
+</li>
 </ul>
-<ul>
-<li>停止：<br>bin/zkServer.sh stop</li>
-</ul>
-<p>连接：<br>bin/zkCli.sh -server zookeeper1:2181<br>bin/zkCli.sh -server zookeeper2:2181<br>bin/zkCli.sh -server zookeeper3:2181 </p>
+<p>连接：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bin/zkCli.sh -server zookeeper1:2181 </span><br><span class="line">bin/zkCli.sh -server zookeeper2:2181 </span><br><span class="line">bin/zkCli.sh -server zookeeper3:2181</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>报错：<br>原因就是没有在dataDir目录下创建myid文件并且赋值(如1、2、3分别代表集群中的server1,server2,server3)</li>
 </ul>
 <p>2016-08-22 17:55:16,145 [myid:] - INFO  [main:QuorumPeerConfig@103] - Reading configuration from: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg<br>2016-08-22 17:55:16,150 [myid:] - INFO  [main:QuorumPeerConfig@340] - Defaulting to majority quorums<br>2016-08-22 17:55:16,150 [myid:] - ERROR [main:QuorumPeerMain@85] - Invalid config, exiting abnormally<br>org.apache.zookeeper.server.quorum.QuorumPeerConfig$ConfigException: Error processing /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg<br>        at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:123)<br>        at org.apache.zookeeper.server.quorum.QuorumPeerMain.initializeAndRun(QuorumPeerMain.java:101)<br>        at org.apache.zookeeper.server.quorum.QuorumPeerMain.main(QuorumPeerMain.java:78)<br>Caused by: java.lang.IllegalArgumentException: /data/yunva/zookeeper-3.4.6/data/myid file is missing<br>        at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parseProperties(QuorumPeerConfig.java:350)<br>        at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:119)<br>        … 2 more<br>Invalid config, exiting abnormally</p>
 <h3 id="单机部署——适用于开发测试"><a href="#单机部署——适用于开发测试" class="headerlink" title="单机部署——适用于开发测试"></a>单机部署——适用于开发测试</h3><p>tar -zxvf zookeeper-3.4.6.tar.gz<br>cd zookeeper-3.4.6/conf<br>cp zoo_sample.cfg zoo.cfg</p>
 <ul>
-<li><p>创建日志目录<br>mkdir /data/yunva/zookeeper-3.4.6/data<br>mkdir /data/yunva/zookeeper-3.4.6/logs</p>
+<li><p>创建日志目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /data/yunva/zookeeper-3.4.6/data</span><br><span class="line">mkdir /data/yunva/zookeeper-3.4.6/logs</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>配置：conf/zoo.cfg</p>
 </li>
 </ul>
-<p>tickTime=2000<br>initLimit=10<br>syncLimit=5<br>dataDir=/data/yunva/zookeeper-3.4.6/logs<br>dataLogDir=/data/yunva/zookeeper-3.4.6/logs<br>clientPort=2181</p>
-<p>#自动清除日志文件<br>autopurge.snapRetainCount=20<br>autopurge.purgeInterval=48</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tickTime=2000 </span><br><span class="line">initLimit=10 </span><br><span class="line">syncLimit=5 </span><br><span class="line">dataDir=/data/yunva/zookeeper-3.4.6/logs</span><br><span class="line">dataLogDir=/data/yunva/zookeeper-3.4.6/logs</span><br><span class="line">clientPort=2181</span><br></pre></td></tr></table></figure>
+<p>#自动清除日志文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">autopurge.snapRetainCount=20</span><br><span class="line">autopurge.purgeInterval=48</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>启动：</li>
 </ul>
-<p>bin/zkServer.sh start </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/zkServer.sh start</span><br></pre></td></tr></table></figure>
 <ul>
-<li>连接到Zookeeper：</li>
-</ul>
-<p>bin/zkCli.sh -server 127.0.0.1:2181  适用于Java开发</p>
-<ul>
-<li>查看状态：<br>bin/zkServer.sh status<br>JMX enabled by default<br>Using config: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg<br>Mode: standalone</li>
+<li><p>连接到Zookeeper：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">bin/zkCli.sh -server 127.0.0.1:2181  适用于Java开发</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bin/zkServer.sh status</span><br><span class="line">JMX enabled by default</span><br><span class="line">Using config: /data/yunva/zookeeper-3.4.6/bin/../conf/zoo.cfg</span><br><span class="line">Mode: standalone</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
@@ -681,7 +684,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/photo.jpg"
+                src="/images/myphoto.jpg"
                 alt="小二" />
             
               <p class="site-author-name" itemprop="name">小二</p>
@@ -803,7 +806,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.1k</span>
+    <span title="Site words total count">27.6k</span>
   
 </div>
 
@@ -824,7 +827,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共27.1k字</span>
+  <span class="post-count">博客全站共27.6k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

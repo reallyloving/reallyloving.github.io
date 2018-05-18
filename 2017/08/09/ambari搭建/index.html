@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="王小二客栈">
 <meta property="og:description" content="1.物理条件：三台centos前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02配置ssh      在namenode上生成密钥对：ssh-keygen  –t  rsa      在/root/.ssh中会有生成的密钥对">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-14T06:06:38.838Z">
+<meta property="og:updated_time" content="2018-05-18T14:08:57.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ambari搭建">
 <meta name="twitter:description" content="1.物理条件：三台centos前期条件：修改每台centos的名称，分别为namenode、datanode01、datanode02          ssh免密码配置：namenode 可以免密码登录到datanode01、datanode02配置ssh      在namenode上生成密钥对：ssh-keygen  –t  rsa      在/root/.ssh中会有生成的密钥对">
@@ -319,7 +319,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小二">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/photo.jpg">
+      <meta itemprop="image" content="/images/myphoto.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,315
+                  1,317
                 </span>
               
 
@@ -485,10 +485,10 @@ Client.api.port = &lt;port_number&gt;
 <pre><code>2.配置
 </code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi  /etc/ambari-agent/conf/ambari-agent.ini</span><br></pre></td></tr></table></figure>
 <pre><code>插入或更改以下内容
-hostname = namenode
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname = namenode</span><br></pre></td></tr></table></figure>
 </code></pre><p>最后<br>使用谷歌浏览器登录：<a href="http://namenode:8080" target="_blank" rel="noopener">http://namenode:8080</a>        账号：admin    密码：admin<br>注意：选择操作系统时，应该选择当前机器的版本。如果是本地源，<br>则需要修改HDP、HDP-UTILS的位置</p>
 <p>If you are lucky enough, that I wish you success.<br>Said too much, tears.</p>
-<p>如果出现ip绑定问题，修改/etc/hosts/中的ip为每台机器的真实ip<br>查看ip命令ifconfig<br>出现mysql  drive驱动问题   yum  install  mysql-connector-java</p>
+<p>如果出现ip绑定问题，修改/etc/hosts/中的ip为每台机器的真实ip<br>查看ip命令ifconfig<br>出现mysql  drive驱动问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum  install  mysql-connector-java</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -593,8 +593,8 @@ hostname = namenode
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/10/ambari卸载/" rel="prev" title="amabri卸载">
-                amabri卸载 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/10/ambari搭建错误/" rel="prev" title="错误及解决方案">
+                错误及解决方案 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -662,7 +662,7 @@ hostname = namenode
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/photo.jpg"
+                src="/images/myphoto.jpg"
                 alt="小二" />
             
               <p class="site-author-name" itemprop="name">小二</p>
@@ -784,7 +784,7 @@ hostname = namenode
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.1k</span>
+    <span title="Site words total count">27.6k</span>
   
 </div>
 
@@ -805,7 +805,7 @@ hostname = namenode
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共27.1k字</span>
+  <span class="post-count">博客全站共27.6k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
