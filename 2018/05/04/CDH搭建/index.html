@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="sqoop," />
+  <meta name="keywords" content="CDH," />
 
 
 
@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="Sqoop是一个用来将Hadoop（Hive、HBase）和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（例如：MySQL ,Oracle ,Postgres等）中的数据导入到Hadoop的HDFS中，也可以将HDFS的数据导入到关系型数据库中。  Sqoop安装 1.下载Sqoop安装包在Sqoop官网下载安装包，本次使用的是sqoop-1.4.6.binhadoop-2.0.4">
-<meta name="keywords" content="sqoop">
+<meta name="description" content="1、准备 1.官网下载Cloudera Manager和CDH 5.11Cloudera Manager下载地址：1http://archive.cloudera.com/cm5/cm/5/   cloudera-manager-el6-cm5.11.0_x86_64.tar.gz CDH安装包1http://archive.cloudera.com/cdh5/parcels/latest/ CD">
+<meta name="keywords" content="CDH">
 <meta property="og:type" content="article">
-<meta property="og:title" content="centos下sqoop环境搭建">
-<meta property="og:url" content="http://www.wenchong.top/2018/02/15/centos下sqoop环境搭建/index.html">
+<meta property="og:title" content="CDH安装">
+<meta property="og:url" content="http://www.wenchong.top/2018/05/04/CDH搭建/index.html">
 <meta property="og:site_name" content="王小二客栈">
-<meta property="og:description" content="Sqoop是一个用来将Hadoop（Hive、HBase）和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（例如：MySQL ,Oracle ,Postgres等）中的数据导入到Hadoop的HDFS中，也可以将HDFS的数据导入到关系型数据库中。  Sqoop安装 1.下载Sqoop安装包在Sqoop官网下载安装包，本次使用的是sqoop-1.4.6.binhadoop-2.0.4">
+<meta property="og:description" content="1、准备 1.官网下载Cloudera Manager和CDH 5.11Cloudera Manager下载地址：1http://archive.cloudera.com/cm5/cm/5/   cloudera-manager-el6-cm5.11.0_x86_64.tar.gz CDH安装包1http://archive.cloudera.com/cdh5/parcels/latest/ CD">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-18T14:19:23.815Z">
+<meta property="og:updated_time" content="2018-05-21T06:54:20.245Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="centos下sqoop环境搭建">
-<meta name="twitter:description" content="Sqoop是一个用来将Hadoop（Hive、HBase）和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（例如：MySQL ,Oracle ,Postgres等）中的数据导入到Hadoop的HDFS中，也可以将HDFS的数据导入到关系型数据库中。  Sqoop安装 1.下载Sqoop安装包在Sqoop官网下载安装包，本次使用的是sqoop-1.4.6.binhadoop-2.0.4">
+<meta name="twitter:title" content="CDH安装">
+<meta name="twitter:description" content="1、准备 1.官网下载Cloudera Manager和CDH 5.11Cloudera Manager下载地址：1http://archive.cloudera.com/cm5/cm/5/   cloudera-manager-el6-cm5.11.0_x86_64.tar.gz CDH安装包1http://archive.cloudera.com/cdh5/parcels/latest/ CD">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://www.wenchong.top/2018/02/15/centos下sqoop环境搭建/"/>
+  <link rel="canonical" href="http://www.wenchong.top/2018/05/04/CDH搭建/"/>
 
 
 
 
 
-  <title>centos下sqoop环境搭建 | 王小二客栈</title>
+  <title>CDH安装 | 王小二客栈</title>
   
 
 
@@ -314,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/15/centos下sqoop环境搭建/">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/05/04/CDH搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小二">
@@ -331,7 +331,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">centos下sqoop环境搭建</h1>
+          <h1 class="post-title" itemprop="name headline">CDH安装</h1>
         
 
         <div class="post-meta">
@@ -343,8 +343,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-15T00:00:00+08:00">
-                2018-02-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-04T09:13:27+08:00">
+                2018-05-04
               </time>
             
 
@@ -366,8 +366,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Sqoop/" itemprop="url" rel="index">
-                    <span itemprop="name">Sqoop</span>
+                  <a href="/categories/搭建/" itemprop="url" rel="index">
+                    <span itemprop="name">搭建</span>
                   </a>
                 </span>
 
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  411
+                  1,996
                 </span>
               
 
@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  10
                 </span>
               
             </div>
@@ -445,18 +445,234 @@
       
 
       
-        <ul>
-<li>Sqoop是一个用来将Hadoop（Hive、HBase）和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（例如：MySQL ,Oracle ,Postgres等）中的数据导入到Hadoop的HDFS中，也可以将HDFS的数据导入到关系型数据库中。</li>
-</ul>
-<h3 id="Sqoop安装"><a href="#Sqoop安装" class="headerlink" title="Sqoop安装"></a>Sqoop安装</h3><ul>
-<li>1.下载Sqoop安装包<br>在Sqoop官网下载安装包，本次使用的是sqoop-1.4.6.bin<strong>hadoop-2.0.4-alpha.tar.gz安装在/usr/local目录下，下载地址为<a href="http://apache.fayea.com/sqoop/1.4.6/sqoop-1.4.6.bin" target="_blank" rel="noopener">http://apache.fayea.com/sqoop/1.4.6/sqoop-1.4.6.bin</a></strong>hadoop-2.0.4-alpha.tar.gz</li>
-<li>2.解压Sqoop安装包<br>#进入sqoop安装目录<br>[hadoop@BigData ~]$ cd /usr/local<br>#解压sqoop安装包<br>[hadoop@BigData ~]$ tar -zxvf sqoop-1.4.6.bin<strong>hadoop-2.0.4-alpha.tar.gz<br>#删除sqoop安装包<br>[hadoop@BigData ~]$ rm -rf sqoop-1.4.6.bin</strong>hadoop-2.0.4-alpha.tar.gz<br>#重命名sqoop目录名<br>[hadoop@BigData ~]$ mv sqoop-1.4.6.bin__hadoop-2.0.4-alpha sqoop</li>
-<li>3.配置Sqoop环境变量<br>#配置Sqoop环境变量<br>[root@BigData ~]# vi /etc/profile<br>export SQOOP_HOME=/usr/local/sqoop<br>export PATH=$PATH:$SQOOP_HOME/bin<br>#保存之后记得source，使之前的配置生效<br>source /etc/profile</li>
-<li>4.将关系型数据库驱动包放到sqoop/lib目录下<br>MySql：mysql-connector-java-5.1.30.jar<br>Oracle：ojdbc14.jar</li>
-<li>5.修改Sqoop配置文件<br>[hadoop@BigData ~]$ mv sqoop-env-template.sh sqoop-env.sh<br>[hadoop@BigData ~]$ vi sqoop-env.sh<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#Set path to where bin/hadoop is available</span><br><span class="line">export HADOOP_COMMON_HOME=/usr/local/hadoop</span><br><span class="line">#Set path to where hadoop-*-core.jar is available</span><br><span class="line">export HADOOP_MAPRED_HOME=/usr/local/hadoop</span><br><span class="line">#set the path to where bin/hbase is available</span><br><span class="line">export HBASE_HOME=/usr/local/hbase</span><br><span class="line">#Set the path to where bin/hive is available</span><br><span class="line">export HIVE_HOME=/usr/local/hive</span><br><span class="line">#Set the path for where zookeper config dir is</span><br><span class="line">export ZOOCFGDIR=/usr/local/zookeeper</span><br></pre></td></tr></table></figure>
+        <h1 id="1、准备"><a href="#1、准备" class="headerlink" title="1、准备"></a>1、准备</h1><ul>
+<li>1.官网下载Cloudera Manager和CDH 5.11<br>Cloudera Manager下载地址：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://archive.cloudera.com/cm5/cm/5/</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>到此，sqoop环境就已搭建成功！</p>
+<p>cloudera-manager-el6-cm5.11.0_x86_64.tar.gz</p>
+<p>CDH安装包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://archive.cloudera.com/cdh5/parcels/latest/</span><br></pre></td></tr></table></figure></p>
+<p>CDH-5.11.0-1.cdh5.11.0.p0.34-el6.parcel</p>
+<p>CDH-5.11.0-1.cdh5.11.0.p0.34-el6.parcel.sha1</p>
+<p>manifest.json</p>
+<p>2.JDK 7<br>jdk-7u80-linux-x64.tar.gz</p>
+<p>3.mysql 5.6和最新的mysql JDBC connector<br>mysql-5.6.36-linux-glibc2.5-x86_64.tar.gz</p>
+<p>mysql-connector-java-5.1.44-bin.jar</p>
+<h1 id="二、CentOS6-5安装"><a href="#二、CentOS6-5安装" class="headerlink" title="二、CentOS6.5安装"></a>二、CentOS6.5安装</h1><p>用户/密码</p>
+<p>root/XXXX</p>
+<p>XXX/123</p>
+<p>主机名 IP</p>
+<p>master 192.168.10.111</p>
+<p>slave1 192.168.10.121</p>
+<p>slave2 192.168.10.131</p>
+<p>配置/etc/hostname</p>
+<p>分别是maser和slave1和slave2</p>
+<p>主机名 IP<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">master 192.168.10.11  </span><br><span class="line"></span><br><span class="line">slave1 192.168.10.12</span><br><span class="line"></span><br><span class="line">slave2 192.168.10.13</span><br></pre></td></tr></table></figure></p>
+<p>配置/etc/hostname</p>
+<p>分别是maser和slave1和slave2</p>
+<p>3台都配置/etc/hosts</p>
+<p>加入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">192.168.111 master</span><br><span class="line"></span><br><span class="line">192.168.121 slave1</span><br><span class="line"></span><br><span class="line">192.168.131 slave2</span><br></pre></td></tr></table></figure></p>
+<p>注：安装过程都使用root用户</p>
+<p>CDH 安装在/opt。</p>
+<p>CDH在var目录会放文件，要预留空间</p>
+<p>数据保存在/data</p>
+<h1 id="三、配置SSH无密码登录"><a href="#三、配置SSH无密码登录" class="headerlink" title="三、配置SSH无密码登录"></a>三、配置SSH无密码登录</h1><p>1.查看是否安装openssh和rsync<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep openssh</span><br><span class="line"></span><br><span class="line">rpm -qa | grep rsync</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>三台都运行<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t dsa -P &apos;&apos; -f ~/.ssh/id_dsa</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>(-t dsa：表示使用密钥的加密类型，可以为’rsa’和’dsa’)</p>
+<p>3.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
+<p>这一步，把本机的密钥写入authorized_keys文件</p>
+<p>然后要将其他2台的密钥写入本机的authorized_keys文件</p>
+<p>4.</p>
+<p>master运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp ~/.ssh/id_dsa.pub root@slave1:~/.ssh/ authorized_keys_from_master</span><br><span class="line"></span><br><span class="line">scp ~/.ssh/id_dsa.pub root@slave2:~/.ssh/ authorized_keys_from_master</span><br></pre></td></tr></table></figure></p>
+<p>slave1 运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat .ssh/authorized_keys_from_master  &gt;&gt;  ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
+<p>slave2 运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat .ssh/authorized_keys_from_master  &gt;&gt;  ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
+<p>slave1运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp ~/.ssh/id_dsa.pub root@master:~/.ssh/authorized_keys_from_slave1</span><br><span class="line"></span><br><span class="line">scp ~/.ssh/id_dsa.pub root@slave2:~/.ssh/authorized_keys_from_slave1</span><br></pre></td></tr></table></figure></p>
+<p>master运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat .ssh/authorized_keys_from_slave1  &gt;&gt;  ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
+<p>slave2 运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat .ssh/authorized_keys_from_slave1 &gt;&gt;  ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
+<p>slave2运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp ~/.ssh/id_dsa.pub root@master:~/.ssh/authorized_keys_from_slave2</span><br><span class="line"></span><br><span class="line">scp ~/.ssh/id_dsa.pub root@slave1:~/.ssh/authorized_keys_from_slave2</span><br></pre></td></tr></table></figure></p>
+<p>master运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat .ssh/authorized_keys_from_slave2  &gt;&gt;  ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
+<p>slave2 运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat .ssh/authorized_keys_from_slave2 &gt;&gt;  ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
+<p>最后3台的authorized_keys文件，内容都有3个key</p>
+<p>测试SSH无密码登陆</p>
+<p>在任意一台上，ssh slave1 都可以无密码登陆</p>
+<h1 id="四、同步各时间节点"><a href="#四、同步各时间节点" class="headerlink" title="四、同步各时间节点"></a>四、同步各时间节点</h1><ul>
+<li>1 将3台服务器时间同步，若hbase各节点时间差距过大会报错（默认30秒）</li>
+</ul>
+<p>关闭3台的防火墙<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service iptables stop</span><br><span class="line"></span><br><span class="line">chkconfig iptables off</span><br></pre></td></tr></table></figure></p>
+<p>重启后也生效</p>
+<ul>
+<li>2 配置ntp服务器（master）</li>
+</ul>
+<p>vim /etc/ntp.conf</p>
+<p>然后加入以下配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.127.1.0</span><br><span class="line"></span><br><span class="line">fudge 127.127.1.0 stratum 10</span><br></pre></td></tr></table></figure></p>
+<p>注：</p>
+<p>后面那个数字在0-15之间都可以，这样就将这台机器的本地时间作为ntp服务提供给客户端</p>
+<ul>
+<li>3 重启ntpd</li>
+</ul>
+<p>/etc/init.d/ntpd start</p>
+<p>chkconfig  ntpd on下次开机时 自动重启</p>
+<h1 id="五、安装JDK"><a href="#五、安装JDK" class="headerlink" title="五、安装JDK"></a>五、安装JDK</h1><ul>
+<li>1 检查并写在openjdk</li>
+</ul>
+<p>检查命令：java -version 或 rpm -qa | grep java</p>
+<p>卸载命令：rpm –e –nodeps(忽略依赖) 安装包名</p>
+<p>或yum -y remove 安装包名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.45-2.4.3.3.el6.x86_64</span><br><span class="line"></span><br><span class="line">rpm -e --nodeps java-1.6.0-openjdk-1.6.0.0-1.66.1.13.0.el6.x86_64</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>2 解压安装</li>
+</ul>
+<p>Jdk版本：jdk-7u80-linux-x64.tar.gz</p>
+<p>解压到/usr/local :</p>
+<p>cd /usr/local;</p>
+<p>tar –zxvf jdk-7u80-linux-x64.tar.gz</p>
+<ul>
+<li>3 配置环境变量</li>
+</ul>
+<p>3台都编辑/etc/profile文件：vim /etc/profile</p>
+<p>加入</p>
+<p>#set java environment<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/jdk1.7.0_80</span><br><span class="line"></span><br><span class="line">export LASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line"></span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br></pre></td></tr></table></figure></p>
+<p>使配置生效：source /etc/profile</p>
+<ul>
+<li><p>六、安装mysql<br>mysql安装在slave2 192.168.10.131</p>
+</li>
+<li><p>1 检查是否存在mysql库文件</p>
+</li>
+</ul>
+<p>检查命令：rpm –qa | grep mysql</p>
+<p>若存在则卸载：rpm -e –nodeps mysql-libs-5.1.71-1.el6.x86_64</p>
+<ul>
+<li>2 检查是否存在mysql用户和组</li>
+</ul>
+<p>检查命令：cat /etc/group | grep mysql;</p>
+<p>cat /etc/passwd | grep mysql</p>
+<p>若不存在则创建：groupadd mysql;</p>
+<p>useradd –r –g mysql mysql</p>
+<p>(-r参数表示mysql用户是系统用户，不可用于登录系统)</p>
+<ul>
+<li>3 创建数据、日志存储目录</li>
+</ul>
+<p>命令：mkdir -p /data/mysql/data;  mkdir /var/lib/mysql/log</p>
+<p>更改所属用户：</p>
+<p>chown –R mysql:mysql  /data/mysql</p>
+<p>chown –R mysql:mysql  /usr/local/mysql</p>
+<ul>
+<li>4 解压并初始化</li>
+</ul>
+<p>解压安装包：</p>
+<p>/usr/local目录</p>
+<p>tar –zxvf mysql-5.6.36-linux-glibc2.5-x86_64.tar.gz</p>
+<p>改目录名</p>
+<p>mv mysql-5.6.36-linux-glibc2.5-x86_64 mysql</p>
+<p>初始化参数：</p>
+<p>到mysql目录</p>
+<p>bin/mysqld –initialize –user=mysql –basedir=/usr/local/mysql –datadir=/data/mysql/data</p>
+<p>复制配置文件</p>
+<p>cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql</p>
+<p>cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf</p>
+<p>修改</p>
+<p>vi /etc/init.d/mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">basedir=/usr/local/mysql</span><br><span class="line"></span><br><span class="line">datadir=/data/mysql/data</span><br></pre></td></tr></table></figure>
+<p>vi /etc/my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">basedir =/usr/local/mysql</span><br><span class="line"></span><br><span class="line">datadir =/data/mysql/data</span><br><span class="line"></span><br><span class="line">character_set_server=utf8</span><br></pre></td></tr></table></figure></p>
+<p>在usr/local/mysql/script目录运行</p>
+<p>./mysql_install_db –user=mysql –basedir=/usr/local/mysql –datadir=/data/mysql/data</p>
+<ul>
+<li>5 添加环境变量</li>
+</ul>
+<p>编辑文件：vim /etc/profile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/usr/local/bin:$PATH</span><br><span class="line">export PATH=/usr/local/mysql/bin:$PATH</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>6 配置mysql自动启动<br>chmod 755 /etc/init.d/mysql</li>
+</ul>
+<p>chkconfig –add mysql</p>
+<p>设置在运行级别为3和5时mysql自动启动：<br>chkconfig –level 35 mysql on</p>
+<ul>
+<li>7 启动mysql</li>
+</ul>
+<p>命令：bin/mysqld_safe –user=mysql &amp;</p>
+<p>登录mysql  </p>
+<p>bin/mysql –user=root -p</p>
+<p>设置root密码</p>
+<p>set password=password(‘anjian123’);</p>
+<p>()允许root在任何主机登录：<br>grant all privileges on <em>.</em> to ‘root’@’%’ identified by ‘anjian123’  with grant option;</p>
+<p>grant all privileges on <em>.</em> to ‘root’@’master’ identified by ‘anjian123’  with grant option;</p>
+<p>刷新权限表：flush privileges;</p>
+<ul>
+<li>8 创建以下数据库</li>
+</ul>
+<p>create database hive DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</p>
+<p>create database oozie DEFAULT CHARSET utf8 COLLATE utf8_general_ci; </p>
+<p>create database amon DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</p>
+<p>create database hue DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</p>
+<h1 id="七、安装CDH"><a href="#七、安装CDH" class="headerlink" title="七、安装CDH"></a>七、安装CDH</h1><ul>
+<li>1 安装Cloudera Manager Server 和Agent</li>
+</ul>
+<p>主节点解压安装</p>
+<p>cloudera manager的目录默认位置在/opt下，解压：tar xzvf cloudera-manager*.tar.gz将解压后的cm-5.11.0和cloudera目录放到/opt目录下。</p>
+<p>复制mysql-connector-java-5.1.44-bin.jar到目录/usr/share/java和/opt/cm-5.11.0/share/cmf/lib/</p>
+<p>并改名成mysql-connector-java.jar</p>
+<ul>
+<li>2 创建用户cloudera-scm</li>
+</ul>
+<p>在所有节点上执行</p>
+<p>useradd –system –no-create-home –shell=/bin/false –comment “Cloudera SCM User” cloudera-scm</p>
+<ul>
+<li>3 agent配置</li>
+</ul>
+<p>主节点，修改/opt/cm-5.11.0/etc/cloudera-scm-agent/config.ini中的server_host为主节点的主机名。</p>
+<h1 id="Hostname-of-the-CM-server"><a href="#Hostname-of-the-CM-server" class="headerlink" title="Hostname of the CM server."></a>Hostname of the CM server.</h1><p>server_host=master</p>
+<p>同步Agent到其他所有节点：</p>
+<p>scp -r /opt/cm-5.11.0 root@slave1:/opt/</p>
+<p>scp -r /opt/cm-5.11.0 root@slave2:/opt/</p>
+<ul>
+<li>4 在主节点初始化CM5数据库</li>
+</ul>
+<p>运行</p>
+<p>/opt/cm-5.11.0/share/cmf/schema/scm_prepare_database.sh mysql cm -h slave2 -uroot -panjian123 –scm-host master scm scm scm</p>
+<p>-h后是mysql的主机名</p>
+<p>–scm-host 后是SCM server的主机名（主节点）</p>
+<p>如果有报错，一般是msyql的权限设置没设好，root不能远程登录</p>
+<ul>
+<li>5 准备Parcels，用以安装CDH5</li>
+</ul>
+<p>将CHD5相关的Parcel包放到主节点的/opt/cloudera/parcel-repo/目录中</p>
+<p>相关的文件如下：</p>
+<p>CDH-5.11.0-1.cdh5.11.0.p0.34-el6.parcel</p>
+<p>CDH-5.11.0-1.cdh5.11.0.p0.34-el6.parcel.sha1</p>
+<p>manifest.json</p>
+<p>最后将CDH-5.1.3-1.cdh5.1.3.p0.12-el6.parcel.sha1，重命名为CDH-5.11.0-1.cdh5.11.0.p0.34-el6.parcel.sha</p>
+<ul>
+<li>6 启动脚本</li>
+</ul>
+<p>主节点：通过/opt/cm-5.11.0/etc/init.d/cloudera-scm-server start启动服务端。</p>
+<p>所有节点（包括主节点）：通过/opt/cm-5.11.0/etc/init.d/cloudera-scm-agent start启动Agent服务</p>
+<p>注：</p>
+<p>停止可以用/init.d/cloudera-scm-server stop</p>
+<p>启动成功后，可以用ps –ef|grep cloudera看到这2个进程</p>
+<p>cloudera-scm-agent  的log如果报错:</p>
+<p>[04/Sep/2017 16:29:38 +0000] 2983 MainThread agent        ERROR    Heartbeating to master:7182 failed.</p>
+<p>一般是主节点防火墙没关闭</p>
+<ul>
+<li>7 CDH5的安装配置</li>
+</ul>
+<p><a href="http://192.168.10.111:7180/cmf/login" target="_blank" rel="noopener">http://192.168.10.111:7180/cmf/login</a></p>
+<p>默认的用户名和密码均为admin</p>
+<h1 id="注：CDH安装失败后，重新安装："><a href="#注：CDH安装失败后，重新安装：" class="headerlink" title="注：CDH安装失败后，重新安装："></a>注：CDH安装失败后，重新安装：</h1><p>1) 主节点关闭cloudera-scm-server。所有节点关闭cloudera-scm-agent</p>
+<p>2）删除Agent节点目录</p>
+<p>rm -rf /opt/cm-5.11.0 </p>
+<pre><code>rm -rf /opt/cloudera
+</code></pre><p>删除主节点目录</p>
+<p>rm -rf /opt/cm-5.11.0</p>
+<p>rm -rf /opt/cloudera</p>
+<p>删除主节点，/var/log/下cloudera相关的目录</p>
+<p>删除主节点，/var/lib/下cloudera相关的目录</p>
+<p>3) 清空CM数据库</p>
+<pre><code>进入Mysql数据库，然后drop database cm;
+</code></pre><p>4) 删除各节点namenode和datanode节点信息</p>
+<pre><code># rm -rf /opt/dfs/nn/*
+
+# rm -rf /opt/dfs/dn/*
+</code></pre><p>5) 重新安装CDH，主节点解解压：tar xzvf cloudera-manager*.tar.gz将解压后的cm-5.11.0和cloudera目录放到/opt目录下。</p>
 
       
     </div>
@@ -512,7 +728,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://www.wenchong.top/2018/02/15/centos下sqoop环境搭建/" title="centos下sqoop环境搭建">http://www.wenchong.top/2018/02/15/centos下sqoop环境搭建/</a>
+    <a href="http://www.wenchong.top/2018/05/04/CDH搭建/" title="CDH安装">http://www.wenchong.top/2018/05/04/CDH搭建/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -538,7 +754,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/sqoop/" rel="tag"><i class="fa fa-tag"></i> sqoop</a>
+            <a href="/tags/CDH/" rel="tag"><i class="fa fa-tag"></i> CDH</a>
           
         </div>
       
@@ -551,8 +767,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/05/docker安装/" rel="next" title="docker安装">
-                <i class="fa fa-chevron-left"></i> docker安装
+              <a href="/2018/02/17/myblog-test/" rel="next" title="王小二客栈">
+                <i class="fa fa-chevron-left"></i> 王小二客栈
               </a>
             
           </div>
@@ -561,8 +777,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/15/zookeeper安装/" rel="prev" title="zookeeper搭建">
-                zookeeper搭建 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/11/nginx安装/" rel="prev" title="nginx安装">
+                nginx安装 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -716,7 +932,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sqoop安装"><span class="nav-number">1.</span> <span class="nav-text">Sqoop安装</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、准备"><span class="nav-number">1.</span> <span class="nav-text">1、准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、CentOS6-5安装"><span class="nav-number">2.</span> <span class="nav-text">二、CentOS6.5安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、配置SSH无密码登录"><span class="nav-number">3.</span> <span class="nav-text">三、配置SSH无密码登录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、同步各时间节点"><span class="nav-number">4.</span> <span class="nav-text">四、同步各时间节点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、安装JDK"><span class="nav-number">5.</span> <span class="nav-text">五、安装JDK</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七、安装CDH"><span class="nav-number">6.</span> <span class="nav-text">七、安装CDH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hostname-of-the-CM-server"><span class="nav-number">7.</span> <span class="nav-text">Hostname of the CM server.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注：CDH安装失败后，重新安装："><span class="nav-number">8.</span> <span class="nav-text">注：CDH安装失败后，重新安装：</span></a></li></ol></div>
             
 
           </div>
