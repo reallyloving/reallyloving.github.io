@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="1、准备 1.官网下载Cloudera Manager和CDH 5.11Cloudera Manager下载地址：1http://archive.cloudera.com/cm5/cm/5/   cloudera-manager-el6-cm5.11.0_x86_64.tar.gz CDH安装包1http://archive.cloudera.com/cdh5/parcels/latest/ CD">
+<meta name="description" content="一、准备 1.官网下载Cloudera Manager和CDH 5.11Cloudera Manager下载地址：1http://archive.cloudera.com/cm5/cm/5/   cloudera-manager-el6-cm5.11.0_x86_64.tar.gz CDH安装包1http://archive.cloudera.com/cdh5/parcels/latest/ CD">
 <meta name="keywords" content="CDH">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CDH安装">
 <meta property="og:url" content="http://www.wenchong.top/2018/05/04/CDH搭建/index.html">
 <meta property="og:site_name" content="王小二客栈">
-<meta property="og:description" content="1、准备 1.官网下载Cloudera Manager和CDH 5.11Cloudera Manager下载地址：1http://archive.cloudera.com/cm5/cm/5/   cloudera-manager-el6-cm5.11.0_x86_64.tar.gz CDH安装包1http://archive.cloudera.com/cdh5/parcels/latest/ CD">
+<meta property="og:description" content="一、准备 1.官网下载Cloudera Manager和CDH 5.11Cloudera Manager下载地址：1http://archive.cloudera.com/cm5/cm/5/   cloudera-manager-el6-cm5.11.0_x86_64.tar.gz CDH安装包1http://archive.cloudera.com/cdh5/parcels/latest/ CD">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-21T06:54:20.245Z">
+<meta property="og:updated_time" content="2018-05-21T07:11:05.465Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CDH安装">
-<meta name="twitter:description" content="1、准备 1.官网下载Cloudera Manager和CDH 5.11Cloudera Manager下载地址：1http://archive.cloudera.com/cm5/cm/5/   cloudera-manager-el6-cm5.11.0_x86_64.tar.gz CDH安装包1http://archive.cloudera.com/cdh5/parcels/latest/ CD">
+<meta name="twitter:description" content="一、准备 1.官网下载Cloudera Manager和CDH 5.11Cloudera Manager下载地址：1http://archive.cloudera.com/cm5/cm/5/   cloudera-manager-el6-cm5.11.0_x86_64.tar.gz CDH安装包1http://archive.cloudera.com/cdh5/parcels/latest/ CD">
 
 
 
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,996
+                  1,999
                 </span>
               
 
@@ -445,7 +445,7 @@
       
 
       
-        <h1 id="1、准备"><a href="#1、准备" class="headerlink" title="1、准备"></a>1、准备</h1><ul>
+        <h1 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a>一、准备</h1><ul>
 <li>1.官网下载Cloudera Manager和CDH 5.11<br>Cloudera Manager下载地址：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://archive.cloudera.com/cm5/cm/5/</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -619,8 +619,7 @@
 <ul>
 <li>3 agent配置</li>
 </ul>
-<p>主节点，修改/opt/cm-5.11.0/etc/cloudera-scm-agent/config.ini中的server_host为主节点的主机名。</p>
-<h1 id="Hostname-of-the-CM-server"><a href="#Hostname-of-the-CM-server" class="headerlink" title="Hostname of the CM server."></a>Hostname of the CM server.</h1><p>server_host=master</p>
+<p>主节点，修改/opt/cm-5.11.0/etc/cloudera-scm-agent/config.ini中的server_host为主节点的主机名。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> # Hostname of the CM server.</span><br><span class="line"></span><br><span class="line">server_host=master</span><br></pre></td></tr></table></figure></p>
 <p>同步Agent到其他所有节点：</p>
 <p>scp -r /opt/cm-5.11.0 root@slave1:/opt/</p>
 <p>scp -r /opt/cm-5.11.0 root@slave2:/opt/</p>
@@ -767,8 +766,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/17/myblog-test/" rel="next" title="王小二客栈">
-                <i class="fa fa-chevron-left"></i> 王小二客栈
+              <a href="/2018/02/15/zookeeper安装/" rel="next" title="zookeeper搭建">
+                <i class="fa fa-chevron-left"></i> zookeeper搭建
               </a>
             
           </div>
@@ -860,7 +859,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -932,7 +931,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、准备"><span class="nav-number">1.</span> <span class="nav-text">1、准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、CentOS6-5安装"><span class="nav-number">2.</span> <span class="nav-text">二、CentOS6.5安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、配置SSH无密码登录"><span class="nav-number">3.</span> <span class="nav-text">三、配置SSH无密码登录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、同步各时间节点"><span class="nav-number">4.</span> <span class="nav-text">四、同步各时间节点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、安装JDK"><span class="nav-number">5.</span> <span class="nav-text">五、安装JDK</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七、安装CDH"><span class="nav-number">6.</span> <span class="nav-text">七、安装CDH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hostname-of-the-CM-server"><span class="nav-number">7.</span> <span class="nav-text">Hostname of the CM server.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注：CDH安装失败后，重新安装："><span class="nav-number">8.</span> <span class="nav-text">注：CDH安装失败后，重新安装：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、准备"><span class="nav-number">1.</span> <span class="nav-text">一、准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、CentOS6-5安装"><span class="nav-number">2.</span> <span class="nav-text">二、CentOS6.5安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、配置SSH无密码登录"><span class="nav-number">3.</span> <span class="nav-text">三、配置SSH无密码登录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、同步各时间节点"><span class="nav-number">4.</span> <span class="nav-text">四、同步各时间节点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、安装JDK"><span class="nav-number">5.</span> <span class="nav-text">五、安装JDK</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七、安装CDH"><span class="nav-number">6.</span> <span class="nav-text">七、安装CDH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注：CDH安装失败后，重新安装："><span class="nav-number">7.</span> <span class="nav-text">注：CDH安装失败后，重新安装：</span></a></li></ol></div>
             
 
           </div>
@@ -968,7 +967,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">29.6k</span>
+    <span title="Site words total count">29.8k</span>
   
 </div>
 
@@ -989,7 +988,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共29.6k字</span>
+  <span class="post-count">博客全站共29.8k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
