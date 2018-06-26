@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="王小二客栈">
 <meta property="og:description" content="本文选用：centos6.5、zookeeper-3.4.11、hadoop2.8.0、jdk1.8.0、Scala2.12.1  前言.Spark简介和hadoop的区别  123456789101112Spark 是一种与 Hadoop 相似的开源集群计算环境，但是两者之间还存在一些不同之处，Spark 启用了内存分布数据集，除了能够提供交互式查询外，它还可以优化迭代工作负载。 1.架构不同">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-26T07:20:40.423Z">
+<meta property="og:updated_time" content="2018-06-26T07:26:43.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spark伪分布安装">
 <meta name="twitter:description" content="本文选用：centos6.5、zookeeper-3.4.11、hadoop2.8.0、jdk1.8.0、Scala2.12.1  前言.Spark简介和hadoop的区别  123456789101112Spark 是一种与 Hadoop 相似的开源集群计算环境，但是两者之间还存在一些不同之处，Spark 启用了内存分布数据集，除了能够提供交互式查询外，它还可以优化迭代工作负载。 1.架构不同">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,423
+                  1,429
                 </span>
               
 
@@ -467,9 +467,7 @@
 </li>
 </ul>
 <p>拷贝配置文件,修改为运行主机名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp slaves.template slaves</span><br></pre></td></tr></table></figure></p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp spark-env.sh.template spark-env.sh </span><br><span class="line">vim spark-env.sh</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">进行以下配置 </span><br><span class="line">export JAVA_HOME=/usr/local/jdk1.8.0 </span><br><span class="line">export SCALA_HOME=/usr/local/scala-2.12.1 </span><br><span class="line">export SPARK_WORKER_MEMORY=1G </span><br><span class="line">export HADOOP_HOME=/usr/local/hadoop2.8.0</span><br><span class="line">export HADOOP_CONF_DIR=/usr/local/hadoop2.8.0/etc/hadoop </span><br><span class="line">export SPARK_MASTER_IP=192.168.174.175</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cp spark-env.sh.template spark-env.sh </span><br><span class="line">vim spark-env.sh </span><br><span class="line">--------------------</span><br><span class="line">进行以下配置 </span><br><span class="line">export JAVA_HOME=/usr/local/jdk1.8.0 </span><br><span class="line">export SCALA_HOME=/usr/local/scala-2.12.1 </span><br><span class="line">export SPARK_WORKER_MEMORY=1G </span><br><span class="line">export HADOOP_HOME=/usr/local/hadoop2.8.0</span><br><span class="line">export HADOOP_CONF_DIR=/usr/local/hadoop2.8.0/etc/hadoop </span><br><span class="line">export SPARK_MASTER_IP=192.168.174.175</span><br></pre></td></tr></table></figure>
 <ul>
 <li>3.启动spark<br>(1)先启动hadoop 环境 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/hadoop/sbin# start-all.sh</span><br></pre></td></tr></table></figure>
 </li>
@@ -483,8 +481,7 @@
 </ul>
 <p>/bin/spark-shell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* 6.查看sparl-shell web界面</span><br></pre></td></tr></table></figure></p>
 <p><a href="http://192.168.137.133:4040/jobs/" target="_blank" rel="noopener">http://192.168.137.133:4040/jobs/</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* 7.Spark测试</span><br></pre></td></tr></table></figure></p>
-<p>1.在HDFS上建立目录<br>hadoop fs -mkdir -p /data<br>hadoop fs -ls /data/ 可以查看<br>hadoop fs -mkdir -p /data/input 建立文件夹input<br>将本地目录传送到HDFS上<br>hadoop fs -put /home/santiago/data/spark/spark_test.txt /data/input<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">---------------------</span><br></pre></td></tr></table></figure></p>
-<p>测试spark<br>val text_in = sc.textFile(“/data/input/hbase.txt”)<br>执行后打印：<br>println(text_in.count())<br>观察job网页<br>```</p>
+<p>1.在HDFS上建立目录<br>hadoop fs -mkdir -p /data<br>hadoop fs -ls /data/ 可以查看<br>hadoop fs -mkdir -p /data/input 建立文件夹input<br>将本地目录传送到HDFS上<br>hadoop fs -put /home/santiago/data/spark/spark_test.txt /data/input<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">测试spark </span><br><span class="line">val text_in = sc.textFile(&quot;/data/input/hbase.txt&quot;)</span><br><span class="line">执行后打印：</span><br><span class="line">println(text_in.count())</span><br><span class="line">观察job网页</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -579,8 +576,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/05/docker安装/" rel="next" title="docker安装">
-                <i class="fa fa-chevron-left"></i> docker安装
+              <a href="/2018/02/15/zookeeper安装/" rel="next" title="zookeeper搭建">
+                <i class="fa fa-chevron-left"></i> zookeeper搭建
               </a>
             
           </div>
@@ -589,8 +586,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/15/centos下sqoop环境搭建/" rel="prev" title="centos下sqoop环境搭建">
-                centos下sqoop环境搭建 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/04/CDH搭建/" rel="prev" title="CDH安装">
+                CDH安装 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -706,7 +703,7 @@
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="wangbiao3974@163.com" target="_blank" title="E-Mail">
+                    <a href="https://wangbiao3974@163.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
