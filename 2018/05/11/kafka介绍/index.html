@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="王小二客栈">
 <meta property="og:description" content="生产者发送消息到broker的流程  1.ProducerIntercptor对消息进行拦截 2.Serialzer对key和values进行序列化 3.Partitioner对消息选择合适分区 4.RecordAccumulator收集消息，实现批量发送 5.Sender从RecordAccumulator获取消息 6.构造ClientRequest 7.将ClientRequest交给Netw">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-27T08:05:20.949Z">
+<meta property="og:updated_time" content="2018-06-27T08:15:35.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kafka介绍">
 <meta name="twitter:description" content="生产者发送消息到broker的流程  1.ProducerIntercptor对消息进行拦截 2.Serialzer对key和values进行序列化 3.Partitioner对消息选择合适分区 4.RecordAccumulator收集消息，实现批量发送 5.Sender从RecordAccumulator获取消息 6.构造ClientRequest 7.将ClientRequest交给Netw">
@@ -457,7 +457,7 @@
 <li>8.Network将请求放在KafkaChannel的缓存</li>
 <li>9.发送请求</li>
 <li>10.收到响应，发送ClientRequest</li>
-<li>11.调用RecordBath的回调函数，最终调用到每一个消息上的回调函数<br>** 在这里主要涉及到两个线程：<br>主线程主要负责封装消息成ProducerRecord对象，之后调用send方法将消息放入RecordAccumulator中暂存<br>Sender线程负责将消息构造成请求，并从RecordAccumulator取出消息消息并批量发送</li>
+<li>11.调用RecordBath的回调函数，最终调用到每一个消息上的回调函数<br><strong> 在这里主要涉及到两个线程：</strong><br>主线程主要负责封装消息成ProducerRecord对象，之后调用send方法将消息放入RecordAccumulator中暂存<br>Sender线程负责将消息构造成请求，并从RecordAccumulator取出消息消息并批量发送</li>
 </ul>
 <h3 id="核心字段"><a href="#核心字段" class="headerlink" title="核心字段"></a>核心字段</h3><p>String clientId：该生产者的唯一标示</p>
 <p>AtomicInteger PRODUCER_CLIENT_ID_SEQUENCE: clientId生成器</p>
