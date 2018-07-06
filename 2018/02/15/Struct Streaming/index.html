@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="王小二客栈">
 <meta property="og:description" content="概观结构化流式是一种基于Spark SQL的可扩展且容错的流处理引擎。可以像表达静态数据的批处理计算一样表达流式计算。park SQL引擎将负责逐步和连续地运行它，并在流数据继续到达时更新最终结果。自Spark 2.3以来，我们引入了一种称为连续处理的新型低延迟处理模式，它可以实现低至1毫秒的端到端延迟，并且具有至少一次保证。  开始示例123456789101112131415161718192">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-05T07:44:02.955Z">
+<meta property="og:updated_time" content="2018-07-05T08:16:43.165Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Structured Streaming模型">
 <meta name="twitter:description" content="概观结构化流式是一种基于Spark SQL的可扩展且容错的流处理引擎。可以像表达静态数据的批处理计算一样表达流式计算。park SQL引擎将负责逐步和连续地运行它，并在流数据继续到达时更新最终结果。自Spark 2.3以来，我们引入了一种称为连续处理的新型低延迟处理模式，它可以实现低至1毫秒的端到端延迟，并且具有至少一次保证。  开始示例123456789101112131415161718192">
@@ -536,7 +536,7 @@ fileNameOnly：是否基于以下方法检查新文件只有文件名而不是�
 <h3 id="通过检查点从故障中恢复"><a href="#通过检查点从故障中恢复" class="headerlink" title="通过检查点从故障中恢复"></a>通过检查点从故障中恢复</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 如果发生故障或故意关机，您可以恢复先前查询的先前进度和状态，并从中断处继续。这是使用检查点和预写日志完成的。</span><br></pre></td></tr></table></figure>
 <p>aggDF<br>  .writeStream()<br>  .outputMode(“complete”)<br>  .option(“checkpointLocation”, “path/to/HDFS/dir”)<br>  .format(“memory”)<br>  .start();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">### 连续处理</span><br><span class="line">* 连续处理是Spark 2.3中引入的一种新的实验性流执行模式，可实现低（~1 ms）端到端延迟，并且至少具有一次容错保证。</span><br><span class="line">要在连续处理模式下运行支持的查询，您只需指定一个连续触发器，并将所需的检查点间隔作为参数。例如，</span><br></pre></td></tr></table></figure></p>
 <p>import org.apache.spark.sql.streaming.Trigger;</p>
-<p>spark<br>  .readStream<br>  .format(“kafka”)<br>  .option(“kafka.bootstrap.servers”, “host1:port1,host2:port2”)<br>  .option(“subscribe”, “topic1”)<br>  .load()<br>  .selectExpr(“CAST(key AS STRING)”, “CAST(value AS STRING)”)<br>  .writeStream<br>  .format(“kafka”)<br>  .option(“kafka.bootstrap.servers”, “host1:port1,host2:port2”)<br>  .option(“topic”, “topic1”)<br>  .trigger(Trigger.Continuous(“1 second”))  // only change in query<br>  .start();<br>```<br>检查点间隔为1秒意味着连续处理引擎将每秒记录查询的进度。生成的检查点采用与微批处理引擎兼容的格式，因此可以使用任何触发器重新启动任何查询。</p>
+<p>spark.readStream<br>  .format(“kafka”)<br>  .option(“kafka.bootstrap.servers”, “host1:port1,host2:port2”)<br>  .option(“subscribe”, “topic1”)<br>  .load()<br>  .selectExpr(“CAST(key AS STRING)”, “CAST(value AS STRING)”)<br>  .writeStream<br>  .format(“kafka”)<br>  .option(“kafka.bootstrap.servers”, “host1:port1,host2:port2”)<br>  .option(“topic”, “topic1”)<br>  .trigger(Trigger.Continuous(“1 second”))  // only change in query<br>  .start();<br>```<br>检查点间隔为1秒意味着连续处理引擎将每秒记录查询的进度。生成的检查点采用与微批处理引擎兼容的格式，因此可以使用任何触发器重新启动任何查询。</p>
 
       
     </div>
@@ -631,8 +631,8 @@ fileNameOnly：是否基于以下方法检查新文件只有文件名而不是�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/15/zookeeper安装/" rel="next" title="zookeeper搭建">
-                <i class="fa fa-chevron-left"></i> zookeeper搭建
+              <a href="/2018/02/15/centos下sqoop环境搭建/" rel="next" title="centos下sqoop环境搭建">
+                <i class="fa fa-chevron-left"></i> centos下sqoop环境搭建
               </a>
             
           </div>
@@ -641,8 +641,8 @@ fileNameOnly：是否基于以下方法检查新文件只有文件名而不是�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/04/CDH搭建/" rel="prev" title="CDH安装">
-                CDH安装 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/15/zookeeper安装/" rel="prev" title="zookeeper搭建">
+                zookeeper搭建 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -724,7 +724,7 @@ fileNameOnly：是否基于以下方法检查新文件只有文件名而不是�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -735,7 +735,7 @@ fileNameOnly：是否基于以下方法检查新文件只有文件名而不是�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -746,7 +746,7 @@ fileNameOnly：是否基于以下方法检查新文件只有文件名而不是�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -838,7 +838,7 @@ fileNameOnly：是否基于以下方法检查新文件只有文件名而不是�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">38.9k</span>
+    <span title="Site words total count">41.6k</span>
   
 </div>
 
@@ -859,7 +859,7 @@ fileNameOnly：是否基于以下方法检查新文件只有文件名而不是�
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共38.9k字</span>
+  <span class="post-count">博客全站共41.6k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
