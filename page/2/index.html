@@ -313,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/15/centos下sqoop环境搭建/">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/15/zookeeper安装/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王彪">
@@ -332,7 +332,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/15/centos下sqoop环境搭建/" itemprop="url">centos下sqoop环境搭建</a></h1>
+                <a class="post-title-link" href="/2018/02/15/zookeeper安装/" itemprop="url">zookeeper搭建</a></h1>
         
 
         <div class="post-meta">
@@ -367,8 +367,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Sqoop/" itemprop="url" rel="index">
-                    <span itemprop="name">Sqoop</span>
+                  <a href="/categories/zookeeper/" itemprop="url" rel="index">
+                    <span itemprop="name">zookeeper</span>
                   </a>
                 </span>
 
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  411
+                  843
                 </span>
               
 
@@ -418,7 +418,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  4
                 </span>
               
             </div>
@@ -442,14 +442,18 @@
         
           
           
-Sqoop是一个用来将Hadoop（Hive、HBase）和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（例如：MySQL ,Oracle ,Postgres等）中的数据导入到Hadoop的HDFS中，也可以将HDFS的数据导入到关系型数据库中。
+本文选用：centos6.5、zookeeper-3.4.6集群部署【软件】准备好jdk环境，此次我们的环境是open_jdk1.8.0_101　　　　zookeeper-3.4.6.tar.gz【步骤】
 
-Sqoop安装
-1.下载Sqoop安装包在Sqoop官网下载安装包，本次使用的是sqoop-1.4.6.binhadoop-2.0.4
+准备条件如果有内部dns或者外网有域名，则直接使用域名如果没有需要修改/etc/hosts文件，或者直接使用IP
+
+
+
+集群规划
+主机类型 IP地址  域名zookeeper1 192.16
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/15/centos下sqoop环境搭建/#more" rel="contents">
+            <a class="btn" href="/2018/02/15/zookeeper安装/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
