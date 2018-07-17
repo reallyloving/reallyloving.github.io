@@ -2021,7 +2021,7 @@ Sqoop安装
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/15/spark Streaming（一）/">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/15/Struct Streaming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王彪">
@@ -2040,7 +2040,7 @@ Sqoop安装
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/15/spark Streaming（一）/" itemprop="url">spark Streaming(一)</a></h1>
+                <a class="post-title-link" href="/2018/02/15/Struct Streaming/" itemprop="url">Structured Streaming模型</a></h1>
         
 
         <div class="post-meta">
@@ -2075,8 +2075,8 @@ Sqoop安装
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/spark-Streaming/" itemprop="url" rel="index">
-                    <span itemprop="name">spark Streaming</span>
+                  <a href="/categories/spark/" itemprop="url" rel="index">
+                    <span itemprop="name">spark</span>
                   </a>
                 </span>
 
@@ -2110,7 +2110,7 @@ Sqoop安装
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,588
+                  4,183
                 </span>
               
 
@@ -2126,7 +2126,7 @@ Sqoop安装
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  18
                 </span>
               
             </div>
@@ -2149,12 +2149,13 @@ Sqoop安装
       
         
           
-          
-Spark Streaming是核心Spark API的扩展，可实现实时数据流的可扩展，高吞吐量，容错流处理。数据可以从许多来源（如Kafka，Flume，Kinesis或TCP套接字）中获取，并且可以使用以高级函数表示的复杂算法进行处理map，例如reduce，join和window。最后，处理后的数据可以推送到文件系统，数据库和实时仪表板。实际上，您可以在数据流上应用Spark的 机器学习和
+          概观结构化流式是一种基于Spark SQL的可扩展且容错的流处理引擎。可以像表达静态数据的批处理计算一样表达流式计算。park SQL引擎将负责逐步和连续地运行它，并在流数据继续到达时更新最终结果。自Spark 2.3以来，我们引入了一种称为连续处理的新型低延迟处理模式，它可以实现低至1毫秒的端到端延迟，并且具有至少一次保证。
+
+开始示例123456789101112131415161718192
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/15/spark Streaming（一）/#more" rel="contents">
+            <a class="btn" href="/2018/02/15/Struct Streaming/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2335,8 +2336,7 @@ Spark Streaming是核心Spark API的扩展，可实现实时数据流的可扩�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        ﻿<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
+        ﻿
 <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
@@ -2370,22 +2370,12 @@ Spark Streaming是核心Spark API的扩展，可实现实时数据流的可扩�
 
 
 
-<div class="powered-by">
-<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
-  本站访客数:<span id="busuanzi_value_site_uv"></span>
-</span>
-</div>
+
 
         
 <div class="busuanzi-count">
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-  
-    <span class="site-uv">
-      <i class="fa fa-user"></i>访问人数
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
-    </span>
   
 
   
