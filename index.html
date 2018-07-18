@@ -442,8 +442,7 @@
         
           
           计算机网络基础知识总结
-概述计算机网络学习的核心内容就是网络协议的学习。网络协议是为计算机网络中进行数据交换而建立的规则、标准或者说是约定的集合。因为不同用户的数据终端可能采取的字符集是不同的，两者需要进行通信，必须要在一定的标准上进行。
-  一个很形象地比喻就是我们的语言，我们大天朝地广人多，地方性语言也非常丰富，而且方言之间差距巨大。A地区的方言可能B地区的人根本无法接受，所以我们要为全国人名
+概述计算机网络学习的核心内容就是网络协议的学习。网络协议是为计算机网络中进行数据交换而建立的规则、标准或者说是约定的集合。因为不同用户的数据终端可能采取的字符集是不同的，两者需要进行通信，必须要在一定的标准上进行。一个很形象地比喻就是我们的语言，我们大天朝地广人多，地方性语言也非常丰富，而且方言之间差距巨大。A地区的方言可能B地区的人根本无法接受，所以我们要为全国人名进行沟
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1627,7 +1626,7 @@ CD
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/15/zookeeper安装/">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/15/spark伪分布安装/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王彪">
@@ -1646,7 +1645,7 @@ CD
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/15/zookeeper安装/" itemprop="url">zookeeper搭建</a></h1>
+                <a class="post-title-link" href="/2018/02/15/spark伪分布安装/" itemprop="url">spark伪分布安装</a></h1>
         
 
         <div class="post-meta">
@@ -1681,8 +1680,8 @@ CD
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/zookeeper/" itemprop="url" rel="index">
-                    <span itemprop="name">zookeeper</span>
+                  <a href="/categories/spark/" itemprop="url" rel="index">
+                    <span itemprop="name">spark</span>
                   </a>
                 </span>
 
@@ -1716,7 +1715,7 @@ CD
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  843
+                  1,429
                 </span>
               
 
@@ -1732,7 +1731,7 @@ CD
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  6
                 </span>
               
             </div>
@@ -1756,18 +1755,14 @@ CD
         
           
           
-本文选用：centos6.5、zookeeper-3.4.6集群部署【软件】准备好jdk环境，此次我们的环境是open_jdk1.8.0_101　　　　zookeeper-3.4.6.tar.gz【步骤】
+本文选用：centos6.5、zookeeper-3.4.11、hadoop2.8.0、jdk1.8.0、Scala2.12.1
 
-准备条件如果有内部dns或者外网有域名，则直接使用域名如果没有需要修改/etc/hosts文件，或者直接使用IP
-
-
-
-集群规划
-主机类型 IP地址  域名zookeeper1 192.16
+前言.Spark简介和hadoop的区别 
+123456789101112Spark 是一种与 Hadoop 相似的开源集群计算环境，但是两者之间还存在一些不同之处，Spark 启用了内存分布数据集，除了能够提供交互式查询外，它还可以优化迭代工作负载。 1.架构不同
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/15/zookeeper安装/#more" rel="contents">
+            <a class="btn" href="/2018/02/15/spark伪分布安装/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1825,7 +1820,7 @@ CD
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/15/centos下sqoop环境搭建/">
+    <link itemprop="mainEntityOfPage" href="http://www.wenchong.top/2018/02/15/Struct Streaming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王彪">
@@ -1844,7 +1839,7 @@ CD
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/15/centos下sqoop环境搭建/" itemprop="url">centos下sqoop环境搭建</a></h1>
+                <a class="post-title-link" href="/2018/02/15/Struct Streaming/" itemprop="url">Structured Streaming模型</a></h1>
         
 
         <div class="post-meta">
@@ -1879,8 +1874,8 @@ CD
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Sqoop/" itemprop="url" rel="index">
-                    <span itemprop="name">Sqoop</span>
+                  <a href="/categories/spark/" itemprop="url" rel="index">
+                    <span itemprop="name">spark</span>
                   </a>
                 </span>
 
@@ -1914,7 +1909,7 @@ CD
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  411
+                  4,183
                 </span>
               
 
@@ -1930,7 +1925,7 @@ CD
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  18
                 </span>
               
             </div>
@@ -1953,15 +1948,13 @@ CD
       
         
           
-          
-Sqoop是一个用来将Hadoop（Hive、HBase）和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（例如：MySQL ,Oracle ,Postgres等）中的数据导入到Hadoop的HDFS中，也可以将HDFS的数据导入到关系型数据库中。
+          概观结构化流式是一种基于Spark SQL的可扩展且容错的流处理引擎。可以像表达静态数据的批处理计算一样表达流式计算。park SQL引擎将负责逐步和连续地运行它，并在流数据继续到达时更新最终结果。自Spark 2.3以来，我们引入了一种称为连续处理的新型低延迟处理模式，它可以实现低至1毫秒的端到端延迟，并且具有至少一次保证。
 
-Sqoop安装
-1.下载Sqoop安装包在Sqoop官网下载安装包，本次使用的是sqoop-1.4.6.binhadoop-2.0.4
+开始示例123456789101112131415161718192
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/15/centos下sqoop环境搭建/#more" rel="contents">
+            <a class="btn" href="/2018/02/15/Struct Streaming/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
